@@ -477,7 +477,7 @@ Stress dice are rolled when a character is under stress, and thus might succeed 
 
 For a stress roll, roll a ten-sided die. One and zero have special meanings, but the other numbers count for their value, as normal. On a roll of one, roll again and double the number rolled. If the reroll is also a one, roll again and quadruple. On second and subsequent rolls, a zero counts as ten. If a player rolled ten consecutive ones, the number rolled on the eleventh throw would be multiplied by 1024. Stress die totals in the hundreds are likely to happen a handful of times in a long-running saga.
 
-On the first roll, zero counts as zero, and you must normally roll for a botch. Roll a number of ten-sided dice determined by the situation, called the botch dice, and if any of them show a zero, you have botched. If you roll no zeroes on the botch dice, the die roll is simply a zero.
+On the first roll, zero counts as zero, and you must normally roll for a botch. Roll a number of tensided dice determined by the situation, called the botch dice, and if any of them show a zero, you have botched. If you roll no zeroes on the botch dice, the die roll is simply a zero.
 
 Some stress rolls cannot botch. In that case, a zero on the initial roll is simply a roll of zero. Similarly, if a character has qualities that reduce the number of applicable botch dice to zero, the stress roll cannot botch.
 
@@ -1464,7 +1464,7 @@ Reputations: None.
 
 Combat: 
 - Long sword and heater shield (mounted): Init +2, Atk +17, Def +17, Dam +7
-- Long sword and beater shield (on foot): Init +2, Atk +14, Def +14, Dam +7
+- Long sword and heater shield (on foot): Init +2, Atk +14, Def +14, Dam +7
 - Great sword (mounted): Init +2, Atk +16, Def +13, Dam +10
 - Great sword (on foot): Init +2, Atk +13, Def +10, Dam +10
 - Fist: Init +0, Atk +5, Def +5, Dam +1
@@ -1638,14 +1638,14 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Transformation of the Ravenous Beast to the Torpid Toad (MuAn 25/+19)
-- Agony of the Beast (PeAn 15/+12)
-- Circle of Beast Warding (ReAn 5/+10)
-- Viper's Gaze (ReAn 15/+10)
-- Eyes of the Cat (MuCo(An) 5/+19)
-- Gift of the Bear's Fortitude (MuCo 25/+19)
-- The Wound that Weeps (PeCo 15/+12)
-- Lifting the Dangling Puppet (ReCo 15/+10)
+- [Transformation of the Ravenous Beast to the Torpid Toad](#transformation-of-the-ravenous-beast-to-the-torpid-toad)( (MuAn 25/+19)
+- [Agony of the Beast](#agony-of-the-beast) (PeAn 15/+12)
+- [Circle of Beast Warding](#circle-of-beast-warding) (ReAn 5/+10)
+- [Viper's Gaze](#vipers-gaze) (ReAn 15/+10)
+- [Eyes of the Cat](#eyes-of-the-cat) (MuCo(An) 5/+19)
+- [Gift of the Bear's Fortitude](#gift-of-the-bears-fortitude) (MuCo 25/+19)
+- [The Wound that Weeps](#the-wound-that-weeps) (PeCo 15/+12)
+- [Lifting the Dangling Puppet](#lifting-the-dangling-puppet) (ReCo 15/+10)
 
 Customization Notes: The Bjornaer is much more comfortable with animals than with people, and may think of him or herself as just as much animal as human. The combination of Blatant Gift and Inoffensive to Animals means that she gets along better with animals than with people. Ways of the Forest should be changed to a terrain appropriate to the actual heartbeast; a wolf is assumed for the example. Both Major Flaws can be changed freely, and while Deficient Form (Ignem) is very common in House Bjornaer, there is no particular reason for your character to have it. Note that Quiet and Subtle Magic allow the magus to cast in his heartbeast form without any penalty.
 
@@ -1684,14 +1684,16 @@ Arts: Cr 12, In 0, Mu 0, Pe 0, Re 3, An 0, Aq 0, Au 12, Co 4, He 0, Ig 0, Im 0, 
 
 Twilight Scars: None
 
-Equipment: Wizardly robes. Encumbrance: 0 (0)
+Equipment: Wizardly robes.
+
+Encumbrance: 0 (0)
 
 Spells Known:
-- Charge of the Angry Winds (CrAu 15/+24)
-- Clouds of Rain and Thunder (CrAu 25/+24)
-- Clouds of Summer Snow (CrAu 25/+24)
-- The Incantation of Lightning (CrAu 35/+24)
-- Purification of the Festering Wounds (CrCo 20/+16)
+- [Charge of the Angry Winds](#charge-of-the-angry-winds) (CrAu 15/+24)
+- [Clouds of Rain and Thunder](#clouds-of-rain-and-thunder) (CrAu 25/+24)
+- [Clouds of Summer Snow](#clouds-of-summer-snow) (CrAu 25/+24)
+- [The Incantation of Lightning](#the-incantation-of-lightning) (CrAu 35/+24)
+- [Purification of the Festering Wounds](#purification-of-the-festering-wounds) (CrCo 20/+16)
 
 Customization Notes: The Bonisagus is most likely Driven to make some great discovery in magic. He or she is a so-called 'lab rat', a magus happier in his laboratory than in the outside world. However, the favors he owes and his drive to discover are likely to push him out. Similarly, enchanted items are very useful to him, but he is bad at making them for himself. That also tends to drive him into stories. This concept is built around the Virtues and the Driven Flaw; the other Flaws can be changed easily. He can also take two additional Minor Flaws, or make Driven Major, and take two additional Minor Virtues to balance them. Similarly, the Arts in which the character has an Affinity can be changed, but that also requires changing the spells he knows.
 
@@ -1735,13 +1737,13 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Phantom of the Talking Head (CrIm 10/+8)
-- Aura of Ennobled Presence (MuIm 10/+8)
-- Piercing the Faerie Veil (InVi 20/+18)
-- Piercing the Magical Veil (InVi 20/+18) (see Piercing the Faerie Veil)
-- Unraveling the Fabric of Imaginem (PeVi 20/+16)
-- Wind of Mundane Silence (PeVi 20/+16)
-- Circular Ward Against Demons (ReVi 20/+16)
+- [Phantasm of the Talking Head](#phantasm-of-the-talking-head) (CrIm 10/+8)
+- [Aura of Ennobled Presence](#aura-of-ennobled-presence) (MuIm 10/+8)
+- [Piercing the Faerie Veil](#piercing-the-faerie-veil) (InVi 20/+18)
+- [Piercing the Magical Veil](#piercing-the-faerie-veil) (InVi 20/+18) (see Piercing the Faerie Veil)
+- [Unraveling the Fabric of Imaginem](#unraveling-the-fabric-of-form) (PeVi 20/+16)
+- [Wind of Mundane Silence](#wind-of-mundane-silence) (PeVi 20/+16)
+- [Circular Ward Against Demons](#circular-ward-against-demons) (ReVi 20/+16)
 
 Customization Notes: The Criamon does not have her maximum allowance of Flaws, so could take an additional Major Flaw or three Minor Flaws, with corresponding Virtues, if desired. Her Charm and Folk Ken scores could be moved into other Abilities available in the first five years of life (see the Detailed Character Creation rules, page 43), possibly also moving her good Presence score as well.
 
@@ -1786,13 +1788,13 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Wall of Protecting Stone (CrTe 25/+35)
-- The Crystal Dart (Mu(Re)Te 10/+27)
-- Rock of Viscid Clay (MuTe 15/+27)
-- Earth that Breaks No More (MuTe 20/+27)
-- Obliteration of the Metallic Barrier (Pe(Re)Te 20/+22)
-- The Earth's Carbuncle (Re(Mu)Te 15/+27)
-- Hands of the Grasping Earth (Re(Mu)Te 15/+23)
+- [Wall of Protecting Stone](#wall-of-protecting-stone) (CrTe 25/+35)
+- [The Crystal Dart](#the-crystal-dart) (Mu(Re)Te 10/+27)
+- [Rock of Viscid Clay](#rock-of-viscid-clay) (MuTe 15/+27)
+- [Earth that Breaks No More](#earth-that-breaks-no-more) (MuTe 20/+27)
+- [Obliteration of the Metallic Barrier](#obliteration-of-the-metallic-barrier) (Pe(Re)Te 20/+22)
+- [The Earth's Carbuncle](#the-earths-carbuncle) (Re(Mu)Te 15/+27)
+- [Hands of the Grasping Earth](#hands-of-the-grasping-earth) (Re(Mu)Te 15/+23)
 
 Customization Notes: This Ex Miscellanea tradition grants the Virtues Giant Blood and Affinity with Terram, and the Flaw Necessary Condition: Touching Stone. The stone in question can be a piece of stone worn on a belt, for example, but it must be at least the size of the magus's hand (the magus has big hands). The magus doesn't have his full allowance of Flaws, so you can take another Major Flaw, or three more Minor, and corresponding Virtues.
 
@@ -1836,11 +1838,11 @@ Equipment: Wizardly robes, smelling slightly of smoke.
 Encumbrance: 0 (0)
 
 Spells Known: 
-- Palm of Flame (CrIg 5/+41)
-- Pilum of Fire (CrIg 20/+41)
-- Arc of Fiery Ribbons (CrIg 25/+41)
-- Ball of Abysmal Flame (CrIg 35/+41)
-- Circle of Encompassing Flame (CrIg 35/+41)
+- [Palm of Flame](#palm-of-flame) (CrIg 5/+41)
+- [Pilum of Fire](#pilum-of-fire) (CrIg 20/+41)
+- [Arc of Fiery Ribbons](#arc-of-fiery-ribbons) (CrIg 25/+41)
+- [Ball of Abysmal Flame](#ball-of-abysmal-flame) (CrIg 35/+41)
+- [Circle of Encompassing Flame](#circle-of-encompassing-flames) (CrIg 35/+41)
 
 Customization Notes: The Flambeau is very much a one-trick pony. He can throw fire at opponents extremely effectively. His focused Arts and Magical Focus mean that he has some Penetration even for powerful spells. However, he is much weaker if he tries to do anything else. Wrathful and Enemies can be swapped out for other Flaws with no trouble, to break the stereotype a bit, as can his Greater Immunity. He can take another Minor Flaw, and balancing Minor Virtue.
 
@@ -1883,12 +1885,12 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Physician's Eye (InCo 5/+20)
-- Eyes of the Eagle (InIm 25/+21)
-- Summoning the Distant Image (InIm 25/+21)
-- Invisibility of the Standing Wizard (PeIm 15/+8)
-- Frosty Breath of the Spoken Lie (InMe 20/ +21)
-- Peering Into the Mortal Mind (InMe 30/+21)
+- [Physician's Eye](#physicians-eye) (InCo 5/+20)
+- [Eyes of the Eagle](#eyes-of-the-eagle) (InIm 25/+21)
+- [Summoning the Distant Image](#summoning-the-distant-image) (InIm 25/+21)
+- [Invisibility of the Standing Wizard](#invisibility-of-the-standing-wizard) (PeIm 15/+8)
+- [Frosty Breath of the Spoken Lie](#frosty-breath-of-the-spoken-lie) (InMe 20/ +21)
+- [Peering Into the Mortal Mind](#peering-into-the-mortal-mind) (InMe 30/+21)
 
 Customization Notes: If the Guernicus lies (says something she believes to be untrue as if it were true), she cannot use any magic until the sun next rises or sets. Anyone who wants to tell a lie in her presence soon after she casts a spell (within two minutes or so) must make a relevant Personality Trait check against an Ease Factor equal to the magnitude of the spell cast. If the check fails, he cannot bring himself to lie, although he can remain silent. The Guernicus could take four more points of Flaws, and corresponding Virtues.
 
@@ -1932,16 +1934,16 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Phantasm of the Talking Head (CrIm 10/+16)
-- Phantasm of the Human Form (CrIm 25/+16)
-- Discern Own Illusions (InIm 15/+11)
-- Taste of the Spices and Herbs (MuIm 5/+16)
-- Aura of Ennobled Presence (MuIm 10/+16)
-- Notes of a Delightful Sound (MuIm 10/+16)
-- Disguise of the Transformed Image (MuIm 15/+16)
-- Illusion of Cool Flames (PeIm 10/+6)
-- Illusion of the Shifted Image (ReIm 10/+16)
-- Wizard's Sidestep (ReIm 10/+16)
+- [Phantasm of the Talking Head](#phantasm-of-the-talking-head) (CrIm 10/+16)
+- [Phantasm of the Human Form](#phantasm-of-the-human-form) (CrIm 25/+16)
+- [Discern Own Illusions](#discern-own-illusions) (InIm 15/+11)
+- [Taste of the Spices and Herbs](#taste-of-the-spices-and-herbs) (MuIm 5/+16)
+- [Aura of Ennobled Presence](#aura-of-ennobled-presence) (MuIm 10/+16)
+- [Notes of a Delightful Sound](#notes-of-a-delightful-sound) (MuIm 10/+16)
+- [Disguise of the Transformed Image](#disguise-of-the-transformed-image) (MuIm 15/+16)
+- [Illusion of Cool Flames](#illusion-of-cool-flames) (PeIm 10/+6)
+- [Illusion of the Shifted Image](#illusion-of-the-shifted-image) (ReIm 10/+16)
+- [Wizard's Sidestep](#wizards-sidestep) (ReIm 10/+16)
 
 Customization Notes: The Jerbiton took Puissant Music as his free House-related Virtue. He is designed as a social creature who sees himself as an artist in music and magic. He can take up to three points more of Flaws, with the corresponding Virtues. Note that he has the Gentle Gift, and thus can interact with mundanes without any penalty.
 
@@ -1959,9 +1961,7 @@ Warping Score: 0 (0)
 
 Confidence Score: 1 (3)
 
-Virtues and Flaws: The Gift.
-
-Hermetic Magus; Major Magical Focus (Weather); Affinity with Auram, Cyclic Magic (Positive) — Day, Puissant Auram, Puissant Creo\*, Special Circumstances (during a storm); Ambitious (Major), Difficult Longevity Ritual; Cyclic Magic (Negative) — Night
+Virtues and Flaws: The Gift, Hermetic Magus, Major Magical Focus (Weather), Affinity with Auram, Cyclic Magic (Positive) — Day, Puissant Auram, Puissant Creo\*, Special Circumstances (during a storm), Ambitious (Major), Difficult Longevity Ritual, Cyclic Magic (Negative) — Night
 
 Personality Traits: Ambitious +6, Wanderer +3, Brave +2
 
@@ -1987,11 +1987,11 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Jupiter's Resounding Blow (CrAu 10/+26)
-- Clouds of Rain and Thunder (CrAu 25/+35)
-- Clouds of Summer Snow (CrAu 25/+35)
-- Pull of the Skybound Winds (CrAu 30/+26)
-- Wings of the Soaring Wind (Cr(Re)Au 30/+27)
+- [Jupiter's Resounding Blow](#jupiters-resounding-blow) (CrAu 10/+26)
+- [Clouds of Rain and Thunder](#clouds-of-rain-and-thunder) (CrAu 25/+35)
+- [Clouds of Summer Snow](#clouds-of-summer-snow) (CrAu 25/+35)
+- [Pull of the Skybound Winds](#pull-of-the-skybound-winds) (CrAu 30/+26)
+- [Wings of the Soaring Wind](#wings-of-the-soaring-wind) (Cr(Re)Au 30/+27)
 
 Customization Notes: The Mercere can take another three points of Flaws and as many points of Virtues. He is quite capable of traveling alone, and probably prefers to do so. By moving scores from Hunt and Stealth into social Abilities such as Charm, he can be made more likely to travel with a group.
 
@@ -2009,7 +2009,7 @@ Warping Score: 0 (0)
 
 Confidence Score: 1 (3)
 
-Virtues and Flaws: The Gift; Hermetic Magus; Strong Faerie Blood (Undine); Deft Imaginem, Faerie Magic\*, Free Study, Puissant Imaginem, Student of Faerie; Chaotic Magic, Plagued by Faerie, Faerie Upbringing
+Virtues and Flaws: The Gift, Hermetic Magus, Strong Faerie Blood (Undine), Deft Imaginem, Faerie Magic\*, Free Study, Puissant Imaginem, Student of Faerie, Chaotic Magic, Plagued by Faerie, Faerie Upbringing
 
 Personality Traits: Mercurial +3, Honest –2, Reliable –3
 
@@ -2035,13 +2035,13 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Phantasmal Animal (CrIm 20/+17)
-- Phantasm of the Human Form (CrIm 25/+17)
-- Image Phantom (MuIm 20/+17)
-- Veil of Invisibility (PeIm 20/+14)
-- Wizard's Sidestep (ReIm 10/+17)
-- Panic of the Trembling Heart (CrMe 15/+9)
-- The Call to Slumber (ReMe 10/+9)
+- [Phantasmal Animal](#phantasmal-animal) (CrIm 20/+17)
+- [Phantasm of the Human Form](#phantasm-of-the-human-form) (CrIm 25/+17)
+- [Image Phantom](#image-phantom) (MuIm 20/+17)
+- [Veil of Invisibility](#veil-of-invisibility) (PeIm 20/+14)
+- [Wizard's Sidestep](#wizards-sidestep) (ReIm 10/+17)
+- [Panic of the Trembling Heart](#panic-of-the-trembling-heart) (CrMe 15/+9)
+- [The Call to Slumber](#the-call-to-slumber) (ReMe 10/+9)
 
 Customization Notes: The Merinita can take another three points of Flaws and as many Virtues. The type of Strong Faerie Blood can also be changed easily. They might look younger than 25, due to the influence of Strong Faerie Blood, but need not.
 
@@ -2066,9 +2066,7 @@ Personality Traits: Ambitious +6, Authoritarian +3, Respectful +3, Brave +2
 Reputations: None.
 
 Combat:
-- Dodging: Init +1, Attack n/a, Defense +1,
-
-Damage n/a
+- Dodging: Init +1, Attack n/a, Defense +1, Damage n/a
 
 Soak: +2
 
@@ -2087,14 +2085,14 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Circling Winds of Protection (Cr(Re)Au 20/+16)
-- Rain of Stones (MuAu(Te) 20/+16)
-- Pilum of Fire (CrIg 20/+16)
-- Soothe the Raging Flames (PeIg 20/+16)
-- Seal the Earth (CrTe 15/+16)
-- The Miner's Keen Eye (InTe 20/+16)
-- Earth that Breaks No More (MuTe 20/+16)
-- Pit of the Gaping Earth (PeTe 15/+16)
+- [Circling Winds of Protection](#circling-winds-of-protection) (Cr(Re)Au 20/+16)
+- [Rain of Stones](#rain-of-stones) (MuAu(Te) 20/+16)
+- [Pilum of Fire](#pilum-of-fire) (CrIg 20/+16)
+- [Soothe the Raging Flames](#soothe-the-raging-flames) (PeIg 20/+16)
+- [Seal the Earth](#seal-the-earth) (CrTe 15/+16)
+- [The Miner's Keen Eye](#the-miners-keen-eye) (InTe 20/+16)
+- [Earth that Breaks No More](#earth-that-breaks-no-more) (MuTe 20/+16)
+- [Pit of the Gaping Earth](#pit-of-the-gaping-earth) (PeTe 15/+16)
 
 Customization Notes: The Tremere can take three more points of Flaws, and a similar number of Virtues. At the moment, he is a social and political creature, but the score in one of those Abilities could be moved into a Martial Ability to make him more of a fighter. Elemental Magic makes it difficult to move Art scores around. Initially, he was assigned scores of Aq 3, Au 6, Ig 6, and Te 6.
 
@@ -2140,12 +2138,11 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Pains of the Perpetual Worry (CrMe 20/+16)
-- Posing the Silent Question (InMe 20/+16)
-- Trust of Childlike Faith (PeMe 10/+11)
-- Aura of Rightful Authority (ReMe 20+16)
-- Aura of Rightful Authority (ReMe 20+16)
-- Scent of Peaceful Slumber (ReMe 20/+16)
+- [Pains of the Perpetual Worry](#pains-of-the-perpetual-worry) (CrMe 20/+16)
+- [Posing the Silent Question](#posing-the-silent-question) (InMe 20/+16)
+- [Trust of Childlike Faith](#trust-of-childlike-faith) (PeMe 10/+11)
+- [Aura of Rightful Authority](#aura-of-rightful-authority) (ReMe 20+16)
+- [Scent of Peaceful Slumber](#scent-of-peaceful-slumber) (ReMe 20/+16)
 
 Customization Notes: The Tytalus can take up to three more points of Flaws, and a similar number of Virtues.
 
@@ -2189,13 +2186,13 @@ Equipment: Wizardly robes.
 Encumbrance: 0 (0)
 
 Spells Known:
-- Seal the Earth (CrTe 15/+23)
-- Touch of Midas (CrTe 20/+25)
-- Wall of Protecting Stone (CrTe 25/+23)
-- The Crystal Dart (Mu(Re)Te 10/+21)
-- Edge of the Razor (MuTe 20/+21)
-- Pit of the Gaping Earth (PeTe 15/+19)
-- Hands of the Grasping Earth (Re(Mu)Te 15/+21)
+- [Seal the Earth](#seal-the-earth) (CrTe 15/+23)
+- [Touch of Midas](#touch-of-midas) (CrTe 20/+25)
+- [Wall of Protecting Stone](#wall-of-protecting-stone) (CrTe 25/+23)
+- [The Crystal Dart](#the-crystal-dart) (Mu(Re)Te 10/+21)
+- [Edge of the Razor](#edge-of-the-razor) (MuTe 20/+21)
+- [Pit of the Gaping Earth](#pit-of-the-gaping-earth) (PeTe 15/+19)
+- [Hands of the Grasping Earth](#hands-of-the-grasping-earth) (Re(Mu)Te 15/+21)
 
 Customization Notes: The Verditius can take another three Minor Flaws, or one Major, and balancing Virtues. In addition, her Craft Abilities can be changed for different crafts without changing the concept much. Finally, not everyone descended from dwarfs is as small as they are, so that Flaw could be swapped for others without affecting the character on a fundamental level.
 
@@ -2249,7 +2246,6 @@ Finally, grogs can be created at any age, and probably should be. Grizzled veter
 Creating children using these rules requires the application of a bit of common sense. Abilities can be generated and treated as normal, but a seven-year-old child is not going to be stronger than most adults, even if she has Strength +3. Similarly, some Virtues and Flaws will only become applicable as the child ages, rather than starting out usable.
 
 To generate a child, use the normal rules, and then modify all Characteristics as follows:
-
 
 | Age   | Modifier | Size Modifier |
 | ----- | -------- | ------------- |
@@ -2436,7 +2432,7 @@ To Raise: The number of experience points required to raise a score by one point
 
 The fifteen years of apprenticeship give the character 240 experience points, and 120 levels of spells. These experience points can be spent on Arts or Abilities, including Arcane, Academic, and Martial Abilities. Note that magi can only spend experience points on Arcane, Academic and Martial Abilities before apprenticeship if they have a Virtue which allows them to do so. A sensible division is to spend 120 experience points on Abilities and 120 on Arts.
 
-Magi must have the following minimum Abilities: Parma Magica 1, Magic Theory 1, Latin 1. Characters with lower scores would not be admitted to the Order. A character without a Latin score of least 4 and an Artes Liberales score of at least 1 is unable to read the books of the Order. This will seriously weaken the character relative to other
+Magi must have the following minimum Abilities: Parma Magica 1, Magic Theory 1, Latin 1. Characters with lower scores would not be admitted to the Order. A character without a Latin score of least 4 and an Artes Liberales score of at least 1 is unable to read the books of the Order. This will seriously weaken the character relative to other magi, and you should be aware of this before designing such a character. A character with a Latin score of less than 5 cannot write books, which may also be important. A Magic Theory score of below 3 is weak, and, in particular, means that the magus cannot set up his own laboratory. Very few magi have a score in Parma Magica over 1 immediately after apprenticeship, as this Ability is normally the last thing taught. Indeed, the magus is not taught the final secret to raising a Parma until after he has sworn the Oath. Magi should also seriously consider putting points into Code of Hermes, Concentration, Finesse, Order of Hermes Lore, Penetration, and Profession (Scribe).
 
 > #### Example: Darius of Flambeau
 >
@@ -2449,8 +2445,6 @@ Magi must have the following minimum Abilities: Parma Magica 1, Magic Theory 1, 
 > Because of his Flawless Magic Virtue, Darius has a Mastery Score of one in each spell, and thus Niall has to choose a special ability for each.
 >
 > Finally, just before Gauntlet, he spends his last 5 exp on Parma Magica 1.
->
-> magi, and you should be aware of this before designing such a character. A character with a Latin score of less than 5 cannot write books, which may also be important. A Magic Theory score of below 3 is weak, and, in particular, means that the magus cannot set up his own laboratory. Very few magi have a score in Parma Magica over 1 immediately after apprenticeship, as this Ability is normally the last thing taught. Indeed, the magus is not taught the final secret to raising a Parma until after he has sworn the Oath. Magi should also seriously consider putting points into Code of Hermes, Concentration, Finesse, Order of Hermes Lore, Penetration, and Profession (Scribe).
 
 #### Hermetic Magi Recommended Minimum Abilities
 
@@ -2513,13 +2507,13 @@ For companions and magi, they are normally nothing more than a guide to roleplay
 >
 > Niall picks Brave, Dedicated to Cause, and Efficient as Darius's Personality Traits, and gives him scores of +3 in each. Darius is quite an extreme individual, but the numbers are unlikely to have much impact on play.
 
-> #### Example: Darius of Flambeau
->
-> Darius does have a Reputation, thanks to his Hermetic Prestige Virtue. It's a reputation with Hermetic magi, and it has a level of 3. Niall picks 'Dedicated Hoplite' as the content. (The Hoplites are the enforcers of the Order of Hermes. It's an informal grouping, but its members are respected.)
-
 ### Reputations
 
 Characters only start with a Reputation if they choose a Virtue or Flaw that grants one, but all characters can develop them in play. See page 28 for rules on Reputations.
+
+> #### Example: Darius of Flambeau
+>
+> Darius does have a Reputation, thanks to his Hermetic Prestige Virtue. It's a reputation with Hermetic magi, and it has a level of 3. Niall picks 'Dedicated Hoplite' as the content. (The Hoplites are the enforcers of the Order of Hermes. It's an informal grouping, but its members are respected.)
 
 ### Confidence
 
@@ -2557,9 +2551,10 @@ Your character may start with any equipment or possessions she might reasonably 
 >
 > Reputations: Dedicated Hoplite +3 (Hermetic magi)
 >
-> Combat: Fist: Init +2, Atk +5, Def +6, Dam +2
->
-> Kick: Init +1, Atk +4, Def +4, Dam +5 Long Spear: Init +5, Atk +9, Def +8, Dam +9
+> Combat:
+> - Fist: Init +2, Atk +5, Def +6, Dam +2
+> - Kick: Init +1, Atk +4, Def +4, Dam +5
+> - Long Spear: Init +5, Atk +9, Def +8, Dam +9
 >
 > Soak: +0
 >
@@ -3150,6 +3145,7 @@ General Virtues and Flaws cover everything else. Most provide bonuses or penalti
 [Faerie Blood](#faerie-blood)<br>
 [Familiarity with the Fae](#familiarity-with-the-fae)<br>
 [Feather Messenger](#feather-messenger)<br>
+[Folk Magic](#folk-magic)<br>
 [Font of Knowledge](#font-of-knowledge)<br>
 [Frightful Presence](#frightful-presence)<br>
 [Gender Shift](#gender-shift)<br>
@@ -3461,9 +3457,7 @@ For determining the spell level, Storm is the same Duration level as Concentrati
 
 *Body-of-water (Target):* A spell with this target targets an entire body-of-water, whether this is a lake, a river, or a sea. Use the same guidelines as water-way to determine where a body-of-water begins and ends.
 
-For determining the spell level, Body-of-water is the same level of Target as
-
-Structure (remember to increase the spell magnitude to affect a very large body-of-water, like a sea or the ocean).
+For determining the spell level, Body-of-water is the same level of Target as Structure (remember to increase the spell magnitude to affect a very large body-of-water, like a sea or the ocean).
 
 > #### Possible Abuses of Storms
 >
@@ -3548,8 +3542,7 @@ You are a member of the civil administration, probably a katib (KEH-tib, scribe 
 
 #### Capo
 *Major, Social Status*<br>
-The character manages a trading company that has branches in at least two cities.
-City and Guild, Chapter 7 gives more details of what this involves. A capo who is also a partner in the business does not select the Partner Virtue, instead selecting Poor or Wealthy, as appropriate to his circumstances.
+The character manages a trading company that has branches in at least two cities. City and Guild, Chapter 7 gives more details of what this involves. A capo who is also a partner in the business does not select the Partner Virtue, instead selecting Poor or Wealthy, as appropriate to his circumstances.
 
 #### Cathedral School Master
 *Major, Social Status*<br>
@@ -3579,8 +3572,7 @@ You are a member of the literate class and are either a professional scribe, acc
 
 #### Command Animals
 *Major, Supernatural, Tainted*<br>
-The character has the ability to mentally command mundane examples of a species of animal usually associated with the demon who tainted him or her.
-At any time, the character may command up to 12 human-sized animals, and may instruct them to do suicidal things. Smaller animals can be commanded in far greater numbers, so some characters can command swarms of insects, or hundreds of rats.
+The character has the ability to mentally command mundane examples of a species of animal usually associated with the demon who tainted him or her. At any time, the character may command up to 12 human-sized animals, and may instruct them to do suicidal things. Smaller animals can be commanded in far greater numbers, so some characters can command swarms of insects, or hundreds of rats.
 
 #### Commanding Aura
 *Free, Supernatural*<br>
@@ -3618,13 +3610,11 @@ You are a member of the covenant staff, and may have lived there all your life. 
 
 #### Craft Guild Training
 *Minor, General*<br>
-This character has received above-average training during his apprenticeship, from a craft master or professional guild.
-Like Warrior and Educated, this Virtue gives a bonus of 50 experience points. These must be spent on any Craft or Profession Abilities, Bargain, or Organization Lore: Guild.
+This character has received above-average training during his apprenticeship, from a craft master or professional guild. Like Warrior and Educated, this Virtue gives a bonus of 50 experience points. These must be spent on any Craft or Profession Abilities, Bargain, or Organization Lore: Guild.
 
 #### Crafter's Healing
 *Minor, Supernatural*<br>
-Like the smiths of ancient lore, the character can magically heal wounds by touching them with the tools of his trade. This is a rare and mysterious power that Hermetic magi cannot understand or duplicate, and it is common for this Virtue to follow familial bloodlines.
-Selecting this Virtue gives the character the Crafter's Healing Ability at a score of 1.
+Like the smiths of ancient lore, the character can magically heal wounds by touching them with the tools of his trade. This is a rare and mysterious power that Hermetic magi cannot understand or duplicate, and it is common for this Virtue to follow familial bloodlines. Selecting this Virtue gives the character the Crafter's Healing Ability at a score of 1.
 
 #### Craftsman
 *Free, Social Status*<br>
@@ -3718,8 +3708,7 @@ This variant of the Skinchanger Virtue allows the character to adopt the shape o
 
 #### Educated
 *Minor, General*<br>
-You have been educated in a grammar school, and may have attended a university or cathedral school. You may purchase Academic Abilities
-during character generation. During character generation you get an additional 50 experience points, which must be spent on Latin and Artes Liberales.
+You have been educated in a grammar school, and may have attended a university or cathedral school. You may purchase Academic Abilities during character generation. During character generation you get an additional 50 experience points, which must be spent on Latin and Artes Liberales.
 
 #### Educated (Bardic)
 *Minor, General*<br>
@@ -3731,9 +3720,7 @@ You have been educated in a mosque or Qur'an school, and may purchase Academic A
 
 #### Educated (Hebrew)
 *Minor, General*<br>
-Your character has been educated in a beit ha-midrash or yeshivah and may purchase Academic Abilities at character generation. Your character gains
-50 extra experience points to be spent on some or all of the following: Hebrew, Aramaic, Theology: Judaism, and Judaic Lore. Characters from Iberia or
-the East may also spend some of these points on Arabic.
+Your character has been educated in a beit ha-midrash or yeshivah and may purchase Academic Abilities at character generation. Your character gains 50 extra experience points to be spent on some or all of the following: Hebrew, Aramaic, Theology: Judaism, and Judaic Lore. Characters from Iberia or the East may also spend some of these points on Arabic.
 
 #### Educated (Vernacular)
 *Minor, General*<br>
@@ -3741,7 +3728,7 @@ This form of secular instruction, given by tutors to the scions of merchant hous
 
 #### Elemental Magic
 *Major, Hermetic*<br>
-You have been trained in the ability to manipulate raw elemental Forms (Aquam, Auram, Ignem, and Terram), and view them as a connected whole rather than four separate Arts. Whenever you gain experience from a source dedicated to one of these Arts, you gain half the Source Quality (rounded up) in experience points in each of the other three Arts. For example, if you studied Ignem from a book with a Source Quality of 13, you would gain 7 experience points in each of Aquam, Auram, and Terram.
+You have been trained in the ability to manipulate raw elemental Forms (Aquam, Auram, Ignem, and Terram), and view them as a connected whole rather than four separate Arts. Whenever you gain experience from a source dedicated to one of these Arts. you gain half the Source Quality (rounded up) in experience points in each of the other three Arts. For example, if you studied Ignem from a book with a Source Quality of 13, you would gain 7 experience points in each of Aquam, Auram, and Terram.
 
 During character creation, assign all your experience points in Arts. Then assign half the experience points assigned to each of the elemental Forms to each of the other elemental Forms. Do not actually add these experience points to the Form in question until you have finished calculating all the bonus experience points. For example, if you assign 10 experience points to each of Aquam, Auram, and Terram, and 21 experience points to Ignem, then you should assign 15 bonus experience points to Ignem (5 from each of Aquam, Auram, and Terram), and 21 bonus experience points to each of Aquam, Auram, and Terram (11 from Ignem, and 5 each from the other two Forms).
 
@@ -3753,8 +3740,7 @@ You may make someone hostile to a target of your choice. Choosing this Virtue co
 
 #### Emir
 *Minor, Social Status*<br>
-This is the same as the Knight Virtue, though due to the rather different upbringing of Muslim emirs, you are likely to be as skilled with hunting, religious
-teachings, and culture as you are with martial pursuits.
+This is the same as the Knight Virtue, though due to the rather different upbringing of Muslim emirs, you are likely to be as skilled with hunting, religious teachings, and culture as you are with martial pursuits.
 
 #### Enchanting (Ability)
 *Minor, Supernatural*<br>
@@ -3762,8 +3748,7 @@ When you set your mind to it, you can magically induce emotions and beliefs in o
 
 #### Enduring Constitution
 *Minor, General*<br>
-You can withstand pain and fatigue. Decrease the penalties for reduced Fatigue levels by one point, and reduce your total penalty from wounds by one
-point (but not below zero). You also get +3 on rolls to resist pain.
+You can withstand pain and fatigue. Decrease the penalties for reduced Fatigue levels by one point, and reduce your total penalty from wounds by onespoint (but not below zero). You also get +3 on rolls to resist pain.
 
 #### Enduring Magic
 *Minor, Hermetic*<br>
@@ -3775,14 +3760,11 @@ You have been initiated into the Outer Mystery of The Enigma (see page 235), and
 
 #### Enticer of Multitudes
 *Minor, General, Tainted*<br>
-The character has a version of the Inspirational Virtue that can only be used to manipulate people toward evil acts. The character appears demagogic
-rather than heroic, and cannot control a group once he has whipped it into a frenzy. The enticer forces individuals in a group to make Personality Trait
-rolls for the particular sin they are attempting to evoke, with a bonus of +5 or more.
+The character has a version of the Inspirational Virtue that can only be used to manipulate people toward evil acts. The character appears demagogic rather than heroic, and cannot control a group once he has whipped it into a frenzy. The enticer forces individuals in a group to make Personality Trait rolls for the particular sin they are attempting to evoke, with a bonus of +5 or more.
 
 #### Entrancement
 *Major, Supernatural*<br>
-You have the power to control another's will by staring into their eyes and giving them a verbal command. Choosing this Virtue confers the Ability
-Entrancement 1 (page 164).
+You have the power to control another's will by staring into their eyes and giving them a verbal command. Choosing this Virtue confers the Ability Entrancement 1 (page 164).
 
 #### Eunuch
 *Minor, Social Status*<br>
@@ -3840,8 +3822,7 @@ This Virtue makes you a Faerie Doctor and a Mythic Companion (page 63). You get 
 
 #### Faerie Magic
 *Minor, Hermetic*<br>
-You have been initiated into the Outer Mystery of Faerie Magic (see page 236), and thus are a member of House Merinita. You have the Ability Faerie
-Magic 1. Note that all Merinita magi gain this Virtue for free at character generation.
+You have been initiated into the Outer Mystery of Faerie Magic (see page 236), and thus are a member of House Merinita. You have the Ability Faerie Magic 1. Note that all Merinita magi gain this Virtue for free at character generation.
 
 #### Faerie-Raised Magic
 *Major, Hermetic*<br>
@@ -4095,8 +4076,7 @@ The character has the ability to curse her enemies, making dire predictions abou
 
 #### Homing Instinct
 *Minor, Supernatural*<br>
-The character always knows precisely how to get from where she is to a number of locations equal to her Intelligence Score (a minimum of 1). To add a
-location to the character's repertoire she must be at that location, the location must be open to the air (so it cannot be inside, for example), and the player must make an Intelligence + Concentration Roll against an Ease Factor of 6. If this would increase the number of known locations beyond the character's limit, then another location must be "forgotten."
+The character always knows precisely how to get from where she is to a number of locations equal to her Intelligence Score (a minimum of 1). To add a location to the character's repertoire she must be at that location, the location must be open to the air (so it cannot be inside, for example), and the player must make an Intelligence + Concentration Roll against an Ease Factor of 6. If this would increase the number of known locations beyond the character's limit, then another location must be "forgotten."
 
 In addition, the character has a fixed Arcane Connection to locations that she knows, which may be exploited in the usual ways (page 219). This Arcane Connection is an artifact of the mind, and so may not be given to another character.
 
@@ -4132,8 +4112,7 @@ A character who distracts with a prop is memorable when she wishes to be. She ca
 
 #### Independent Study
 *Minor, General*<br>
-The character develops new skills extremely quickly on his own. When he is studying through Practice, add two to the Source Quality, and add three to
-the Source Quality of his Adventure experience.
+The character develops new skills extremely quickly on his own. When he is studying through Practice, add two to the Source Quality, and add three to the Source Quality of his Adventure experience.
 
 #### Induction
 *Major, Supernatural*<br>
@@ -4151,8 +4130,7 @@ Most Infernal heirlooms have only a single effect, and they are usually triggere
 
 #### Inoffensive to (Beings)
 *Minor, General and Hermetic*<br>
-This Virtue is associated with one of five classes of beings: animals, divine beings, faeries, demons, or magical creatures. These last four include
-characters associated with the Divine, Faerie, Infernal, or Magic realm, respectively, through Supernatural Virtues or Flaws, as well as beings with Might.
+This Virtue is associated with one of five classes of beings: animals, divine beings, faeries, demons, or magical creatures. These last four include characters associated with the Divine, Faerie, Infernal, or Magic realm, respectively, through Supernatural Virtues or Flaws, as well as beings with Might.
 
 The character's Gift does not bother beings of this sort, although it still has the normal effects on others. For example, Inoffensive to Animals makes it easier for her to get along with mundane beasts. Animals who react positively to The Gift still react positively to her, since she does have The Gift, but those that do not are not disturbed by her presence.
 
@@ -4192,7 +4170,7 @@ A character with this Virtue, who has had a few seconds to look about a room, do
 
 #### Kassalan Exorcism
 *Minor, Supernatural*<br>
-You are capable of performing minor exorcism spells through your knowledge of the rites of the Mortuary Society of Kassala in Alodia, the most remote of the three Nubian kingdoms on the southern reaches of the Nile. You can cast spells in a very limited focus, namely wards against ghosts and the physical dead (using the Rego Corpus or Rego Mentem guidelines), and spells to strip Might from these same beings (using the Perdo Vim guidelines). You cannot create spells that affect other spirits or creatures who are not the walking dead, but your spells are equally effective against creatures from any Realm. Wards created with this Virtue need not be circular, but can instead block the threshold(s) of a room; this is still treated as a Duration: Ring, Target: Circle spell for level calculations.
+You are capable of performing minor exorcism spells through your knowledge of the rites of the Mortuary Society of Kassala in Alodia, the most remote of the three Nubian kingdoms on the southern reaches of the Nile. You can cast spells in a very limited focus, namely wards against ghosts and the physical dead (using the Rego Corpus or Rego Mentem guidelines), and spells to strip Might from these same beings (using the Perdo Vim guidelines). You cannot create spells that affect other spirits or creatures who are not the walking dead, but your spells are equally effective against creatures from any Realm. Wards created with this Virtue need not be circular. but can instead block the threshold(s) of a room; this is still treated as a Duration: Ring, Target: Circle spell for level calculations.
 
 To cast a spell you must expend a Fatigue level, whether the spell succeeds or fails. You must also spend at least 5 minutes preparing the spell, during which time you need unbroken concentration and expend one handful of Kassalan Dust. The spell is designed exactly like a Hermetic spell; if affecting a ghost you must be able to sense your target. Your Casting Total is equal to (Stamina + Organization Lore: Mortuary Society + Aura modifier + stress die) / 2. Penetration is calculated in the normal fashion: Casting Total – Spell Level + Penetration modifiers. Kassalan Exorcism is aligned to the Magic Realm.
 
@@ -4298,7 +4276,7 @@ You are immune to some hazard which is either rare, or not deadly, or both. See 
 
 #### Lesser Power
 *Minor, Supernatural*<br>
-The character has a supernatural power that he can activate at will. This is one or more powers, equivalent to Formulaic Hermetic spells with total levels of 25 or lower. Each power has an Initiative equal to the character's Quickness - (twice power magnitude). It costs one Fatigue level to activate if its level is less than or equal to 25, two Fatigue levels if its level is 26 to 50, and so on. Note that powers with a level of 26 or higher cost less Fatigue if created using the Greater Power Virtue. You may also spend levels onefor-one to give the power Penetration; otherwise, it has a Penetration of zero.
+The character has a supernatural power that he can activate at will. This is one or more powers. equivalent to Formulaic Hermetic spells with total levels of 25 or lower. Each power has an Initiative equal to the character's Quickness - (twice power magnitude). It costs one Fatigue level to activate if its level is less than or equal to 25. two Fatigue levels if its level is 26 to 50, and so on. Note that powers with a level of 26 or higher cost less Fatigue if created using the Greater Power Virtue. You may also spend levels onefor-one to give the power Penetration; otherwise, it has a Penetration of zero.
 
 This Virtue may be taken more than once, and the levels added together to create several powers. For example, a character who took the Virtue twice could have a power with a level of 30 and a Penetration of 0, and a second power with a level and Penetration of 10 each.
 
@@ -4362,7 +4340,7 @@ This Virtue makes the character a true blood descendent of the Median tribe of M
 
 *Minor:* Your character's lineage is weak, although he or she is still ethnically Magian, and gains a strong constitution due to his purity. The character gains a -1 bonus to Aging rolls and a +3 bonus to resist the effects of disease.
 
-*Major:* In addition to the benefits of the Minor Virtue, your character has an affinity with the ancient prophetic and other mystical arts of their ancestors. The player must choose three Arcane or Supernatural Abilities which the character need not start play with, and which cannot be True Names. These Abilities are considered connected, so that whenever your character gains experience from a source dedicated to one of these Abilities, he gains half the Source Quality (round up) in experience points in each of the other two Abilities. A character must have access to a Supernatural Ability in one of the normal ways, such as taking the Virtue at character creation or Initiating it later, in order to put any experience points into it. If you choose a Supernatural Ability that your character does not yet have access to, any experience points generated for it by this Virtue before the character gains access to the Ability are lost.
+*Major:* In addition to the benefits of the Minor Virtue. your character has an affinity with the ancient prophetic and other mystical arts of their ancestors. The player must choose three Arcane or Supernatural Abilities which the character need not start play with, and which cannot be True Names. These Abilities are considered connected, so that whenever your character gains experience from a source dedicated to one of these Abilities, he gains half the Source Quality (round up) in experience points in each of the other two Abilities. A character must have access to a Supernatural Ability in one of the normal ways, such as taking the Virtue at character creation or Initiating it later, in order to put any experience points into it. If you choose a Supernatural Ability that your character does not yet have access to, any experience points generated for it by this Virtue before the character gains access to the Ability are lost.
 
 #### Magic Items
 *Minor, General*<br>
@@ -4406,9 +4384,7 @@ Design this being as a magic character, using the guidelines in Chapter 13, or i
 *Major, Social Status*<br>
 You have incepted Master of Arts in one of the universities of Europe (Paris, Bologna, Oxford, Cambridge, Montpellier, Arezzo or Salamanca) and completed your two years' regency of compulsory teaching. You are entitled to be addressed as Magister, are subject only to canon law, and may teach anywhere in Europe.
 
-You are at least (25 – Int) years old, and must have scores of at least 5 in Latin and Artes Liberales. You have, however, spent eight years in a university, and gain an additional 30 experience points in each of those years, for a total of 240 additional experience points over and above your allowance based on age. You may buy Academic Abilities during character generation, and must spend your additional experience points on Academic
-
-Abilities or Teaching. You have an Academic Reputation of 2.
+You are at least (25 – Int) years old, and must have scores of at least 5 in Latin and Artes Liberales. You have, however, spent eight years in a university, and gain an additional 30 experience points in each of those years, for a total of 240 additional experience points over and above your allowance based on age. You may buy Academic Abilities during character generation, and must spend your additional experience points on Academic Abilities or Teaching. You have an Academic Reputation of 2.
 
 You must spend two seasons teaching to maintain yourself and your reputation as a dependable instructor. These two seasons are spread between September and June, so you are genuinely free in the summer. If you take the Poor Flaw, you are still genuinely free in the summer. If you take the Wealthy Virtue, you can maintain your reputation with a single season's teaching.
 
@@ -4704,7 +4680,7 @@ Formulaic spells must be devised with the new Duration to use this Ability, if s
 > **Variable:** Craft (Type), Profession (Type)
 >
 > While Brawl and Martial Abilities may be used in Performance Magic, the magus needs to perform semi-ritualistic movements to cast spells, responding to the needs of the spell, not to the actions of an opponent. If the magus is in combat, then he may only use Performance Magic (Brawl or Martial Abilities) if the player rolls a stress die with three extra botch dice, and treats all nonbotches as die rolls of zero. (This represents ignoring the opponent and casting the spell.)
-
+>
 > #### Sorcerous Music (Performance Magic)
 >
 > Performance Magic (Music) is often known as Sorcerous Music.
@@ -4757,8 +4733,7 @@ The character has attended the famed School of Salerno, the pre-eminent source o
 
 #### Piercing Gaze
 *Minor, General*<br>
-By staring intently at people you make them feel uneasy, as if you are peering into their souls.
-Those with ulterior motives, uneasy consciences, or lying tongues must make rolls against an appropriate Personality Trait, Guile, or whatever the storyguide deems appropriate, to remain calm. Furthermore, you gain a +3 to rolls involving intimidation. Faeries and demons are unfazed by your power.
+By staring intently at people you make them feel uneasy, as if you are peering into their souls. Those with ulterior motives, uneasy consciences, or lying tongues must make rolls against an appropriate Personality Trait, Guile, or whatever the storyguide deems appropriate, to remain calm. Furthermore, you gain a +3 to rolls involving intimidation. Faeries and demons are unfazed by your power.
 
 #### Potent Magic
 *Minor or Major, Hermetic*<br>
@@ -4818,8 +4793,7 @@ The character is a son of a nobleman or a prosperous merchant, matriculated in a
 
 #### Priest
 *Minor, Social Status*<br>
-You have been ordained a priest, which means that you can carry out the sacraments of the Mass, Penance, and Extreme Unction.
-By your words, you can cause the Son of God to manifest in bread and wine. As a priest you come under the protection of canon law, meaning that you cannot be prosecuted by secular authorities. You are accorded considerable respect due to your position, and few people are willing to insult you.
+You have been ordained a priest, which means that you can carry out the sacraments of the Mass, Penance, and Extreme Unction. By your words, you can cause the Son of God to manifest in bread and wine. As a priest you come under the protection of canon law, meaning that you cannot be prosecuted by secular authorities. You are accorded considerable respect due to your position, and few people are willing to insult you.
 
 You may be a parish priest. If you are, you cannot take the Poor Flaw. Your normal duties involve hearing confession, preaching to your flock, and ministering to their spiritual needs. If you are Wealthy, your parish is rich enough to pay for a curate to do some of the work for you, and you may be a pluralist, holding the benefices of several parishes. Reform-minded churchmen do not approve of pluralism.
 
@@ -4833,9 +4807,7 @@ You grew up in an environment where you had access to teachers and free time for
 
 #### Protection
 *Minor, General*<br>
-You are under the aegis of a powerful person, usually a noble or high-ranking Church official (though other options are
-possible, if the storyguide approves). Those who know of your favored status treat you carefully, those who do not often pay the price. You have a
-Reputation (good or bad, your choice) of level 3, which could be higher if your protector is particularly great or well-known.
+You are under the aegis of a powerful person, usually a noble or high-ranking Church official (though other options are possible, if the storyguide approves). Those who know of your favored status treat you carefully, those who do not often pay the price. You have a Reputation (good or bad, your choice) of level 3, which could be higher if your protector is particularly great or well-known.
 
 #### Puissant Ability
 *Minor, General*<br>
@@ -4951,8 +4923,7 @@ The character has been a prosperous guild master for a number of years and has r
 
 #### Sense Holiness and Unholiness
 *Minor, Supernatural*<br>
-You are able to feel the presence of good and evil. In auras of particularly strong divine or infernal influence, your sensitivity may overwhelm you.
-Choosing this Virtue confers the Ability Sense Holiness and Unholiness 1 (page 170).
+You are able to feel the presence of good and evil. In auras of particularly strong divine or infernal influence, your sensitivity may overwhelm you. Choosing this Virtue confers the Ability Sense Holiness and Unholiness 1 (page 170).
 
 #### Sense Passions
 *Major, Supernatural*<br>
@@ -4998,7 +4969,7 @@ The character can hide one item on his person, and attempts to find it suffer a 
 
 #### Skinchanger
 *Minor, Supernatural*<br>
-You have a magical cloak, animal skin or similar item made from an animal. While in physical contact with it, you may transform into the form of the animal represented by the item. The transformation takes one full round, and you retain both intelligence and sentience while in animal form. Clothing and possessions (save the animal item) do not transform, and you may be seen as a transformed human with InAn or InCo, or similar spells. If the item is stolen, the new owner has an Arcane Connection to you, and you may not transform until the item is retrieved. If the item is destroyed, you can make a new one over the course of a season, although the method varies depending on what the item is. Skinchangers may transform into any non-magical animal between Size -10 (robin) and Size +2 (bear). The character has the normal physical characteristics of the animal, except that +3 is added to the character's Soak score (in animal form only).
+You have a magical cloak, animal skin or similar item made from an animal. While in physical contact with it, you may transform into the form of the animal represented by the item. The transformation takes one full round, and you retain both intelligence and sentience while in animal form. Clothing and possessions (save the animal item) do not transform, and you may be seen as a transformed human with InAn or InCo, or similar spells. If the item is stolen, the new owner has an Arcane Connection to you, and you may not transform until the item is retrieved. If the item is destroyed, you can make a new one over the course of a season. although the method varies depending on what the item is. Skinchangers may transform into any non-magical animal between Size -10 (robin) and Size +2 (bear). The character has the normal physical characteristics of the animal, except that +3 is added to the character's Soak score (in animal form only).
 
 #### Skinchanger (Dove)
 *Major, Supernatural*<br>
@@ -5151,8 +5122,7 @@ The character holds a position within the local hierarchy of the Poor Knights of
 
 #### Templar Prestige
 *Minor, General*<br>
-A member of the Poor Knights of the Temple of Solomon, the character enjoys great respect and admiration among his fellow brothers. This may be because of a great act of heroism or piety, or because of the rank or station he possessed before he joined the order. He starts with a Reputation of level
-4 within the Templars.
+A member of the Poor Knights of the Temple of Solomon, the character enjoys great respect and admiration among his fellow brothers. This may be because of a great act of heroism or piety, or because of the rank or station he possessed before he joined the order. He starts with a Reputation of level 4 within the Templars.
 
 #### Templar Servant
 *Free, Social Status*<br>
@@ -5288,8 +5258,7 @@ You belong to a broad class that includes mystics, seers, healers, and the like.
 
 #### Withstand Casting
 *Minor, Hermetic*<br>
-If a magus has this Virtue, then whenever he is about to lose Fatigue from casting a spell, he loses 1 less Fatigue level than normal, with a minimum of 1
-Fatigue level — but if the spell would have been cast without Fatigue loss, then he still loses no Fatigue.
+If a magus has this Virtue, then whenever he is about to lose Fatigue from casting a spell, he loses 1 less Fatigue level than normal, with a minimum of 1 Fatigue level — but if the spell would have been cast without Fatigue loss, then he still loses no Fatigue.
 
 A magus may take the Virtue more than once, and withstand 1 Fatigue level for each level of the Virtue, although the minimum Fatigue loss remains. If he has Withstand Casting (3), he may withstand up to 3 Fatigue levels lost, with a minimum of 1 level lost.
 
@@ -5755,8 +5724,7 @@ The magus's casting tools, as used by House Verditius, are so personal that they
 
 #### Bound Magic
 *Minor, Hermetic*<br>
-When you die, all of your spells end abruptly and any magic items that you created cease to function. You cannot take this
-Flaw with Harnessed Magic (page 85), as that Virtue already includes this effect.
+When you die, all of your spells end abruptly and any magic items that you created cease to function. You cannot take this Flaw with Harnessed Magic (page 85), as that Virtue already includes this effect.
 
 #### Bound to (Realm)
 *Major, Supernatural*<br>
@@ -5772,9 +5740,7 @@ If separated from the bonded device or place in any way, the character must make
 
 This Flaw also includes the effects of the Unaging Virtue, but the character's apparent age advances in line with their physical age. Role-Bound characters retain the need to sleep and breathe and those not physically bonded to a device, such as those bound to a place, retain their other physical needs.
 
-This Flaw may originate from any of the Supernatural Realms: a magical origin might represent the expression of an
-
-Essential Trait, a faerie origin could show that the character occupies an archetypal role, ready to play his part in the wider story, while divine and infernal origins may represent eternal punishment on Earth.
+This Flaw may originate from any of the Supernatural Realms: a magical origin might represent the expression of an Essential Trait, a faerie origin could show that the character occupies an archetypal role, ready to play his part in the wider story, while divine and infernal origins may represent eternal punishment on Earth.
 
 This Flaw may only be taken by grogs and is suitable for the Warping to a Pattern Minor Site Hook presented in *Covenants*, page 11.
 
@@ -6287,8 +6253,7 @@ You may take this Flaw with a large group of magi as your patrons, though the mo
 
 #### Higher Purpose
 *Major or Minor, Personality*<br>
-Let others concern themselves with petty matters, you have a nobler goal. This purpose should be altruistic, like freeing an oppressed people or bringing
-peace between the Order of Hermes and society.
+Let others concern themselves with petty matters, you have a nobler goal. This purpose should be altruistic, like freeing an oppressed people or bringing peace between the Order of Hermes and society.
 
 #### Hobbled
 *Minor, General*<br>
@@ -7536,6 +7501,7 @@ The ability shared by all Bjornaer magi to take the form of their heartbeast. It
 
 #### Hex\*
 The character has the power to bring about injury or ruin upon her enemies. There are three ways for her to activate this power: by making eye contact with her victim and proclaiming her purpose loud enough for him to hear, by tracing temporary occult signs and symbols on her target that indicate the dark fate she intends, or by acquiring an Arcane Connection to her target and fashioning a recognizable representation that can channel the effect through sympathetic magic.
+
 To hex a target, the character must make clear her will for it: she must declare her wishes to the victim aloud, or indicate the specifics of the hex in writing on or very near the target, or do something to the representation that is similar to what she intends to happen to the target. There is always a physical component to the hex (common practices include tying knots in a line, spitting, or giving the target the "evil eye").
 
 You must also state a time frame for the hex, anywhere from an effect that occurs immediately to a hex that will affect the third generation of the victim's descendants. Generally speaking, the sooner the effect manifests, the less potent it will be; and the longer the hex delays, the more powerful it will eventually become. For this reason you must always apply the delay modifier (see the sidebar) to the Hex total.
@@ -7766,7 +7732,8 @@ By sensing passions, the character can often recognize incorporeal spirits. You 
 
 In addition, this Ability allows the character to Sense Holiness and Unholiness in a limited fashion, much like the Sense Holiness and Unholiness Ability. She can tell that something is either holy or unholy, but she cannot distinguish between the two. She feels the emotional presence associated with the Divine or the Infernal, but cannot pinpoint its supernatural origin. Thus, she might mistake a demon with a fair shape for an angel, or a fearsome-looking angel for a demon. By identifying the target's primary emotions or desires, however, you can usually get a good idea of which realm the target is associated with, assuming the character can penetrate its Magic Resistance.
 
-Sense Passions is either a false power (see the False Power Flaw), or is associated with the Infernal. This means that it always appears infernal to divine or infernal detection. The presence of Infernal taint allows the Sense Holiness and Unholiness aspect to work. If the troupe allows Divine powers to be false, this may be the false version of Sense Holiness and Unholiness. *Specialties*: auras, emotions, Personality Traits, in a general area. (Supernatural)
+Sense Passions is either a false power (see the False Power Flaw), or is associated with the Infernal. This means that it always appears infernal to divine or infernal detection. The presence of Infernal taint allows the Sense Holiness and Unholiness aspect to work. If the troupe allows Divine powers to be false, this may be the false version of Sense Holiness and Unholiness.
+*Specialties*: auras, emotions, Personality Traits, in a general area. (Supernatural)
 
 #### Shapeshifter\*
 You may change your shape into that of a mundane animal from the size of a robin (-10) to that of a bear (+2). This requires a few seconds' (one round's) concentration, and a roll of Stamina + Shapeshifter against an Ease Factor of 9. Changing back to human form requires the same concentration, and the same roll. You have a limited repertoire of shapes, one for every point you have in the Shapeshift ability. Every time you raise the Ability by one point, you may choose a new shape.<br>
@@ -8520,9 +8487,7 @@ The effects of inflation can be crudely modeled by simply adding a flat cost in 
 
 #### Laboratories
 
-Unsurprisingly, magi are willing to spend a significant portion of their money on their own laboratories. To maintain a laboratory at its existing level requires a steady supply of replacement equipment (especially glassware) and precious ingredients, as well as more basic items, such as fuel for heating and candles for lighting. The cost for each laboratory depends on its
-
-Upkeep score (see Chapter 8: Laboratory). For example, a standard laboratory (with an Upkeep of 0) costs one pound per year of typical use.
+Unsurprisingly, magi are willing to spend a significant portion of their money on their own laboratories. To maintain a laboratory at its existing level requires a steady supply of replacement equipment (especially glassware) and precious ingredients, as well as more basic items, such as fuel for heating and candles for lighting. The cost for each laboratory depends on its Upkeep score (see Chapter 8: Laboratory). For example, a standard laboratory (with an Upkeep of 0) costs one pound per year of typical use.
 
 **LABORATORIES COST: 1 pound per 10 points of laboratories.**
 
@@ -8979,8 +8944,7 @@ This Form concerns fire, heat, and light.
 
 #### Imaginem (Im) "image"
 
-This Form concerns the things in the world that the senses respond to.
-Natural philosophy calls them species (SPEH-kee-ayss, to be distinguished from species of animals and such). All things constantly give off species for each of the senses. Those for touch and taste do not travel far, while those for sight require light to get any distance from the originating body. Imaginem spells normally affect the process by which species are produced, rather than the species themselves. Thus, the species emanating from an illusion are not themselves magical.
+This Form concerns the things in the world that the senses respond to. Natural philosophy calls them species (SPEH-kee-ayss, to be distinguished from species of animals and such). All things constantly give off species for each of the senses. Those for touch and taste do not travel far, while those for sight require light to get any distance from the originating body. Imaginem spells normally affect the process by which species are produced, rather than the species themselves. Thus, the species emanating from an illusion are not themselves magical.
 
 Imaginem magic can also affect the species themselves, and if it does, those species are magical, and must Penetrate in order to pass through Magic Resistance and be perceived. This uses the same guidelines as spells affecting the process by which species are produced, and is discussed in more detail in the Jerbiton chapter of Houses of Hermes: Societates.
 
@@ -9160,8 +9124,7 @@ The vis used in a Ritual spell must match either the Technique or the Form of th
 
 The magnitude of Ritual spells, and the need to incorporate many elements, means that a stress die is always rolled, which normally creates the possibility of a botch. However, if the maga has mastered the spell, there are no botch dice in a calm situation, as for Formulaic spells.
 
-See the table to determine whether the spell succeeds or not, and how many Fatigue levels are lost. Fatigue levels lost to Ritual Magic are Long Term Fatigue levels, which can only be regained by a good night's sleep (see page 404). If the maga does not have enough Fatigue levels remaining, she takes wounds as well. If she would have taken one more Fatigue level, the wound is minor, if two more, medium, if three more, heavy, and if four more, incapacitating. For example, consider a maga with two remaining Fatigue levels who is casting a level 30 Ritual spell. She generates a casting total of 22, 8 less than the spell level. The spell is cast, but the maga loses her remaining two Fatigue levels, falling unconscious, and then takes a Light wound.
-
+See the table to determine whether the spell succeeds or not, and how many Fatigue levels are lost. Fatigue levels lost to Ritual Magic are longterm Fatigue levels, which can only be regained by a good night's sleep (see page 404). If the maga does not have enough Fatigue levels remaining, she takes wounds as well. If she would have taken one more Fatigue level, the wound is minor, if two more, medium, if three more, heavy, and if four more, incapacitating. For example, consider a maga with two remaining Fatigue levels who is casting a level 30 Ritual spell. She generates a casting total of 22, 8 less than the spell level. The spell is cast, but the maga loses her remaining two Fatigue levels, falling unconscious, and then takes a Light wound.
 
 | Casting Total — Spell Level | Spell Cast? | Fatigue Levels Lost |
 | --------------------------- | ----------- | ------------------- |
@@ -9209,7 +9172,6 @@ A maga must concentrate in order to cast a spell. If she is distracted, she must
 
 If the concentration roll fails, the spell fails. If the spell casting roll involved a stress die, you must still roll to see whether the maga botches, and you get one extra botch die. The Ease Factor for the concentration roll depends on the distraction.
 
-
 | Situation                         | Ease Factor    |
 | --------------------------------- | -------------- |
 | Still                             | Trivial (0)    |
@@ -9224,7 +9186,6 @@ If the concentration roll fails, the spell fails. If the spell casting roll invo
 Some spells are also maintained for as long as the maga concentrates. In that case, the Ease Factors on the above table are reduced by three points each.
 
 There are some things it is possible to do while maintaining a spell, but impossible to do while casting. These still distract magi who are concentrating on maintaining a spell, and so concentration rolls are necessary, but the Ease Factors on the following table are already correct, and should not be reduced by three points.
-
 
 | Situation                               | Ease Factor                                                                                   |
 | --------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -10252,7 +10213,6 @@ To embitter a target, the player states the exact specifications of how the targ
 
 Consult the following chart to determine the Ease Factor.
 
-
 | Ease<br>Factor | Desired Effect                                                     |
 | -------------- | ------------------------------------------------------------------ |
 | 6              | Turn a man against his neighbor, business partner, or co-worker    |
@@ -10281,7 +10241,6 @@ This tradition figures prominently in lands occupied by the Saxons, including th
 
 A character with this Ability is able to create a wind, duplicating the effects of any wind-based Creo Auram spell at Range Voice, Target Individual; similar Supernatural Abilities exist for other weather phenomena. To invoke the wind, the character literally has to whistle, and makes a Stamina + Whistle Up The Wind roll, against the Ease Factor listed in the table below. If successful, the wind immediately starts to blow as commanded by the character. It will continue to blow in the same manner even if the character stops whistling. A character who summons a wind at a particular strength can change that wind to another type with a similar strength (such as from Circling Winds of Protection to Broom of the Winds), diminish it to a weaker effect (such as Chamber of Spring Breezes), or end it entirely. Each of these changes requires a Communication + Music roll, using the Ease Factors for Maintaining Concentration on a spell (page 215). Whistling a new tune in this manner cannot increase the strength of a wind, or return a diminished wind to its former intensity; instead the character must make a new Whistle Up The Wind roll. All effects of this Ability diminish to the next lowest level of strength once every 24 hours, when the sun sets, until they dwindle to nothing.
 
-
 | Easer<br>Factor | Strength of Wind                                              |
 | --------------- | ------------------------------------------------------------- |
 | 6               | Light breeze, strong enough to clear a stench from a room     |
@@ -10295,6 +10254,8 @@ A character with this Ability is able to create a wind, duplicating the effects 
 ---
 
 > Torches flicker in our covenant’s shadowed corridors, as my quick footsteps navigate the labyrinthine passages. The iron-clad door creaks on worn hinges, opening to a dimly lit chamber cluttered with the amassed learning of centuries. My master pores over a shimmering crystal sphere, his face illuminated by the eerie glow of the arcane, his brow furrowed in concentration as he unlocks its long-forgotten secrets. My arrival is an intrusion into his sanctum, but a welcome one. My arms are laden with stacks of ancient tomes, their leather bindings embossed with symbols of power, ready to aid in his quest for knowledge.
+
+---
 
 # Chapter 8: Laboratory
 
@@ -11732,9 +11693,7 @@ The Covenants supplement includes a wider range of Virtues and Flaws (from page 
 
 A laboratory has free space for one or more new Virtues if its current points of Virtues minus points of Flaws is less than the Size + Refinement, and thus the occupied Size is less than the Size. If there are sufficient points of free space, a Virtue can be taken without needing to take a Flaw. Otherwise, one or more Flaws must be taken simultaneously to balance it. A magus who wishes to install a Virtue (Minor or Major) into a standard laboratory thus has four choices: either first spend a season to increase the Refinement to +1 (requiring a Magic Theory of 4), accept a Flaw to balance the Virtue, somehow increase the physical space of the existing lab, or move into a bigger lab. Free Virtues have no point cost and are thus not restricted in this way.
 
-Virtues are not simply chosen and gained automatically — there may be a cost in time, money, or vis, and there may be additional specific requirements (see the list below). As a general rule, it takes one season of work to gain a
-
-Minor Virtue, and two seasons to gain a Major Virtue. This time is occupied with construction or installing the improvement. The person doing this work needs to have a Magic Theory score at least three points higher than the lab's Refinement. Free Virtues have no space and (usually) no seasonal construction requirement. They may be gained in a day or so, if the relevant materials are procured, or if the relevant circumstances are satisfied.
+Virtues are not simply chosen and gained automatically — there may be a cost in time, money, or vis, and there may be additional specific requirements (see the list below). As a general rule, it takes one season of work to gain a Minor Virtue, and two seasons to gain a Major Virtue. This time is occupied with construction or installing the improvement. The person doing this work needs to have a Magic Theory score at least three points higher than the lab's Refinement. Free Virtues have no space and (usually) no seasonal construction requirement. They may be gained in a day or so, if the relevant materials are procured, or if the relevant circumstances are satisfied.
 
 Sometimes, the magus might wish to lose Virtues. This is not always possible, since some Virtues are due to fundamental properties of the lab (such as its physical location) which cannot readily be changed. Where it is possible, a Minor or Major Virtue can only be removed during a season or more of work to improve the laboratory (either by increasing the Refinement, or installing a different Virtue). For example, the magus can remove an existing Lesser Feature and replace it with a new one, in one season. Where it is possible to remove a Free Virtue, it can usually be done in a day or so.
 
@@ -11966,9 +11925,7 @@ Below are listed some example Features, together with the possible Specializatio
 
 **Tank:** A bulky container for storing fluids. Specializations: Vis Extraction, Re, Aq.
 
-**Throne:** An opulent and raised seat for a ruler (or at least, the self-important) to sit in.
-
-**Specializations:** Teaching, Re, Me.
+**Throne:** An opulent and raised seat for a ruler (or at least, the self-important) to sit in. Specializations: Teaching, Re, Me.
 
 **Tree:** A live tree or a large plant, such as a vine. Specializations: Cr, He.
 
@@ -14786,8 +14743,6 @@ R: Touch, D: Sun, T: Ind<br>
 The target becomes completely undetectable to normal sight, regardless of what it does, but still casts a shadow.<br>
 (Base 4, +1 Touch, +2 Sun, +1 changing image)
 
-#### LEVEL 20
-
 ##### Removal of the Conspicuous Sigil
 R: Touch, D: Sun, T: Part<br>
 Grooves, runes, writings, and similar markings are obscured so that they are not visible, but the overall shape of the medium remains constant. For example, runes carved into a sword blade can be made invisible, making the sword appear normal.<br>
@@ -15696,8 +15651,6 @@ Since magic is a tricky thing to understand, spells that detect magic are at onc
 
 The base level of a spell to detect magic also gives a fairly good idea of the strength of the magic (within a magnitude). The addition of one magnitude will say whether the effect is Hermetic, and a magus familiar with other types of magic will be able to identify them as well. The addition of two magnitudes will give information about Technique and Form, or nearest equivalent for other types of magic. The addition of three magnitudes gives the rough details of the effect and the sigil of the caster, and reveals whether a Hermetic effect was created by a spell or invested device. A magus with extensive experience of a particular kind of non-Hermetic magic can do the same for that, the spell reveals the information, but the caster may not be able to interpret it. Further increases in level yield further information, depending on the design of the specific spell.
 
-Different spells may be invented to detect Faerie, Divine, or Infernal effects.
-
 Different spells may be invented to detect Faerie, Divine, or Infernal effects. Each spell only affects one realm, and storyguides may wish to disallow spells to detect the Divine or Infernal.
 
 As a general rule, residues of magic decline as follows. As soon as the magic finishes, the magnitude halves. It then drops by one for every duration of the spell that passes. Once this reaches zero, the residues decline more slowly. Residues of non-Ritual Momentary, Concentration, and Diameter Duration drop by one every month, while residues of other effects drop by one every year. A 'negative magnitude' of 10 indicates that the residue has disappeared completely, and no longer exists to be detected.
@@ -16560,9 +16513,7 @@ Characters with supernatural abilities arising from the same realm as the aura (
 
 #### Powerful Supernatural Effects
 
-Anyone subjected to a powerful supernatural effect gains a Warping Point, unless they themselves were responsible for the effect or it was specifically and carefully designed to work on them. 'Powerful effect' is subjective, but any Hermetic spell of sixth magnitude or higher counts. Designing an effect for a particular target requires, in Hermetic terms, that a special version of a Formulaic spell be invented. The spell has its effect on anyone, but only the designated target, and the caster, do not suffer Warping unless the effect is also continuous. Hermetic Longevity
-
-Rituals are always designed for a specific target. If the effect is continuous, a Warping Point is gained when it begins and every season thereafter. Ritual effects with Momentary duration are not continuous, but do grant a Warping Point when first applied if they are neither cast by the target nor specifically designed for the target.
+Anyone subjected to a powerful supernatural effect gains a Warping Point, unless they themselves were responsible for the effect or it was specifically and carefully designed to work on them. 'Powerful effect' is subjective, but any Hermetic spell of sixth magnitude or higher counts. Designing an effect for a particular target requires, in Hermetic terms, that a special version of a Formulaic spell be invented. The spell has its effect on anyone, but only the designated target, and the caster, do not suffer Warping unless the effect is also continuous. Hermetic Longevity Rituals are always designed for a specific target. If the effect is continuous, a Warping Point is gained when it begins and every season thereafter. Ritual effects with Momentary duration are not continuous, but do grant a Warping Point when first applied if they are neither cast by the target nor specifically designed for the target.
 
 #### Constant Supernatural Effects
 
@@ -17014,7 +16965,7 @@ Partial armor covers the vital areas only, and generally consists of a hauberk (
 | Club            | Single  | +1   | +2     | +1  | +3  | -2  | 1    | Inexp. |
 | Hatchet         | Single  | 0    | +3     | 0   | +4  | -2  | 1    | Inexp. |
 | Lance           | Single  | +2   | +4     | 0   | +5  | 0   | 2    | Std.   |
-| Mace**          | Single  | + 1  | +3     | 0   | +8  | 0   | 2    | Std.   |
+| Mace**          | Single  | +1   | +3     | 0   | +8  | 0   | 2    | Std.   |
 | Mace and Chain  | Single  | +2   | +3     | 0   | +7  | 0   | 2    | Std.   |
 | Spear, Short    | Single  | +2   | +2     | 0   | +5  | -1  | 1    | Inexp. |
 | Sword, Short    | Single  | +1   | +3     | +1  | +5  | -1  | 1    | Std.   |
@@ -17627,9 +17578,7 @@ Regardless of opinions, it cannot be denied that the Divine realm has an influen
 
 At its best, the Dominion allows the human soul to express its deepest beauty. At its worst, the Church is a repressive force that treads on liberal thought. It makes sense, then, that it is the Church which is the driving force behind the Crusades while it produces the most delightful music, the most enchanting art, and the most transcendent philosophy.
 
-The power of the Church and the boundaries it imposes on the Order of Hermes cause some magi to scorn the Divine. Some magi find pagan religions, based as they are on Faerie or Magical power, more congenial, while others simply have as little as possible to do with religion. Nevertheless, many magi are Christians, with a scattering of Jews and a significant number of
-
-Muslims in those tribunals which extend over Islamic lands. Some magi even have True Faith (see page 113), which does not seem to hinder their magic.
+The power of the Church and the boundaries it imposes on the Order of Hermes cause some magi to scorn the Divine. Some magi find pagan religions, based as they are on Faerie or Magical power, more congenial, while others simply have as little as possible to do with religion. Nevertheless, many magi are Christians, with a scattering of Jews and a significant number of Muslims in those tribunals which extend over Islamic lands. Some magi even have True Faith (see page 113), which does not seem to hinder their magic.
 
 More detail about the supernatural aspects of the Divine can be found in *Realms of Power: The Divine Revised Edition* along with information about the three most important Divine religions in Mythic Europe: Christianity, Islam, and Judaism.
 
@@ -17916,9 +17865,7 @@ There are a few things worth bearing in mind when picking the numbers.
 
 **Might:** Might Score is very important. A Might Score of 20 indicates that starting magi will have a lot of trouble affecting the creature with magic. A Might Score of 40 is enough to cause problems for a middle-aged magus, and a Might Score of 60 makes life difficult for even powerful magi. A Might Score of 75 renders the creature almost immune to Hermetic magic; casting totals over 75 are very rare indeed, even before subtracting the spell level.
 
-A Might Score high enough to stop the player magi using spells that kill or inflict serious wounds is a good way to make sure that a climactic battle lasts more than a round, especially if combined with a good Soak score, or other strong combat abilities. A relatively high Might Score is also a good way to motivate the magi to gather Arcane Connections,
-
-horoscopes, and images, so that they can boost their Penetration as high as possible.
+A Might Score high enough to stop the player magi using spells that kill or inflict serious wounds is a good way to make sure that a climactic battle lasts more than a round, especially if combined with a good Soak score, or other strong combat abilities. A relatively high Might Score is also a good way to motivate the magi to gather Arcane Connections, horoscopes, and images, so that they can boost their Penetration as high as possible.
 
 **Combat Statistics:** If you do not intend the creature to get into a fight, you don't need to work these out in advance. If it is intended to fight, these need to be set by comparison with the player character combat statistics. In general, the creature should be a bit weaker than the force likely to attack it, if the grogs fight as a trained group, this means that the creature should be a lot more powerful than an individual grog.
 
@@ -17953,8 +17900,7 @@ Personality Traits: Hostile +2
 Reputations: Venomous (local) 4
 
 Combat:
-
-Fangs: Init +3, Attack +8, Defense +7\*, Damage -7; \* +6 to Defense vs grapple attacks
+- Fangs: Init +3, Attack +8, Defense +7\*, Damage -7; \* +6 to Defense vs grapple attacks
 
 Soak: +2
 
@@ -17965,12 +17911,10 @@ Wound Penalties: -1 (1), -3 (2), -5 (3), Incapacitated (4), Dead (5+)
 Abilities: Awareness 2 (prey), Brawl 2 (fangs), Hunt 4 (rodents), Stealth 4 (stalking prey), Survival 3 (grassy areas)
 
 Powers:
-
-Venomous Bite: When the adder attacks, compare its Attack Advantage to the victim's armor Protection (not his Soak). If the adder's advantage is higher, the victim suffers the effects of adder venom as listed in the Poison Table on page 406, regardless of whether the bite inflicts an actual wound. The storyguide may adjust the required Attack Advantage for special circumstances: for instance, high boots might offer an effective Protection +3 against the adder's special attack even though they don't protect against normal attacks.
+- Venomous Bite: When the adder attacks, compare its Attack Advantage to the victim's armor Protection (not his Soak). If the adder's advantage is higher, the victim suffers the effects of adder venom as listed in the Poison Table on page 406, regardless of whether the bite inflicts an actual wound. The storyguide may adjust the required Attack Advantage for special circumstances: for instance, high boots might offer an effective Protection +3 against the adder's special attack even though they don't protect against normal attacks.
 
 Natural Weapons:
-
-Fangs: Init 0, Atk +3, Def +1, Dam +1.
+- Fangs: Init 0, Atk +3, Def +1, Dam +1.
 
 Appearance: The common adder is a small snake, usually about a foot and a half in length. Its color varies from pale grey or yellow to red, with diamond-shaped black markings along its back. Some individuals are completely black. The adder's head is triangular in shape.
 
@@ -17995,12 +17939,9 @@ Personality Traits: Brave +3, Slothful +3, Aggressive +2
 Reputations: Ferocious (local) 2
 
 Combat:
-
-Claws: Init 0, Attack +13, Defense +9, Damage +10
-
-Teeth: Init 0, Attack +11, Defense +7, Damage +7
-
-Grapple: Init 0, Attack +7, Defense +5, Damage n/a
+- Claws: Init 0, Attack +13, Defense +9, Damage +10
+- Teeth: Init 0, Attack +11, Defense +7, Damage +7
+- Grapple: Init 0, Attack +7, Defense +5, Damage n/a
 
 Soak: +10
 
@@ -18010,7 +17951,11 @@ Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Incapacitated (22-28), Dead (2
 
 Abilities: Athletics 3 (sprinting), Awareness 3 (prey), Brawl 5 (claws), Hunt 4 (deer), Survival 5 (foraging), Swim 3 (against the current)
 
-Natural Weapons: Large Claws: Init 0, Atk +5, Def +3, Dam +4; Teeth: Init 0, Atk +3, Def +1, Dam +1. The bear's tough hide and thick fur combine to give it a Protection of +3.
+Natural Weapons:
+- Large Claws: Init 0, Atk +5, Def +3, Dam +4;<br>
+- Teeth: Init 0, Atk +3, Def +1, Dam +1.
+
+The bear's tough hide and thick fur combine to give it a Protection of +3.
 
 Appearance: The bear is a large, shaggy beast that weighs up to fifty stone (700 pounds) and stands over seven feet tall on its hind legs. Its coat may be light brown or yellowish in color to black; most often, it is medium brown. The bear has large claws and makes a bellowing roar.
 
@@ -18032,18 +17977,15 @@ Confidence Score: 1 (3)
 
 Virtues and Flaws: Berserk, Enduring Constitution, Ferocity (when cornered), Tough, Greedy (minor), Wrathful (minor)
 
-Qualities: Aggressive, Hardy, Herd Animal, Tireless,
-
-Tough Hide
+Qualities: Aggressive, Hardy, Herd Animal, Tireless, Tough Hide
 
 Personality Traits: Brave +4, Angry +3
 
 Reputations: Ill-tempered (local) 2
 
 Combat:
-
-Tusks: Init +1, Attack +10, Defense +9, Damage +7
-Tusks (berserk): Init +1, Attack +12, Defense +7, Damage +7
+- Tusks: Init +1, Attack +10, Defense +9, Damage +7<br>
+- Tusks (berserk): Init +1, Attack +12, Defense +7, Damage +7
 
 Soak: +7
 
@@ -18054,8 +17996,9 @@ Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16-20), Dead (2
 Abilities: Athletics 4 (sprinting), Awareness 3 (foraging), Brawl 5 (tusks), Survival 5 (forests)
 
 Natural Weapons:
+- Tusks: Init 0, Atk +4, Def +2, Dam +5.
 
-Tusks: Init 0, Atk +4, Def +2, Dam +5. The boar's hide has a Protection of +2.
+The boar's hide has a Protection of +2.
 
 Appearance: The wild boar has prominent tusks and a hairy ridge along its spine. It is densely covered in short bristles ranging in color from grey to black or brown. Its legs are longer than those of a domestic pig and it can run quickly for short distances.
 
@@ -18082,8 +18025,7 @@ Personality Traits: Aggressive +2
 Reputations: Strong 4 (local)
 
 Combat:
-
-Horns: Init 0, Attack +8, Defense +3, Damage +7
+- Horns: Init 0, Attack +8, Defense +3, Damage +7
 
 Soak: +8
 
@@ -18094,8 +18036,9 @@ Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Incapacitated (22-28), Dead (2
 Abilities: Athletics 4 (charging), Awareness 3 (predators), Brawl 5 (horns)
 
 Natural Weapons:
+- Large horns: Init +2, Atk +3, Def +2, Dam +3.
 
-Large horns: Init +2, Atk +3, Def +2, Dam +3. The bull's tough hide has a Protection of +2.
+The bull's tough hide has a Protection of +2.
 
 Appearance: These statistics are for a bull of the Spanish type, which is black in color, weighs about eighty stone (1120 pounds), and has sharp, inward-curving horns and a hump on its back.
 
@@ -18122,8 +18065,8 @@ Personality Traits: Curious +4, Timid +2
 Reputations: Evil 2 (local) This reputation is strongest in Celtic areas, and weaker or unknown in other places.
 
 Combat:
-
-Claws: Init +3, Attack +8, Defense +10, Damage -5 Teeth: Init +4, Attack +8, Defense +7, Damage -6
+- Claws: Init +3, Attack +8, Defense +10, Damage -5<br>
+- Teeth: Init +4, Attack +8, Defense +7, Damage -6
 
 Soak: +1
 
@@ -18134,10 +18077,8 @@ Wound Penalties: -1 (1-2), -3 (3-4), -5 (5-6), Incapacitated (7-8), Dead (9+)
 Abilities: Athletics 3 (jumping), Awareness 4+2 (at night), Brawl 2 (claws), Hunt 4 (mice), Stealth 4 (stalking)
 
 Natural Weapons:
-
-Claws: Init -1, Attack +2, Defense +3, Damage +2.
-
-Teeth: Init 0, Attack +3, Defense +1, Damage +1.
+- Claws: Init -1, Attack +2, Defense +3, Damage +2.<br>
+- Teeth: Init 0, Attack +3, Defense +1, Damage +1.
 
 The cat's dense fur gives it a Protection of +1.
 
@@ -18164,10 +18105,8 @@ Personality Traits: Fierce +3
 Reputations: None
 
 Combat:
-
-Talons: Init +5, Attack +6, Defense +12, Damage –4
-
-Beak: Init +6, Atk +6, Defense +9, Damage -5
+- Talons: Init +5, Attack +6, Defense +12, Damage –4<br>
+- Beak: Init +6, Atk +6, Defense +9, Damage -5
 
 Soak: -2
 
@@ -18177,7 +18116,9 @@ Wound Penalties: -1 (1-2), -3 (3-4), -5 (5-6), Incapacitated (7-8), Dead (9+)
 
 Abilities: Athletics 5 (swift flight), Awareness 4 (spotting prey), Brawl 2 (talons), Hunt 4 (game birds), Survival 3 (cold climates)
 
-Natural Weapons: The weapon statistics for a falcon's talons are Init –1, Atk +2, Def +3, Dam +2. The statistics for its beak are Init 0, Atk +3, Def +1, Dam +1.
+Natural Weapons:
+- The weapon statistics for a falcon's talons are Init –1, Atk +2, Def +3, Dam +2.
+- The statistics for its beak are Init 0, Atk +3, Def +1, Dam +1.
 
 Appearance: These statistics are for a gyrfalcon, the largest and most prized of falcons. Its wingspan can exceed four feet. It has a short, hooked beak and dark eyes. Its plumage may be white, grey, or dark brown and has a banded pattern.
 
@@ -18202,8 +18143,7 @@ Personality Traits: Skittish +3, Brave -2
 Reputations: None
 
 Combat:
-
-Hooves: Init +4, Attack 0, Defense +4, Damage +5
+- Hooves: Init +4, Attack 0, Defense +4, Damage +5
 
 Soak: +3
 
@@ -18211,11 +18151,10 @@ Fatigue Levels: OK, 0/0, -1/-1, -3, -5, Unconscious
 
 Wound Penalties: -1 (1-7), -3 (8-14), -5 (16-21), Incapacitated (22-28), Dead (29+)
 
-Abilities: Athletics 4 (long-distance running),
+Abilities: Athletics 4 (long-distance running), Awareness 3 (noises)
 
-Awareness 3 (noises)
-
-Natural Weapons: The weapon statistics for a courser's kick are Init +2, Atk +2, Def +2, Dam + 1.
+Natural Weapons:
+- The weapon statistics for a courser's kick are Init +2, Atk +2, Def +2, Dam + 1.
 
 Appearance: The courser is a swift horse belonging to a mid-sized, athletic breed like the Andalusian. The Andalusian stallion is tall and strong, weighing about 80 stone (1120 pounds) and standing 15 hands (60 inches) high. It has a gracefully curving neck, a broad chest, straight back, and a flowing mane and tail. Its coat may be grey, black, chestnut, or roan.
 
@@ -18242,8 +18181,7 @@ Personality Traits: Loyal +2, Brave +1
 Reputations: Aggressive (local) 1
 
 Combat:
-
-Hooves: Init +1, Attack +7, Defense +5, Damage +7
+- Hooves: Init +1, Attack +7, Defense +5, Damage +7
 
 Soak: +3
 
@@ -18253,13 +18191,12 @@ Wound Penalties: -1 (1-8), -3 (9-16), -5 (17-24), Incapacitated (25-32), Dead (3
 
 Abilities: Athletics 5 (balancing), Brawl 3 (hooves)
 
-Natural Weapons: The weapon statistics for a destrier's kick are Init +2, Atk +2, Def +2, Dam + 1.
+Natural Weapons:
+- The weapon statistics for a destrier's kick are Init +2, Atk +2, Def +2, Dam + 1.
 
 Appearance: The destrier is a heavy warhorse. One breed used as destriers is the Percheron, a huge horse weighing over 140 stone (1960 pounds) and standing over 16 hands (64 inches) high at the withers. It has a heavy, slightly curved neck, a broad and deep chest, and powerful, stocky legs. Its coat is either grey or black in color.
 
-The destrier, or heavy war horse, has been bred in Mythic Europe since at least the time of Charles Martel (8th century A.D.). Some of the large horse breeds in Mythic Europe are the Percheron, the
-
-Belgian, and the Friesian. These horses are used mainly for battle, farm work is done using oxen.
+The destrier, or heavy war horse, has been bred in Mythic Europe since at least the time of Charles Martel (8th century A.D.). Some of the large horse breeds in Mythic Europe are the Percheron, the Belgian, and the Friesian. These horses are used mainly for battle, farm work is done using oxen.
 
 The destrier is almost always a stallion. It is highly trained so it will charge without fear when its rider commands. When pressed into melee, it can rear on its hind legs and lash out with its forehooves. Though huge, the destrier is agile and can balance on its hind legs for several combat rounds without difficulty. It is trained to fight independently of its rider, so it can help defend him if he should be dismounted or badly wounded.
 
@@ -18282,8 +18219,7 @@ Personality Traits: Loyal +3, Reckless +3, Brave +2
 Reputations: Loyal 2 (local)
 
 Combat:
-
-Bite: Init +2, Attack +8, Defense +7, Damage +1
+- Bite: Init +2, Attack +8, Defense +7, Damage +1
 
 Soak: +2
 
@@ -18293,7 +18229,8 @@ Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16-20), Dead (2
 
 Abilities: Athletics 3 (distance running), Awareness 3 (keeping watch), Brawl 3 (bite), Hunt 4 (track by scent)
 
-Natural Weapons: The weapon statistics for a dog's bite are Init 0, Atk +3, Def +1, Dam +1.
+Natural Weapons:
+- The weapon statistics for a dog's bite are Init 0, Atk +3, Def +1, Dam +1.
 
 Appearance: These statistics are for a large hound such as the bloodhound. The bloodhound stands a little over two feet at the shoulder and weighs up to nine stone (126 pounds). It has large jowls, dangling ears, and a heavy tail. Its coat is short and may be tan, red, or liver in color.
 
@@ -18320,10 +18257,8 @@ Personality Traits: Brave +5, Fierce +5
 Reputations: Fierce (local) 4
 
 Combat:
-
-Claws: Init +1, Attack +15, Defense +12, Damage +10
-
-Bite: Init +1, Attack +13, Defense +9, Damage +9
+- Claws: Init +1, Attack +15, Defense +12, Damage +10<br>
+- Bite: Init +1, Attack +13, Defense +9, Damage +9
 
 Soak: +8
 
@@ -18334,10 +18269,10 @@ Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Incapacitated (22–28), Dead 
 Abilities: Athletics 5 (pouncing), Awareness 2 (smell), Brawl 5+2 (claws), Hunt 4 (deer), Stealth 4 (stalking), Survival 5 (arid climates)
 
 Natural Weapons: 
+- Large claws: Init 0, Attack +5, Defense +3, Damage +4;<br>
+- Large teeth: Init 0, Attack +4, Defense +1, Damage +3.
 
-Large claws: Init 0, Attack +5, Defense +3, Damage +4;
-
-Large teeth: Init 0, Attack +4, Defense +1, Damage +3. Its hide gives it a Protection of +2.
+Its hide gives it a Protection of +2.
 
 Appearance: The lion is a legendary beast more often depicted in artwork than encountered in the flesh. It can weigh up to 35 stone (490 pounds) and have a body length of over ten feet. It has a short, broad muzzle with powerful jaws and teeth. Its coat is tawny and the male lion has a dark, shaggy mane. The fearsome roar of the lion can be heard from a great distance.
 
@@ -18362,12 +18297,9 @@ Personality Traits: Brave +1
 Reputations: Noble (local) 2
 
 Combat:
-
-Antlers: Init +4, Attack +7, Defense +8, Damage +5
-
-Hooves: Init +4, Attack +6, Defense +8, Damage +3
-
-Dodge: Init +2, Attack n/a, Defense +7, Damage n/a
+- Antlers: Init +4, Attack +7, Defense +8, Damage +5<br>
+- Hooves: Init +4, Attack +6, Defense +8, Damage +3<br>
+- Dodge: Init +2, Attack n/a, Defense +7, Damage n/a
 
 Soak: +2
 
@@ -18377,7 +18309,9 @@ Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Incapacitated (22-28), Dead (2
 
 Abilities: Athletics 4 (sprinting), Awareness 3 (predators), Brawl 4 (dodge), Survival 3 (woodlands)
 
-Natural Weapons: During the autumn and winter, a stag has antlers with the following weapon statistics: Init +2, Atk +3, Def +2, Dam +3. In spring, it sheds its antlers and must fight with its hooves until the following autumn: Init +2, Atk +2, Def +2, Dam +1.
+Natural Weapons:
+- During the autumn and winter, a stag has antlers with the following weapon statistics: Init +2, Atk +3, Def +2, Dam +3.
+- In spring, it sheds its antlers and must fight with its hooves until the following autumn: Init +2, Atk +2, Def +2, Dam +1.
 
 Appearance: These statistics are for the red deer, one of the largest deer in Mythic Europe. Adult males average 40 to 50 stone in weight (560 to 700 pounds) depending on the richness of the available food supply, and may be up to 15 hands high—as tall as some horses, but more lightly built. The red deer's coat is reddish-brown in winter and tan in summer, with a lighter rump and underbelly. Stags have a shaggy mane of dark fur and an impressive rack of antlers over four feet across from tip to tip. They make a deep, bellowing roar during the autumn mating season.
 
@@ -18402,8 +18336,7 @@ Personality Traits: Brave +3, Cowardly +3
 Reputations: Bloodthirsty (local) 4
 
 Combat:
-
-Teeth: Init +2, Attack +11, Defense +9, Damage 0
+- Teeth: Init +2, Attack +11, Defense +9, Damage 0
 
 Soak: +4
 
@@ -18414,8 +18347,7 @@ Wound Penalties: -1 (1-4), -3 (5-8), -5 (9-12), Incapacitated (13-16), Dead (17+
 Abilities: Athletics 5 (distance running), Awareness 3 (smell), Brawl 5 (teeth), Hunt 4 (track by smell), Survival 3 (winter)
 
 Natural Weapons:
-
-Teeth: Init 0, Atk +3, Def +1, Dam +1. 
+- Teeth: Init 0, Atk +3, Def +1, Dam +1. 
 
 Its thick fur gives it a Protection of +1.
 
@@ -18678,7 +18610,9 @@ Pre +2 (sum of human +2 and wolf 0)
 
 Com +1 (sum of human 0 and wolf +1)
 
-Str -1 (lowest of human -1 and wolf -1) Sta + 3 (highest of human + 1 and wolf + 3)
+Str -1 (lowest of human -1 and wolf -1)
+
+Sta + 3 (highest of human + 1 and wolf + 3)
 
 Dex +2 (highest of human +1 and wolf +2)
 
@@ -18721,8 +18655,7 @@ Virtues and Flaws: Jinn, Greater Immunity: Fire, Ways of the Mountains, Second S
 Personality Traits: Reclusive +5, Immutable +3, Proud +2
 
 Combat:
-
-*Maul* (warhammer): Init –1, Attack +11, Defense +3, Damage +15
+- Maul (warhammer): Init –1, Attack +11, Defense +3, Damage +15
 
 Soak: +10
 
@@ -18730,17 +18663,22 @@ Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Incapacitated (22–28), Dead 
 
 Abilities: Arabic 5 (stone), Athletics 3 (climbing), Great Weapon 4 (maul), Profession: Miner 3 (gemstones), Second Sight 4 (jinn), Theology: Islam 3 (jinn).
 
-Powers: 
+Powers:
 
-Flesh to Stone, 2 points, Init -4, Terram: Baghl can change any human he touches into stone until sunrise or until the morning call to prayer (Base 20, +1 Touch, +2 Sun).
+*Flesh to Stone*, 2 points, Init -4, Terram:<br>
+Baghl can change any human he touches into stone until sunrise or until the morning call to prayer (Base 20, +1 Touch, +2 Sun).
 
-Ruler of Earth, 1–3 points, Init 0, Terram: Duplicates any non-Ritual Perdo Terram or Rego Terram spell less than or equal to 15th level at a cost of 1 Might point per magnitude of the effect.
+*Ruler of Earth*, 1–3 points, Init 0, Terram:<br>
+Duplicates any non-Ritual Perdo Terram or Rego Terram spell less than or equal to 15th level at a cost of 1 Might point per magnitude of the effect.
 
-Incorporeal, 0 points, Init Constant, Mentem: Baghl is naturally both invisible and intangible, and cannot be influenced by the physical world. Magic can only directly target him if the caster can sense his existence. In this form he has no physical statistics or combat scores. Without taking a corporeal form, Baghl's physical characteristics are only used when dealing with other incorporeal creatures.
+*Incorporeal*, 0 points, Init Constant, Mentem:<br>
+Baghl is naturally both invisible and intangible, and cannot be influenced by the physical world. Magic can only directly target him if the caster can sense his existence. In this form he has no physical statistics or combat scores. Without taking a corporeal form, Baghl's physical characteristics are only used when dealing with other incorporeal creatures.
 
-Donning the Corporeal Veil, 2 points, Init +1, Corpus: Baghl can form the physical body described under Appearance to house his spiritual form, when doing so he acquires the physical characteristics, size, combat statistics, and Wound levels listed earlier. His arms and armor are also created with this power. He cannot become fatigued. This body lasts until he decides he no longer needs it. Killing the body does not kill Baghl.
+*Donning the Corporeal Veil*, 2 points, Init +1, Corpus:<br>
+Baghl can form the physical body described under Appearance to house his spiritual form, when doing so he acquires the physical characteristics, size, combat statistics, and Wound levels listed earlier. His arms and armor are also created with this power. He cannot become fatigued. This body lasts until he decides he no longer needs it. Killing the body does not kill Baghl.
 
-Presence, 0 points, constant, Mentem: Baghl is aware of everything that goes on within his haunt. This power needs to Penetrate to perceive beings with a Magic Resistance.
+*Presence*, 0 points, constant, Mentem:<br>
+Baghl is aware of everything that goes on within his haunt. This power needs to Penetrate to perceive beings with a Magic Resistance.
 
 Vis: 1 pawn of Terram vis can be collected every year from his haunt, in the form of a quartz-encrusted stalactite at the back of his cave. If slain in physical form, his body yields 3 pawns of Terram
 
@@ -18761,8 +18699,9 @@ Virtues and Flaws: Lesser Immunity (to non-lethal diseases), Unaffected by the G
 Personality Traits: Ibis\* +3, Magnificent Appearance (Presence)\* +3
 
 Combat:
+- Dodge: Init +2, Attack n/a, Defense +5, Damage n/a
 
-Dodge: Init +2, Attack n/a, Defense +5, Damage n/a Soak: +3
+Soak: +3
 
 Fatigue Levels: OK, 0, -1, -3, -5, Unconscious
 
@@ -18772,15 +18711,17 @@ Abilities: Athletics 3 (flying), Awareness 4 (food), Brawl 2 (dodging), Ignem Re
 
 Powers:
 
-Healing Gaze, 4 points, Init –14, Corpus R: Eye, D: Mom, T: Ind
-
+*Healing Gaze*, 4 points, Init –14, Corpus<br>
+R: Eye, D: Mom, T: Ind<br>
 By gazing into a person's eyes, the caladrius can draw out any non-fatal disease from a sick person into itself. This removes any disease of up to Incapacitating strength, or resolves a critical or lesser aging crisis. The caladrius must immediately fly up toward the sun or else the disease returns to the patient. CrCo 40 (Base 30, +1 Eye, +1 affect either disease or aging)
 
-Perceive the Afflictions of Mortal Flesh, 0 points, Init +1, Corpus
+*Perceive the Afflictions of Mortal Flesh*, 0 points, Init +1, Corpus<br>
+R: Per, D: Mom, T: Sight<br>
+By sight, the caladrius can identify any diseases a person has and how serious they are. InCo 25 (Base 5, +4 Sight)
 
-R: Per, D: Mom, T: Sight By sight, the caladrius can identify any diseases a person has and how serious they are. InCo 25 (Base 5, +4 Sight)
+Vis: 3 Corpus (1 in each eye, 1 in the wings)
 
-Vis: 3 Corpus (1 in each eye, 1 in the wings) Appearance: The caladrius is a magnificent, allwhite bird somewhat resembling a heron (but with shorter legs and beak). It has a long, gracefully curving neck and a short, slightly downward-curving beak.
+Appearance: The caladrius is a magnificent, allwhite bird somewhat resembling a heron (but with shorter legs and beak). It has a long, gracefully curving neck and a short, slightly downward-curving beak.
 
 > *"If anyone is ill, the caladrius will tell whether the patient will live or die."*
 >
@@ -18832,7 +18773,9 @@ Characteristics: Int +3, Per +3, Pre +2, Com +4, Str n/a, Sta n/a, Dex n/a, Qik 
 
 Size: n/a
 
-Personality Traits: Careful +3, Observant +2, Combat:n/a
+Personality Traits: Careful +3, Observant +2
+
+Combat:n/a
 
 Soak: n/a
 
@@ -18842,9 +18785,11 @@ Abilities: Area Lore Stonehenge Tribunal 10, Magic Lore 8, Music 12, Teaching 5
 
 Powers:
 
-Discorporate, 0 points, Vim: Aneirin never physically manifests, save as a shadow and a melodic voice. He can only be harmed with magic.
+*Discorporate*, 0 points, Vim:<br>
+Aneirin never physically manifests, save as a shadow and a melodic voice. He can only be harmed with magic.
 
-Names of Power, 0 points: Aneirin knows many names of minor spirits and can teach them as a result of a Pact.
+*Names of Power*, 0 points:<br>
+Aneirin knows many names of minor spirits and can teach them as a result of a Pact.
 
 Vis: If his spirit is somehow bottled rather than banished 2 Imaginem Vis remains.
 
@@ -18861,8 +18806,7 @@ Size -1
 Personality Traits: Curious +4, Diplomatic +3, Proud +2, Noble +1
 
 Combat:
-
-Bite: Init +5, Attack +8, Defense +8, Damage +5\*
+- Bite: Init +5, Attack +8, Defense +8, Damage +5\*
 
 On being bitten the victim must make a Fatigue test against Ease Factor 9 or lose a Fatigue level each round until he has succeeded for three consecutive rounds or fallen unconscious. While suffering these effects, the victim is unable to tell a lie (Penetration 25, Mentem), and is eager to talk to anyone present about anything on their mind, talking to themselves if necessary. Once the victim falls unconscious no further Fatigue is lost, but they awaken with a terrible headache and must make a Stamina stress roll (plus Art of Memory if they have that Ability) at Ease Factor 6 to recall what transpired.
 
@@ -18870,11 +18814,16 @@ Soak: +9
 
 Wound Penalties: -1 (1-4), -3 (5-8), -5 (9-12), Banished (13+)
 
-Augury, varies, Init +5, Mentem: By using this power Chnoubis is able to perform auguries as the Virtue Divination & Augury (see The Mysteries Revised Edition, page 58), with each Might Point allowing ten levels of success. If you do not have access to The Mysteries Revised Edition, this power allows Chnoubis to duplicate the effects of any Hermetic Intellego spell, and costs 1 point for every ten levels of the spell.
+Powers:
 
-Aura of Rightful Authority, 4 points, Init +5, Mentem: Equivalent to the ReMe20 Hermetic spell.
+*Augury*, varies, Init +5, Mentem:<br>
+By using this power Chnoubis is able to perform auguries as the Virtue Divination & Augury (see The Mysteries Revised Edition, page 58), with each Might Point allowing ten levels of success. If you do not have access to The Mysteries Revised Edition, this power allows Chnoubis to duplicate the effects of any Hermetic Intellego spell, and costs 1 point for every ten levels of the spell.
 
-Discorporation, varies, 1 point, Init: +7, Mentem: Becomes a discorporate spirit which can move as fast as lightning and is only visible to Intellego Vim magics or Second Sight. He sneaks up on victims invisibly and bites them, then listens to their secrets as the toxin takes effect.
+*Aura of Rightful Authority*, 4 points, Init +5, Mentem:<br>
+Equivalent to the ReMe20 Hermetic spell.
+
+*Discorporation*, varies, 1 point, Init: +7, Mentem:<br>
+Becomes a discorporate spirit which can move as fast as lightning and is only visible to Intellego Vim magics or Second Sight. He sneaks up on victims invisibly and bites them, then listens to their secrets as the toxin takes effect.
 
 Vis: On being banished his scales remain, containing 3 pawns of Intellego and 2 of Mentem vis
 
@@ -18891,22 +18840,24 @@ Size: +2
 Personality Traits: Proud +3, Barbarous +2, Crafty +2
 
 Combat:
+- Greatsword: Init +5, Attack+19, Defense +17, Damage +15\*
 
-Greatsword: Init +5, Attack+19, Defense +17, Damage +15\*
+Dietrich's sword has been dipped in dragon's blood. No magical spell of a level 40 or lower can deflect, harm, or control it. After being hit, the dragon's blood burns, causing an extra +5 damage per round (armor does not soak) unless an alchemist, berbalist, or healer can cure the wound.
 
-Dietrich's sword has been dipped in dragon's blood. No magical spell of a level 40 or lower can deflect, harm, or control it. After being hit, the dragon's blood burns, causing an extra +5 damage per round (armor does not soak) unless an alchemist, herbalist, or healer can cure the wound.
+Soak: +22 (full chain mail drenched in dragon's blood)
 
-Soak: +22 (full chain mail drenched in dragon's blood) Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Banished (22+)
+Wound Penalties: -1 (1-7), -3 (8-14), -5 (15-21), Banished (22+)
 
 Abilities: Athletics 6, Great Weapon 10, Intrigue 6, Leadership 8
 
 Powers:
 
-Sacred Kingship, 10 points, Init+3, Vim: By laying hands on another character, Dietrich can permanently increase the character's Perception, Presence, or Communication by 1 point. He can only do this once per person, and can only to a maximum of +3. Increasing Presence this way is a very useful aid to the aspiring Mystagogue.
+*Sacred Kingship*, 10 points, Init+3, Vim:<br>
+By laying hands on another character, Dietrich can permanently increase the character's Perception, Presence, or Communication by 1 point. He can only do this once per person, and can only to a maximum of +3. Increasing Presence this way is a very useful aid to the aspiring Mystagogue.
 
 Vis: 7 Řego
 
-A hero in German poetry and song, Dietrich was the boy-king of Bern after the fall of Rome. During his reign, several great Nibelungen heroes, including Siegfried himself, were loyal members of his court. When his uncle Ermenrik, German ruler of Rome, conquered Bern, Dietrich fled to the court of Attila the Hun, where he went on many adventures and became one of the greatest warriors in history. He returned after his uncle died, retook Bern and captured Rome. He died in a quest for revenge against a friend who betraved him, and was buried in an ornate tomb in the Lessini Mountains, where the Alps cross over into Italy. His tomb is a treasure trove of weapons and armor, enchanted by being dipped in the blood of a great dragon Dietrich slew.
+A hero in German poetry and song, Dietrich was the boy-king of Bern after the fall of Rome. During his reign, several great Nibelungen heroes, including Siegfried himself, were loyal members of his court. When his uncle Ermenrik, German ruler of Rome, conquered Bern, Dietrich fled to the court of Attila the Hun, where he went on many adventures and became one of the greatest warriors in history. He returned after his uncle died, retook Bern and captured Rome. He died in a quest for revenge against a friend who betraved him. and was buried in an ornate tomb in the Lessini Mountains, where the Alps cross over into Italy. His tomb is a treasure trove of weapons and armor, enchanted by being dipped in the blood of a great dragon Dietrich slew.
 
 When anyone enters the tomb, however, the Daimon of Dietrich animates his hulking corpse. If you come seeking wisdom and prove yourself worthy, he will dispense kingly advice. If you come seeking power, you will face one of the greatest warriors on Earth, even in death. Another legend propagated by the Church says Dietrich, a heretic suspected of Arianism, was thrown into the volcanic Mount Etna. The legend of Dietrich appears in Das Heldenbuch ("The Book of Heroes") a collection of German romances published in the early 13th century, organizing the tales of the Ostrogoths and Franconians into two epic cycles.
 
@@ -18921,16 +18872,19 @@ Size: +3
 Personality Traits: Hates Being Interrupted +4, Determined +3, Protective +2
 
 Combat:
+- Brawl: Init +3, Attack +10, Defense +10, Damage +8
 
-Brawl: Init +3, Attack +10, Defense +10, Damage +8 Soak: +20
+Soak: +20
 
 Wound Penalties: -1 (1-8), -3 (9-16), -5 (17-24), Banished (25+)
 
 Powers:
 
-Auram Magic, varies, Init +3, Auram: May perform equivalent effects to any Auram magic at a cost of 1 point per magnitude, or for spells involving hail, 1 point per three magnitudes. Can perform Auram Ritual spells as if they were Formulaic spells; no extra time or vis is required.
+*Auram Magic*, varies, Init +3, Auram:<br>
+May perform equivalent effects to any Auram magic at a cost of 1 point per magnitude, or for spells involving hail, 1 point per three magnitudes. Can perform Auram Ritual spells as if they were Formulaic spells; no extra time or vis is required.
 
-Swallow Spells, 5 points, Init +3, Vim: Can swallow any magical spell or effect with a level of 50 or less, completely dispelling it.
+*Swallow Spells*, 5 points, Init +3, Vim:<br>
+Can swallow any magical spell or effect with a level of 50 or less, completely dispelling it.
 
 Vis: When he is banished his tongue remains, and contains 8 pawns of Auram Vis.
 
@@ -18946,25 +18900,25 @@ Size: varies from -5 to +2
 
 Personality Traits: Calm +4, Protective +2
 
-Combat:
-
-Varies with form
+Combat: Varies with form
 
 Soak: varies
 
 Wound Penalties: Varies by form. Substitute Banished for Incapacitated
 
-Powers
+Powers:
 
-Shapechange, 1 point, Init +5, Animal: May change form into any natural or fantastic beast from size -5 to +2. The change is instantaneous, and she can always speak in any form.
+*Shapechange*, 1 point, Init +5, Animal:<br>
+May change form into any natural or fantastic beast from size -5 to +2. The change is instantaneous, and she can always speak in any form.
 
-Dispel, varies, Init +5, Vim: May perform any Perdo Vim spell at will, for the cost of one Might point per magnitude. Hipta counts as familiar with all styles of magic for this purpose, and has a Penetration Score of 30, making invoking her a common way to end malevolent curses.
+*Dispel*, varies, Init +5, Vim:<br>
+May perform any Perdo Vim spell at will, for the cost of one Might point per magnitude. Hipta counts as familiar with all styles of magic for this purpose, and has a Penetration Score of 30, making invoking her a common way to end malevolent curses.
 
 Vis: Leaves 3 pawns of Animal Vis in the form of a white feather when banished.
 
 The nurse of Dionysus, Hipta is a powerful shapechanger but favors the form of a lovely dove. Her name and spells to summon her can be found in several ancient texts. She is invoked for forgiveness from curses and magical harm.
 
-#### Donos
+#### Honos
 
 Magic Might: 30 (Corpus)
 
@@ -18975,8 +18929,7 @@ Size: 0
 Personality Traits: Honorable +6, Authoritarian +3, Disciplined +3.
 
 Combat:
-
-Long Spear: Init +7, Attack+14, Defense +12, Damage +10
+- Long Spear: Init +7, Attack+14, Defense +12, Damage +10
 
 Soak: +14 (silver cuirass)
 
@@ -18986,9 +18939,10 @@ Abilities: Athletics 4, Great Weapon (long spear) 6, Leadership 6, Teaching (lea
 
 Powers:
 
-Instill Leadership, 5 points, Init +4, Mentem: With a touch of his long spear, Honos can teach 17 experience points in the ability Leadership, to a maximum of Ability score 6. The Theurgist receives the insights immediately, but must then devote the season to study and reflecting upon them to gain the increase.
+*Instill Leadership*, 5 points, Init +4, Mentem:<br>
+With a touch of his long spear, Honos can teach 17 experience points in the ability Leadership, to a maximum of Ability score 6. The Theurgist receives the insights immediately, but must then devote the season to study and reflecting upon them to gain the increase.
 
-Centurions' Feast, 30 points, Init +4, Corpus:
+*Centurions' Feast*, 30 points, Init +4, Corpus:<br>
 Produces a magical feast sufficient to feed one hundred people. All who partake of the feast who possess the Flaw Dutybound are instantly cured of any Light and Medium Wounds, and gain +10 on their next recovery checks. The food lasts for one hour, then dissipates, but the effects are permanent.
 
 Vis: Leaves 6 pawns of Corpus in his armor when banished.
@@ -19013,9 +18967,11 @@ Wound Penalties: n/a
 
 Powers:
 
-Safe Harbor, 12 points, Init 0, Auram: Guarantees calm weather in the harbor of a port for an entire season, and resists all spells that would disrupt this with a Magic Resistance of 60.
+*Safe Harbor*, 12 points, Init 0, Auram:<br>
+Guarantees calm weather in the harbor of a port for an entire season, and resists all spells that would disrupt this with a Magic Resistance of 60.
 
-Opening Enchanted Locks, 8 points, Init 0, Vim: Portunes can dispel any magical lock with a level of less then 40 with this power.
+*Opening Enchanted Locks*, 8 points, Init 0, Vim:<br>
+Portunes can dispel any magical lock with a level of less then 40 with this power.
 
 Vis: None.
 
@@ -19032,9 +18988,8 @@ Size: –2
 Personality Traits: Mischievous +3, Loyal +3, Fickle +2
 
 Combat:
-
-Bite: Init +5, Attack +6, Defense+9, Damage +3
-Lashing tail: Init +6, Attack +10, Defense +13, Damage +0
+- Bite: Init +5, Attack +6, Defense+9, Damage +3
+- Lashing tail: Init +6, Attack +10, Defense +13, Damage +0
 
 Although small, Pukis is long and thin. It can engage 2 opponents without penalty, attacking one with its jaws and the other with its quick tail. It is also burning hot, and can ignite easily flammable materials on touch.
 
@@ -19044,13 +18999,17 @@ Wound Penalties: -1 (1-3), -3 (4-6), -5 (7-9), Banished (10+)
 
 Powers:
 
-Invisibility, 3 points, Init +6, Imaginem: Pukis can turn itself completely invisible and inaudible, for as long as it chooses, or until it touches a person or animal.
+*Invisibility*, 3 points, Init +6, Imaginem:<br>
+Pukis can turn itself completely invisible and inaudible, for as long as it chooses, or until it touches a person or animal.
 
-Mischievous Flame, 2 points, Init +6, Ignem: With a glance, Pukis can set anything slightly flammable aflame.
+*Mischievous Flame*, 2 points, Init +6, Ignem:<br>
+With a glance, Pukis can set anything slightly flammable aflame.
 
-Sneak Thief, 5 points, Init +6, Terram: By touching any object weighing less than 3 pounds, Pukis can instantly teleport the object to its home so that it appears at the edge of its master's hearth.
+*Sneak Thief*, 5 points, Init +6, Terram:<br>
+By touching any object weighing less than 3 pounds, Pukis can instantly teleport the object to its home so that it appears at the edge of its master's hearth.
 
-Sacred Fire, 0 points, Init +6, Ignem: As long as Pukis lives in a particular hearth, and the fire is kept hot year round, the ashes from the fire can be collected for 1 pawn of Ignem per season.
+*Sacred Fire*, 0 points, Init +6, Ignem:<br>
+As long as Pukis lives in a particular hearth, and the fire is kept hot year round, the ashes from the fire can be collected for 1 pawn of Ignem per season.
 
 Vis: 2 Ignem, 1 Rego
 
@@ -19103,7 +19062,6 @@ The pieces of the elemental's body broken off during physical combat contain vis
 ### Elemental Powers
 
 All elementals have a power that results from the elemental matter from which their bodies are made, and a power that describes their natural method of attack. Magic Resistance can prevent the elemental from touching its opponent, but the elemental does not need to spend Might points for this attack, meaning that its Penetration for this is typically equal to its Might. Most elementals have at least one other power. This power should be strongly tied to the type and origin of the magical entity. Typical powers are listed with the descriptions of the elementals.
-
 
 > ### A Digression into Physics
 >
@@ -19165,12 +19123,10 @@ Virtues and Flaws: Berserk, Great Stamina, Tough, Ways of the Cavern; Poor Memor
 Personality Traits: Cave +3\*
 
 Combat:
+- Bludgeon\*: Init +3, Attack +11, Defense +7, Damage
+- Bludgeon when Berserk\*: Init +3, Attack +13, Defense -5, Damage +9
 
-Bludgeon\*: Init +3, Attack +11, Defense +7, Damage
-
-Bludgeon when Berserk\*: Init +3, Attack +13, Defense -5, Damage +9
-
-* Includes Ways of the Cavern
+\* Includes Ways of the Cavern
 
 Soak: +9 (additional +2 when Berserk)
 
@@ -19180,9 +19136,11 @@ Abilities: Athletics 3 (pursuit), Awareness 2 (interlopers), Brawl 3 (bludgeon),
 
 Powers:
 
-Crush, 0 points, Init -2, Terram: see insert for details
+*Crush*, 0 points, Init -2, Terram:<br>
+see insert for details
 
-Slake Thirst, 1 point, Init +4, Aquam: see insert for details
+*Slake Thirst*, 1 point, Init +4, Aquam:<br>
+see insert for details
 
 Vis: 3 pawns of Terram, in body
 
@@ -19230,9 +19188,9 @@ Virtues and Flaws: Puissant Hunt, Tough, Ways of the River, Poor Memory, Short A
 Personality Traits: River + 3\*
 
 Combat:
+- Bludgeon: Init -4, Attack +8, Defense +3, Damage +6 
+- Bludgeon\*: Init -1, Attack +11, Defense +6, Damage +6 
 
-Bludgeon: Init -4, Attack +8, Defense +3, Damage +6 
-Bludgeon\*: Init -1, Attack +11, Defense +6, Damage +6 
 \* Includes Ways of the River
 
 Soak: +6
@@ -19243,11 +19201,14 @@ Abilities: Athletics 2 (when hunting), Brawl 3 (bludgeon), Hunt 3+3 (river banks
 
 Powers:
 
-Drown, 0 points, Init +0, Aquam: see insert on previous page for details.
+*Drown*, 0 points, Init +0, Aquam:<br>
+see insert on previous page for details.
 
-Chill Touch, 2 point, Init 0, Ignem: see insert on previous page for details
+*Chill Touch*, 2 point, Init 0, Ignem:<br>
+see insert on previous page for details
 
-Crafter of Water, 1 – 3 points, Init –4 – Might Cost, Aquam: duplicate any Creo Aquam or Rego Aquam spell of level 15 or below, at a cost of 1 Might point per magnitude of the spell.
+*Crafter of Water*, 1 – 3 points, Init –4 – Might Cost, Aquam:<br>
+duplicate any Creo Aquam or Rego Aquam spell of level 15 or below, at a cost of 1 Might point per magnitude of the spell.
 
 Vis: 3 pawns of Aquam, in body
 
@@ -19295,8 +19256,7 @@ Virtues and Flaws: Keen Vision, Shapeshifter, Ways of the Storm, Poor Memory, Sh
 Personality Traits: Storm +3\*
 
 Combat:
-
-Jupiter's Touch Power\*: Init +5, Attack +5, Defense n/a, Damage +30
+- Jupiter's Touch Power\*: Init +5, Attack +5, Defense n/a, Damage +30
 
 \* Includes Way of the Storms
 
@@ -19308,11 +19268,14 @@ Abilities: Area Lore 3 (high points), Athletics 3 (storm force winds), Awareness
 
 Powers:
 
-Suffocate, 0 points, Init +2, Auram: see insert on previous page for details
+*Suffocate*, 0 points, Init +2, Auram:<br>
+see insert on previous page for details
 
-Jupiter's Touch, 1 point, Init +3, Auram: see insert on previous page for details
+*Jupiter's Touch*, 1 point, Init +3, Auram:<br>
+see insert on previous page for details
 
-Charge of the Angry Winds, 1 point, Init +5, Auram: As the spell of the same name; add the elemental's Strength to all the Ease Factors for acting within the wind. CrAu 15 (Base 3, +2 Voice, +1 Conc, +1 unnatural)
+*Charge of the Angry Winds<br>, 1 point, Init +5, Auram:<br>
+As the spell of the same name; add the elemental's Strength to all the Ease Factors for acting within the wind. CrAu 15 (Base 3, +2 Voice, +1 Conc, +1 unnatural)
 
 Vis: 3 pawns of Auram, in body.
 
@@ -19362,8 +19325,7 @@ Virtues and Flaws: Lightning Reflexes, Ways of the Forest Fire, Poor Memory, Sho
 Personality Traits: Forest Fire +3\*
 
 Combat:
-
-Burn Power\*: Init +3, Attack +12, Defense n/a, Damage +(Might Pool)
+- Burn Power\*: Init +3, Attack +12, Defense n/a, Damage +(Might Pool)
 
 \* Includes Way of the Forest Fire
 
@@ -19375,9 +19337,14 @@ Abilities: Athletics 3 (leaping between fuel sources), Brawl 3 (Burn Power), Cha
 
 Powers
 
-Burn, 0 points, Init +0, Ignem: see insert for details Fascination, 3 points, Init +6, Mentem: see insert for details
+*Burn*, 0 points, Init +0, Ignem:<br>
+see insert for details
 
-Enliven the Gross Fire, 6 points, Init –10, Ignem: This ritual-like power rarefies (creates) a fire elemental from a sufficient amount of raw elemental matter. The elemental can have any Might less than that of the creature using this power. The elemental is automatically under the control of the creature; this power can also be used to control elementals which are not of the creature's own making, but in this case must Penetrate the elemental's Might. When the creature has no further use for the elemental, its control lapses but the elemental remains.
+*Fascination*, 3 points, Init +6, Mentem:<br>
+see insert for details
+
+*Enliven the Gross Fire*, 6 points, Init –10, Ignem:<br>
+This ritual-like power rarefies (creates) a fire elemental from a sufficient amount of raw elemental matter. The elemental can have any Might less than that of the creature using this power. The elemental is automatically under the control of the creature; this power can also be used to control elementals which are not of the creature's own making, but in this case must Penetrate the elemental's Might. When the creature has no further use for the elemental, its control lapses but the elemental remains.
 
 Vis: 3 pawns of Ignem, in body.
 
@@ -19397,7 +19364,8 @@ Abilities: [Area] Lore 5 (places children get lost), Awareness 5 (where her chil
 
 Powers:
 
-Kinesis, 5 points, Init 0, Terram: The ghost can move an object as if she were still physically present. One expenditure of Might allows her to move one object until she puts it down again. She has no combat Abilities, so she cannot fight wielding
+*Kinesis*, 5 points, Init 0, Terram:<br>
+The ghost can move an object as if she were still physically present. One expenditure of Might allows her to move one object until she puts it down again. She has no combat Abilities, so she cannot fight wielding
 
 Equipment: Apparently clothing, tools, and even pots and pans, as if she is in the process of cooking, but these are all ghostly and really part of her.
 
@@ -19420,12 +19388,11 @@ Virtues and Flaws: Tough, Warrior, Wrathful (minor), Weak-Willed
 Personality Traits: Oafish +3
 
 Combat:
+- Cudgel: Init –2, Attack +12, Defense +5, Damage +19<br>
+- Kick: Init –3, Attack +6, Defense +1, Damage +15<br>
+- Stone: Init -3, Attack +7, Defense +2, Damage +14
 
-Cudgel: Init –2, Attack +12, Defense +5, Damage +19
-
-Kick: Init –3, Attack +6, Defense +1, Damage +15
-
-Stone: Init -3, Attack +7, Defense +2, Damage +14 Soak +9
+Soak: +9
 
 Wound Penalties: -1 (1-10), -3 (11-20), -5 (21–30), Incapacitated (31–40), Dead (41+)
 
@@ -19433,7 +19400,7 @@ Fatigue Levels: OK, 0, -1, -3, -5, Unconscious
 
 Abilities: Brawl 4 (kick), Great Weapon 5 (cudgel), (Living Language) 4 (coarse expressions), Thrown Weapon 3 (stone)
 
-Powers:
+Powers: None
 
 Equipment: Cudgel, Partial Fur Armor
 
@@ -19463,50 +19430,50 @@ Confidence Score: 2 (6)
 
 Virtues and Flaws: Knight; Puissant Single Weapon, Self-Confident; Proud (Major); Baneful Circumstances (during the day)
 
-Personality Traits: Proud +6, Belligerent +2,
-
-Brave +2
+Personality Traits: Proud +6, Belligerent +2, Brave +2
 
 Reputations: Proud 3 (local)
 
 Combat:
-
-Lance & Heater, mounted: Init +2, Attack +17, Defense +16, Damage +7
-
-Lance, dismounted: Init +3, Attack +9, Defense +7, Damage +9
-
-Long Sword & Heater, mounted: Init +2, Attack +17, Defense +17, Damage +8
-
-Long Sword & Heater: Init +2, Attack +14, Defense +14, Damage +8
-
-Long Sword only: Init +2, Attack +13, Defense +10, Damage +8
+- Lance & Heater, mounted: Init +2, Attack +17, Defense +16, Damage +7<br>
+- Lance, dismounted: Init +3, Attack +9, Defense +7, Damage +9<br>
+- Long Sword & Heater, mounted: Init +2, Attack +17, Defense +17, Damage +8<br>
+- Long Sword & Heater: Init +2, Attack +14, Defense +14, Damage +8<br>
+- Long Sword only: Init +2, Attack +13, Defense +10, Damage +8
 
 Soak: +10
 
-Fatigue Levels: OK, -1, -3, -5, Unconscious Wound Penalties: -1(1-5), -3 (6-10), -5 (11-15), Incapacitated (16+)
+Fatigue Levels: OK, -1, -3, -5, Unconscious
+
+Wound Penalties: -1(1-5), -3 (6-10), -5 (11-15), Incapacitated (16+)
 
 Abilities: (Area) Lore 3 (nobles), Animal Handling 3 (horses), Athletics 2 (running), Awareness 3 (in battle), Brawl 2 (fist), Concentration 1 (remaining invisible), Charm 1 (ladies), Etiquette 3 (nobles), Great Weapon 3 (long spear), Hunt 2 (deer), Intrigue 1 (noble courts), Leadership 3 (soldiers), Ride 5 (in battle), Single Weapon 5+2 (heater shield)
 
-Donning the Corporeal Veil, 5 points, Init -1. Corpus: Sir Giles can assume material form
+Powers:
 
-Riding the Phantom Steed, 2 points, Init 0, Animal
-R: Touch, D: Sun, T: Ind
-When Sir Giles takes physical form, he can also materialize his war horse for an additional Might cost. He can dissolve the horse at will due to the Rego requisite. Use the statistics for a destrier.
+*Donning the Corporeal Veil*, 5 points, Init -1. Corpus:<br>
+Sir Giles can assume material form
+
+*Riding the Phantom Steed*, 2 points, Init 0, Animal<br>
+R: Touch, D: Sun, T: Ind<br>
+When Sir Giles takes physical form, he can also materialize his war horse for an additional Might cost. He can dissolve the horse at will due to the Rego requisite. Use the statistics for a destrier.<br>
 Cr(Re)An 40 (Base 15, +1 Touch, +2 Sun, +1 Rego requisite, +1 Size)
 
-Invisibility, 1 point, Init 0, Imaginem
-R: Touch, D: Conc, T: Group
-Even in material form, Sir Giles and his horse can become invisible when he wishes (though they can still be seen by Second Sight).
+*Invisibility*, 1 point, Init 0, Imaginem<br>
+R: Touch, D: Conc, T: Group<br>
+Even in material form, Sir Giles and his horse can become invisible when he wishes (though they can still be seen by Second Sight).<br>
 PeIm 20 (Base 4, +1 Touch, +1 Conc, +2 Group)
 
-Ride in Dreams, 1 point, Init 0, Mentem
-R: Touch, D: Sun, T: Ind
-When in spirit form, Sir Giles can enter the dreams of a sleeping person whose name he knows, tormenting him with nightmares of a furious, dark knight. The victim must make a Stamina roll against an Ease Factor of Sir Giles' Presence + Leadership or lose a Long-Term Fatigue Level.
+*Ride in Dreams*, 1 point, Init 0, Mentem<br>
+R: Touch, D: Sun, T: Ind<br>
+When in spirit form, Sir Giles can enter the dreams of a sleeping person whose name he knows, tormenting him with nightmares of a furious, dark knight. The victim must make a Stamina roll against an Ease Factor of Sir Giles' Presence + Leadership or lose a Long-Term Fatigue Level.<br>
 CrMe 15 (Base 4, +1 Touch, +2 Sun)
 
 Equipment: Full chain mail, lance, heater, long sword, black destrier
 
-Encumbrance: 2 (4) Vis: 4 Mentem in lance
+Encumbrance: 2 (4)
+
+Vis: 4 Mentem in lance
 
 Appearance: Sir Giles is a Magical apparition — a ghostly knight in black mail, riding a fearsome black destrier. His shield and surcoat are solid black without any heraldic device, and atop his helm is a crest shaped like a cockerel. If he removes his helm, he appears to be a rather handsome, well-groomed knight whose face shows an expression of fierce pride.
 
@@ -19532,7 +19499,8 @@ Personality Traits: Leader +3, Loyal +2
 
 Reputations: None
 
-Combat: Bite: Init +12, Attack +10, Defense +14, Damage +9
+Combat:
+- Bite: Init +12, Attack +10, Defense +14, Damage +9
 
 Soak: +7
 
@@ -19544,11 +19512,14 @@ Abilities: [Area] Lore 6 (game trails), Brawl 6 (biting), Hunt 7 (in a pack), Li
 
 Powers:
 
-Pack of One, 2 points, Init +10, Animal: The wolf can create five duplicates of himself, who can then fight as a trained group. For these purposes, treat the wolf as having a Leadership score of 5, so that he can get the full +15 group bonus to his attacks. The power lasts until the pack brings down its opponent, which may be a group, or disengages from the fight. As the pack is really all one creature, the nomination of a vanguard is arbitrary. Further, the group does not need to disengage and reform when the vanguard is killed, it can seamlessly transfer the role to another wolf. Finally, the wolf only dies if all the copies are killed. When the duplicates vanish, the least wounded wolf remains.
+*Pack of One*, 2 points, Init +10, Animal:<br>
+The wolf can create five duplicates of himself, who can then fight as a trained group. For these purposes, treat the wolf as having a Leadership score of 5, so that he can get the full +15 group bonus to his attacks. The power lasts until the pack brings down its opponent, which may be a group, or disengages from the fight. As the pack is really all one creature, the nomination of a vanguard is arbitrary. Further, the group does not need to disengage and reform when the vanguard is killed, it can seamlessly transfer the role to another wolf. Finally, the wolf only dies if all the copies are killed. When the duplicates vanish, the least wounded wolf remains.
 
-Terrifying Howl, 4 points, Init +0, Mentem: Anyone who hears the wolf's howl is struck with fear of the wolf and of wilderness places away from the haunts of men. Someone already in a house will merely not want to leave. Overcoming this fear completely requires a Brave roll against an Ease Factor of 12. Acting sensibly while responding to it, such as heading back to the village carefully, requires a Brave roll against an Ease Factor of 6. Those who fail the easier roll simply flee in panic.
+*Terrifying Howl*, 4 points, Init +0, Mentem:<br>
+Anyone who hears the wolf's howl is struck with fear of the wolf and of wilderness places away from the haunts of men. Someone already in a house will merely not want to leave. Overcoming this fear completely requires a Brave roll against an Ease Factor of 12. Acting sensibly while responding to it, such as heading back to the village carefully, requires a Brave roll against an Ease Factor of 6. Those who fail the easier roll simply flee in panic.
 
-Wolf Lord, 0 points, constant, Animal: Any wolf the magical wolf strikes in deadly combat dies instantly. In addition, the magical wolf can make mundane wolves follow his instructions even when he is not around, as long as the instructions are quite simple.
+*Wolf Lord*, 0 points, constant, Animal:<br>
+Any wolf the magical wolf strikes in deadly combat dies instantly. In addition, the magical wolf can make mundane wolves follow his instructions even when he is not around, as long as the instructions are quite simple.
 
 Equipment: None. Magical though he is, he is still a wolf.
 
@@ -19576,7 +19547,9 @@ Maria, a young woman living in a village not far from the volcano, feels a stran
 
 Magic Might: 50 (Ignem)
 
-Characteristics: Int +3, Per +3, Pre +2, Com +2, Str +3, Sta +2, Dex -1, Qik -2 Confidence Score: 1 (3 points)
+Characteristics: Int +3, Per +3, Pre +2, Com +2, Str +3, Sta +2, Dex -1, Qik -2
+
+Confidence Score: 1 (3 points)
 
 Virtues and Flaws: Ways of the Mountains, Improved Characteristics x5; Fury, Wrathful
 
@@ -19588,35 +19561,45 @@ Abilities: Sicily Lore 6 (mountains), Magic Lore 8 (underworld)
 
 Powers:
 
-Crafter of Fire, variable points, Init -2 - Might cost, Ignem: Duplicates any non-Ritual Creo Ignem or Rego Ignem spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
+*Crafter of Fire*, variable points, Init -2 - Might cost, Ignem:<br>
+Duplicates any non-Ritual Creo Ignem or Rego Ignem spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
 
-Crafter of Earth, variable points, Init -2 - Might cost, Terram: Duplicates any non-Ritual Creo Terram or Rego Terram spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
+*Crafter of Earth*, variable points, Init -2 - Might cost, Terram:<br>
+Duplicates any non-Ritual Creo Terram or Rego Terram spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
 
-Grant Visions, 5 points, Init –12, Vim: The target gains the Visions Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
+*Grant Visions*, 5 points, Init –12, Vim:<br>
+The target gains the Visions Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
 
-Grant Simple-Minded, 5 points, Init –12, Vim: The target gains the Simple-Minded Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
+*Grant Simple-Minded*, 5 points, Init –12, Vim:<br>
+The target gains the Simple-Minded Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
 
-Grant Wrathful, 5 points, Init –12, Vim: The target gains the Wrathful Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
+*Grant Wrathful*, 5 points, Init –12, Vim:<br>
+The target gains the Wrathful Flaw. Adranus can grant the Flaw temporarily, in which case it does not recover the Might Points spent until it withdraws the Flaw, or permanently, in which case its Might Score is reduced by 5.
 
-Hibernation, 15 points, Init –32, Vim: The spirit remains completely inactive for a year (spending no other Might points); the 15 points spent on this power are saved and added to the Might Pool for the first year out of hibernation. In this fashion, the Might Pool may exceed the permanent Might score (50). Using this power, the volcano can save up Might points over many years in succession and have a great amount to spend in the single year in which it awakens.
+*Hibernation*, 15 points, Init –32, Vim:<br>
+The spirit remains completely inactive for a year (spending no other Might points); the 15 points spent on this power are saved and added to the Might Pool for the first year out of hibernation. In this fashion, the Might Pool may exceed the permanent Might score (50). Using this power, the volcano can save up Might points over many years in succession and have a great amount to spend in the single year in which it awakens.
 
-Manifestation, 4 or more points, Init equal to (Qik – Might points spent), Animal
-R: Touch, D: Conc, T: Ind or Group
-Manifests the spirit's consciousness among animals it touches, temporarily granting them a Might score equal to the Might points spent, and controlling their actions. It is a Rego Herbam effect of Level 20 to control a plant that is a pace in diameter (costing 4 Might points), and a Rego Animal of Level 25 to control a single creature of Size +1 (costing 5 Might points). For an extra 2 Might points, a group of ten standard creatures (or the equivalent mass) can be controlled. For each additional 2 Might points spent, the mass of creatures controlled is multiplied by 10. The spirit cannot spend more Might points on this power than the magnitude of its Magic Might. Humans and other sentient beings cannot be controlled by this power. Adranus is considered to be touching any animal on the mountain.
+*Manifestation*, 4 or more points, Init equal to (Qik – Might points spent), Animal<br>
+R: Touch, D: Conc, T: Ind or Group<br>
+Manifests the spirit's consciousness among animals it touches, temporarily granting them a Might score equal to the Might points spent, and controlling their actions. It is a Rego Herbam effect of Level 20 to control a plant that is a pace in diameter (costing 4 Might points), and a Rego Animal of Level 25 to control a single creature of Size +1 (costing 5 Might points). For an extra 2 Might points, a group of ten standard creatures (or the equivalent mass) can be controlled. For each additional 2 Might points spent, the mass of creatures controlled is multiplied by 10. The spirit cannot spend more Might points on this power than the magnitude of its Magic Might. Humans and other sentient beings cannot be controlled by this power. Adranus is considered to be touching any animal on the mountain.<br>
 ReHe 20 or more (Base 10, +1 Touch, +1 Conc) or ReAn 25 or more (Base 15, +1 Touch, +1 Conc)
 
-Master of Earth, variable points, Init -2 - Might cost, Terram: Duplicates any non-Ritual Muto Terram or Perdo Terram spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
+*Master of Earth*, variable points, Init -2 - Might cost, Terram:<br>
+Duplicates any non-Ritual Muto Terram or Perdo Terram spell no greater than 50th level at a cost of 1 Might point per magnitude of the effect.
 
-Presence, 0 points, constant, Imaginem
-R: Arc, D: Sun, T: Ind
-Grants awareness of everything that happens within the bounds of Mount Etna. In essence, the spirit is coterminous with its associated landscape feature, so it is present simultaneously everywhere within its boundaries. The area controlled by the spirit can produce a yearly harvest of 5 pawns of Ignem vis, which manifests as physical objects within the controlled region. Harvesting this vis does not erode the spirit's Might.
+*Presence*, 0 points, constant, Imaginem<br>
+R: Arc, D: Sun, T: Ind<br>
+Grants awareness of everything that happens within the bounds of Mount Etna. In essence, the spirit is coterminous with its associated landscape feature, so it is present simultaneously everywhere within its boundaries. The area controlled by the spirit can produce a yearly harvest of 5 pawns of Ignem vis, which manifests as physical objects within the controlled region. Harvesting this vis does not erode the spirit's Might.<br>
 InIm 30 (Base 2, +4 Arc, +2 Sun, +1 constant effect, +1 non-Hermetic effects)
 
-Regio, 15 points, Init –32, Vim: By permanently spending Might, the spirit can add levels to the regio around the volcano's crater.
+*Regio*, 15 points, Init –32, Vim:<br>
+By permanently spending Might, the spirit can add levels to the regio around the volcano's crater.
 
-Ruler of Lava, variable points, Init -2 - Might cost, Terram: Duplicates any non-Ritual spell pertaining to lava no greater than 50th level, at a cost of 1 Might point per magnitude of the effect.
+*Ruler of Lava*, variable points, Init -2 - Might cost, Terram:<br>
+Duplicates any non-Ritual spell pertaining to lava no greater than 50th level, at a cost of 1 Might point per magnitude of the effect.
 
-Ruler of Smoke, variable points, Init –2 – Might cost, Auram: Duplicates any non-Ritual spell pertaining to smoke no greater than 50th level, at a cost of 1 Might point per magnitude of the effect.
+*Ruler of Smoke*, variable points, Init –2 – Might cost, Auram:<br>
+Duplicates any non-Ritual spell pertaining to smoke no greater than 50th level, at a cost of 1 Might point per magnitude of the effect.
 
 Vis: 10 pawns of Ignem vis; 5 pawns per year can also be harvested from the crater at the volcano's summit.
 
@@ -19683,8 +19666,7 @@ Virtues and Flaws: Baneful Circumstances (in daylight)
 Personality Traits: Vengeful +6
 
 Combat:
-
-Fist: Init 0, Attack +7, Defense +4, Damage +5
+- Fist: Init 0, Attack +7, Defense +4, Damage +5
 
 Soak: +11
 
@@ -19694,15 +19676,14 @@ Abilities: Brawl 3 (fist)
 
 Powers:
 
-Breath of Corruption, 1 point, Init +2, Auram
-R: Special, D: Mom, T: Ind
-The walking corpse can exhale foul humors, infecting a person within 2 paces with a disease (Ease Factor 9, effect as a Medium wound).
+*Breath of Corruption*, 1 point, Init +2, Auram<br>
+R: Special, D: Mom, T: Ind<br>
+The walking corpse can exhale foul humors, infecting a person within 2 paces with a disease (Ease Factor 9, effect as a Medium wound).<br>
 CrAu 20 (Base 10, +2 Range equivalent to Voice)
 
-Rise from the Grave, 1 point, Init –1, Terram
-R: Touch, D: Diameter, T: Part
-The revenant can cause the earth over its grave to open for one Diameter so it may enter or leave.
-The ground then seals, leaving no trace of disturbance.
+*Rise from the Grave*, 1 point, Init –1, Terram<br>
+R: Touch, D: Diameter, T: Part<br>
+The revenant can cause the earth over its grave to open for one Diameter so it may enter or leave. The ground then seals, leaving no trace of disturbance.<br>
 ReTe 5 (Base 2, +1 Touch, +1 Diameter, +1 Part)
 
 Equipment: Tattered burial shroud, the revenant's dead, unfeeling fist strikes as if it were a bludgeon (see page 400)
@@ -19720,8 +19701,7 @@ Characteristics: Cun -2, Per -2, Pre 0, Com -2, Str 0, Sta +3, Dex +2, Qik +1
 Virtues and Flaws: Baneful Circumstances (in daylight), Weak Characteristics (x2)
 
 Combat:
-
-Bony Claws: Init +2, Attack +8, Defense +8, Damage +2 
+- Bony Claws: Init +2, Attack +8, Defense +8, Damage +2 
 
 Soak: +9
 
@@ -19731,9 +19711,9 @@ Abilities: Brawl 3 (claws)
 
 Powers:
 
-Rise from the Grave, 2 points, Init +2, Terram
-R: Touch, D: Diameter, T: Part
-The skeleton can cause the earth over its grave to open for one Diameter so it may enter or leave. The earth then seals, leaving no trace of disturbance.
+*Rise from the Grave*, 2 points, Init +2, Terram<br>
+R: Touch, D: Diameter, T: Part<br>
+The skeleton can cause the earth over its grave to open for one Diameter so it may enter or leave. The earth then seals, leaving no trace of disturbance.<br>
 ReTe 10 (Base 3, +1 Touch, +1 Diameter, +1 Part)
 
 Equipment: Tattered burial shroud
@@ -19757,8 +19737,7 @@ Virtues and Flaws: Great Presence, Poor Quickness, Weak Characteristics
 Personality Traits: Lethargic +2, Territorial +2
 
 Combat:
-
-Fangs: Init -2, Attack +7, Defense +3, Damage -1
+- Fangs: Init -2, Attack +7, Defense +3, Damage -1
 
 Soak: +4
 
@@ -19768,14 +19747,16 @@ Wound Penalties: -1 (1-3), -3 (4-6), -5 (7-9), Incapacitated (10-12), Dead (13+)
 
 Abilities: Brawl 3 (fangs), Ignem Resistance 3 (cold), Survival 2 (winter)
 
-Dazzling Appearance, 0 points, Init –3, Mentem or Animal
-R:Per, D: Conc, T: Spectacle
-The scitalis can use its wondrous colors and appearance to stupefy those who look at it. Victims stand in slack-jawed amazement, unable to move, speak, or act, for as long as the scitalis concentrates. It uses this power to capture its prey, for it is a slow-moving creature.
+Powers:
+
+*Dazzling Appearance*, 0 points, Init –3, Mentem or Animal<br>
+R:Per, D: Conc, T: Spectacle<br>
+The scitalis can use its wondrous colors and appearance to stupefy those who look at it. Victims stand in slack-jawed amazement, unable to move, speak, or act, for as long as the scitalis concentrates. It uses this power to capture its prey, for it is a slow-moving creature.<br>
 ReMe(An) 45 (Base 15, +1 Conc, +4 Spectacle, +1 Animal requisite)
 
-Venom, 0 points, Init n/a, Aquam
-R:Touch, D: Sun, T: Ind
-The scitalis' fangs drip a venom that causes a Medium Wound (if it penetrates Magic Resistance) unless its victim can make a Stamina roll against an Ease Factor of 9.
+*Venom*, 0 points, Init n/a, Aquam<br>
+R:Touch, D: Sun, T: Ind<br>
+The scitalis' fangs drip a venom that causes a Medium Wound (if it penetrates Magic Resistance) unless its victim can make a Stamina roll against an Ease Factor of 9.<br>
 CrAq 30 (Base 10, +1 Touch, +2 Sun, +1 continuous effect)
 
 Vis: 1 Imaginem in skin
@@ -19805,10 +19786,10 @@ Personality Traits: Stag\* +3, Noble +3, Healthy (Stamina) +3, Brave +2
 Reputations: Noble 2 (local)
 
 Combat:
+- Antlers: Init +4, Attack +10, Defense +10, Damage +7<br>
+- Hooves: Init +4, Attack +8, Defense +9, Damage +5
 
-Antlers: Init +4, Attack +10, Defense +10, Damage +7
-
-Hooves: Init +4, Attack +8, Defense +9, Damage +5 Soak: +7
+Soak: +7
 
 Fatigue Levels: OK, 0, -1, -3, -5, Unconscious
 
@@ -19818,19 +19799,19 @@ Abilities: Athletics 8+2 (sprinting), Awareness 5 (hunters), Brawl 5 (antlers), 
 
 Powers:
 
-Healing, 3 points, Init –8, Animal
-R: Per, D: Mom, T: Ind
-The stag can heal one of its own Heavy or lesser wounds. This is a Restricted Power: the stag must eat the herb dittany to activate it.
+*Healing*, 3 points, Init –8, Animal<br>
+R: Per, D: Mom, T: Ind<br>
+The stag can heal one of its own Heavy or lesser wounds. This is a Restricted Power: the stag must eat the herb dittany to activate it.<br>
 CrAn 25 (Base effect)
 
-Delay the Serpent's Venom, 0 points, Init n/a, Aquam
-R: Per, D: Sun, T: Ind
-The Stag of Virtue is magically warded against poison. Any poison introduced into the Stag's body takes no effect until the next sunrise or sunset (whichever comes first). This power activates whenever such a poison is introduced, and thus has an Intellego requisite.
+*Delay the Serpent's Venom*, 0 points, Init n/a, Aquam<br>
+R: Per, D: Sun, T: Ind<br>
+The Stag of Virtue is magically warded against poison. Any poison introduced into the Stag's body takes no effect until the next sunrise or sunset (whichever comes first). This power activates whenever such a poison is introduced, and thus has an Intellego requisite.<br>
 Re(In)Aq 20 (Base 5, +2 Sun, +1 Intellego requisite)
 
-Alleviate the Serpent's Bite, 1 point, Init +1, Aquam
-R: Per, D: Mom, T: Ind
-A Stag of Virtue can permanently neutralize any poison already inside its body. This is a Restricted Power, which the Stag must drink water to activate.
+*Alleviate the Serpent's Bite*, 1 point, Init +1, Aquam<br>
+R: Per, D: Mom, T: Ind<br>
+A Stag of Virtue can permanently neutralize any poison already inside its body. This is a Restricted Power, which the Stag must drink water to activate.<br>
 PeAq 15 (Base 15)
 
 Vis: 3 Creo in right antler.
@@ -19861,13 +19842,14 @@ Decrepitude: n/a
 
 Confidence Score: 3 (12)
 
-Virtues and Flaws: Second Sight Personality Traits: Proud + 3
+Virtues and Flaws: Second Sight
+
+Personality Traits: Proud + 3
 
 Reputations: The Powerful Dragon who Lives in the Mountains (local) 5
 
 Combat:
-
-Claws: Init +3, Attack +22, Defense +18, Damage +20
+- Claws: Init +3, Attack +22, Defense +18, Damage +20
 
 Soak: +20
 
@@ -19879,13 +19861,17 @@ Abilities: [Area] Lore 5 (history), Awareness 8 (human beings), Brawl 7 (claws),
 
 Powers:
 
-Human Form: 1 point, Init 0, Corpus: The dragon can assume the form of a human being. This is always the same form, a man with dark hair and eves, in the prime of life. The transformation lasts until he eats or drinks, or until Stellatus uses the same power again to change back. The dragon has all his powers in human form, and the same Characteristics, but he is much weaker in combat and thus changes back if he needs to fight.
+*Human Form*: 1 point, Init 0, Corpus:<br>
+The dragon can assume the form of a human being. This is always the same form, a man with dark hair and eves, in the prime of life. The transformation lasts until he eats or drinks, or until Stellatus uses the same power again to change back. The dragon has all his powers in human form, and the same Characteristics, but he is much weaker in combat and thus changes back if he needs to fight.
 
-Instill Loyalty, 5 points, Init 0, Mentem: Stellatus can make any individual whom he can see totally loyal. This does not remove free will, but the victim is completely loyal to the dragon, and this loyalty lasts as long as Stellatus is alive.
+*Instill Loyalty*, 5 points, Init 0, Mentem:<br>
+Stellatus can make any individual whom he can see totally loyal. This does not remove free will, but the victim is completely loyal to the dragon, and this loyalty lasts as long as Stellatus is alive.
 
-Fiery Breath, 1 point, Init +5, Ignem: Stellatus can breathe fire. The fire extends in a cone from his mouth, out to a distance of 20 paces, where it is 20 paces across. The fire has an intensity of +15. Dodging it is a Qik + Athletics roll against an Ease Factor of 9. A failure means that the character is engulfed in the flames, taking +45 damage, a success by 3 points or less means that a limb is covered, for +30 damage, a success by 4 to 6 points (that is, success against Ease Factor 12) means that the character is only brushed by the flames, for +15 damage, while success by 7 points or more (that is, success against Ease Factor 15) means that the character dodges out of the fire entirely.
+*Fiery Breath*, 1 point, Init +5, Ignem:<br>
+Stellatus can breathe fire. The fire extends in a cone from his mouth, out to a distance of 20 paces, where it is 20 paces across. The fire has an intensity of +15. Dodging it is a Oik + Athletics roll against an Ease Factor of 9. A failure means that the character is engulfed in the flames, taking +45 damage, a success by 3 points or less means that a limb is covered, for +30 damage, a success by 4 to 6 points (that is, success against Ease Factor 12) means that the character is only brushed by the flames, for +15 damage, while success by 7 points or more (that is, success against Ease Factor 15) means that the character dodges out of the fire entirely.
 
-Master of Fire, 1 or more Might Points, Init 0, Ignem: Stellatus can control fire. He can duplicate any Hermetic Rego Ignem spell of fourth magnitude or less at the cost of 1 Might point. For every additional Might point he spends, the level of the spell increases by one magnitude.
+*Master of Fire*, 1 or more Might Points, Init 0, Ignem:<br>
+Stellatus can control fire. He can duplicate any Hermetic Rego Ignem spell of fourth magnitude or less at the cost of 1 Might point. For every additional Might point he spends, the level of the spell increases by one magnitude.
 
 Equipment: Ancient treasure is piled high in his lair.
 
@@ -19912,22 +19898,27 @@ Personality Traits: Mischievous +3, Echo +3\*
 Reputations: Murderous 1 (Local)
 
 Combat:
-
-Thrown Rock: Init +3, Attack +4, Defense n/a Damage +5
+- Thrown Rock: Init +3, Attack +4, Defense n/a Damage +5
 
 Abilities: Awareness 4 (sounds), Folk Ken 1 (fear), Guile 1 (mimicry), Music 2 (echoes), Thrown Weapon 4 (rocks)
 
 Powers:
 
-Master of Sound, variable points, Init +5 – Might cost, Imaginem: The spirit can duplicate any non-Ritual spell involving sound up to Level 15, at a cost of 1 Might Point per magnitude of effect. (Te)Im15
+*Master of Sound*, variable points, Init +5 – Might cost, Imaginem:<br>
+The spirit can duplicate any non-Ritual spell involving sound up to Level 15, at a cost of 1 Might Point per magnitude of effect. (Te)Im15
 
-Bring Down the Roof, 2 points, Init +3, Terram: The Zwergenstimme can cause the roof of a cave to collapse, crushing any within it. This causes +20 damage, and seals the exit from the cave. PeTe 20 (base 3, +1 Touch, +2 Room, +2 Size)
+*Bring Down the Roof*, 2 points, Init +3, Terram:<br>
+The Zwergenstimme can cause the roof of a cave to collapse, crushing any within it. This causes +20 damage, and seals the exit from the cave. PeTe 20 (base 3, +1 Touch, +2 Room, +2 Size)
 
-Presence, 0 points, constant, Imaginem: Grants awareness of everything that happens within the bounds of a specific domain chosen by the spirit. In essence, the spirit is coterminous with its associated landscape feature, so it is present simultaneously everywhere within its boundaries. The area controlled by the spirit can produce a yearly harvest of 2 pawns of vis of an appropriate Form, which manifests as physical objects within the controlled region. Harvesting this vis does not erode the spirit's Might. The echo spirit can haunt a series of caves (constituting a Structure).
+*Presence*, 0 points, constant, Imaginem:<br>
+Grants awareness of everything that happens within the bounds of a specific domain chosen by the spirit. In essence, the spirit is coterminous with its associated landscape feature, so it is present simultaneously everywhere within its boundaries. The area controlled by the spirit can produce a yearly harvest of 2 pawns of vis of an appropriate Form, which manifests as physical objects within the controlled region. Harvesting this vis does not erode the spirit's Might. The echo spirit can haunt a series of caves (constituting a Structure).
 
-Ghost Touch, variable cost, Init +2, Terram: The spirit can hurl rocks at enemies. It uses the combat scores listed above, but each attack costs 1 Might point.
+*Ghost Touch*, variable cost, Init +2, Terram:<br>
+The spirit can hurl rocks at enemies. It uses the combat scores listed above, but each attack costs 1 Might point.
 
-Vis: 3 pawns of Imaginem, as an immaterial echo Appearance: An echo. This spirit appears only as auditory species to those with Second Sight
+Vis: 3 pawns of Imaginem, as an immaterial echo
+
+Appearance: An echo. This spirit appears only as auditory species to those with Second Sight
 
 This spirit of an echo lurks in caves or ravines. Its name literally means "dwarf voice" in German, and these spirits have been known to mislead lost humans by "playing" with them. The spirit certainly has no intent to harm; it doesn't even understand what harm is.
 
@@ -19947,9 +19938,7 @@ In most scenarios, the difference between abilities and pretenses is insignifica
 
 Faeries have an innate ability to regenerate damage, retaining only those superficial injuries necessary to make their roles believable. They never suffer fatigue, although they may pretend to. They are unencumbered by the normal accoutrements of the role they are playing, which are formed from the glamour of the faerie, and increase its Touch range.
 
-Cognizance is the degree to which a faerie knows it is a faerie, and what that means about its relationship to stories. Most have the Narrowly Cognizant Free Virtue. This means they are aware of their faerie nature in a limited way. They try to play a role accurately, and cannot break role even if it leads to their deaths. There are some faeries, with the Highly Cognizant Virtue, who are able to adapt their roles to feed
-
-on human emotional energy. These are the most dangerous faeries, because they are able to change their roles. Incognizant faeries, conversely, do not even know they are faeries: they follow their roles because they have no potential to understand any other option.
+Cognizance is the degree to which a faerie knows it is a faerie, and what that means about its relationship to stories. Most have the Narrowly Cognizant Free Virtue. This means they are aware of their faerie nature in a limited way. They try to play a role accurately, and cannot break role even if it leads to their deaths. There are some faeries, with the Highly Cognizant Virtue, who are able to adapt their roles to feed on human emotional energy. These are the most dangerous faeries, because they are able to change their roles. Incognizant faeries, conversely, do not even know they are faeries: they follow their roles because they have no potential to understand any other option.
 
 Faerie Sight is the ability to read glamour, the magical rules from which faeries are constructed. Assume that characters with Faerie Sight can see magical things, and tell what other faeries want, just by looking at them.
 
@@ -19961,7 +19950,7 @@ A Sovereign Ward is a powerful taboo. A faerie cannot hurt someone carrying that
 
 *Realms of Power: Faerie* contains much more detail on faeries and their realms, along with many more examples of faerie creatures.
 
-### Faerie Lounds
+### Faerie Hounds
 
 Faerie Might: 5 (Animal)
 
@@ -19971,9 +19960,10 @@ Size: +1
 
 Virtues and Flaws: Faerie Sight, Improved Characteristics, Sharp Ears, Large; Incognizant, Reckless, Traditional Wards (varies)
 
-Personality Traits: Loyal +3, Reckless +3, Brave +2 Combat:
+Personality Traits: Loyal +3, Reckless +3, Brave +2
 
-Bite: (small teeth): Init +2, Attack +10, Defense +9, Damage +1\*
+Combat:
+- Bite: (small teeth): Init +2, Attack +10, Defense +9, Damage +1\*
 
 \* In some cases faerie hounds have the Power Damaging Effect, which adds +5 to the damage score of their bite. This is usually visually obvious, for example their spittle ignites tiny flames on the ground, or their breath puffs like smoke because their teeth freeze like ice.
 
@@ -19987,17 +19977,23 @@ Powers:
 
 The powers below are commonly found in Faerie Hounds, but it is rare for a single hound to have more than two of them.
 
-Damaging Effect: 2 points: Init 0, Varies: Causes all of the faerie's weapons, which are part of its glamor, to take on a more deadly aspect for two minutes. The danger of the aspect varies according to the motif usual for the faerie, but always increases the weapon's Damage by +5.
+*Damaging Effect*: 2 points: Init 0, Varies:<br>
+Causes all of the faerie's weapons, which are part of its glamor, to take on a more deadly aspect for two minutes. The danger of the aspect varies according to the motif usual for the faerie, but always increases the weapon's Damage by +5.
 
-Enthralling Sound: 3 points, Init –2, Mentem: Used to cause terror and panic with its howl. This power also increases the intensity of an emotion that already exists. A stress roll with an appropriate Personality trait against an Ease Factor of 9 allows a victim to overcome this power's effect.
+*Enthralling Sound*: 3 points, Init –2, Mentem:<br>
+Used to cause terror and panic with its howl. This power also increases the intensity of an emotion that already exists. A stress roll with an appropriate Personality trait against an Ease Factor of 9 allows a victim to overcome this power's effect.
 
-Enthrallment: 4 points, Init -2, Mentem: Allows the facrie to take complete control of a single human's mind for a day, by making eye contact.
+*Enthrallment*: 4 points, Init -2, Mentem:<br>
+Allows the facrie to take complete control of a single human's mind for a day, by making eye contact.
 
-Fearful Flaming Eyes: 2 points, Init –2, Corpus: Completely paralyzes a human who makes eye contact with the faerie.
+*Fearful Flaming Eyes*: 2 points, Init –2, Corpus:<br>
+Completely paralyzes a human who makes eye contact with the faerie.
 
-Hound: 2 points, Init 0, Corpus: Allows the faerie to know the direction and distance to its human quarry.
+*Hound*: 2 points, Init 0, Corpus:<br>
+Allows the faerie to know the direction and distance to its human quarry.
 
-Flight: 0 points, constant +2, Animal: The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
+*Flight*: 0 points, constant +2, Animal:<br>
+The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
 
 Vis: 1 pawn Animal, dog corpse
 
@@ -20026,16 +20022,12 @@ Virtues and Flaws: Faerie Sight, Faerie Speech, Large, Narrowly Cognizant, Obser
 Personality Traits: Arrogant +3, Courteous +3
 
 Combat:
+- Brawl (gauntlet): Init +1, Attack +6, Defense +6, Damage +5<br>
+- Long Sword and Heater Shield\*: Init +3, Attack +10, Defense +9, Damage +9<br>
+- Mace and Heater shield\*: Init +2, Attack +9, Defense +8, Damage +11<br>
+- Lance and Heater Shield (mounted)\*: Init +3, Attack +10, Defense +8, Damage +8
 
-Brawl (gauntlet): Init +1, Attack +6, Defense +6, Damage +5
-
-Long Sword and Heater Shield\*: Init +3, Attack +10, Defense +9, Damage +9
-
-Mace and Heater shield\*: Init +2, Attack +9, Defense +8, Damage +11
-
-Lance and Heater Shield (mounted)\*: Init +3, Attack +10, Defense +8, Damage +8
-
-Does not include +3 to Attack and Defense for being mounted.
+\* Does not include +3 to Attack and Defense for being mounted.
 
 Soak: +9* Faerie metal scale, made of glamor using the Shift Human Shapes Power.
 
@@ -20045,11 +20037,16 @@ Pretenses: Awareness 1 (enemies), Brawl 3\* (knights), Carouse 3 (feasts), Charm
 
 Many knights have far higher scores than this. These statistics are correct for faeries that plan to improve their Pretenses by losing to a character, then mirroring his experience gain for the season.
 
-Damaging Effect: 1 point, Init -4, as per motif of court: Causes all of the faerie's weapons, which are part of its glamor, to take on a more deadly aspect for two minutes. The danger of the aspect varies according to the motif usual for the faerie, but always increases the weapon's Damage by +5.
+Powers:
 
-Flight, 2 points, constant, Corpus: The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
+*Damaging Effect*: 1 point, Init -4, as per motif of court:<br>
+Causes all of the faerie's weapons, which are part of its glamor, to take on a more deadly aspect for two minutes. The danger of the aspect varies according to the motif usual for the faerie, but always increases the weapon's Damage by +5.
 
-Shift Human Shapes: 1 point, Init 0, Corpus: Allows the knight, who is usually armored to demonstrate his role, to remove the armor simply by thinking about it.
+*Flight*, 2 points, constant, Corpus:<br>
+The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
+
+*Shift Human Shapes*: 1 point, Init 0, Corpus:<br>
+Allows the knight, who is usually armored to demonstrate his role, to remove the armor simply by thinking about it.
 
 Equipment: Arms and armor. Has a faerie horse constructed of the knight's own glamour, so it flies when the knight does, and shares the knight's Magic Resistance.
 
@@ -20072,8 +20069,7 @@ Virtues and Flaws: Faerie Sight, Faerie Speech; Incognizant, Sovereign Ward (run
 Personality Traits: Curious +3
 
 Combat
-
-Scythe: Init +1, Attack +6, Defense +4, Damage +5
+- Scythe: Init +1, Attack +6, Defense +4, Damage +5
 
 Soak: +0
 
@@ -20083,11 +20079,15 @@ Pretenses: Awareness 3 (laziness), Charm 2 (rural people), Faerie Speech 5 (rura
 
 Powers:
 
-Cause Fatigue: 0 points, Init 0, Ignem: Causes the loss of a long-term fatigue level via heatstroke.
+*Cause Fatigue*: 0 points, Init 0, Ignem:<br>
+Causes the loss of a long-term fatigue level via heatstroke.
 
-Shift Human Shapes: 1 point, Init –1, Corpus: (beautiful to hideous within a range of +3/–3 Presence)
+*Shift Human Shapes*: 1 point, Init –1, Corpus:<br>
+(beautiful to hideous within a range of +3/–3 Presence)
 
-Transform Into Whirlwind: 3 points, +2 Init, Auram Vis: 2 pawns (scythe, Ignem)
+*Transform Into Whirlwind*: 3 points, +2 Init, Auram
+
+Vis: 2 pawns (scythe, Ignem)
 
 Appearance: This faerie may appear as a beautiful maiden, a crone or an adolescent girl. She wears a white dress and carries a scythe or shears. She may travel as a dust devil, and is used as a nursery terror, to frighten children so that they do not harm crops.
 
@@ -20105,7 +20105,9 @@ Faerie Might: 10 (Herbam)
 
 Characteristics: Int -1, Per 0, Pre -1, Com +3, Str -2, Sta +2, Dex 0, Qik -3
 
-Size: -2 Age: n/a (40)
+Size: -2
+
+Age: n/a (40)
 
 Virtues and Flaws: Narrowly Cognizant
 
@@ -20114,8 +20116,7 @@ Personality Traits: Convivial +3, Generous +2, Careful –2
 Reputations: None
 
 Combat:
-
-Club: Init -2, Attack +4, Defense 0, Damage +1
+- Club: Init -2, Attack +4, Defense 0, Damage +1
 
 Soak: +2
 
@@ -20125,9 +20126,11 @@ Pretenses: Carouse 9 (drinking), Charm 4 (drunk people), Etiquette 2 (parties), 
 
 Powers:
 
-Heady Brew, 0 points, Init -10, Corpus: Any drink served by Mateos is three times as intoxicating as normal. Drinks that were non-alcoholic to start with become as alcoholic as ale. This does not change the taste of the drink. The extra intoxication is a magical effect, with Penetration 10, and can be resisted.
+*Heady Brew*, 0 points, Init -10, Corpus:<br>
+Any drink served by Mateos is three times as intoxicating as normal. Drinks that were non-alcoholic to start with become as alcoholic as ale. This does not change the taste of the drink. The extra intoxication is a magical effect, with Penetration 10, and can be resisted.
 
-Unending Drinks, 1 point, Init –10, Aquam: For as long as he is serving a particular person, the drink in Mateos's barrel does not run out, even if he serves other people as well. If the chosen person (who is not the target of the power, and thus cannot resist) leaves, passes out, or stops drinking for any other reason, the contents of the barrel start to run out.
+*Unending Drinks*, 1 point, Init –10, Aquam:<br>
+For as long as he is serving a particular person, the drink in Mateos's barrel does not run out, even if he serves other people as well. If the chosen person (who is not the target of the power, and thus cannot resist) leaves, passes out, or stops drinking for any other reason, the contents of the barrel start to run out.
 
 Equipment: Barrel of alcoholic drink.
 
@@ -20147,7 +20150,9 @@ Faerie Might: 15 (Vim)
 
 Characteristics: Int -1, Per +2, Pre 0, Com 0, Str +2, Sta +0, Dex +2, Qik +3
 
-Age: appears 25 Confidence: 1 (3)
+Age: appears 25
+
+Confidence: 1 (3)
 
 Virtues and Flaws: Jinni, Faerie Speech, Highly Cognizant, Improved Characteristics, Second Sight, Skinchanger, Warrior, Well-Traveled, Wilderness Sense, Greater Malediction (keep any bargain made), Carefree, Dutybound (Bedouin honor code), Traditional Ward (Bismillah Invocation), Vulnerable to Folk Tradition.
 
@@ -20155,7 +20160,8 @@ Personality Traits: Impulsive +3, Cheerful +3, Impious -1
 
 Reputation: Skilled Caravan guard 2 (Mythic Middle East)
 
-Long Sword: Init +5, Attack +14, Defense +9, Damage +8
+Combat:
+- Long Sword: Init +5, Attack +14, Defense +9, Damage +8
 
 Soak: +3
 
@@ -20165,13 +20171,18 @@ Pretenses: Animal Handling 3 (camels), Athletics 3 (running), Mythic Middle East
 
 Powers:
 
-Cuirass of the Zephyr, 1 point, Init +3, Auram: as Circling Winds of Protection with Duration of Recitation / Qira'a (as long as Jumayl keeps reciting verses of the Qur'an — equivalent to Concentration).
+*Cuirass of the Zephyr*, 1 point, Init +3, Auram:<br>
+as Circling Winds of Protection with Duration of Recitation / Qira'a (as long as Jumayl keeps reciting verses of the Qur'an — equivalent to Concentration).
 
-Blinding Light of the Pious, 1 point, Init +3, Ignem: as Flash of the Scarlet Flames.
+*Blinding Light of the Pious*, 1 point, Init +3, Ignem:<br>
+as Flash of the Scarlet Flames.
 
-Tay al-Ard (Travel), 4 points, Init +1, Corpus: this power instantly transports Jumayl and 2 individuals he holds hands with from one location to another that he has visited before or has an Arcane Connection to, regardless of distance. As Leap of Homecoming, with R: Touch, T: Group
+*Tay al-Ard (Travel)*, 4 points, Init +1, Corpus:<br>
+this power instantly transports Jumayl and 2 individuals he holds hands with from one location to another that he has visited before or has an Arcane Connection to, regardless of distance. As Leap of Homecoming, with R: Touch, T: Group
 
-Equipment: a fine damascene steel long sword, leather scale caravan guard armor, flashy jewelry Vis: 3 pawns of Vim vis, camel's tooth
+Equipment: a fine damascene steel long sword, leather scale caravan guard armor, flashy jewelry
+
+Vis: 3 pawns of Vim vis, camel's tooth
 
 Appearance: Jumayl ("little camel") is a comely, lithe man of uncertain oriental appearance, alabaster skin and white hair. One eye is iridescent green, the other ocean blue. He favors swirling robes dyed a deep blue color over light leather armor, highlighted by gold jewelry.
 
@@ -20196,8 +20207,7 @@ Personality Traits: Relentless +3, Cheerful -3
 Reputations: Soul-eating demon (local) 1
 
 Combat:
-
-Bite: Init +9, Attack +10, Defense +10, Damage +6
+- Bite: Init +9, Attack +10, Defense +10, Damage +6
 
 Soak: +7
 
@@ -20207,11 +20217,14 @@ Pretenses: [Area] Lore 6 (hunting tracks), Athletics 5 (running), Awareness 8 (s
 
 Powers:
 
-Marked Quarry: 1 point, Init +5, Mentem: Tarlan can pick a single human being whom he can see and who can see him, and mark him as quarry for the hunt. This inspires the victim with a strong fear of Tarlan, requiring a Brave roll against an Ease Factor of 9 to overcome, and specifically makes him likely to run.
+*Marked Quarry*: 1 point, Init +5, Mentem:<br>
+Tarlan can pick a single human being whom he can see and who can see him, and mark him as quarry for the hunt. This inspires the victim with a strong fear of Tarlan, requiring a Brave roll against an Ease Factor of 9 to overcome, and specifically makes him likely to run.
 
-Prey's Vigor: 1 point, Init +8, Corpus: By breathing on a tired person (anyone who has lost Fatigue levels), Tarlan can restore them to full vigor (i.e. all Fatigue levels are regained). However, the target also ages one year. This power can only be used if the target is close enough to actually feel the wolf's breath on his skin, and only works on adults.
+*Prey's Vigor*: 1 point, Init +8, Corpus:<br>
+By breathing on a tired person (anyone who has lost Fatigue levels), Tarlan can restore them to full vigor (i.e. all Fatigue levels are regained). However, the target also ages one year. This power can only be used if the target is close enough to actually feel the wolf's breath on his skin, and only works on adults.
 
-Silent Running: 0 points, constant, Imaginem: Tarlan makes no noise unless he deliberately decides to.
+*Silent Running*: 0 points, constant, Imaginem:<br>
+Tarlan makes no noise unless he deliberately decides to.
 
 Equipment: None. He's a wolf.
 
@@ -20242,10 +20255,8 @@ Virtues and Flaws: Faerie Sight, Faerie Speech; Incognizant, Visions\*
 Personality Traits: Brave +5, Judgmental +3
 
 Combat:
-
-Axe and Round Shield (unmounted): Init +2, Attack +16, Defense +12, Damage +6
-
-Axe and Round Shield (mounted): Init +2, Attack +19, Defense +15, Damage +6
+- Axe and Round Shield (unmounted): Init +2, Attack +16, Defense +12, Damage +6
+- Axe and Round Shield (mounted): Init +2, Attack +19, Defense +15, Damage +6
 
 Soak: +9
 
@@ -20255,7 +20266,8 @@ Pretenses: Awareness 9 (battlefields), Brawl 9 (einherjar), Ride 5 (wolf), Singl
 
 Powers:
 
-Fly: 0 points, constant, usually Corpus but sometimes Animal: The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
+*Fly*: 0 points, constant, usually Corpus but sometimes Animal:<br>
+The character is capable of flight. The character may use the Athletics skill to simulate difficult maneuvers, but may not engage in combat while flying incredibly swiftly. The faerie may not fly when heavily encumbered, or with a passenger of its Size or more, unless assisted by another faerie that shares the load.
 
 Equipment: Arms, armor, wolf mount, vast quantities of wine.
 
@@ -20276,8 +20288,7 @@ Virtues and Flaws: Faerie Sight, Ferocity (when hungry) Sharp Ears
 Personality Traits: Brave +3, Cowardly +3
 
 Combat:
-
-Teeth: Init –2, Attack +12, Defense +6, Damage +3
+- Teeth: Init –2, Attack +12, Defense +6, Damage +3
 
 Soak: +7
 
@@ -20289,7 +20300,9 @@ Powers:
 
 When the valkyrie uses Fly the wolf, as part of her glamour, flies too. The valkyrie can carry a passenger with the aid of her wolf.
 
-Vis: None: the wolf is an extension of the valkyrie. Appearance: A wolf the size of a horse, with saddle and harness. Its thick fur gives it a Protection of 1 and it wears leather covers which act as partial barding.
+Vis: None: the wolf is an extension of the valkyrie.
+
+Appearance: A wolf the size of a horse, with saddle and harness. Its thick fur gives it a Protection of 1 and it wears leather covers which act as partial barding.
 
 These minor goddesses of the Norse pantheon are no longer worshiped in Mythic Europe, but have been encountered by magi in Elysium, and in their ancient places of power in Scandinavia. Their name means "Chooser of the Slain", because they are believed to choose who lives and dies during battle, and which spirits are worthy of transformation into einherjar, spiritual warriors awaiting Ragnarok. They also act as serving maids in Valhalla. Many have names that evoke the tumult of battle. They ride through the sky, invisibly, on wolves.
 
@@ -20310,8 +20323,7 @@ Virtues and Flaws: 3 x Great Characteristic; Faerie Sight, Faerie Speech, Highly
 Personality Traits: Loves Forest +5
 
 Combat:
-
-2 x Brawl (club)\* Init:1-Size, Attack 8, Defense 7–Size, Damage 9+(Size x 2)
+- 2 x Brawl (club)\* Init:1-Size, Attack 8, Defense 7–Size, Damage 9+(Size x 2)
 
 \* The lezi's arms are made of solid wood, and do damage like a club. They are wielded with the Brawl Pretense, even if the lezi generates clubs to use in battle.
 
@@ -20323,21 +20335,29 @@ Pretenses: Animal Handling 9 (woodland creatures), Athletics 3 (striding), Aware
 
 Powers:
 
-Extended Glamour: 0 points, constant, Mentem: Grants awareness of everything that happens within the bounds of the forest. In essence, the faerie is coterminous with the forest, so it is present simultaneously everywhere within its boundaries.
+*Extended Glamour*: 0 points, constant, Mentem:<br>
+Grants awareness of everything that happens within the bounds of the forest. In essence, the faerie is coterminous with the forest, so it is present simultaneously everywhere within its boundaries.
 
-Focus Power (Manifestation): 5 points, Init –5\*, Animal or Herbam: Manifests the faerie's consciousness amongst animal and plant life its glamor touches, temporarily controlling their actions. This power allows the lezi to simulate any Creo Animal, Rego Animal, Creo Herbam or Rego Herbam effect with a value of 25 spell levels or less, targeted at the animals within its glamor and suiting its motif.
+*Focus Power (Manifestation)*: 5 points, Init –5\*, Animal or Herbam:<br>
+Manifests the faerie's consciousness amongst animal and plant life its glamor touches, temporarily controlling their actions. This power allows the lezi to simulate any Creo Animal, Rego Animal, Creo Herbam or Rego Herbam effect with a value of 25 spell levels or less, targeted at the animals within its glamor and suiting its motif.
 
-Focus Power (Woodland Change): 5 points, Init  -5*, Animal or Herbam: Muto and Intellego effects only in Herbam and Animal.
+*Focus Power (Woodland Change)*: 5 points, Init  -5*, Animal or Herbam:<br>
+Muto and Intellego effects only in Herbam and Animal.
 
-Focus Power (Size Reduction): 5 points, Init -5, Corpus or Animal: Greater Lezi are considered to naturally be Size +7, and use powers to live at a smaller Size.
+*Focus Power (Size Reduction)*: 5 points, Init -5, Corpus or Animal:<br>
+Greater Lezi are considered to naturally be Size +7, and use powers to live at a smaller Size.
 
-Transform Into Animal\*\*: 3 points, Init. -3\*, Animal: Transforms the character into a land animal. Faeries retain the power of speech in animal form.
+*Transform Into Animal*\*\*: 3 points, Init. -3\*, Animal:<br>
+Transforms the character into a land animal. Faeries retain the power of speech in animal form.
 
-Transform Into Bird or Fish\*\*: 3 points, Init: −3\*, Animal: Transforms the character into a specified bird or fish. Faeries retain the power of speech in animal
+*Transform Into Bird or Fish\*\**: 3 points, Init: −3\*, Animal:<br>
+Transforms the character into a specified bird or fish. Faeries retain the power of speech in animal
 
-Transform into Human: This power costs the Lezi whatever it cost to transform away from the human shape.
+*Transform into Human*:<br>
+This power costs the Lezi whatever it cost to transform away from the human shape.
 
-Transform Into Object (Plant)\*\*: 4 points, Init -4\*, Herbam: In plant form, the lezi is capable of speech and limited movement.
+*Transform Into Object (Plant)\*\**: 4 points, Init -4\*, Herbam:<br>
+In plant form, the lezi is capable of speech and limited movement.
 
 \* Add appropriate Quickness modifier, based on Size.
 
@@ -20373,13 +20393,16 @@ Age: n/a (40)
 
 Confidence Score: 2 (6)
 
-Virtues and Flaws: Great Characteristics, Improved Characteristics x 2, Narrowly Cognizant Personality Traits: Proud +3, Just +1, Forgiving -3
+Virtues and Flaws: Great Characteristics, Improved Characteristics x 2, Narrowly Cognizant
+
+Personality Traits: Proud +3, Just +1, Forgiving -3
 
 Reputations: Grants eternal youth 2 (local)
 
 Combat:
+- Dodge: Init 0, Attack n/a, Defense 0, Damage n/a
 
-Dodge: Init 0, Attack n/a, Defense 0, Damage n/a Soak: +25 (+5 against iron or steel weapons)
+Soak: +25 (+5 against iron or steel weapons)
 
 Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16-20)
 
@@ -20387,17 +20410,23 @@ Pretenses: [Area] Lore 5 (nobility), Awareness 3 (in his castle), Charm 8 (human
 
 Powers:
 
-Commanding Presence, 1 point, Init +10, Mentem: Anvone who can see Marsvne becomes awed by him, and gains a Personality Trait of Respectful to Lord Marsyne +3. Even magi must roll this Trait, if they fail to resist the spell. Disagreeing with him is Ease Factor 6, outright contradiction is Ease Factor 9, and attacking is Ease Factor 15. This power does not force obedience to the faerie's commands, but it does force you to be subtle about refusing.
+*Commanding Presence*, 1 point, Init +10, Mentem:<br>
+Anvone who can see Marsvne becomes awed by him, and gains a Personality Trait of Respectful to Lord Marsyne +3. Even magi must roll this Trait, if they fail to resist the spell. Disagreeing with him is Ease Factor 6, outright contradiction is Ease Factor 9, and attacking is Ease Factor 15. This power does not force obedience to the faerie's commands, but it does force you to be subtle about refusing.
 
-Entomb, 10 points, Init –10, Mentem: A single human target is entombed in ice. The effect is Mentem because it also suspends the target's awareness, so that he or she does not need to eat, drink, or breathe, and does not think, dream, or remember while in the ice. Marsyne can break the effect at will, or it can be dispelled. If it is broken, the person returns to awareness without, immediately, realizing that they were unconscious. People do, normally, age while entombed, and can die of old age.
+*Entomb*, 10 points, Init –10, Mentem:<br>
+A single human target is entombed in ice. The effect is Mentem because it also suspends the target's awareness, so that he or she does not need to eat, drink, or breathe, and does not think, dream, or remember while in the ice. Marsyne can break the effect at will, or it can be dispelled. If it is broken, the person returns to awareness without, immediately, realizing that they were unconscious. People do, normally, age while entombed, and can die of old age.
 
-Gift of Youth, 10 points, Init –10, Corpus: This power targets a single woman, who stops aging. As long as she remains in Marsyne's castle, she does not age at all. If she leaves, she has the benefit of the Unaging Minor Virtue, so she might not realize that she is aging again. Once aging has restarted, it does not stop if the woman returns to the castle. The power only works on human women, and Marsyne normally only uses it on his wives.
+*Gift of Youth*, 10 points, Init –10, Corpus:<br>
+This power targets a single woman, who stops aging. As long as she remains in Marsyne's castle, she does not age at all. If she leaves, she has the benefit of the Unaging Minor Virtue, so she might not realize that she is aging again. Once aging has restarted, it does not stop if the woman returns to the castle. The power only works on human women, and Marsyne normally only uses it on his wives.
 
-Inner Warmth, 1 point, Init 0, Ignem: The recipient of this gift is unaffected by mundane cold until she (or he) enters an aura aligned with a realm other than Faerie. (Simply leaving a Faerie aura for an area with no aura doesn't end it, but entering a Magic, Infernal, or Divine aura does.) The gift provides no protection against magical cold.
+*Inner Warmth*, 1 point, Init 0, Ignem:<br>
+The recipient of this gift is unaffected by mundane cold until she (or he) enters an aura aligned with a realm other than Faerie. (Simply leaving a Faerie aura for an area with no aura doesn't end it, but entering a Magic, Infernal, or Divine aura does.) The gift provides no protection against magical cold.
 
-Lord of Ice, 1 or more points, Init +8, Aquam: Marsyne can create any effect he wants involving ice, including effects that would require a Hermetic ritual. For every point he spends, up to a maximum of 5, the effect has three Hermetic magnitudes of power. Thus, if he spends 5 points, he can create a 15th magnitude effect.
+*Lord of Ice*, 1 or more points, Init +8, Aquam:<br>
+Marsyne can create any effect he wants involving ice, including effects that would require a Hermetic ritual. For every point he spends, up to a maximum of 5, the effect has three Hermetic magnitudes of power. Thus, if he spends 5 points, he can create a 15th magnitude effect.
 
-Lord of the Castle, 0 points, Init +15, Mentem or Corpus: Marsyne can command any one of his servants to do anything, and the command is irresistible. He can also take control of the servant's body, and move it like a puppet, or even make it fly through the air. The only limits are that he can only target one servant at once, and can only target beings who have voluntarily agreed to serve him. Most are faeries, but his wives also qualify.
+*Lord of the Castle*, 0 points, Init +15, Mentem or Corpus:<br>
+Marsyne can command any one of his servants to do anything, and the command is irresistible. He can also take control of the servant's body, and move it like a puppet, or even make it fly through the air. The only limits are that he can only target one servant at once, and can only target beings who have voluntarily agreed to serve him. Most are faeries, but his wives also qualify.
 
 Equipment: Anything he wants, although particularly elaborate items gained particularly quickly will be faerie glamor rather than real.
 
@@ -20534,10 +20563,8 @@ Personality Traits: Proud +6, Hungry +3, Shame -3
 Reputations: Treasurer of Hell 6 (Infernal), Demon of Filth 5 (Infernal)
 
 Combat:
-
-Noxious Vomit: Init +9, Attack +12, Defense n/a, Damage +12\*
-
-Claws: Init +4, Attack +5, Defense +6, Damage +6\*\*
+- Noxious Vomit: Init +9, Attack +12, Defense n/a, Damage +12\*
+- Claws: Init +4, Attack +5, Defense +6, Damage +6\*\*
 
 \* See power description
 
@@ -20553,21 +20580,27 @@ Abilities: Artes Liberales 4 (arithmetic), Brawl 4 (claws), Civil and Canon Law 
 
 Powers:
 
-Form of Woman, 0 points, Init 0, Corpus: Baal-Peor can take the form of a woman, although he cannot use this power to mimic a specific woman. He always chooses a form which will be considered beautiful by the target audience of his schemes.
+*Form of Woman*, 0 points, Init 0, Corpus:<br>
+Baal-Peor can take the form of a woman, although he cannot use this power to mimic a specific woman. He always chooses a form which will be considered beautiful by the target audience of his schemes.
 
-Noxious Vomit, 1 point, Init +9, Corpus: This power allows Baal-Peor to spray vast amounts of vomit (or, facing the other way, even less pleasant substances) through an area. His vomit is an expression of his spiritual vileness, and does the damage indicated in his combat statistic through corrosion, except to characters with True Faith, whom it cannot touch. The target must make a Strength + Size stress roll against an Ease Factor of 9 or be sent flying backwards. Anyone successfully struck by this vileness continues to suffer +3 damage in each round until it is washed off. This damage does not stack for multiple successful attacks.
+*Noxious Vomit*, 1 point, Init +9, Corpus:<br>
+This power allows Baal-Peor to spray vast amounts of vomit (or, facing the other way, even less pleasant substances) through an area. His vomit is an expression of his spiritual vileness, and does the damage indicated in his combat statistic through corrosion, except to characters with True Faith, whom it cannot touch. The target must make a Strength + Size stress roll against an Ease Factor of 9 or be sent flying backwards. Anyone successfully struck by this vileness continues to suffer +3 damage in each round until it is washed off. This damage does not stack for multiple successful attacks.
 
-Swallow Assault, 5 points, Init +3, Terram: Baal-Peor may avoid injury from mundane objects by opening his maw so wide that the attack slides harmlessly down his throat.
+*Swallow Assault*, 5 points, Init +3, Terram:<br>
+Baal-Peor may avoid injury from mundane objects by opening his maw so wide that the attack slides harmlessly down his throat.
 
-Coagulation, 3 points, Init −1, Corpus
+*Coagulation*, 3 points, Init −1, Corpus
 
-Obsession, 1 to 3 points, Init –5, Vim: Shamelessness, Gluttony
+*Obsession*, 1 to 3 points, Init –5, Vim: Shamelessness, Gluttony
 
-Shroud the Stench of the Pit, variable points, Init +3, Vim: This power may be used in two manners, both of which affect the expression of other supernatural powers. A demon can conceal the Infernal nature of any other supernatural power, making it appear to be magical or faerie instead. This power is used on an overt expression of power, to prevent spells from recognizing it as infernal in origin. Secondly, it may be used on more subtle powers to remove all stench of the supernatural, making them appear wholly mundane. This power costs Might points equal to the original cost of the power being concealed, or Might points equal to the magnitude of the Infernal effect if it does not cost might to use. This power lasts for as long as the power it is masking.
+*Shroud the Stench of the Pit*, variable points, Init +3, Vim:<br>
+This power may be used in two manners, both of which affect the expression of other supernatural powers. A demon can conceal the Infernal nature of any other supernatural power, making it appear to be magical or faerie instead. This power is used on an overt expression of power, to prevent spells from recognizing it as infernal in origin. Secondly, it may be used on more subtle powers to remove all stench of the supernatural, making them appear wholly mundane. This power costs Might points equal to the original cost of the power being concealed, or Might points equal to the magnitude of the Infernal effect if it does not cost might to use. This power lasts for as long as the power it is masking.
 
-The Wealth of Nations, 3 points, Init 0, Terram: The demon can summon riches, each use of this power can create wealth equivalent to up to pound of gold for every point of Infernal Might possessed by the demon. This wealth can be of any form — gold, gems, rich tapestries, ivory, etc. — but it is always has intrinsic value, rather than being valuable because of its utility (a roomful of grain, for example). This wealth is not created, it is instead summoned from somewhere else, chosen by the demon, usually for the greatest effect. This might be a royal treasury on the other side of Europe or the purse of the man standing next to you.
+*The Wealth of Nations*, 3 points, Init 0, Terram:<br>
+The demon can summon riches, each use of this power can create wealth equivalent to up to pound of gold for every point of Infernal Might possessed by the demon. This wealth can be of any form — gold, gems, rich tapestries, ivory, etc. — but it is always has intrinsic value, rather than being valuable because of its utility (a roomful of grain, for example). This wealth is not created, it is instead summoned from somewhere else, chosen by the demon, usually for the greatest effect. This might be a royal treasury on the other side of Europe or the purse of the man standing next to you.
 
-His Master's Voice, variable points, Init +1, Vim: The demon can summon other demons or corrupt beasts to its current location. This costs one Might point for every point of Infernal Might of the being summoned, so is used sparingly. The demon has no control over the demon he has summoned.
+*His Master's Voice*, variable points, Init +1, Vim:<br>
+The demon can summon other demons or corrupt beasts to its current location. This costs one Might point for every point of Infernal Might of the being summoned, so is used sparingly. The demon has no control over the demon he has summoned.
 
 Weakness: Running water
 
@@ -20585,17 +20618,20 @@ Infernal Might: 50 (Mentem)
 
 Characteristics: Int +3, Per +2, Pre +3, Com +5, Str –1, Sta 0, Dex –1, Qik –1
 
-Size: 0 Age: n/a (50)
+Size: 0
 
-Confidence Score: 2 (9) Virtues and Flaws: None
+Age: n/a (50)
+
+Confidence Score: 2 (9)
+
+Virtues and Flaws: None
 
 Personality Traits: Slothful +3, Gregarious +2, Retiring –2
 
 Reputations: Excellent adviser on money matters 5 (local)
 
 Combat:
-
-Fist: Init -1, Attack -1, Defense -1, Damage -1
+- Fist: Init -1, Attack -1, Defense -1, Damage -1
 
 Soak: +8
 
@@ -20607,21 +20643,28 @@ Abilities: [Area] Lore 6 (trade routes) (Three of these, for the area where he l
 
 Powers:
 
-Merchant's Blessing, 2 points, Init +0, Mentem: The recipient of this blessing seems trustworthy to most people, and gets a +3 bonus on all social rolls to do with trading. People react to him as if he has an excellent reputation for honesty, fair dealing, and getting high quality goods cheaply. The blessing lasts for a week, unless Bartholomew chooses to renew it.
+*Merchant's Blessing*, 2 points, Init +0, Mentem:<br>
+The recipient of this blessing seems trustworthy to most people, and gets a +3 bonus on all social rolls to do with trading. People react to him as if he has an excellent reputation for honesty, fair dealing, and getting high quality goods cheaply. The blessing lasts for a week, unless Bartholomew chooses to renew it.
 
-Merchant's Curse, 1 point, Init +0, Mentem: The inverse of Merchant's Blessing, this curse makes people treat the victim as if he had a strong reputation for dishonesty, cheating and reneging on deals, and selling shoddy goods at inflated prices. He also has a –3 penalty to all social rolls to do with trading. The curse lasts for a week, unless Bartholomew chooses to renew it.
+*Merchant's Curse*, 1 point, Init +0, Mentem:<br>
+The inverse of Merchant's Blessing, this curse makes people treat the victim as if he had a strong reputation for dishonesty, cheating and reneging on deals, and selling shoddy goods at inflated prices. He also has a –3 penalty to all social rolls to do with trading. The curse lasts for a week, unless Bartholomew chooses to renew it.
 
-Merchant's Knowledge, 0 points, automatic, Mentem: Bartholomew knows what someone in receipt of his curses or blessings is doing with their business.
+*Merchant's Knowledge*, 0 points, automatic, Mentem:<br>
+Bartholomew knows what someone in receipt of his curses or blessings is doing with their business.
 
-Project Blessing, 2 points, Init +0, Vim: Bartholomew can bless a particular commercial venture, so that chance favors it whenever possible. This results in a very successful trading venture. The blessing only lasts for one day, which isn't normally long enough to have an effect, but Bartholomew can renew the blessing every day, if he so chooses.
+*Project Blessing*, 2 points, Init +0, Vim:<br>
+Bartholomew can bless a particular commercial venture, so that chance favors it whenever possible. This results in a very successful trading venture. The blessing only lasts for one day, which isn't normally long enough to have an effect, but Bartholomew can renew the blessing every day, if he so chooses.
 
-Project Curse, 1 point, Init +0, Vim: The inverse of Project Blessing, this effect makes everything that could go wrong, go wrong. It takes at most a month to drive someone to bankruptcy through this power. As for the blessing, the curse only lasts for one day at a time.
+*Project Curse*, 1 point, Init +0, Vim:<br>
+The inverse of Project Blessing, this effect makes everything that could go wrong, go wrong. It takes at most a month to drive someone to bankruptcy through this power. As for the blessing, the curse only lasts for one day at a time.
 
-Coagulation, 3 points, Init –1, Corpus
+*Coagulation*, 3 points, Init –1, Corpus
 
-Obsession, 1 to 3 points, Init -5, Vim: Avarice
+*Obsession*, 1 to 3 points, Init -5, Vim: Avarice
 
-Equipment: Fine clothes, a nice house, trade goods. Encumbrance: 0 (0)
+Equipment: Fine clothes, a nice house, trade goods.
+
+Encumbrance: 0 (0)
 
 Weakness: Ordering
 
@@ -20650,26 +20693,34 @@ Personality Traits: Resentment of Being Controlled +5, Selfish +5, Brave -6
 Reputations: none
 
 Combat:
-
-Dodge: Init +7, Attack n/a, Defense +14, Damage n/a
+- Dodge: Init +7, Attack n/a, Defense +14, Damage n/a
 
 Soak: +1
 
-Fatigue levels: OK, 0, -1, -3, -5, Unconscious Wound Penalties: -1 (1), -3 (2), -5 (3), Incapacitated (4) Abilities: Athletics 5 (flying), Brawl 6 (dodge), Guile 6 (boasts)
+Fatigue levels: OK, 0, -1, -3, -5, Unconscious
+
+Wound Penalties: -1 (1), -3 (2), -5 (3), Incapacitated (4)
+
+Abilities: Athletics 5 (flying), Brawl 6 (dodge), Guile 6 (boasts)
 
 Powers:
 
-Make a Liar of the Boastful, 5 points, Init 0, Vim: If this imp hears a boast and expends all of his Might points, he can immediately grant someone nearby an Ability or Power which will contradict that boast, and cause them to use it immediately. Thus if someone proclaims that she is the most beautiful woman in France, Bomburkhan can immediately make someone more beautiful than the boaster. This power must penetrate Magic Resistance to grant the Ability or power to the person, and that talent lasts for 1–10 rounds only (roll a simple die). A physical change, such as the example given above, lasts until the boaster and the target can no longer see each other.
+*Make a Liar of the Boastful*, 5 points, Init 0, Vim:<br>
+If this imp hears a boast and expends all of his Might points, he can immediately grant someone nearby an Ability or Power which will contradict that boast, and cause them to use it immediately. Thus if someone proclaims that she is the most beautiful woman in France, Bomburkhan can immediately make someone more beautiful than the boaster. This power must penetrate Magic Resistance to grant the Ability or power to the person, and that talent lasts for 1–10 rounds only (roll a simple die). A physical change, such as the example given above, lasts until the boaster and the target can no longer see each other.
 
-Insignificance, 0 points, Init 0, Vim: No Magic, Infernal or Faerie power can force Bomburkhan to use any of his nowers
+*Insignificance*, 0 points, Init 0, Vim:<br>
+No Magic, Infernal or Faerie power can force Bomburkhan to use any of his nowers
 
-Misfortune, 0 points, Init 0, Vim: As an agent of misfortune, the presence of the demon causes the worst luck. In games of sheer chance, the odds always favor the opponent of the imp's target. In other matters where luck is more of a factor than judgement or skill, the target receives a penalty of -2 to any rolls. This misfortune lasts until the demon grows bored or is driven off
+*Misfortune*, 0 points, Init 0, Vim:<br>
+As an agent of misfortune, the presence of the demon causes the worst luck. In games of sheer chance, the odds always favor the opponent of the imp's target. In other matters where luck is more of a factor than judgement or skill, the target receives a penalty of -2 to any rolls. This misfortune lasts until the demon grows bored or is driven off
 
-Coagulation, 1 point, Init –1, Corpus
+*Coagulation*, 1 point, Init –1, Corpus
 
-Obsession, 1 to 3 points, Init -5, Vim: Boastful
+*Obsession*, 1 to 3 points, Init -5, Vim: Boastful
 
-Weakness: Vulnerability (salt) Vis: 1 pawn of Vim, in wings
+Weakness: Vulnerability (salt)
+
+Vis: 1 pawn of Vim, in wings
 
 Appearance: Bomburkhan appears as a jet-black bat, no bigger than a person's hand, but with a pinched and twisted human face protruding from the black fur.
 
@@ -20692,8 +20743,7 @@ Personality Traits: Cruel +6, Stern +5, Implacable +3
 Reputations: None
 
 Combat:
-
-Switch: Init +6, Attack +11, Defense +10, Damage +4
+- Switch: Init +6, Attack +11, Defense +10, Damage +4
 
 Soak: +2
 
@@ -20705,17 +20755,21 @@ Abilities: Leadership 6+2 (children), Single Weapon 5 (switch)
 
 Powers:
 
-Crushing the Will, 2 points, Init 0, Mentem: This power saps the will and vitality of its target, leaving him listless, less energetic and withdrawn. All Personality Trait rolls suffer a —3 modifier, and the target may not spend Confidence points to increase other rolls. Each use of this power lasts until the victim has slept for at least 6 hours.
+*Crushing the Will*, 2 points, Init 0, Mentem:<br>
+This power saps the will and vitality of its target, leaving him listless, less energetic and withdrawn. All Personality Trait rolls suffer a —3 modifier, and the target may not spend Confidence points to increase other rolls. Each use of this power lasts until the victim has slept for at least 6 hours.
 
-Chastise the Disobedient, 0 points, Init +3, Corpus: Every strike of Bordelon's switch inflicts a fearsome sting. Double the wound penalties inflicted by the weapon, although these extra penalties vanish after an hour. Wound penalties caused by any actual wounds she inflicts are healed as normal.
+*Chastise the Disobedient*, 0 points, Init +3, Corpus:<br>
+Every strike of Bordelon's switch inflicts a fearsome sting. Double the wound penalties inflicted by the weapon, although these extra penalties vanish after an hour. Wound penalties caused by any actual wounds she inflicts are healed as normal.
 
-Coagulation, 2 points, Init -1, Corpus
+*Coagulation*, 2 points, Init -1, Corpus
 
-Obsession, 1 to 3 points, Init –5, Vim: Shame
+*Obsession*, 1 to 3 points, Init –5, Vim: Shame
 
-Betrayal of the Heart, 2 points, Init 0, Mentem: Bordelon can see into the hearts of mankind and draw forth the most secret thoughts — people's fears and sins. Each use of this power reveals to the demon one fact about the target to which he would never admit. Truly holy people may be immune to this power, if they have no secrets, no matter how petty.
+*Betrayal of the Heart*, 2 points, Init 0, Mentem:<br>
+Bordelon can see into the hearts of mankind and draw forth the most secret thoughts — people's fears and sins. Each use of this power reveals to the demon one fact about the target to which he would never admit. Truly holy people may be immune to this power, if they have no secrets, no matter how petty.
 
-Whispers Behind the Back, 2 points, Init 0, Mentem: Exactly as the spell Pains of the Perpetual Worry, this power gives the victim a nagging, taunting, painful emotion linked to their secret sins. It is a recurrent sense of anxiety that their secret will be uncovered, and a suspicion that everyone already knows it and is taking about the target behind his back. This power lasts for a month.
+*Whispers Behind the Back*, 2 points, Init 0, Mentem:<br>
+Exactly as the spell Pains of the Perpetual Worry, this power gives the victim a nagging, taunting, painful emotion linked to their secret sins. It is a recurrent sense of anxiety that their secret will be uncovered, and a suspicion that everyone already knows it and is taking about the target behind his back. This power lasts for a month.
 
 Weakness: Protected Group (red-haired women)
 
@@ -20751,11 +20805,16 @@ Abilities: Arabic 5 (understanding)\*, Folk Ken 3 (travelers), Theology: Islam 3
 
 \* Represents level of understanding as the spirit is Mute.
 
-Delusion of the Desert, 1 or 5 points, Init +3, Imaginem: This evil spirit can create illusions of a lost traveler's companions or a welcoming oasis, only to launch itself in fury at an unsuspecting victim. Alternatively it can create images of itself as a humanoid sandstorm with glowing fiery eyes in order to terrify its victims prior to their deaths. A minor illusion which affects an Individual amount of material (such as the demon itself) costs one point, a larger illusion which fills a room costs five points. These visions always have a flaw, however (they smell wrong, can only be seen by one target, etc.).
+Powers:
 
-Elemental Control of Wind, variable points; Init +1; Auram: The buran has control over the winds of nature, which it uses to wreak destruction on the desert fringes. It may create any Creo, Muto, or Rego effect appropriate to Auram, at a cost of 1 Might Point per magnitude of effect. The demon cannot create any effect with a level greater than its Infernal Might, nor duplicate Ritual effects.
+*Delusion of the Desert*, 1 or 5 points, Init +3, Imaginem:<br>
+This evil spirit can create illusions of a lost traveler's companions or a welcoming oasis, only to launch itself in fury at an unsuspecting victim. Alternatively it can create images of itself as a humanoid sandstorm with glowing fiery eyes in order to terrify its victims prior to their deaths. A minor illusion which affects an Individual amount of material (such as the demon itself) costs one point, a larger illusion which fills a room costs five points. These visions always have a flaw, however (they smell wrong, can only be seen by one target, etc.).
 
-Recalcitrance, 0 points, Init constant, Vim: Any attempt to control (but not destroy) the buran with any form of Supernatural Power (magical, Divine, or otherwise) treats the demon's Might as if it were 150% its actual Might, or otherwise has its Ease Factor increased by 50%. For example, a Circular Ward Against Demons of 38th level is needed to stop this demon.
+*Elemental Control of Wind*, variable points; Init +1; Auram:<br>
+The buran has control over the winds of nature, which it uses to wreak destruction on the desert fringes. It may create any Creo, Muto, or Rego effect appropriate to Auram, at a cost of 1 Might Point per magnitude of effect. The demon cannot create any effect with a level greater than its Infernal Might, nor duplicate Ritual effects.
+
+*Recalcitrance*, 0 points, Init constant, Vim:<br>
+Any attempt to control (but not destroy) the buran with any form of Supernatural Power (magical, Divine, or otherwise) treats the demon's Might as if it were 150% its actual Might, or otherwise has its Ease Factor increased by 50%. For example, a Circular Ward Against Demons of 38th level is needed to stop this demon.
 
 Weaknesses: Protected Group (individuals that invoke the Bismillah invocation)
 
@@ -20782,10 +20841,8 @@ Personality Traits: Untamable +5, Intimidating +3
 Reputations: Champion of Hell 1 (Infernal)
 
 Combat:
-
-Cudgel: Init –3, Attack +13, Defense +6, Damage +11
-
-Fist: Init –4, Attack +6, Defense +2, Damage +4
+- Cudgel: Init –3, Attack +13, Defense +6, Damage +11
+- Fist: Init –4, Attack +6, Defense +2, Damage +4
 
 Soak: +15
 
@@ -20797,17 +20854,21 @@ Abilities: Athletics 3 (pursuit), Awareness 4 (foes), Brawl 5 (fist), Great Weap
 
 Powers:
 
-Elemental Control of Earth, variable points, Init +1, Terram: Fimus has control over earth, which he uses to wreak destruction in the world. He may create any Creo, Muto or Rego effect appropriate to Terram, at a cost of 1 might point per magnitude of effect. The demon cannot create any effect with a level greater than his Infernal Might, nor duplicate Ritual effects. He prefers effects such as Wielding the Invisible Sling and Rusted Decay of Ten-Score Years.
+*Elemental Control of Earth*, variable points, Init +1, Terram:<br>
+Fimus has control over earth, which he uses to wreak destruction in the world. He may create any Creo, Muto or Rego effect appropriate to Terram, at a cost of 1 might point per magnitude of effect. The demon cannot create any effect with a level greater than his Infernal Might, nor duplicate Ritual effects. He prefers effects such as Wielding the Invisible Sling and Rusted Decay of Ten-Score Years.
 
-Born of Rock, 0 points, Init 0, Terram: The body of this demon is made from solid rock. This makes it exceedingly heavy and almost impossible to harm with mundane means.
+*Born of Rock*, 0 points, Init 0, Terram:<br>
+The body of this demon is made from solid rock. This makes it exceedingly heavy and almost impossible to harm with mundane means.
 
-Death's Vengeance, 0 points, Init +10, Terram: Upon death, this demon's body explodes, sending shards of debris up to 20 paces in all directions. Treat this as a physical attack against all within range that can be dodged but not otherwise defended against. The Attack Bonus is +12, and the Damage is +15.
+*Death's Vengeance*, 0 points, Init +10, Terram:<br>
+Upon death, this demon's body explodes, sending shards of debris up to 20 paces in all directions. Treat this as a physical attack against all within range that can be dodged but not otherwise defended against. The Attack Bonus is +12, and the Damage is +15.
 
-Coagulation, 1 point, Init -1, Corpus
+*Coagulation*, 1 point, Init -1, Corpus
 
-Obsession, 1 to 3 points, Init -5, Vim: Cowardice
+*Obsession*, 1 to 3 points, Init -5, Vim: Cowardice
 
-Recalcitrance, 0 points, Init constant, Vim: Any attempt to control (but not destroy) the demon with any form of supernatural power (Magical, Divine or otherwise) treats the demon's Might as if it were one and a half times its actual Might, or otherwise has its Ease Factor increased by 50%. For example, a Circular Ward Against Demons of 30th level is needed to stop Fimus.
+*Recalcitrance*, 0 points, Init constant, Vim:<br>
+Any attempt to control (but not destroy) the demon with any form of supernatural power (Magical, Divine or otherwise) treats the demon's Might as if it were one and a half times its actual Might, or otherwise has its Ease Factor increased by 50%. For example, a Circular Ward Against Demons of 30th level is needed to stop Fimus.
 
 Weakness: Abhorrent Material (Cinnamon)
 
@@ -20843,13 +20904,17 @@ Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16-20) (Michael
 
 Abilities: Athletics 5 (running away), Awareness 4 (victims), Craft (practical jokes) 8 (painful and humiliating ones), Folk Ken 5 (figuring out what will make someone most angry), Guile 10 (pretending to be someone else), Intrigue 3 (maneuvering people into his plots)
 
-Change Form, 0 points, Init +0, Corpus: Michael can change his appearance to match that of any human being. The change includes clothes and other equipment, as necessary.
+Powers:
 
-Coagulation, 3 points, Init -1, Corpus
+*Change Form*, 0 points, Init +0, Corpus:<br>
+Michael can change his appearance to match that of any human being. The change includes clothes and other equipment, as necessary.
 
-Obsession, 1 to 3 points, Init -5, Vim: Sensitivity to Mockery
+*Coagulation*, 3 points, Init -1, Corpus
 
-Working Material, 1 point, Init +0, Terram: Michael can create whatever he needs to set up a particular practical joke.
+*Obsession*, 1 to 3 points, Init -5, Vim: Sensitivity to Mockery
+
+*Working Material*, 1 point, Init +0, Terram:<br>
+Michael can create whatever he needs to set up a particular practical joke.
 
 Equipment: Whatever is appropriate to his current role.
 
@@ -20857,7 +20922,9 @@ Encumbrance: Varies
 
 Weakness: Abhorrent Material (salt)
 
-Vis: 2 pawns of Muto in his heart (Infernally tainted) Appearance: Michael appears as he needs to for his latest role. As a demon, he doesn't need, nor does he have, a 'natural' form.
+Vis: 2 pawns of Muto in his heart (Infernally tainted)
+
+Appearance: Michael appears as he needs to for his latest role. As a demon, he doesn't need, nor does he have, a 'natural' form.
 
 Michael (he likes taking the name of a famous angel) is a minor demon who tempts people to wrath. He sets up elaborate, painful, and humiliating practical jokes, and makes sure that he is seen in the form of one of the victim's friends while doing so. If possible, he ensures that the victim sees him, in the form of the friend, laughing at their misfortune before running away.
 
@@ -20884,8 +20951,7 @@ Personality Traits: Envious +3, Proud +2, Calculating +2
 Reputations: None
 
 Combat:
-
-Bite: Init +18, Attack +11, Defense +9, Damage +8
+- Bite: Init +18, Attack +11, Defense +9, Damage +8
 
 Soak: +6
 
@@ -20897,15 +20963,19 @@ Abilities: [Area] Lore 3 (livestock), Bargain 7 (for sins), Brawl 5 (bite), Char
 
 Powers:
 
-Calm Person, 1 point, Init +18, Mentem: Makes the target person unnaturally calm about talking to a large wolf. It doesn't lessen their fear, just the sense that it is something they should act on immediately.
+*Calm Person*, 1 point, Init +18, Mentem:<br>
+Makes the target person unnaturally calm about talking to a large wolf. It doesn't lessen their fear, just the sense that it is something they should act on immediately.
 
-Dominate Wolves, 0 points, Init +18, Animal: Polandrus can establish absolute control over any wolf. The wolf doesn't like it, but Polandrus doesn't care. This power applies to mundane wolves, wolves with Might scores, and to characters who can naturally take the form of a wolf, including shapechangers, lycanthropes, skinchangers, and Bjornaer with wolf heartbeasts, but not including magi who change using spells. Once established, the domination lasts until Polandrus decides to drop it, the dominated wolf enters a Dominion aura of level 3 or higher, or someone dispels the power.
+*Dominate Wolves*, 0 points, Init +18, Animal:<br>
+Polandrus can establish absolute control over any wolf. The wolf doesn't like it, but Polandrus doesn't care. This power applies to mundane wolves, wolves with Might scores, and to characters who can naturally take the form of a wolf, including shapechangers, lycanthropes, skinchangers, and Bjornaer with wolf heartbeasts, but not including magi who change using spells. Once established, the domination lasts until Polandrus decides to drop it, the dominated wolf enters a Dominion aura of level 3 or higher, or someone dispels the power.
 
-Coagulation, 3 points, Init -1, Animal
+*Coagulation*, 3 points, Init -1, Animal
 
-Obsession, 1 to 3 points, Init –5, Vim: Secrecy
+*Obsession*, 1 to 3 points, Init –5, Vim: Secrecy
 
-Equipment: None Encumbrance: 0 (0)
+Equipment: None
+
+Encumbrance: 0 (0)
 
 Weakness: Vulnerability (Holly)
 
@@ -20988,8 +21058,7 @@ Virtues and Flaws: Enduring Constitution, Improved Characteristics, Lesser Infer
 Personality Traits: Vain +6, Brave +1
 
 Combat:
-
-Kick: Init +3, Attack +7, Defense +7, Damage +5
+- Kick: Init +3, Attack +7, Defense +7, Damage +5
 
 Soak: +4
 
@@ -21001,7 +21070,8 @@ Abilities: Athletics 5 (long-distance running), Brawl 3 (hooves)
 
 Powers:
 
-The Unimpeded Traveler, 0 points, Init +1, Animal: This steed is not impeded by poor terrain, and may move at maximum speed along even the poorest of roads, achieving 30 miles a day. It may even cross open water and chasms, unsupported by ground, but can do this only at a trotting pace.
+*The Unimpeded Traveler*, 0 points, Init +1, Animal:<br>
+This steed is not impeded by poor terrain, and may move at maximum speed along even the poorest of roads, achieving 30 miles a day. It may even cross open water and chasms, unsupported by ground, but can do this only at a trotting pace.
 
 Vis: 2 pawns of Animal, in hooves.
 
@@ -21026,8 +21096,7 @@ Virtues and Flaws: Greater Infernal Power\*, Ferocity\* (against intruders), Imp
 Personality Traits: Hatred of Owner +6, Hatred of Humans +5, Hatred of Self +3, Reckless +3, Vigilant +1
 
 Combat:
-
-Bite: Init +2, Attack +11, Defense +10, Damage +1
+- Bite: Init +2, Attack +11, Defense +10, Damage +1
 
 Soak: +2
 
@@ -21039,7 +21108,8 @@ Abilities: Athletics 4 (pursuit), Awareness 4 (keeping watch), Brawl 6 (bite), H
 
 Powers:
 
-Spit Fire, 4 points, Init +6, Ignem: The hound may spit a bolt of fire at its opponents; which does +15 damage to the individual it hits. The creature may bite one opponent and spit fire at another in the same round.
+*Spit Fire*, 4 points, Init +6, Ignem:<br>
+The hound may spit a bolt of fire at its opponents; which does +15 damage to the individual it hits. The creature may bite one opponent and spit fire at another in the same round.
 
 Vis: 2 pawns of Vim, one in each head.
 
@@ -21061,11 +21131,14 @@ Creatures with Divine Might are never bothered by The Gift. They judge people ba
 
 All angels possess the following powers:
 
-*Angelic Mantle*, 2 points, +12, Corpus: Angels use this power to manifest in the mundane world and appear to take on mortal flesh. In reality, this form is entirely formed from their intellect, but appears and acts exactly like real flesh. While in this "material" form, they must follow the mundane world's natural laws, and so are limited, with Characteristic and Soak scores, and Fatigue and Wound levels. Although angels are genderless, their Mantles normally do have a gender; while in their Mantle, angels may breed, and sire or bear children (although no angel has done so since the flood), although they do not age. If they are "killed" while in their Mantle, they return to their spiritual form, but may if they choose (and have the necessary Might Points) immediately use this power again. An angel's Mantle may appear as anything.
+*Angelic Mantle*, 2 points, +12, Corpus:<br>
+Angels use this power to manifest in the mundane world and appear to take on mortal flesh. In reality, this form is entirely formed from their intellect, but appears and acts exactly like real flesh. While in this "material" form, they must follow the mundane world's natural laws, and so are limited, with Characteristic and Soak scores, and Fatigue and Wound levels. Although angels are genderless, their Mantles normally do have a gender; while in their Mantle, angels may breed, and sire or bear children (although no angel has done so since the flood), although they do not age. If they are "killed" while in their Mantle, they return to their spiritual form, but may if they choose (and have the necessary Might Points) immediately use this power again. An angel's Mantle may appear as anything.
 
-*Enfolding*, 2 or 10 points, +10, Vim: When the pious are in danger or torment, the angel may grant them comfort, imparting a moment of peace and mercy. This power renders the target's soul wholly safe and protected for a short time. While Enfolded the target's soul (and mind) may not be targeted by any supernatural power of any kind. This power only lasts for a few scant moments, but for the target it is timeless and can seem to stretch to a lifetime. An angel may also Enfold a person's body (costing 10 Might points), rendering them completely invulnerable to magic, pain, damage, fatigue, wounds, or death, although this power only lasts for a very short period of time (no longer than one combat round). This power is most often used on a member of the faithful who is about to be martyred or suffer terribly.
+*Enfolding*, 2 or 10 points, +10, Vim:<br>
+When the pious are in danger or torment, the angel may grant them comfort, imparting a moment of peace and mercy. This power renders the target's soul wholly safe and protected for a short time. While Enfolded the target's soul (and mind) may not be targeted by any supernatural power of any kind. This power only lasts for a few scant moments, but for the target it is timeless and can seem to stretch to a lifetime. An angel may also Enfold a person's body (costing 10 Might points), rendering them completely invulnerable to magic, pain, damage, fatigue, wounds, or death, although this power only lasts for a very short period of time (no longer than one combat round). This power is most often used on a member of the faithful who is about to be martyred or suffer terribly.
 
-*Envisioning*, 1 or 5 points, +0, Mentem: This power allows angels to appear in the dreams of a target, or even while awake, and impart a Divine message. This is different to a miraculous vision, which occurs through direct Divine agency. An Envisioning that takes place while the target is awake costs five points and may seem like a daydream, or a vivid or frightening vision, depending on what message the angel intends. Anyone may be the target of Envisioning, pious and impious, pagan and infernalist. Envisioning may occur over any distance.
+*Envisioning*, 1 or 5 points, +0, Mentem:<br>
+This power allows angels to appear in the dreams of a target, or even while awake, and impart a Divine message. This is different to a miraculous vision, which occurs through direct Divine agency. An Envisioning that takes place while the target is awake costs five points and may seem like a daydream, or a vivid or frightening vision, depending on what message the angel intends. Anyone may be the target of Envisioning, pious and impious, pagan and infernalist. Envisioning may occur over any distance.
 
 ### Gabriel, the Archangel of Prophecy
 
@@ -21073,7 +21146,9 @@ Divine Might: 100 (Mentem)
 
 Characteristics: Int +10, Per +10, Pre +10, Com +10, Str +8, Sta +8, Dex +8, Qik +8
 
-Size: 0 Age: n/a
+Size: 0
+
+Age: n/a
 
 Confidence Score: 7 (50)
 
@@ -21084,20 +21159,26 @@ Personality Traits: Compassionate +3, Intellectual +3, Just +3, Love of God +5, 
 Reputations: Messenger of God 5, among Jews, Christians and Muslims
 
 Combat:
+- Fist: Init +8, Attack +19, Defense +19, Damage +8
 
-Fist: Init +8, Attack +19, Defense +19, Damage +8 Soak: +8
+Soak: +8
 
-Fatigue levels: OK, 0/0/0, -1/-1, -3, -5, Unconscious Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16–20)
+Fatigue levels: OK, 0/0/0, -1/-1, -3, -5, Unconscious
+
+Wound Penalties: -1 (1-5), -3 (6-10), -5 (11-15), Incapacitated (16–20)
 
 Abilities: Awareness 10 (the uneducated), Charm 10 (pupils), Brawl 10 (fist), Leadership 10 (calling attention), Teaching 15 (Theology), All knowledge at a score of 15
 
 Powers:
 
-Enlighten, variable, Init +0, Mentem: Gabriel can implant any Knowledge into the mind of another, at a cost of 1 Might for every experience point implanted. He may not give any character knowledge that takes their Ability score over 15.
+*Enlighten*, variable, Init +0, Mentem:<br>
+Gabriel can implant any Knowledge into the mind of another, at a cost of 1 Might for every experience point implanted. He may not give any character knowledge that takes their Ability score over 15.
 
-Spirit Form, 0 points, Init +30, Vim: Gabriel can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
+*Spirit Form*, 0 points, Init +30, Vim:<br>
+Gabriel can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
 
-Subtle Form, 0 points, Init +0, Corpus: Gabriel can change his appearance to look like any human being. His statistics do not change.
+*Subtle Form*, 0 points, Init +0, Corpus:<br>
+Gabriel can change his appearance to look like any human being. His statistics do not change.
 
 Equipment: Robes Encumbrance: 0 (0)
 
@@ -21119,11 +21200,16 @@ Characteristics: Int +3, Per +3, Pre +3, Com +3, Str +2, Sta +5, Dex +1, Qik +1
 
 Confidence Score: 2 (15)
 
-Virtues and Flaws: Greater Immunity (Fire) Personality Traits: Love of God +5, Grim +4, Remorseless +3
+Virtues and Flaws: Greater Immunity (Fire)
+
+Personality Traits: Love of God +5, Grim +4, Remorseless +3
 
 Reputations: Scourge of the Impious 3, amongst Jews.
 
-Flaming Fist\*: Init +1, Attack +6, Defense +6, Damage +7 This fire is natural and ignores Magic Resistance, although not Soak from Arts.
+Combat:
+- Flaming Fist\*: Init +1, Attack +6, Defense +6, Damage +7
+
+\*This fire is natural and ignores Magic Resistance, although not Soak from Arts.
 
 Fatigue levels: OK, 0, -1, -3, -5, Unconscious
 
@@ -21133,13 +21219,18 @@ Abilities: Brawl 4 (fists), Dominion Lore 6 (angels), Theology 6 (sin)
 
 Powers:
 
-Chastise the Sinful, 5 points, +1, Corpus: As Curse of the Unportended Plaque.
+*Chastise the Sinful*, 5 points, +1, Corpus:<br>
+As Curse of the Unportended Plaque.
 
-Cloud form, 0 points, +30, Auram: Can take on the form of a cloud at will, making him immune to all physical attacks (although he may be targeted by Auram spells).
+*Cloud form*, 0 points, +30, Auram:<br>
+Can take on the form of a cloud at will, making him immune to all physical attacks (although he may be targeted by Auram spells).
 
-Fiery Form, 0 points, +30, Ignem: May become a fiery man at will, doing +5 damage to anyone that approaches within 5 feet.
+*Fiery Form*, 0 points, +30, Ignem:<br>
+May become a fiery man at will, doing +5 damage to anyone that approaches within 5 feet.
 
-Equipment: None. Encumbrance: 0 (0)
+Equipment: None.
+
+Encumbrance: 0 (0)
 
 Vis: 4 pawns Corpus throughout body, 2 pawns Ignem in veins.
 
@@ -21155,7 +21246,9 @@ Divine Might: 20 (Animal)
 
 Characteristics: Int 0, Per +3, Pre +3, Com -2, Str +2, Sta +3, Dex +1, Qik +2
 
-Size: -1 Age: n/a
+Size: -1
+
+Age: n/a
 
 Confidence Score: 1 (6)
 
@@ -21166,8 +21259,7 @@ Personality Traits: Loyal +3, Patient +2, Helpful +2
 Reputations: None
 
 Combat:
-
-Bite: Init +8, Attack +11, Defense +16, Damage +8
+- Bite: Init +8, Attack +11, Defense +16, Damage +8
 
 Soak: +7
 
@@ -21179,9 +21271,12 @@ Abilities: Area Lore 5 (food sources), Awareness 5 (threats to his charge), Braw
 
 Powers:
 
-Perfect Defender, 1 point, Init +20, Animal: If Lupersus is acting as a defender to another character in combat, he can use this power to get a +10 bonus to Defense for the duration of the combat. For these purposes, the combat lasts until Lupersus is disengaged.
+*Perfect Defender*, 1 point, Init +20, Animal:<br>
+If Lupersus is acting as a defender to another character in combat, he can use this power to get a +10 bonus to Defense for the duration of the combat. For these purposes, the combat lasts until Lupersus is disengaged.
 
-Equipment: None Encumbrance: 0 (0)
+Equipment: None
+
+Encumbrance: 0 (0)
 
 Vis: 4 pawns of Animal, in the whole body.
 
@@ -21195,21 +21290,20 @@ Divine Might: 25 (Corpus)
 
 Characteristics: Int +2, Per +2, Pre +2, Com +2, Str 0, Sta +1, Dex +2, Qik +2
 
-Size: 0 Age: n/a (33)
+Size: 0
+
+Age: n/a (33)
 
 Confidence Score: 2 (10)
 
 Virtues and Flaws: Ways of the (Local Environment); Animal Ken, Wilderness Sense
 
-Personality Traits: Compassionate +3, Just +3,
-
-Love of God +5
+Personality Traits: Compassionate +3, Just +3, Love of God +5
 
 Reputations: None
 
 Combat:
-
-Fist: Init +2, Attack +8, Defense +8, Damage +0
+- Fist: Init +2, Attack +8, Defense +8, Damage +0
 
 Soak: +1
 
@@ -21221,13 +21315,17 @@ Abilities: Animal Handling 8 (horses), Animal Ken 8 (horses), Athletics 8 (climb
 
 Powers:
 
-Calming Touch, 3 points, Init +0, Animal/Mentem: By touching the target, Nasir can calm their fears, making them feel reassured in the face of dangerous terrain.
+*Calming Touch*, 3 points, Init +0, Animal/Mentem:<br>
+By touching the target, Nasir can calm their fears, making them feel reassured in the face of dangerous terrain.
 
-Spirit Form, 0 points, Init +30, Vim: Nasir can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
+*Spirit Form*, 0 points, Init +30, Vim:<br>
+Nasir can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
 
-Steadying Hand, 5 points, Init +30, Animal/Corpus: By touching the target, Nasir can assure that their footsteps are firm and that they can cross the most impassable of terrain. The target will not slip or fall as long as contact is maintained.
+*Steadying Hand*, 5 points, Init +30, Animal/Corpus:<br>
+By touching the target, Nasir can assure that their footsteps are firm and that they can cross the most impassable of terrain. The target will not slip or fall as long as contact is maintained.
 
-Subtle Form, 0 points, Init +0, Corpus: Nasir can change his appearance to look like any human being. His statistics do not change.
+*Subtle Form*, 0 points, Init +0, Corpus:<br>
+Nasir can change his appearance to look like any human being. His statistics do not change.
 
 Equipment: Travelling clothes
 
@@ -21249,17 +21347,20 @@ Divine Might: 50 (Corpus)
 
 Characteristics: Int +5, Per +5, Pre +5, Com +5, Str +5, Sta +5, Dex +5, Qik +5
 
-Size: +1 Age: n/a (30)
+Size: +1
 
-Confidence Score: 3 (18) Virtues and Flaws: None
+Age: n/a (30)
+
+Confidence Score: 3 (18)
+
+Virtues and Flaws: None
 
 Personality Traits: Just +3, Love of God +5, Curious +2, Merciful +2, Curious +2, Merciful +2
 
 Reputations: None
 
 Combat:
-
-Flaming Greatsword: Init +18, Attack +21, Defense +18, Damage +25 (Note that both the greatsword and the fire are natural, because God made them that way, and thus not magically resisted.)
+- Flaming Greatsword: Init +18, Attack +21, Defense +18, Damage +25 (Note that both the greatsword and the fire are natural, because God made them that way, and thus not magically resisted.)
 
 Soak: +20
 
@@ -21271,13 +21372,18 @@ Abilities: Awareness 5 (casting magic), Charm 3 (magi), Divine Lore 10 (angels),
 
 Powers:
 
-Magic, 1 or more points, lnit +18, by effect: Seferiel can duplicate any effect of Hermetic magic, at a cost of 1 Might Point for every two magnitudes of the Hermetic effect. There is no limit, other than his remaining Might Pool, on the number of points he can spend on a single effect. This includes ritual effects, for which he needs neither vis nor long periods of time.
+*Magic*, 1 or more points, Init +18, by effect:<br>
+Seferiel can duplicate any effect of Hermetic magic, at a cost of 1 Might Point for every two magnitudes of the Hermetic effect. There is no limit, other than his remaining Might Pool, on the number of points he can spend on a single effect. This includes ritual effects, for which he needs neither vis nor long periods of time.
 
-Spirit Form, 0 points, Init +30, Vim: Seferiel can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
+*Spirit Form*, 0 points, Init +30, Vim:<br>
+Seferiel can become a creature of pure spirit as he wishes. This means that he is unable to affect things physically, or be affected physically.
 
-Subtle Form, 0 points, Init +0, Corpus: Seferiel can change his appearance to look like any human being. His statistics do not change.
+*Subtle Form*, 0 points, Init +0, Corpus:<br>
+Seferiel can change his appearance to look like any human being. His statistics do not change.
 
-Equipment: Shining white robes, flaming greatsword Encumbrance: 0 (0)
+Equipment: Shining white robes, flaming greatsword
+
+Encumbrance: 0 (0)
 
 Vis: 10 pawns of Ignem in the sword.
 
@@ -21379,8 +21485,7 @@ Much more information about the Church is available in *The Church*.
 
 There is one God, eternal and unchanging, who created the world from nothing and sustains it from moment to moment. This God is three persons, the Father, Son, and Holy Spirit. The Son became a human being as Jesus Christ, an event called the Incarnation, which is considered the most important event in history. Jesus Christ died on the cross, the Crucifixion, and by his death paid the penalty for all the sins committed by human beings. On the third day, he rose from the dead, in the Resurrection, and forty days later he ascended to heaven.
 
-In the beginning, God created two humans, Adam and Eve, and placed them in the Garden of Eden. There, they were tempted by Satan and sinned, and this Original Sin tainted all of their descendants. Where once all of nature had served humankind, now it turned against them. Human beings in Original Sin can do nothing truly good, because their motives are always
-tainted. Baptism washes away that stain, and fits a person to receive God's grace, which grants the ability to do good.
+In the beginning, God created two humans, Adam and Eve, and placed them in the Garden of Eden. There, they were tempted by Satan and sinned, and this Original Sin tainted all of their descendants. Where once all of nature had served humankind, now it turned against them. Human beings in Original Sin can do nothing truly good, because their motives are always tainted. Baptism washes away that stain, and fits a person to receive God's grace, which grants the ability to do good.
 
 Good acts are those which accord with God's will, and tend to His glory, while evil acts are those which do not. The seven deadly sins are the basic roots of almost all sins committed by human beings, and the Church warns against them in particular. They are Avarice, Envy, Greed, Lust, Pride, Sloth, and Wrath. On the other side, there are the three theological virtues: Faith, Hope, and Love, and the greatest of these is Love.
 
@@ -22487,7 +22592,6 @@ Twilight: Divide the number of Twilight Points by three, and use this as the War
 | 9 | 6.1% | Juggling five full cups of wine while four dancing bears cavort around you. |
 | 10 | 6.5% | Casting a spell in the church of the Holy Sepulcher in Jerusalem. |
 
-
 ### Travel Distance
 
 *City and Guild p80, Definitive Edition [p408](#travel)*
@@ -22741,7 +22845,6 @@ EQUAL OR EXCEED STABLE EASE FACTOR: Wound remains at same level, +3 bonus to fut
 
 BELOW STABLE EASE FACTOR: Wound becomes one level worse
 
-
 | Wound Level   | Interval   | STABLE EASE FACTOR | IMPROVEMENT EASE FACTOR |
 | ------------- | ---------- | --------------------- | ----------------------- |
 | Light         | One week   | 4                     | 10                      |
@@ -22984,7 +23087,6 @@ If you're making up a new spell …
 | Target's nativity horoscope              | +2                  |
 | Symbolic representation of target        | +2                  |
 
-
 | Arcane Connection      | Bonus to Multiplier |
 | ---------------------- | ------------------- |
 | Lasts hours or days    | +1                  |
@@ -23021,7 +23123,6 @@ SUPERNATURAL CREATURE: Might Score + Aura Modifier
 | 31–40 | Very powerful. Faerie lords, minor dragons, and the like.             |
 | 41–50 | Extremely powerful. Pagan deities, major dragons, etc.                |
 | 51–60 | Earth-shakingly important figures. Great dragons, Jove himself.       |
-
 
 #### Fatigue
 
@@ -24513,7 +24614,7 @@ p168-170 p391
 | Enigma, The | [13](#house-criamon), [235](#criamon--the-enigma) |
 | Enigma, The (Virtue) | [78](#the-enigma) |
 | Enigmatic Wisdom (Ability) | [164](#enigmatic-wisdom), [236](#enigmatic-wisdom-1) |
-| Entertainments, Noble | [508](#noble-entertainments) |
+| Entertainments, Noble | [508](#entertainments) |
 | Enticer of Multitudes (Virtue) | [78](#enticer-of-multitudes) |
 | Entrancement (Ability) | [164](#entrancement-1), [167](#entrancement-and-induction) |
 | Entrancement (Virtue) | [78](#entrancement) |
@@ -25193,9 +25294,6 @@ p168-170 p391
 | Practice Experience | [377](#practice) |
 | Praeco | [22](#tribunals) |
 | Pralix | [11](#damhan-allaidh-and-the-ordo-miscellanea) |
-
-| **Entry** | **Page** |
-|-----------|----------|
 | Precise Casting | [226](#precise-casting) |
 | Premonitions (Ability) | [170](#premonitions-1) |
 | Premonitions (Virtue) | [104](#premonitions) |
