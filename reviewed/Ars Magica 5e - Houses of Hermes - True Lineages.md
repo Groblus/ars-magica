@@ -456,7 +456,7 @@ A prospective Primus must meet several qualifications. First, he must be a magus
 > 
 > **Abilities:** Athletics 3 (spelunking), Artes Liberales 1 (Geometry), Awareness 2 (ambushes), Brawl 2 (dodging), Concentration 1 (when wounded), Faerie Lore 1 (mountain faeries), Guile 2 (hiding past activities), Intrigue 2 (+2) (detecting other's interests), Kingdom of Aragon Lore 2 (mountains), Latin 4 (cartographical terms), Parma Magica 3 (Mentem), Penetration 3 (Mentem), Magic Lore 2 (Mercurian temples), Magic Theory 3 (inventing spells), Ride 1 (distances), Second Sight 1 (ghosts), Spanish 5 (flowery speech), Survival 2 (mountains)
 > 
-> **Arts:** Cr 0, In 9, Mu 2, Pe 8, Re 3; An 0, Aq 0, Au 0, Co 6, He 0, Ig 1, Im 1, Me 10, Te 0, Vm 7
+> **Arts:** Cr 0, In 9, Mu 2, Pe 8, Re 3; An 0, Aq 0, Au 0, Co 6, He 0, Ig 1, Im 1, Me 10, Te 0, Vi 7
 > 
 > **Twilight Scars:** None
 > 
