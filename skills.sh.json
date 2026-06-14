@@ -1,0 +1,13 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Ars Magica",
+      "description": "Skills for navigating the Ars Magica Definitive Edition and 5e corpus.",
+      "skills": [
+        "ars-magica-corpus-navigator"
+      ]
+    }
+  ]
+}

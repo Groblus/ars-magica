@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ars Magica Corpus Inventory</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --clay: #D97757;
+      --olive: #788C5D;
+      --oat: #E3DACC;
+      --slate: #141413;
+      --slate-2: #2A2A28;
+      --paper: #FAF7F2;
+      --muted: #8B8680;
+      --warn: #B8893A;
+      --crit: #A8442B;
+      --ink-soft: rgba(20, 20, 19, 0.72);
+      --line: rgba(20, 20, 19, 0.14);
+      --card: rgba(255, 252, 246, 0.84);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 8% 4%, rgba(217, 119, 87, 0.20), transparent 32rem),
+        radial-gradient(circle at 92% 12%, rgba(120, 140, 93, 0.18), transparent 34rem),
+        linear-gradient(135deg, #faf7f2 0%, #efe5d6 100%);
+      color: var(--slate);
+      line-height: 1.55;
+    }
+
+    header {
+      padding: 44px min(6vw, 72px) 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px;
+      gap: 28px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1, h2, h3 { line-height: 1.1; margin: 0; }
+
+    h1 {
+      font-size: clamp(2.3rem, 7vw, 5.9rem);
+      letter-spacing: -0.07em;
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.5rem);
+      margin-bottom: 16px;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.015em;
+    }
+
+    p { margin: 0 0 14px; color: var(--ink-soft); }
+
+    a { color: #8f472e; }
+
+    .eyebrow {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      color: var(--clay);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo {
+      width: 136px;
+      height: 136px;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 26px rgba(20, 20, 19, 0.16));
+      justify-self: end;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+
+    section {
+      margin: 24px 0;
+      padding: clamp(18px, 3vw, 30px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 18px 60px rgba(20, 20, 19, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(227, 218, 204, 0.55);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(250, 247, 242, 0.78);
+      border: 1px solid var(--line);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.75rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      margin: 2px 4px 2px 0;
+      white-space: nowrap;
+    }
+
+    .p0 { border-left: 5px solid var(--crit); }
+    .p1 { border-left: 5px solid var(--clay); }
+    .p2 { border-left: 5px solid var(--warn); }
+    .p3 { border-left: 5px solid var(--olive); }
+    .p4 { border-left: 5px solid var(--muted); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 18px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--slate-2);
+      background: rgba(227, 218, 204, 0.52);
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    code {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.88em;
+      background: rgba(227, 218, 204, 0.58);
+      padding: 2px 5px;
+      border-radius: 6px;
+    }
+
+    .table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid var(--line); }
+
+    .callout {
+      border-left: 5px solid var(--clay);
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(217, 119, 87, 0.10);
+      margin: 16px 0;
+    }
+
+    .mermaid {
+      background: rgba(255, 252, 246, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      overflow: auto;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      background: rgba(250, 247, 242, 0.72);
+      border-radius: 18px;
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 18px;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: rgba(250, 247, 242, 0.9);
+      color: var(--slate);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      cursor: pointer;
+    }
+
+    button.active {
+      background: var(--slate);
+      color: var(--paper);
+    }
+
+    .muted { color: var(--muted); }
+    .small { font-size: 0.88rem; }
+    .icon { width: 18px; height: 18px; vertical-align: -3px; }
+
+    @media (max-width: 850px) {
+      header { grid-template-columns: 1fr; }
+      .logo { justify-self: start; width: 96px; height: 96px; }
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      table { font-size: 0.88rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="eyebrow"><i data-lucide="book-open" class="icon"></i> Sparse checkout inventory - generated 2026-06-14</div>
+      <h1>Ars Magica Rules Corpus: First Exploration</h1>
+      <p style="max-width: 820px; font-size: 1.12rem; margin-top: 18px;">A human-readable map of the reviewed Markdown books, edition freshness, first-time reading priorities, and practical ideas for turning this corpus into agent-friendly tools for a Definitive Edition saga.</p>
+      <div class="hero-grid">
+        <div class="stat"><strong>25</strong><span>reviewed books</span></div>
+        <div class="stat"><strong>153k</strong><span>reviewed lines</span></div>
+        <div class="stat"><strong>20</strong><span>DE/5e usable</span></div>
+        <div class="stat"><strong>5</strong><span>legacy 3e/4e</span></div>
+      </div>
+    </div>
+    <img class="logo" src="https://raw.githubusercontent.com/Groblus/ars-magica/main/arm5openlicenselogo.png" alt="Ars Magica Open License logo">
+  </header>
+
+  <main>
+    <section>
+      <h2>Executive Summary</h2>
+      <div class="grid-2">
+        <div class="card p0">
+          <h3><i data-lucide="landmark" class="icon"></i> Rules authority</h3>
+          <p>Use <code>reviewed/Ars Magica - Definitive Edition (Core Rules).md</code> as the baseline. It is marked done, includes errata notes, has convenience links, indexes, a reference guide, and 16 major rules/setting chapters.</p>
+        </div>
+        <div class="card p1">
+          <h3><i data-lucide="route" class="icon"></i> First-time path</h3>
+          <p>Start with the Definitive core. Add <code>Covenants</code> early. Use <code>True Lineages</code> and <code>Societates</code> for most initial magus concepts and Hermetic politics.</p>
+        </div>
+        <div class="card p3">
+          <h3><i data-lucide="sparkles" class="icon"></i> Strong AI potential</h3>
+          <p>The corpus is heading-rich and table-heavy. Best next step is a heading/chapter index, followed by citation-preserving chunks and structured extraction of spells, virtues, flaws, abilities, covenant options, story seeds, and stat blocks.</p>
+        </div>
+        <div class="card p4">
+          <h3><i data-lucide="archive" class="icon"></i> Outdated material</h3>
+          <p>The 3e and 4e books are not first-pass rules sources. Treat them as legacy regional lore, scenario inspiration, and conversion targets. Do not surface their mechanics as current without warning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Corpus Flow</h2>
+      <div class="mermaid">
+flowchart LR
+  Root["Sparse checkout<br/>root files"] --> Reviewed["reviewed/<br/>25 Markdown books"]
+  Reviewed --> Core["Definitive Edition Core<br/>P0 rules authority"]
+  Reviewed --> FiveE["19 x 5e sourcebooks<br/>compatible support"]
+  Reviewed --> Legacy["5 x 3e/4e books<br/>legacy lore"]
+  Core --> FirstPlay["First-time play path"]
+  FiveE --> Packs["Agent knowledge packs"]
+  Legacy --> Conversion["Conversion warnings<br/>and lore salvage"]
+  Packs --> Tools["Rules guide<br/>Covenant builder<br/>Storyguide assistant<br/>Gazetteer"]
+      </div>
+    </section>
+
+    <section>
+      <h2>Inventory By Freshness</h2>
+      <p>The table is intentionally pragmatic: it answers what to read or use first if the goal is a Definitive Edition game in a few weeks.</p>
+      <div class="filter-row" aria-label="table filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="P0">P0 Core</button>
+        <button data-filter="P1">P1 Early</button>
+        <button data-filter="P2">P2 Soon</button>
+        <button data-filter="P3">P3 Optional</button>
+        <button data-filter="P4">P4 Legacy/Advanced</button>
+      </div>
+      <div class="table-wrap">
+        <table id="inventory">
+          <thead>
+            <tr><th>Priority</th><th>Book</th><th>Status</th><th>Category</th><th>Lines</th><th>Use</th></tr>
+          </thead>
+          <tbody>
+            <tr data-priority="P0"><td>P0</td><td>Ars Magica - Definitive Edition (Core Rules)</td><td>Definitive</td><td>Core</td><td>25,723</td><td>Start here. Rules, characters, magic, covenants, stories, sagas, indexes.</td></tr>
+            <tr data-priority="P1"><td>P1</td><td>Ars Magica 5e - Covenants</td><td>5e compatible</td><td>Toolkit</td><td>6,613</td><td>Best first supplement for covenant creation and long-term play.</td></tr>
+            <tr data-priority="P1"><td>P1</td><td>Ars Magica 5e - Houses of Hermes - True Lineages</td><td>5e compatible</td><td>Houses</td><td>5,011</td><td>Bonisagus, Guernicus, Mercere, Tremere, Code, Order institutions.</td></tr>
+            <tr data-priority="P1"><td>P1</td><td>Ars Magica 5e - Houses of Hermes - Societates</td><td>5e compatible</td><td>Houses</td><td>5,825</td><td>Flambeau, Jerbiton, Tytalus, Ex Miscellanea; many player concepts.</td></tr>
+            <tr data-priority="P2"><td>P2</td><td>Ars Magica 5e - Houses of Hermes - Mystery Cults</td><td>5e compatible</td><td>Houses</td><td>5,105</td><td>Bjornaer, Criamon, Merinita, Verditius; higher-complexity options.</td></tr>
+            <tr data-priority="P2"><td>P2</td><td>Ars Magica 5e - Realms of Power - Magic</td><td>5e compatible</td><td>Realm</td><td>8,820</td><td>Magic auras, magical beings, creatures, vis, realm depth.</td></tr>
+            <tr data-priority="P2"><td>P2</td><td>Ars Magica 5e - Lords of Men</td><td>5e compatible</td><td>Mundane society</td><td>6,225</td><td>Nobility, knights, warfare, feudal pressure.</td></tr>
+            <tr data-priority="P2"><td>P2</td><td>Ars Magica 5e - The Church</td><td>5e compatible</td><td>Mundane/Divine society</td><td>5,370</td><td>Church institutions, clergy, monasteries, holy orders.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Realms of Power - The Divine (Revised)</td><td>5e compatible</td><td>Realm</td><td>7,696</td><td>Miracles, angels, holy characters, Divine auras.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Realms of Power - Faerie</td><td>5e compatible</td><td>Realm</td><td>7,960</td><td>Faerie logic, Arcadia, faerie stories, Merinita relevance.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Realms of Power - The Infernal</td><td>5e compatible</td><td>Realm</td><td>6,671</td><td>Demons, sin, corruption, infernal antagonists.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - City & Guild</td><td>5e compatible</td><td>Mundane society</td><td>4,004</td><td>Towns, trade, guilds, crafts, urban covenants.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Art & Academe</td><td>5e compatible</td><td>Mundane society</td><td>5,264</td><td>Universities, medicine, philosophy, scholarship, art.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Magic - Apprentices</td><td>5e compatible</td><td>Toolkit</td><td>1,897</td><td>Children, apprenticeships, gauntlets, young characters.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - The Mysteries (Revised)</td><td>5e compatible</td><td>Toolkit</td><td>5,702</td><td>Mystery cults, initiations, alchemy, astrology, theurgy.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Magic - Hedge Magic (Revised)</td><td>5e compatible</td><td>Toolkit</td><td>7,511</td><td>Non-Hermetic traditions, rivals, allies, integration stories.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Mythic Locations</td><td>5e compatible</td><td>Adventure/location</td><td>6,907</td><td>Drop-in locations, NPCs, hooks, scenario inspiration.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - Guardians of the Forests - The Rhine Tribunal</td><td>5e compatible</td><td>Tribunal</td><td>4,724</td><td>Use if the saga is in Rhine/Germany.</td></tr>
+            <tr data-priority="P3"><td>P3</td><td>Ars Magica 5e - The Lion and the Lily - The Normandy Tribunal</td><td>5e compatible</td><td>Tribunal</td><td>5,108</td><td>Use if the saga is in Normandy/northern France.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 5e - Transforming Mythic Europe</td><td>5e compatible, advanced</td><td>Campaign transformation</td><td>4,882</td><td>Long-saga transformation projects; not a first-time baseline.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 4e - Heirs to Merlin - Stonehenge Tribunal</td><td>4e legacy</td><td>Tribunal</td><td>3,624</td><td>England/Wales lore salvage; convert mechanics.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 4e - Sanctuary of Ice - The Greater Alps Tribunal</td><td>4e legacy</td><td>Tribunal</td><td>3,274</td><td>Greater Alps lore salvage; convert mechanics.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 4e - Icelandic Wars - Land of Fire and Ice</td><td>4e legacy</td><td>Scenario/location</td><td>440</td><td>Iceland scenario material; low first-time value.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 3e - Lion of the North - The Loch Leglean Tribunal</td><td>3e legacy</td><td>Tribunal</td><td>5,734</td><td>Scotland lore salvage; rules assumptions are outdated.</td></tr>
+            <tr data-priority="P4"><td>P4</td><td>Ars Magica 3e - Tribunals of Hermes - Rome</td><td>3e legacy</td><td>Tribunal</td><td>3,137</td><td>Italy/Rome lore salvage; 3e tone may clash with later editions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>Reading Paths</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>New Player</h3>
+          <p><span class="chip">Core: intro</span><span class="chip">characters</span><span class="chip">virtues/flaws</span><span class="chip">abilities</span><span class="chip">basic magic</span></p>
+          <p>Goal: understand what a magus, companion, and grog are; pick a concept; avoid deep lab and saga machinery until later.</p>
+        </div>
+        <div class="card">
+          <h3>New Storyguide</h3>
+          <p><span class="chip">Core: stories</span><span class="chip">sagas</span><span class="chip">realms</span><span class="chip">Covenants</span><span class="chip">one tribunal</span></p>
+          <p>Goal: build a first covenant, pick a local pressure, prepare a few seasonal hooks, and decide how much history to research.</p>
+        </div>
+        <div class="card">
+          <h3>Hermetic Politics</h3>
+          <p><span class="chip">Order of Hermes</span><span class="chip">True Lineages</span><span class="chip">Societates</span><span class="chip">tribunal book</span></p>
+          <p>Goal: make the Order feel like an institution with laws, rivals, messengers, judges, factions, and consequences.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Recommended first few weeks:</strong> use the core book for rules, create a shared covenant with lightweight `Covenants` support, then let each player optionally skim their House book rather than reading the whole library.
+      </div>
+    </section>
+
+    <section>
+      <h2>Definitive Core Map</h2>
+      <div class="mermaid">
+flowchart TB
+  Intro["1 Introduction"] --> Order["2 Order of Hermes"]
+  Order --> Characters["3 Characters"]
+  Characters --> VF["4 Virtues and Flaws"]
+  VF --> Abilities["5 Abilities"]
+  Abilities --> Covenants["6 Covenants"]
+  Covenants --> Magic["7 Hermetic Magic"]
+  Magic --> Lab["8 Laboratory"]
+  Magic --> Spells["9 Spells"]
+  Lab --> LongTerm["10 Long Term Events"]
+  Spells --> Obstacles["11 Obstacles"]
+  Obstacles --> Realms["12 Realms"]
+  Realms --> Bestiary["13 Bestiary"]
+  Bestiary --> Europe["14 Mythic Europe"]
+  Europe --> Stories["15 Stories"]
+  Stories --> Sagas["16 Sagas"]
+  Sagas --> Ref["Reference Guide and Indexes"]
+      </div>
+    </section>
+
+    <section>
+      <h2>Creative Build Ideas</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3><i data-lucide="database" class="icon"></i> Corpus Index</h3>
+          <p>Create <code>ars-magica-corpus-index.json</code> with title, edition, line count, completion state, headings, chapter spans, and source citations. This is the foundation for every later tool.</p>
+        </div>
+        <div class="card">
+          <h3><i data-lucide="search" class="icon"></i> Citation RAG</h3>
+          <p>Chunk by heading subtree rather than fixed token windows. Preserve <code>book</code>, <code>edition</code>, <code>chapter</code>, <code>heading_path</code>, <code>line_start</code>, and <code>line_end</code>.</p>
+        </div>
+        <div class="card">
+          <h3><i data-lucide="castle" class="icon"></i> Covenant Builder</h3>
+          <p>Use Core plus <code>Covenants</code> to generate covenant dossiers: aura, boons/hooks, governance, resources, library, vis sources, labs, covenfolk, and seasonal story pressure.</p>
+        </div>
+        <div class="card">
+          <h3><i data-lucide="wand-sparkles" class="icon"></i> Spell And Lab Tools</h3>
+          <p>Extract spells, guidelines, techniques/forms, ranges/durations/targets, lab totals, enchantment rules, and seasonal activity checklists into fast lookup tools.</p>
+        </div>
+        <div class="card">
+          <h3><i data-lucide="map" class="icon"></i> Tribunal Gazetteer</h3>
+          <p>Extract places, covenants, magi, factions, names, languages, story hooks, and timelines from tribunal books. Add edition warnings to legacy regions.</p>
+        </div>
+        <div class="card">
+          <h3><i data-lucide="bot" class="icon"></i> Agent Skills</h3>
+          <p>Create focused skills: rules guide, character helper, covenant builder, seasonal advancement assistant, Storyguide prep, tribunal explorer, and legacy conversion auditor.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Proposed Agentic Pipeline</h2>
+      <div class="mermaid">
+flowchart LR
+  MD["reviewed/*.md"] --> H["Heading parser"]
+  H --> IDX["corpus-index.json"]
+  H --> CH["heading-subtree chunks"]
+  CH --> RAG["citation-preserving RAG"]
+  IDX --> EX["structured extractors"]
+  EX --> Core["core_reference_pack"]
+  EX --> Cov["covenant_builder_pack"]
+  EX --> Gazetteer["tribunal_gazetteer"]
+  EX --> Seeds["story_seed_index"]
+  Core --> Skills["agent skills"]
+  Cov --> Skills
+  Gazetteer --> Skills
+  Seeds --> Skills
+      </div>
+    </section>
+
+    <section>
+      <h2>Detailed Notes</h2>
+      <details open>
+        <summary>What is outdated?</summary>
+        <p>The 3e and 4e books are outdated for Definitive Edition rules use: <code>Lion of the North</code>, <code>Tribunals of Hermes - Rome</code>, <code>Heirs to Merlin</code>, <code>Sanctuary of Ice</code>, and <code>Icelandic Wars</code>. Keep their places, names, conflicts, and atmosphere; convert or ignore mechanics.</p>
+      </details>
+      <details>
+        <summary>What is compatible but not core?</summary>
+        <p>The 5e sourcebooks are generally useful with Definitive Edition, but they are optional. Do not make new players read all of them. Pull them in by player concept, chosen tribunal, or saga focus.</p>
+      </details>
+      <details>
+        <summary>What makes this corpus agent-friendly?</summary>
+        <p>The books are Markdown, heading-rich, and contain repeated structures such as tables, stat blocks, spell entries, powers, virtues/flaws, story seeds, and indexes. That makes them unusually good candidates for deterministic parsing plus LLM-assisted cleanup.</p>
+      </details>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: {
+        primaryColor: '#E3DACC',
+        primaryTextColor: '#141413',
+        primaryBorderColor: '#D97757',
+        lineColor: '#788C5D',
+        secondaryColor: '#FAF7F2',
+        tertiaryColor: '#F4EDE3'
+      }});
+
+      const buttons = document.querySelectorAll('[data-filter]');
+      const rows = document.querySelectorAll('#inventory tbody tr');
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          buttons.forEach((b) => b.classList.toggle('active', b === button));
+          rows.forEach((row) => {
+            row.style.display = filter === 'all' || row.dataset.priority === filter ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,54 +1,92 @@
-![](arm5openlicenselogo.png)
-<br/>
-<br/>
-# The Complete Corpus in Friendly Markdown Format
-### All 53 official books of the Ars Magica RPG Open License
-<br/>
-This is a work-in-progress repository for machine-extracted, manually fixed markdowns of a complete set of the official Ars Magica Open Licensed material. These files should all be of a significantly better quality than what has been released openly so far.
+# Ars Magica Agentic Reference Lab
 
-* In the **/raw-md** folder, you'll find raw output dumps (from a longer workflow of re-OCR and AI-enhanced extraction and conversion) that are mostly in pretty good shape (3rd edition books excluded). However, expect that tables, index and anything obscured by graphics may be broken. Headings are often a bit garbled, and text may be out of sequence or missing due to borked pdf layouts. NOT RECOMMENDED FOR USE!
-* In the **/wip** folder, is manual fixing work-in-progress. Whatever is here can be expected to be in much better shape than the raw markdowns. All extraneous image links and html is gone from all files (the br's are required for multiline tables), and so's plenty of junk. Use these files until **reviewed** is populated. If you want to help fix something, checkout these.
-* In the [**/reviewed**](/reviewed/) folder, you'll find Markdown files that has had at least one full manual pass & review and the official errata added. All books here should be in excellent condition. There may still be minor things that need correction and additional review passes (please submit corrections). The completion state is indicated at the beginning of the document. **USE THESE!**
+[![skills.sh](https://skills.sh/b/Groblus/ars-magica)](https://skills.sh/Groblus/ars-magica)
 
-* In the [**/3rd-party**](/3rd-party/) folder, you'll find markdown versions of 3rd party material (added by popular demand). Feel free to submit new files here (we'll accept what's what's within open license and in good shape).
+Private exploratory fork of the Ars Magica Open License Markdown corpus, focused on making the **Definitive Edition** and **5th Edition** books useful to AI agents and human readers.
 
-The public is welcome to commit fixes, new and better versions of any of these files (I mainly expect this to be by manual edit while referencing the original works). Please make sure to provide information on what's been corrected, as well as any remaining issues. I'll try to quickly accept improvements to the repository after review (make my life easier, and it will be faster). *As of now, the 3rd edition supplements are most in need.*
-<br/>
-<br/>
+## Browse
 
-#### New to Ars Magica?
+- Human inventory report: `docs/index.html`
+- Agent guide: `AGENTS.md`
+- Claude redirect: `CLAUDE.md`
+- Corpus navigator skill: `skills/ars-magica-corpus-navigator/`
+- Generated book TOCs: `skills/ars-magica-corpus-navigator/references/toc.md`
 
-The game is about incredibly powerful - but politically limited - Wizards in the rich setting of 13th century Mythic Europe, where the superstitions and myths are true. Faeries drink milk left on doorsteps, demons roam the countryside, and wizards wield magic beyond the ken of mortals. Ars Magica is generally lauded for having the best magic system of any RPG, bar none.
+If GitHub Pages is enabled, the report should publish at:
 
-You'll want to start with the the *Ars Magica - Definitive Edition \(Core Rules\).md* file in the [/reviewed](/reviewed/) folder to explore one of the best RPG ever made. **Headsup: Unlike the rest of the books, Definitive Edition is too large (582 pages) for GitHub to render it - you have to download the file!** 
+```text
+https://groblus.github.io/ars-magica/
+```
 
-**Update: The markdown version of *Ars Magica Definitive Edition \(Core Rules\).md* now has clickable convenience links for TOC, All Virtues & Flaws, Complete Spells Index, Spell Guidelines Index, Bestiary Index, and (wip) Traditional Index. Should be a breeze to navigate.** 
-<br/>
-<br/>
+## Install Skill
 
-#### Why Markdown?
-There are several good reasons why Markdown may be the best “forever” format for the Ars Magica Open License text content:
+The repo follows the skills.sh convention of storing skills under `skills/<skill-name>/SKILL.md`.
 
-Markdown's greatest practical strength for open-license content is that it is a universal source format. It is plain text, even human-readable without a renderer - and readily convert to any format (HTML, PDF, EPUB, DOCX, Google DOCS, MediaWIKI etc), natively version-controlled with Git, and readable by both humans and machines without ANY proprietary software. It carries no vendor lock-in and is durable across decades.
+Install with the Skills CLI:
 
-This write-once, publish-anywhere model means the canonical open-license text can stay clean and unencumbered, while feeding any wanted derivatives in the easiest possible manner (compare this with copy/pasting from PDF (everyone’s favorite…?), trying to convert .docx formats or manually reformatting plain text headings and tables).
+```bash
+npx skills add Groblus/ars-magica
+```
 
-You can straight open a markdown in google docs, word, (modern) notepad - or use Visual Code, Typora, Notepad++ (with plugin) etc or copy paste as-is to Websites (like GitHub), Blogs (WordPress, Medium), Notes (Notion, Obsidian), Chats (Slack, Discord), and Forums (Like https://forum.atlas-games.com/c/games-discussion/ars-magica/15 ) as they all support Markdown natively.
-<br/>
-<br/>
-<br/>
-**Note:** *The excellent folks at redcap.org also have a project to provide these materials to the public on their wiki. However the project seems to have slow progress as of late, and at a less complete stage than this (redcap team is welcome to grab anything here to help of course).
-https://www.redcap.org/page/Ars_Magica_Open_Content_Conversion_Tracker*
-EDIT: YR7 of that project is now helping with this and the plan is to convert from Markdown to Mediawiki for redcap.org once files are polished up a bit more.
-<br/>
-<br/>
-<br/>
-**Shameless Plug:** If you are here for Ars Magica content, you're very likely to appreciate my other project - *The Ars Magica Chronology:* https://forum.atlas-games.com/t/the-ars-magica-chronology-project-200-pages-timeline-of-the-order-and-the-history-of-magic/171381
-<br/>
-<br/>
-<br/>
-**License:** All text of Ars Magica 5th Edition and its sourcebooks (53 books total) has been released under an open license:
-*Based on the material for Ars Magica, ©1993–2024, licensed by Trident, Inc. d/b/a Atlas Games®, under Creative Commons Attribution-ShareAlike 4.0 International license 4.0 ("CC-BY-SA 4.0")*
-https://www.atlas-games.com/arsmagica/openars
+The primary skill is:
 
-Of course, the full PDFs or Physical books are much nicer with layout, pictures, maps and so on. I highly recommend you get the ones you want and support our favorite publisher: https://www.atlas-games.com/arsmagica
+```text
+ars-magica-corpus-navigator
+```
+
+It navigates the local Ars Magica corpus as a reference shelf, using Definitive Edition as the rules authority and 5e books as compatible supplements. It explicitly excludes 3e/4e material for now.
+
+## RAG Setup
+
+The navigator skill includes a generated retrieval database:
+
+```text
+skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite
+```
+
+It contains:
+
+- `20` allowed books: Definitive Edition core plus 19 5e books.
+- `9,967` heading-aware chunks.
+- SQLite FTS5 search.
+- OpenAI `text-embedding-3-large` embeddings at `3072` dimensions.
+- sqlite-vector table for vector search.
+
+Examples:
+
+```bash
+python3 skills/ars-magica-corpus-navigator/scripts/search.py "penetration magic resistance" --limit 5
+.venv/bin/python skills/ars-magica-corpus-navigator/scripts/search.py "faerie aura" --vector --limit 5
+.venv/bin/python skills/ars-magica-corpus-navigator/scripts/search.py "Tremere politics" --hybrid --limit 5
+```
+
+## Rebuild
+
+Generate TOCs, JSON indexes, SQLite, and FTS:
+
+```bash
+python3 skills/ars-magica-corpus-navigator/scripts/build_index.py
+```
+
+Generate embeddings:
+
+```bash
+UV_CACHE_DIR=/tmp/uv-cache uv venv .venv
+UV_CACHE_DIR=/tmp/uv-cache uv pip install --python .venv/bin/python openai sqlite-vec
+.venv/bin/python skills/ars-magica-corpus-navigator/scripts/build_embeddings.py
+```
+
+`build_embeddings.py` reads `OPENAI_API_KEY` from `.env` or the environment.
+
+Validate:
+
+```bash
+python3 skills/ars-magica-corpus-navigator/scripts/validate.py
+python3 /home/olive/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/ars-magica-corpus-navigator
+```
+
+## Source Material
+
+This fork is based on the Ars Magica Open License Markdown corpus by OriginalMadman/YR7. The root license is preserved in `LICENSE.md`.
+
+The original upstream project describes the full 53-book conversion effort. This sparse checkout currently includes a reviewed subset and adds agent-facing navigation, indexes, and retrieval tooling.
