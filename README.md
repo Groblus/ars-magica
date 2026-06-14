@@ -7,6 +7,7 @@ Private exploratory fork of the Ars Magica Open License Markdown corpus, focused
 ## Browse
 
 - Human inventory report: `docs/index.html`
+- Browser reference library: `docs/library.html`
 - Agent guide: `AGENTS.md`
 - Claude redirect: `CLAUDE.md`
 - Corpus navigator skill: `skills/ars-magica-corpus-navigator/`
