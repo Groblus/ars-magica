@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Corpus Navigator"
+  short_description: "Navigate Ars Magica DE and 5e books"
+  default_prompt: "Use $ars-magica-corpus-navigator to find cited Ars Magica Definitive Edition and 5e reference sections."

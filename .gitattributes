@@ -1,0 +1,1 @@
+skills/ars-magica-corpus-navigator/resources/*.sqlite filter=lfs diff=lfs merge=lfs -text
