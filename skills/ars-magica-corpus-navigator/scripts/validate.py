@@ -28,6 +28,24 @@ def require_fields(obj: dict, fields: list[str], label: str) -> None:
         fail(f"{label} missing fields: {', '.join(missing)}")
 
 
+def try_load_sqlite_vec(conn: sqlite3.Connection) -> bool:
+    try:
+        import sqlite_vec
+    except Exception:
+        return False
+    try:
+        conn.enable_load_extension(True)
+        sqlite_vec.load(conn)
+        conn.enable_load_extension(False)
+        return True
+    except Exception:
+        try:
+            conn.enable_load_extension(False)
+        except Exception:
+            pass
+        return False
+
+
 def main() -> None:
     allowed_path = RESOURCES / "allowed-books.json"
     heading_path = RESOURCES / "heading-index.json"
@@ -177,8 +195,35 @@ def main() -> None:
         ).fetchone()[0]
         if bad_embeddings:
             fail(f"bad embedding metadata rows={bad_embeddings}")
-        if embedding_count != chunk_count:
-            fail(f"partial embeddings embeddings={embedding_count} chunks={chunk_count}")
+        bad_embedding_links = conn.execute(
+            """
+            SELECT count(*)
+            FROM embeddings e
+            JOIN chunks c ON c.id = e.chunk_id
+            WHERE c.content_hash != e.content_hash
+               OR c.embedding_model != e.model
+               OR c.embedding_dimensions != e.dimensions
+            """
+        ).fetchone()[0]
+        if bad_embedding_links:
+            fail(f"embedding/chunk mismatch rows={bad_embedding_links}")
+        chunk_metadata_count = conn.execute(
+            """
+            SELECT count(*)
+            FROM chunks
+            WHERE embedding_model IS NOT NULL OR embedding_dimensions IS NOT NULL
+            """
+        ).fetchone()[0]
+        if chunk_metadata_count != embedding_count:
+            fail(f"embedding metadata mismatch chunks={chunk_metadata_count} embeddings={embedding_count}")
+        vec_exists = conn.execute(
+            "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='vec_chunks'"
+        ).fetchone()[0]
+        if vec_exists:
+            if try_load_sqlite_vec(conn):
+                vec_count = conn.execute("SELECT count(*) FROM vec_chunks").fetchone()[0]
+                if vec_count != embedding_count:
+                    fail(f"vec/embedding mismatch vec={vec_count} embeddings={embedding_count}")
 
     sample = conn.execute("SELECT citation,text FROM chunks ORDER BY id LIMIT 25").fetchall()
     for citation, text in sample:
@@ -201,7 +246,7 @@ def main() -> None:
     conn.close()
     print(
         f"OK: books={book_count} chunks={chunk_count} virtues={virtue_count} flaws={flaw_count} "
-        f"abilities={ability_count} spells={spell_count}"
+        f"abilities={ability_count} spells={spell_count} embeddings={embedding_count}"
     )
 
 

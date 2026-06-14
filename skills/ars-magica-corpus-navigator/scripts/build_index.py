@@ -9,6 +9,7 @@ import json
 import re
 import sqlite3
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -524,10 +525,70 @@ def write_tocs(books: list[dict]) -> None:
     (REFERENCES / "toc.md").write_text("\n".join(index_lines) + "\n")
 
 
-def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtraction) -> None:
+def table_exists(conn: sqlite3.Connection, name: str) -> bool:
+    row = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type IN ('table','virtual table') AND name = ? LIMIT 1",
+        (name,),
+    ).fetchone()
+    return row is not None
+
+
+def load_sqlite_vec(conn: sqlite3.Connection) -> bool:
+    try:
+        import sqlite_vec
+    except Exception:
+        return False
+    try:
+        conn.enable_load_extension(True)
+        sqlite_vec.load(conn)
+        conn.enable_load_extension(False)
+        return True
+    except Exception:
+        try:
+            conn.enable_load_extension(False)
+        except Exception:
+            pass
+        return False
+
+
+def snapshot_embeddings() -> dict[str, dict[str, Any]]:
+    if not DB_PATH.exists():
+        return {}
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        if not table_exists(conn, "embeddings"):
+            return {}
+        rows = conn.execute(
+            """
+            SELECT content_hash, model, dimensions, embedding, created_at
+            FROM embeddings
+            WHERE embedding IS NOT NULL
+            ORDER BY created_at DESC, chunk_id DESC
+            """
+        ).fetchall()
+    finally:
+        conn.close()
+
+    preserved: dict[str, dict[str, Any]] = {}
+    for content_hash, model, dimensions, embedding, created_at in rows:
+        preserved.setdefault(
+            content_hash,
+            {
+                "model": model,
+                "dimensions": dimensions,
+                "embedding": embedding,
+                "created_at": created_at,
+            },
+        )
+    return preserved
+
+
+def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtraction) -> dict[str, int]:
+    preserved_embeddings = snapshot_embeddings()
     if DB_PATH.exists():
         DB_PATH.unlink()
     conn = sqlite3.connect(DB_PATH)
+    vec_supported = load_sqlite_vec(conn)
     conn.executescript(
         """
         PRAGMA foreign_keys = ON;
@@ -646,6 +707,8 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
         );
         """
     )
+    if vec_supported:
+        conn.execute("CREATE VIRTUAL TABLE vec_chunks USING vec0(embedding float[3072])")
     for b in books:
         conn.execute(
             "INSERT INTO books(id,path,title,edition,priority,line_count,sha256) VALUES(?,?,?,?,?,?,?)",
@@ -669,6 +732,8 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
                 ),
             )
     title_by_id = {b["id"]: b["title"] for b in books}
+    restored_embeddings = 0
+    restored_vec_rows = 0
     for c in chunks:
         cur = conn.execute(
             """INSERT INTO chunks(book_id,section_id,chunk_index,text,line_start,line_end,heading_path,citation,content_hash)
@@ -690,6 +755,31 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
             "INSERT INTO chunks_fts(rowid,text,title,heading_path,citation) VALUES(?,?,?,?,?)",
             (rowid, c["text"], title_by_id[c["book_id"]], c["heading_path"], c["citation"]),
         )
+        preserved = preserved_embeddings.get(c["content_hash"])
+        if preserved:
+            conn.execute(
+                """INSERT INTO embeddings(chunk_id,model,dimensions,embedding,content_hash,created_at)
+                VALUES(?,?,?,?,?,?)""",
+                (
+                    rowid,
+                    preserved["model"],
+                    preserved["dimensions"],
+                    preserved["embedding"],
+                    c["content_hash"],
+                    preserved["created_at"] or datetime.now(timezone.utc).isoformat(),
+                ),
+            )
+            conn.execute(
+                "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
+                (preserved["model"], preserved["dimensions"], rowid),
+            )
+            restored_embeddings += 1
+            if vec_supported:
+                conn.execute(
+                    "INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)",
+                    (rowid, preserved["embedding"]),
+                )
+                restored_vec_rows += 1
     for row in core_data.virtues:
         conn.execute(
             """INSERT INTO core_virtues(id,name,magnitude,categories_json,meta,heading_path,description,source_path,line_start,line_end,citation)
@@ -773,6 +863,12 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
         )
     conn.commit()
     conn.close()
+    return {
+        "preserved_embeddings": len(preserved_embeddings),
+        "restored_embeddings": restored_embeddings,
+        "restored_vec_rows": restored_vec_rows,
+        "vec_supported": int(vec_supported),
+    }
 
 
 def main() -> None:
@@ -783,7 +879,7 @@ def main() -> None:
     books, chunks, core_data = build_records(args.max_chars)
     write_json(books, chunks, core_data, args.export_chunks_json)
     write_tocs(books)
-    build_sqlite(books, chunks, core_data)
+    restore_stats = build_sqlite(books, chunks, core_data)
     print(
         " ".join(
             [
@@ -793,6 +889,10 @@ def main() -> None:
                 f"flaws={len(core_data.flaws)}",
                 f"abilities={len(core_data.abilities)}",
                 f"spells={len(core_data.spells)}",
+                f"preserved_embeddings={restore_stats['preserved_embeddings']}",
+                f"restored_embeddings={restore_stats['restored_embeddings']}",
+                f"restored_vec_rows={restore_stats['restored_vec_rows']}",
+                f"vec_supported={restore_stats['vec_supported']}",
                 f"db={DB_PATH}",
             ]
         )
