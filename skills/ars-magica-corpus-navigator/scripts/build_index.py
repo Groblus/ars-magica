@@ -215,7 +215,7 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict]]:
     return books, chunks
 
 
-def write_json(books: list[dict], chunks: list[dict]) -> None:
+def write_json(books: list[dict], chunks: list[dict], export_chunks: bool) -> None:
     RESOURCES.mkdir(parents=True, exist_ok=True)
     TOC_DIR.mkdir(parents=True, exist_ok=True)
     allowed = [
@@ -231,7 +231,11 @@ def write_json(books: list[dict], chunks: list[dict]) -> None:
     ]
     (RESOURCES / "allowed-books.json").write_text(json.dumps(allowed, indent=2, ensure_ascii=False) + "\n")
     (RESOURCES / "heading-index.json").write_text(json.dumps({"books": books}, indent=2, ensure_ascii=False) + "\n")
-    (RESOURCES / "chunks.json").write_text(json.dumps({"chunks": chunks}, indent=2, ensure_ascii=False) + "\n")
+    chunks_path = RESOURCES / "chunks.json"
+    if export_chunks:
+        chunks_path.write_text(json.dumps({"chunks": chunks}, indent=2, ensure_ascii=False) + "\n")
+    elif chunks_path.exists():
+        chunks_path.unlink()
 
 
 def write_tocs(books: list[dict]) -> None:
@@ -362,9 +366,10 @@ def build_sqlite(books: list[dict], chunks: list[dict]) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-chars", type=int, default=18000)
+    parser.add_argument("--export-chunks-json", action="store_true")
     args = parser.parse_args()
     books, chunks = build_records(args.max_chars)
-    write_json(books, chunks)
+    write_json(books, chunks, args.export_chunks_json)
     write_tocs(books)
     build_sqlite(books, chunks)
     print(f"books={len(books)} chunks={len(chunks)} db={DB_PATH}")
