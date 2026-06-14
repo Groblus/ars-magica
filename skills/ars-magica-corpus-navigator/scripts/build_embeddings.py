@@ -51,6 +51,29 @@ def pack(values: list[float]) -> bytes:
     return struct.pack(f"{len(values)}f", *values)
 
 
+def restore_vec_from_embeddings(conn: sqlite3.Connection) -> int:
+    rows = conn.execute(
+        """
+        SELECT DISTINCT c.id, e.embedding, e.model, e.dimensions
+        FROM chunks c
+        JOIN embeddings e ON e.content_hash = c.content_hash
+        WHERE e.model = ? AND e.dimensions = ?
+        ORDER BY c.id
+        """,
+        (MODEL, DIMENSIONS),
+    ).fetchall()
+    restored = 0
+    for chunk_id, blob, model, dimensions in rows:
+        conn.execute("INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)", (chunk_id, blob))
+        conn.execute(
+            "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
+            (model, dimensions, chunk_id),
+        )
+        restored += 1
+    conn.commit()
+    return restored
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--limit", type=int, default=0)
@@ -68,6 +91,9 @@ def main() -> None:
     conn.execute(
         f"CREATE VIRTUAL TABLE IF NOT EXISTS vec_chunks USING vec0(embedding float[{DIMENSIONS}])"
     )
+    restored = restore_vec_from_embeddings(conn)
+    if restored:
+        print(f"restored_vec={restored}")
     rows = conn.execute(
         """
         SELECT c.id, c.text, c.content_hash

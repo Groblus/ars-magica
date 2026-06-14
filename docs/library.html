@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ars Magica Reference Library</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --clay: #D97757;
+      --olive: #788C5D;
+      --oat: #E3DACC;
+      --slate: #141413;
+      --slate-2: #2A2A28;
+      --paper: #FAF7F2;
+      --muted: #8B8680;
+      --warn: #B8893A;
+      --crit: #A8442B;
+      --ink-soft: rgba(20, 20, 19, 0.72);
+      --line: rgba(20, 20, 19, 0.14);
+      --card: rgba(255, 252, 246, 0.84);
+      --shadow: 0 18px 60px rgba(20, 20, 19, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at 8% 4%, rgba(217, 119, 87, 0.20), transparent 32rem),
+        radial-gradient(circle at 92% 12%, rgba(120, 140, 93, 0.18), transparent 34rem),
+        linear-gradient(135deg, #faf7f2 0%, #efe5d6 100%);
+      color: var(--slate);
+      line-height: 1.55;
+    }
+
+    a { color: #8f472e; }
+
+    header {
+      padding: 40px min(6vw, 72px) 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1, h2, h3, h4 { line-height: 1.1; margin: 0; }
+
+    h1 {
+      font-size: clamp(2.1rem, 6vw, 5rem);
+      letter-spacing: -0.07em;
+      max-width: 920px;
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.25rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+
+    p { margin: 0 0 14px; color: var(--ink-soft); }
+
+    .eyebrow,
+    .mono,
+    button,
+    input,
+    select,
+    .pill,
+    .stat span,
+    .meta,
+    th {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      color: var(--clay);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.8fr);
+      gap: 22px;
+      align-items: end;
+    }
+
+    .hero-copy p {
+      font-size: 1.05rem;
+      max-width: 860px;
+      margin-top: 18px;
+    }
+
+    .hero-panel {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 252, 246, 0.7);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-link {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(227, 218, 204, 0.45);
+      border: 1px solid var(--line);
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-link:hover,
+    .hero-link:focus-visible {
+      outline: none;
+      border-color: rgba(217, 119, 87, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .hero-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat,
+    .card,
+    .panel {
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat {
+      padding: 18px;
+      background: rgba(227, 218, 204, 0.55);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.9rem, 4vw, 3.1rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    main {
+      width: min(1380px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 72px;
+    }
+
+    section {
+      margin: 24px 0;
+      padding: clamp(18px, 3vw, 28px);
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.45fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 18px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) repeat(3, minmax(110px, 0.7fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 18px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    button {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--slate);
+      padding: 10px 12px;
+      font-size: 0.93rem;
+    }
+
+    button {
+      cursor: pointer;
+      border-radius: 999px;
+      background: rgba(250, 247, 242, 0.94);
+    }
+
+    button:hover,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    .shelf-card:focus-visible,
+    .toc-link:focus-visible,
+    .tab:focus-visible {
+      outline: 2px solid rgba(217, 119, 87, 0.35);
+      outline-offset: 2px;
+    }
+
+    button.active,
+    .tab.active {
+      background: var(--slate);
+      color: var(--paper);
+      border-color: var(--slate);
+    }
+
+    .shelf {
+      display: grid;
+      gap: 12px;
+      max-height: 980px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .shelf-card {
+      text-align: left;
+      width: 100%;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(250, 247, 242, 0.76);
+      display: grid;
+      gap: 10px;
+    }
+
+    .shelf-card.active {
+      border-color: rgba(217, 119, 87, 0.48);
+      background: rgba(255, 250, 243, 0.98);
+      box-shadow: 0 14px 36px rgba(20, 20, 19, 0.08);
+    }
+
+    .shelf-card header {
+      padding: 0;
+      border: 0;
+      display: block;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      white-space: nowrap;
+    }
+
+    .p0 { border-left: 4px solid var(--crit); }
+    .p1 { border-left: 4px solid var(--clay); }
+    .p2 { border-left: 4px solid var(--warn); }
+    .p3 { border-left: 4px solid var(--olive); }
+    .p4 { border-left: 4px solid var(--muted); }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0 18px;
+    }
+
+    .mini {
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(227, 218, 204, 0.28);
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .toc-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .toc-list,
+    .toc-detail,
+    .data-shell {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(250, 247, 242, 0.76);
+    }
+
+    .toc-list {
+      max-height: 840px;
+      overflow: auto;
+      padding: 10px;
+    }
+
+    .toc-detail,
+    .data-shell {
+      padding: 16px;
+      min-height: 320px;
+    }
+
+    .toc-link {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border-radius: 14px;
+      background: transparent;
+      padding: 10px 12px;
+      margin: 4px 0;
+      border: 1px solid transparent;
+    }
+
+    .toc-link.active {
+      background: rgba(227, 218, 204, 0.52);
+      border-color: var(--line);
+    }
+
+    .toc-title {
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .toc-path {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .indent-1 { margin-left: 0; }
+    .indent-2 { margin-left: 14px; }
+    .indent-3 { margin-left: 28px; }
+    .indent-4 { margin-left: 42px; }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.94rem;
+    }
+
+    th, td {
+      text-align: left;
+      vertical-align: top;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: rgba(227, 218, 204, 0.52);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .empty,
+    .loading,
+    .error {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px dashed var(--line);
+      background: rgba(255, 255, 255, 0.36);
+      color: var(--ink-soft);
+    }
+
+    .error {
+      border-style: solid;
+      border-left: 5px solid var(--warn);
+      background: rgba(184, 137, 58, 0.08);
+    }
+
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .small { font-size: 0.88rem; }
+    .icon { width: 18px; height: 18px; vertical-align: -3px; }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .layout,
+      .toc-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .panel { position: static; }
+
+      .controls {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      main {
+        width: min(100%, calc(100% - 20px));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><i data-lucide="library-big" class="icon"></i> Browser reference surface - JSON-backed - GitHub Pages safe</div>
+        <h1>Ars Magica Reference Library</h1>
+        <p>Static browser for generated corpus exports. Shelf left, book map right, core rules tables below. Built for fast movement across reviewed books and Definitive Edition reference data without any build step.</p>
+        <div class="hero-grid">
+          <div class="stat"><strong id="hero-book-count">0</strong><span>books loaded</span></div>
+          <div class="stat"><strong id="hero-heading-count">0</strong><span>TOC nodes</span></div>
+          <div class="stat"><strong id="hero-core-count">0</strong><span>core entries</span></div>
+          <div class="stat"><strong id="hero-editions">0</strong><span>editions seen</span></div>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <h3>Navigation</h3>
+        <nav>
+          <a class="hero-link" href="./index.html">
+            <span>Inventory report</span>
+            <i data-lucide="arrow-left" class="icon"></i>
+          </a>
+          <a class="hero-link" href="#books">
+            <span>Book shelf + TOC</span>
+            <i data-lucide="book-open" class="icon"></i>
+          </a>
+          <a class="hero-link" href="#core-data">
+            <span>Core rules tables</span>
+            <i data-lucide="table-properties" class="icon"></i>
+          </a>
+        </nav>
+        <p class="small">Expected data files: <code>docs/data/library.json</code> and <code>docs/data/core-data.json</code>.</p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="books">
+      <div class="section-head">
+        <div>
+          <h2>Book Shelf</h2>
+          <p>Search by title, path, chapter, heading path, or edition. Filter shelf, pick book, browse heading tree, jump to source path and line spans.</p>
+        </div>
+        <p class="small muted" id="library-status">Loading book index...</p>
+      </div>
+
+      <div class="layout">
+        <aside class="panel">
+          <h3>Find books</h3>
+          <div class="controls">
+            <label>
+              Search
+              <input id="book-search" type="search" placeholder="core rules, tremere, faerie, laboratory">
+            </label>
+            <label>
+              Edition
+              <select id="edition-filter">
+                <option value="all">All</option>
+              </select>
+            </label>
+            <label>
+              Priority
+              <select id="priority-filter">
+                <option value="all">All</option>
+                <option value="0">P0</option>
+                <option value="1">P1</option>
+                <option value="2">P2</option>
+                <option value="3">P3</option>
+                <option value="4">P4</option>
+              </select>
+            </label>
+            <label>
+              Sort
+              <select id="book-sort">
+                <option value="priority">Priority</option>
+                <option value="title">Title</option>
+                <option value="lines">Line count</option>
+              </select>
+            </label>
+          </div>
+          <div class="toolbar">
+            <button type="button" class="active" data-shelf-scope="trusted">DE + 5e</button>
+            <button type="button" data-shelf-scope="all">All reviewed</button>
+            <button type="button" data-shelf-scope="legacy">Legacy only</button>
+          </div>
+          <div id="shelf-count" class="small muted">0 matching books</div>
+          <div id="shelf" class="shelf" aria-live="polite"></div>
+        </aside>
+
+        <div>
+          <div class="card" style="padding: 18px; margin-bottom: 16px;">
+            <h3 id="book-title">No book selected</h3>
+            <p id="book-summary">Select book from shelf to inspect heading tree and source metadata.</p>
+            <div class="summary-grid">
+              <div class="mini"><strong id="book-lines">0</strong><span class="small muted">lines</span></div>
+              <div class="mini"><strong id="book-headings">0</strong><span class="small muted">headings</span></div>
+              <div class="mini"><strong id="book-chapters">0</strong><span class="small muted">chapters</span></div>
+            </div>
+            <div class="meta" id="book-meta"></div>
+          </div>
+
+          <div class="toc-shell">
+            <div class="toc-list" id="toc-list" aria-live="polite"></div>
+            <div class="toc-detail" id="toc-detail">
+              <div class="empty">Select heading to inspect path, span, and source citation.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="core-data">
+      <div class="section-head">
+        <div>
+          <h2>Core Structured Data</h2>
+          <p>Searchable views for virtues, flaws, abilities, and spells. Intended for Definitive Edition core exports first. If schema varies, page will try common field aliases before failing loud.</p>
+        </div>
+        <p class="small muted" id="core-status">Loading core data...</p>
+      </div>
+
+      <div class="data-shell">
+        <div class="tabs" id="core-tabs">
+          <button type="button" class="tab active" data-core-kind="virtues">Virtues</button>
+          <button type="button" class="tab" data-core-kind="flaws">Flaws</button>
+          <button type="button" class="tab" data-core-kind="abilities">Abilities</button>
+          <button type="button" class="tab" data-core-kind="spells">Spells</button>
+        </div>
+
+        <div class="controls">
+          <label>
+            Search
+            <input id="core-search" type="search" placeholder="puissant, awareness, pilum, corpus">
+          </label>
+          <label>
+            Category
+            <select id="core-category">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label>
+            Subtype
+            <select id="core-subtype">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label>
+            Sort
+            <select id="core-sort">
+              <option value="name">Name</option>
+              <option value="source">Source</option>
+              <option value="level">Level / cost</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="core-count" class="small muted">0 matching entries</div>
+        <div class="table-wrap" style="margin-top: 14px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Subtype</th>
+                <th>Details</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody id="core-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      books: [],
+      filteredBooks: [],
+      selectedBookId: null,
+      selectedHeadingId: null,
+      shelfScope: 'trusted',
+      core: {
+        virtues: [],
+        flaws: [],
+        abilities: [],
+        spells: [],
+      },
+      activeCoreKind: 'virtues',
+    };
+
+    function number(value) {
+      return new Intl.NumberFormat('en-US').format(value || 0);
+    }
+
+    function esc(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function priorityLabel(priority) {
+      return Number.isFinite(priority) ? `P${priority}` : 'P?';
+    }
+
+    function normalizePriority(raw) {
+      if (raw === null || raw === undefined || raw === '') return null;
+      const str = String(raw).trim().toUpperCase();
+      if (str.startsWith('P')) return Number(str.slice(1));
+      const num = Number(str);
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function unique(values) {
+      return Array.from(new Set(values.filter(Boolean))).sort((a, b) => String(a).localeCompare(String(b)));
+    }
+
+    function sourceHref(path, lineStart) {
+      if (!path) return null;
+      const clean = String(path).replace(/^\.?\//, '');
+      return lineStart ? `../${clean}#L${lineStart}` : `../${clean}`;
+    }
+
+    function normalizeLibraryPayload(payload) {
+      const rawBooks = Array.isArray(payload)
+        ? payload
+        : Array.isArray(payload?.books)
+          ? payload.books
+          : Array.isArray(payload?.library?.books)
+            ? payload.library.books
+            : [];
+
+      return rawBooks.map((book, index) => {
+        const headings = Array.isArray(book.headings)
+          ? book.headings
+          : Array.isArray(book.toc)
+            ? book.toc
+            : Array.isArray(book.sections)
+              ? book.sections
+              : [];
+
+        const chapters = Array.isArray(book.chapters)
+          ? book.chapters
+          : headings.filter((heading) => {
+              const type = heading.section_type || heading.type || '';
+              return type === 'chapter' || Number(heading.level) === 2;
+            });
+
+        const edition = book.edition || book.version || 'unknown';
+        const priority = normalizePriority(book.priority ?? book.freshness ?? book.rank);
+
+        return {
+          id: book.id ?? book.book_id ?? book.slug ?? `book-${index + 1}`,
+          title: book.title || book.name || book.book || 'Untitled book',
+          path: book.path || book.source_path || book.source || '',
+          edition,
+          priority,
+          lineCount: Number(book.line_count ?? book.lines ?? book.lineCount ?? 0),
+          sha256: book.sha256 || '',
+          headings: headings.map((heading, headingIndex) => ({
+            id: heading.id ?? `${book.id || index}-${headingIndex + 1}`,
+            title: heading.title || heading.heading || heading.name || 'Untitled section',
+            slug: heading.slug || '',
+            level: Number(heading.level ?? heading.heading_level ?? 1),
+            lineStart: Number(heading.line_start ?? heading.start_line ?? heading.start ?? 0),
+            lineEnd: Number(heading.line_end ?? heading.end_line ?? heading.end ?? 0),
+            headingPath: Array.isArray(heading.heading_path)
+              ? heading.heading_path
+              : typeof heading.heading_path === 'string'
+                ? heading.heading_path.split(/\s*>\s*/).filter(Boolean)
+                : Array.isArray(heading.path)
+                  ? heading.path
+                  : [heading.title || heading.heading || heading.name || 'Untitled section'],
+            parentId: heading.parent_id ?? heading.parentId ?? null,
+            sectionType: heading.section_type || heading.type || '',
+          })),
+          chapters,
+        };
+      });
+    }
+
+    function normalizeCoreEntry(entry, kind, index) {
+      const name = entry.name || entry.title || entry.spell || entry.ability || entry.virtue || entry.flaw || `Entry ${index + 1}`;
+      const category = entry.category || entry.group || entry.art || entry.technique || entry.type || '';
+      const subtype = entry.subtype || entry.kind || entry.major_minor || entry.range || entry.ability_type || '';
+      const detailParts = [
+        entry.summary,
+        entry.description,
+        entry.effect,
+        entry.guideline,
+        entry.notes,
+        entry.cost ? `Cost: ${entry.cost}` : '',
+        entry.level !== undefined && entry.level !== null && entry.level !== '' ? `Level: ${entry.level}` : '',
+        entry.score ? `Score: ${entry.score}` : '',
+        entry.target ? `Target: ${entry.target}` : '',
+        entry.duration ? `Duration: ${entry.duration}` : '',
+        entry.range ? `Range: ${entry.range}` : '',
+      ].filter(Boolean);
+
+      return {
+        id: entry.id ?? `${kind}-${index + 1}`,
+        kind,
+        name,
+        category,
+        subtype,
+        detail: detailParts.join(' | '),
+        sourcePath: entry.source_path || entry.path || entry.book_path || '',
+        sourceBook: entry.source_book || entry.book || entry.source || 'Core data',
+        lineStart: Number(entry.line_start ?? entry.start_line ?? entry.line ?? 0),
+        lineEnd: Number(entry.line_end ?? entry.end_line ?? 0),
+        level: entry.level ?? entry.cost ?? '',
+        raw: entry,
+      };
+    }
+
+    function normalizeCorePayload(payload) {
+      const buckets = payload?.core_data || payload?.core || payload || {};
+      const map = {};
+      ['virtues', 'flaws', 'abilities', 'spells'].forEach((kind) => {
+        const entries = Array.isArray(buckets[kind]) ? buckets[kind] : [];
+        map[kind] = entries.map((entry, index) => normalizeCoreEntry(entry, kind, index));
+      });
+      return map;
+    }
+
+    function updateHeroStats() {
+      const headingCount = state.books.reduce((sum, book) => sum + book.headings.length, 0);
+      const coreCount = Object.values(state.core).reduce((sum, list) => sum + list.length, 0);
+      document.getElementById('hero-book-count').textContent = number(state.books.length);
+      document.getElementById('hero-heading-count').textContent = number(headingCount);
+      document.getElementById('hero-core-count').textContent = number(coreCount);
+      document.getElementById('hero-editions').textContent = number(unique(state.books.map((book) => book.edition)).length);
+    }
+
+    function populateEditionFilter() {
+      const select = document.getElementById('edition-filter');
+      const current = select.value;
+      const editions = unique(state.books.map((book) => book.edition));
+      select.innerHTML = '<option value="all">All</option>' +
+        editions.map((edition) => `<option value="${esc(edition)}">${esc(edition)}</option>`).join('');
+      if (editions.includes(current)) {
+        select.value = current;
+      }
+    }
+
+    function filterBooks() {
+      const query = document.getElementById('book-search').value.trim().toLowerCase();
+      const edition = document.getElementById('edition-filter').value;
+      const priority = document.getElementById('priority-filter').value;
+      const sort = document.getElementById('book-sort').value;
+
+      const filtered = state.books.filter((book) => {
+        const legacy = !['DE', '5e'].includes(String(book.edition).toUpperCase());
+        const trusted = ['DE', '5e'].includes(String(book.edition).toUpperCase());
+        if (state.shelfScope === 'trusted' && !trusted) return false;
+        if (state.shelfScope === 'legacy' && !legacy) return false;
+        if (edition !== 'all' && book.edition !== edition) return false;
+        if (priority !== 'all' && String(book.priority) !== priority) return false;
+        if (!query) return true;
+
+        const haystack = [
+          book.title,
+          book.path,
+          book.edition,
+          priorityLabel(book.priority),
+          ...book.headings.slice(0, 80).flatMap((heading) => [
+            heading.title,
+            heading.headingPath.join(' > '),
+          ]),
+        ].join(' ').toLowerCase();
+
+        return haystack.includes(query);
+      });
+
+      filtered.sort((a, b) => {
+        if (sort === 'title') return a.title.localeCompare(b.title);
+        if (sort === 'lines') return (b.lineCount || 0) - (a.lineCount || 0);
+        return (a.priority ?? 99) - (b.priority ?? 99) || a.title.localeCompare(b.title);
+      });
+
+      state.filteredBooks = filtered;
+      if (!filtered.some((book) => String(book.id) === String(state.selectedBookId))) {
+        state.selectedBookId = filtered[0]?.id ?? null;
+        state.selectedHeadingId = filtered[0]?.headings[0]?.id ?? null;
+      }
+    }
+
+    function renderShelf() {
+      filterBooks();
+      const shelf = document.getElementById('shelf');
+      const count = document.getElementById('shelf-count');
+      count.textContent = `${number(state.filteredBooks.length)} matching books`;
+
+      if (!state.filteredBooks.length) {
+        shelf.innerHTML = '<div class="empty">No books match current shelf filters.</div>';
+        renderSelectedBook();
+        return;
+      }
+
+      shelf.innerHTML = state.filteredBooks.map((book) => {
+        const active = String(book.id) === String(state.selectedBookId);
+        const trusted = ['DE', '5e'].includes(String(book.edition).toUpperCase());
+        return `
+          <button type="button" class="shelf-card p${esc(book.priority ?? 4)} ${active ? 'active' : ''}" data-book-id="${esc(book.id)}">
+            <header>
+              <div class="meta">
+                <span class="pill">${esc(priorityLabel(book.priority))}</span>
+                <span class="pill">${esc(book.edition)}</span>
+                <span class="pill">${trusted ? 'usable now' : 'legacy'}</span>
+              </div>
+              <h3 style="margin-top: 10px;">${esc(book.title)}</h3>
+            </header>
+            <p class="small">${esc(book.path || 'No source path')}</p>
+            <div class="meta">
+              <span>${number(book.lineCount)} lines</span>
+              <span>${number(book.headings.length)} headings</span>
+              <span>${number(book.chapters.length)} chapters</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      shelf.querySelectorAll('[data-book-id]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedBookId = button.dataset.bookId;
+          const book = state.books.find((item) => String(item.id) === String(state.selectedBookId));
+          state.selectedHeadingId = book?.headings[0]?.id ?? null;
+          renderShelf();
+        });
+      });
+
+      renderSelectedBook();
+    }
+
+    function renderSelectedBook() {
+      const book = state.books.find((item) => String(item.id) === String(state.selectedBookId));
+      const title = document.getElementById('book-title');
+      const summary = document.getElementById('book-summary');
+      const meta = document.getElementById('book-meta');
+      const lines = document.getElementById('book-lines');
+      const headings = document.getElementById('book-headings');
+      const chapters = document.getElementById('book-chapters');
+      const tocList = document.getElementById('toc-list');
+
+      if (!book) {
+        title.textContent = 'No book selected';
+        summary.textContent = 'Select book from shelf to inspect heading tree and source metadata.';
+        meta.innerHTML = '';
+        lines.textContent = '0';
+        headings.textContent = '0';
+        chapters.textContent = '0';
+        tocList.innerHTML = '<div class="empty">No TOC available.</div>';
+        document.getElementById('toc-detail').innerHTML = '<div class="empty">Select heading to inspect path, span, and source citation.</div>';
+        return;
+      }
+
+      title.textContent = book.title;
+      summary.textContent = `${book.path || 'No source path'} | ${book.edition} | ${priorityLabel(book.priority)} | ${number(book.headings.length)} heading nodes`;
+      lines.textContent = number(book.lineCount);
+      headings.textContent = number(book.headings.length);
+      chapters.textContent = number(book.chapters.length);
+      meta.innerHTML = [
+        `<span class="pill">${esc(book.edition)}</span>`,
+        `<span class="pill">${esc(priorityLabel(book.priority))}</span>`,
+        book.sha256 ? `<span class="pill">sha ${esc(book.sha256.slice(0, 12))}</span>` : '',
+        sourceHref(book.path) ? `<a class="source-link" href="${esc(sourceHref(book.path))}"><i data-lucide="file-text" class="icon"></i>Open source file</a>` : '',
+      ].filter(Boolean).join('');
+
+      tocList.innerHTML = book.headings.length
+        ? book.headings.map((heading) => `
+            <button type="button" class="toc-link indent-${Math.min(4, Math.max(1, heading.level))} ${String(heading.id) === String(state.selectedHeadingId) ? 'active' : ''}" data-heading-id="${esc(heading.id)}">
+              <span class="toc-title">${esc(heading.title)}</span>
+              <span class="toc-path">${esc(heading.headingPath.join(' > '))}</span>
+            </button>
+          `).join('')
+        : '<div class="empty">No headings available for this book.</div>';
+
+      tocList.querySelectorAll('[data-heading-id]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.selectedHeadingId = button.dataset.headingId;
+          renderSelectedBook();
+        });
+      });
+
+      renderSelectedHeading(book);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderSelectedHeading(book) {
+      const detail = document.getElementById('toc-detail');
+      const heading = book.headings.find((item) => String(item.id) === String(state.selectedHeadingId)) || book.headings[0];
+      if (!heading) {
+        detail.innerHTML = '<div class="empty">No heading selected.</div>';
+        return;
+      }
+
+      const href = sourceHref(book.path, heading.lineStart);
+      detail.innerHTML = `
+        <div class="meta" style="margin-bottom: 12px;">
+          <span class="pill">L${esc(heading.level)}</span>
+          <span class="pill">${esc(heading.sectionType || 'section')}</span>
+          <span class="pill">${esc(heading.lineStart)}-${esc(heading.lineEnd)}</span>
+        </div>
+        <h3 style="margin-bottom: 10px;">${esc(heading.title)}</h3>
+        <p>${esc(heading.headingPath.join(' > '))}</p>
+        <div class="toolbar">
+          ${href ? `<a class="source-link" href="${esc(href)}"><i data-lucide="external-link" class="icon"></i>Open at line ${esc(heading.lineStart)}</a>` : ''}
+        </div>
+        <div class="table-wrap" style="margin-top: 10px;">
+          <table>
+            <tbody>
+              <tr><th>Book</th><td>${esc(book.title)}</td></tr>
+              <tr><th>Path</th><td>${esc(book.path)}</td></tr>
+              <tr><th>Heading path</th><td>${esc(heading.headingPath.join(' > '))}</td></tr>
+              <tr><th>Span</th><td>${esc(`${heading.lineStart}-${heading.lineEnd}`)}</td></tr>
+              <tr><th>ID</th><td>${esc(heading.id)}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function activeCoreEntries() {
+      return state.core[state.activeCoreKind] || [];
+    }
+
+    function optionList(values) {
+      return '<option value="all">All</option>' + values.map((value) => `<option value="${esc(value)}">${esc(value)}</option>`).join('');
+    }
+
+    function renderCoreFilters() {
+      const entries = activeCoreEntries();
+      document.getElementById('core-category').innerHTML = optionList(unique(entries.map((entry) => entry.category)));
+      document.getElementById('core-subtype').innerHTML = optionList(unique(entries.map((entry) => entry.subtype)));
+    }
+
+    function renderCoreTable() {
+      const entries = activeCoreEntries();
+      const query = document.getElementById('core-search').value.trim().toLowerCase();
+      const category = document.getElementById('core-category').value;
+      const subtype = document.getElementById('core-subtype').value;
+      const sort = document.getElementById('core-sort').value;
+      const tbody = document.getElementById('core-table');
+
+      const filtered = entries.filter((entry) => {
+        if (category !== 'all' && entry.category !== category) return false;
+        if (subtype !== 'all' && entry.subtype !== subtype) return false;
+        if (!query) return true;
+        const haystack = [
+          entry.name,
+          entry.category,
+          entry.subtype,
+          entry.detail,
+          entry.sourceBook,
+          entry.sourcePath,
+        ].join(' ').toLowerCase();
+        return haystack.includes(query);
+      });
+
+      filtered.sort((a, b) => {
+        if (sort === 'source') return `${a.sourceBook} ${a.lineStart}`.localeCompare(`${b.sourceBook} ${b.lineStart}`);
+        if (sort === 'level') return Number(a.level || 0) - Number(b.level || 0) || a.name.localeCompare(b.name);
+        return a.name.localeCompare(b.name);
+      });
+
+      document.getElementById('core-count').textContent = `${number(filtered.length)} matching entries`;
+
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="5"><div class="empty">No entries match current filters.</div></td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((entry) => {
+        const href = sourceHref(entry.sourcePath, entry.lineStart);
+        const sourceText = entry.lineStart
+          ? `${entry.sourceBook}:${entry.lineStart}${entry.lineEnd ? `-${entry.lineEnd}` : ''}`
+          : entry.sourceBook;
+        return `
+          <tr>
+            <td><strong>${esc(entry.name)}</strong></td>
+            <td>${esc(entry.category || '—')}</td>
+            <td>${esc(entry.subtype || '—')}</td>
+            <td>${esc(entry.detail || '—')}</td>
+            <td>${href ? `<a href="${esc(href)}">${esc(sourceText)}</a>` : esc(sourceText || '—')}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function bindEvents() {
+      document.getElementById('book-search').addEventListener('input', renderShelf);
+      document.getElementById('edition-filter').addEventListener('change', renderShelf);
+      document.getElementById('priority-filter').addEventListener('change', renderShelf);
+      document.getElementById('book-sort').addEventListener('change', renderShelf);
+
+      document.querySelectorAll('[data-shelf-scope]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.shelfScope = button.dataset.shelfScope;
+          document.querySelectorAll('[data-shelf-scope]').forEach((item) => item.classList.toggle('active', item === button));
+          renderShelf();
+        });
+      });
+
+      document.querySelectorAll('[data-core-kind]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.activeCoreKind = button.dataset.coreKind;
+          document.querySelectorAll('[data-core-kind]').forEach((item) => item.classList.toggle('active', item === button));
+          renderCoreFilters();
+          renderCoreTable();
+        });
+      });
+
+      document.getElementById('core-search').addEventListener('input', renderCoreTable);
+      document.getElementById('core-category').addEventListener('change', renderCoreTable);
+      document.getElementById('core-subtype').addEventListener('change', renderCoreTable);
+      document.getElementById('core-sort').addEventListener('change', renderCoreTable);
+    }
+
+    async function loadJson(url) {
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) {
+        throw new Error(`${url} -> ${response.status}`);
+      }
+      return response.json();
+    }
+
+    async function loadLibrary() {
+      const status = document.getElementById('library-status');
+      try {
+        const payload = await loadJson('./data/library.json');
+        state.books = normalizeLibraryPayload(payload);
+        populateEditionFilter();
+        updateHeroStats();
+        renderShelf();
+        status.textContent = `Loaded ${number(state.books.length)} books from docs/data/library.json`;
+      } catch (error) {
+        status.textContent = 'Book index unavailable';
+        document.getElementById('shelf').innerHTML = `<div class="error">Could not load <code>docs/data/library.json</code>. Expected array of books or object with <code>books</code> array. Error: ${esc(error.message)}</div>`;
+        document.getElementById('toc-list').innerHTML = '<div class="empty">No TOC available.</div>';
+        document.getElementById('toc-detail').innerHTML = '<div class="empty">Book data missing.</div>';
+      }
+    }
+
+    async function loadCoreData() {
+      const status = document.getElementById('core-status');
+      try {
+        const payload = await loadJson('./data/core-data.json');
+        state.core = normalizeCorePayload(payload);
+        updateHeroStats();
+        renderCoreFilters();
+        renderCoreTable();
+        const total = Object.values(state.core).reduce((sum, list) => sum + list.length, 0);
+        status.textContent = `Loaded ${number(total)} core entries from docs/data/core-data.json`;
+      } catch (error) {
+        status.textContent = 'Core data unavailable';
+        document.getElementById('core-table').innerHTML = `<tr><td colspan="5"><div class="error">Could not load <code>docs/data/core-data.json</code>. Expected top-level arrays for <code>virtues</code>, <code>flaws</code>, <code>abilities</code>, and <code>spells</code>. Error: ${esc(error.message)}</div></td></tr>`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      if (window.lucide) lucide.createIcons();
+      bindEvents();
+      await Promise.all([loadLibrary(), loadCoreData()]);
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
