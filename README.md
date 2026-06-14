@@ -6,14 +6,15 @@ Private exploratory fork of the Ars Magica Open License Markdown corpus, focused
 
 ## Browse
 
-- Human inventory report: `docs/index.html`
+- Landing page: `docs/index.html`
+- Human inventory report: `docs/report.html`
 - Browser reference library: `docs/library.html`
 - Agent guide: `AGENTS.md`
 - Claude redirect: `CLAUDE.md`
 - Corpus navigator skill: `skills/ars-magica-corpus-navigator/`
 - Generated book TOCs: `skills/ars-magica-corpus-navigator/references/toc.md`
 
-If GitHub Pages is enabled, the report should publish at:
+If GitHub Pages is enabled, the landing page should publish at:
 
 ```text
 https://groblus.github.io/ars-magica/
