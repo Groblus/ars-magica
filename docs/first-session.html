@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ars Magica First-Session Packet</title>
+  <meta name="description" content="A practical first-session packet for starting Ars Magica Definitive Edition and 5th Edition play.">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --ink: #11130f;
+      --ink-soft: rgba(17, 19, 15, 0.72);
+      --paper: #f7f3e8;
+      --vellum: #fffaf0;
+      --moss: #48634a;
+      --red: #9f3c27;
+      --blue: #2f5f73;
+      --gold: #b17b25;
+      --line: rgba(17, 19, 15, 0.16);
+      --shadow: 0 18px 42px rgba(17, 19, 15, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(177, 123, 37, 0.18), transparent 32rem),
+        linear-gradient(90deg, rgba(17, 19, 15, 0.035) 1px, transparent 1px),
+        linear-gradient(rgba(17, 19, 15, 0.035) 1px, transparent 1px),
+        linear-gradient(135deg, #f8f2df 0%, #e8efea 48%, #f2ead5 100%);
+      background-size: auto, 26px 26px, 26px 26px, auto;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px clamp(18px, 4vw, 56px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 250, 240, 0.72);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+
+    .brand, nav a, .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      text-decoration: none;
+    }
+
+    .brand { font-weight: 700; }
+    .brand img { width: 44px; height: 44px; object-fit: contain; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a, .button {
+      min-height: 40px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 250, 240, 0.78);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.84rem;
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 38px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: clamp(2.4rem, 7vw, 4.8rem); line-height: 0.96; }
+    h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .kicker {
+      display: inline-flex;
+      gap: 8px;
+      color: var(--red);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p { margin-top: 18px; color: var(--ink-soft); font-size: 1.13rem; max-width: 720px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .button.primary { background: var(--ink); color: var(--vellum); border-color: var(--ink); }
+    .button.secondary { background: rgba(72, 99, 74, 0.12); }
+    .icon { width: 18px; height: 18px; flex: none; }
+
+    .panel, .card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255, 250, 240, 0.78);
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 18px; }
+    .stack { display: grid; gap: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { padding: 16px; box-shadow: 0 8px 20px rgba(17, 19, 15, 0.06); }
+    .card p, li { color: var(--ink-soft); }
+    section { margin-top: 22px; }
+    ul, ol { margin: 0; padding-left: 1.3rem; }
+    li + li { margin-top: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(255, 250, 240, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(17, 19, 15, 0.06);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+    code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.84em; }
+    .seal {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      background:
+        linear-gradient(145deg, rgba(159, 60, 39, 0.12), rgba(47, 95, 115, 0.10)),
+        rgba(255, 250, 240, 0.72);
+    }
+    .seal strong { display: block; font-size: 3.6rem; line-height: 1; color: var(--red); }
+    .seal span { display: block; margin-top: 8px; color: var(--ink-soft); }
+
+    @media (max-width: 880px) {
+      header { display: grid; }
+      .hero, .grid, .two { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="./">
+      <img src="https://raw.githubusercontent.com/Groblus/ars-magica/main/arm5openlicenselogo.png" alt="">
+      <span>Ars Magica Reference Lab</span>
+    </a>
+    <nav aria-label="Primary">
+      <a href="./library.html"><i class="icon" data-lucide="library-big"></i> Library</a>
+      <a href="./report.html"><i class="icon" data-lucide="clipboard-list"></i> Report</a>
+      <a href="https://github.com/Groblus/ars-magica"><i class="icon" data-lucide="github"></i> GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="kicker"><i class="icon" data-lucide="scroll"></i> First covenant night</div>
+        <h1>Start small. Let Mythic Europe get strange fast.</h1>
+        <p>A practical packet for a first Ars Magica session: table decisions, concept prompts, covenant seeds, opening hooks, agenda, rules cheat sheet, and source pointers.</p>
+        <div class="actions">
+          <a class="button primary" href="./library.html"><i class="icon" data-lucide="search"></i> Open Reference Library</a>
+          <a class="button secondary" href="./first-session.md"><i class="icon" data-lucide="file-text"></i> Markdown Version</a>
+        </div>
+      </div>
+      <aside class="panel seal">
+        <div>
+          <strong>DE</strong>
+          <span>Definitive Edition core rules first. 5e books as support. Legacy editions out of first-session mechanics.</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Before Session</h2>
+        <ul>
+          <li>Ask each player for one concept sentence: house, magical obsession, social trouble, and one mundane tie.</li>
+          <li>Pick saga tone: wondrous scholarship, political covenant drama, faerie weirdness, holy frontier, infernal threat, or rural survival.</li>
+          <li>Read only core basics first: characters, Hermetic magic, covenants, obstacles, stories, sagas.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Default Scope</h2>
+        <ul>
+          <li>Start with magi and simple companion/grog sketches.</li>
+          <li>Build a light covenant pitch, not full accounting.</li>
+          <li>Explain seasons, but defer full lab/season cycles until after the opening story.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Player Primer</h2>
+        <p>Ars Magica is troupe fantasy about a covenant of wizards and allies in Mythic Europe. Stories interrupt long-term plans; seasons turn consequences into study, lab work, politics, and covenant growth.</p>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Concept Menu</h2>
+        <table>
+          <thead><tr><th>Concept</th><th>Hook</th></tr></thead>
+          <tbody>
+            <tr><td>Bonisagus researcher</td><td>Breakthrough theory risks political attention.</td></tr>
+            <tr><td>Flambeau champion</td><td>Direct answers create indirect enemies.</td></tr>
+            <tr><td>Jerbiton court mage</td><td>Noble alliances collide with Hermetic secrecy.</td></tr>
+            <tr><td>Mercere redcap ally</td><td>Messages reveal trouble before anyone else sees it.</td></tr>
+            <tr><td>Merinita faerie scholar</td><td>Stories become bargains.</td></tr>
+            <tr><td>Tremere organizer</td><td>Covenant stability has a price.</td></tr>
+            <tr><td>Ex Miscellanea outsider</td><td>Useful magic, awkward legitimacy.</td></tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="card">
+        <h2>Covenant Pitches</h2>
+        <table>
+          <thead><tr><th>Pitch</th><th>Strength</th><th>Trouble</th></tr></thead>
+          <tbody>
+            <tr><td>Abandoned Roman villa</td><td>Ancient aura and hidden library traces.</td><td>Local lord claims the land.</td></tr>
+            <tr><td>Forest spring covenant</td><td>Strong Magic aura and vis source.</td><td>Faerie court treats visitors as cast members.</td></tr>
+            <tr><td>Townhouse covenant</td><td>Access to guilds, books, and rumors.</td><td>Church scrutiny and mundane politics.</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>Opening Hooks</h2>
+        <ol>
+          <li>A redcap arrives wounded with a sealed message naming the covenant.</li>
+          <li>A local priest asks for help with miracles that look wrong.</li>
+          <li>A noble patron offers land if the magi solve a border haunting.</li>
+          <li>A child displays impossible magic near a contested vis source.</li>
+          <li>A faerie demands that the covenant finish an old story.</li>
+        </ol>
+      </article>
+      <article class="card">
+        <h2>Rules Cheat Sheet</h2>
+        <ul>
+          <li>Most actions are characteristic + ability + die against an ease factor.</li>
+          <li>Use stress dice when danger, pressure, or botch risk matters.</li>
+          <li>Hermetic magic uses Technique + Form plus context modifiers.</li>
+          <li>Formulaic spells are reliable; spontaneous spells are flexible but weaker.</li>
+          <li>Magic resistance and penetration matter against protected beings.</li>
+          <li>Seasons are strategic turns for study, lab work, and covenant projects.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Session Agenda</h2>
+      <table>
+        <thead><tr><th>Time</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td>15 min</td><td>Explain premise, troupe play, and safety/tone.</td></tr>
+          <tr><td>30 min</td><td>Pick saga frame and covenant pitch.</td></tr>
+          <tr><td>60 min</td><td>Build or sketch characters.</td></tr>
+          <tr><td>20 min</td><td>Walk through core dice, abilities, magic totals, combat risk.</td></tr>
+          <tr><td>60-90 min</td><td>Play one opening hook.</td></tr>
+          <tr><td>15 min</td><td>Debrief, pick next reading, decide seasonal focus.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h2>Source Pointers</h2>
+      <p>Core rules: <code>reviewed/Ars Magica - Definitive Edition (Core Rules).md</code>. Covenant support: <code>reviewed/Ars Magica 5e - Covenants.md</code>. House concepts: the three <code>Houses of Hermes</code> books. Magic depth: <code>Realms of Power - Magic.md</code>. Use <a href="./library.html">library.html</a> for citation-first browsing.</p>
+    </section>
+  </main>
+
+  <script>document.addEventListener('DOMContentLoaded', () => lucide.createIcons());</script>
+</body>
+</html>

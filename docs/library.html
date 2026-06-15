@@ -373,6 +373,25 @@
       min-height: 320px;
     }
 
+    .quick-results {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+      max-height: 360px;
+      overflow: auto;
+    }
+
+    .quick-result {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(250, 247, 242, 0.76);
+    }
+
     .toc-link {
       display: block;
       width: 100%;
@@ -466,6 +485,14 @@
       font-weight: 700;
     }
 
+    .copy-btn {
+      padding: 6px 8px;
+      min-width: 34px;
+      min-height: 34px;
+      display: inline-grid;
+      place-items: center;
+    }
+
     .small { font-size: 0.88rem; }
     .icon { width: 18px; height: 18px; vertical-align: -3px; }
 
@@ -532,7 +559,7 @@
             <i data-lucide="book-open" class="icon"></i>
           </a>
           <a class="hero-link" href="#core-data">
-            <span>Core rules tables</span>
+            <span>Structured rules data</span>
             <i data-lucide="table-properties" class="icon"></i>
           </a>
         </nav>
@@ -542,6 +569,41 @@
   </header>
 
   <main>
+    <section id="quick-search">
+      <div class="section-head">
+        <div>
+          <h2>Quick Search</h2>
+          <p>Search book headings and structured data together. Results preserve source path and line span for citation-first lookup.</p>
+        </div>
+        <p class="small muted" id="quick-count">0 matching results</p>
+      </div>
+      <div class="controls">
+        <label>
+          Search everything
+          <input id="quick-search-input" type="search" placeholder="laboratory total, aura, covenant hooks, pilum">
+        </label>
+        <label>
+          Scope
+          <select id="quick-scope">
+            <option value="all">All</option>
+            <option value="headings">Book headings</option>
+            <option value="data">Structured data</option>
+          </select>
+        </label>
+        <label>
+          Limit
+          <select id="quick-limit">
+            <option value="12">12</option>
+            <option value="24">24</option>
+            <option value="48">48</option>
+          </select>
+        </label>
+      </div>
+      <div id="quick-results" class="quick-results" aria-live="polite">
+        <div class="empty">Load data, then search across headings and rules tables.</div>
+      </div>
+    </section>
+
     <section id="books">
       <div class="section-head">
         <div>
@@ -631,6 +693,10 @@
           <button type="button" class="tab" data-core-kind="flaws">Flaws</button>
           <button type="button" class="tab" data-core-kind="abilities">Abilities</button>
           <button type="button" class="tab" data-core-kind="spells">Spells</button>
+          <button type="button" class="tab" data-core-kind="spell_guidelines">Guidelines</button>
+          <button type="button" class="tab" data-core-kind="lab_activities">Lab</button>
+          <button type="button" class="tab" data-core-kind="combat_tables">Combat</button>
+          <button type="button" class="tab" data-core-kind="covenant_boons_hooks">Covenants</button>
         </div>
 
         <div class="controls">
@@ -691,6 +757,10 @@
         flaws: [],
         abilities: [],
         spells: [],
+        spell_guidelines: [],
+        lab_activities: [],
+        combat_tables: [],
+        covenant_boons_hooks: [],
       },
       activeCoreKind: 'virtues',
     };
@@ -791,13 +861,17 @@
     function normalizeCoreEntry(entry, kind, index) {
       const name = entry.name || entry.title || entry.spell || entry.ability || entry.virtue || entry.flaw || `Entry ${index + 1}`;
       const category = entry.category || entry.group || entry.art || entry.technique || entry.type || '';
-      const subtype = entry.subtype || entry.kind || entry.major_minor || entry.range || entry.ability_type || '';
+      const subtype = entry.subtype || entry.kind || entry.major_minor || entry.magnitude || entry.form || entry.range || entry.ability_type || '';
       const detailParts = [
         entry.summary,
         entry.description,
         entry.effect,
         entry.guideline,
         entry.notes,
+        entry.form ? `Form: ${entry.form}` : '',
+        entry.technique ? `Technique: ${entry.technique}` : '',
+        entry.row_count ? `Rows: ${entry.row_count}` : '',
+        Array.isArray(entry.formulae) && entry.formulae.length ? `Formulae: ${entry.formulae.slice(0, 2).join('; ')}` : '',
         entry.cost ? `Cost: ${entry.cost}` : '',
         entry.level !== undefined && entry.level !== null && entry.level !== '' ? `Level: ${entry.level}` : '',
         entry.score ? `Score: ${entry.score}` : '',
@@ -814,7 +888,7 @@
         subtype,
         detail: detailParts.join(' | '),
         sourcePath: entry.source_path || entry.path || entry.book_path || '',
-        sourceBook: entry.source_book || entry.book || entry.source || 'Core data',
+        sourceBook: entry.source_book || entry.book || entry.source || entry.source_path || 'Core data',
         lineStart: Number(entry.line_start ?? entry.start_line ?? entry.line ?? 0),
         lineEnd: Number(entry.line_end ?? entry.end_line ?? 0),
         level: entry.level ?? entry.cost ?? '',
@@ -825,7 +899,7 @@
     function normalizeCorePayload(payload) {
       const buckets = payload?.core_data || payload?.core || payload || {};
       const map = {};
-      ['virtues', 'flaws', 'abilities', 'spells'].forEach((kind) => {
+      ['virtues', 'flaws', 'abilities', 'spells', 'spell_guidelines', 'lab_activities', 'combat_tables', 'covenant_boons_hooks'].forEach((kind) => {
         const entries = Array.isArray(buckets[kind]) ? buckets[kind] : [];
         map[kind] = entries.map((entry, index) => normalizeCoreEntry(entry, kind, index));
       });
@@ -1004,6 +1078,7 @@
       }
 
       const href = sourceHref(book.path, heading.lineStart);
+      const citation = `${book.path}:${heading.lineStart}-${heading.lineEnd}`;
       detail.innerHTML = `
         <div class="meta" style="margin-bottom: 12px;">
           <span class="pill">L${esc(heading.level)}</span>
@@ -1014,6 +1089,7 @@
         <p>${esc(heading.headingPath.join(' > '))}</p>
         <div class="toolbar">
           ${href ? `<a class="source-link" href="${esc(href)}"><i data-lucide="external-link" class="icon"></i>Open at line ${esc(heading.lineStart)}</a>` : ''}
+          <button type="button" class="copy-btn" data-copy="${esc(citation)}" title="Copy citation"><i data-lucide="copy" class="icon"></i></button>
         </div>
         <div class="table-wrap" style="margin-top: 10px;">
           <table>
@@ -1084,16 +1160,84 @@
         const sourceText = entry.lineStart
           ? `${entry.sourceBook}:${entry.lineStart}${entry.lineEnd ? `-${entry.lineEnd}` : ''}`
           : entry.sourceBook;
+        const citation = entry.sourcePath && entry.lineStart ? `${entry.sourcePath}:${entry.lineStart}-${entry.lineEnd || entry.lineStart}` : sourceText;
         return `
           <tr>
             <td><strong>${esc(entry.name)}</strong></td>
             <td>${esc(entry.category || '—')}</td>
             <td>${esc(entry.subtype || '—')}</td>
             <td>${esc(entry.detail || '—')}</td>
-            <td>${href ? `<a href="${esc(href)}">${esc(sourceText)}</a>` : esc(sourceText || '—')}</td>
+            <td>${href ? `<a href="${esc(href)}">${esc(sourceText)}</a>` : esc(sourceText || '—')} <button type="button" class="copy-btn" data-copy="${esc(citation)}" title="Copy citation"><i data-lucide="copy" class="icon"></i></button></td>
           </tr>
         `;
       }).join('');
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function allQuickSearchItems() {
+      const headingItems = state.books.flatMap((book) => book.headings.map((heading) => ({
+        type: 'heading',
+        name: heading.title,
+        detail: heading.headingPath.join(' > '),
+        sourcePath: book.path,
+        lineStart: heading.lineStart,
+        lineEnd: heading.lineEnd,
+        href: sourceHref(book.path, heading.lineStart),
+        citation: `${book.path}:${heading.lineStart}-${heading.lineEnd}`,
+      })));
+      const dataItems = Object.entries(state.core).flatMap(([kind, entries]) => entries.map((entry) => ({
+        type: kind.replaceAll('_', ' '),
+        name: entry.name,
+        detail: [entry.category, entry.subtype, entry.detail].filter(Boolean).join(' | '),
+        sourcePath: entry.sourcePath,
+        lineStart: entry.lineStart,
+        lineEnd: entry.lineEnd,
+        href: sourceHref(entry.sourcePath, entry.lineStart),
+        citation: entry.sourcePath && entry.lineStart ? `${entry.sourcePath}:${entry.lineStart}-${entry.lineEnd || entry.lineStart}` : '',
+      })));
+      return { headingItems, dataItems };
+    }
+
+    function renderQuickSearch() {
+      const query = document.getElementById('quick-search-input').value.trim().toLowerCase();
+      const scope = document.getElementById('quick-scope').value;
+      const limit = Number(document.getElementById('quick-limit').value || 12);
+      const container = document.getElementById('quick-results');
+      const count = document.getElementById('quick-count');
+      if (!query) {
+        count.textContent = '0 matching results';
+        container.innerHTML = '<div class="empty">Type a query to search headings and structured data.</div>';
+        return;
+      }
+      const { headingItems, dataItems } = allQuickSearchItems();
+      const pool = scope === 'headings' ? headingItems : scope === 'data' ? dataItems : headingItems.concat(dataItems);
+      const matches = pool.filter((item) => [item.type, item.name, item.detail, item.sourcePath].join(' ').toLowerCase().includes(query)).slice(0, limit);
+      count.textContent = `${number(matches.length)} shown`;
+      container.innerHTML = matches.length ? matches.map((item) => `
+        <div class="quick-result">
+          <div>
+            <div class="meta"><span class="pill">${esc(item.type)}</span><span class="pill">${esc(item.lineStart || 'no line')}</span></div>
+            <h3 style="margin: 7px 0 4px;">${esc(item.name)}</h3>
+            <p class="small">${esc(item.detail || item.sourcePath || '')}</p>
+            ${item.href ? `<a class="source-link" href="${esc(item.href)}"><i data-lucide="external-link" class="icon"></i>Open source</a>` : ''}
+          </div>
+          ${item.citation ? `<button type="button" class="copy-btn" data-copy="${esc(item.citation)}" title="Copy citation"><i data-lucide="copy" class="icon"></i></button>` : ''}
+        </div>
+      `).join('') : '<div class="empty">No quick-search results.</div>';
+      if (window.lucide) lucide.createIcons();
+    }
+
+    async function copyText(value) {
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch (_error) {
+        const text = document.createElement('textarea');
+        text.value = value;
+        document.body.appendChild(text);
+        text.select();
+        document.execCommand('copy');
+        text.remove();
+      }
     }
 
     function bindEvents() {
@@ -1123,6 +1267,14 @@
       document.getElementById('core-category').addEventListener('change', renderCoreTable);
       document.getElementById('core-subtype').addEventListener('change', renderCoreTable);
       document.getElementById('core-sort').addEventListener('change', renderCoreTable);
+      document.getElementById('quick-search-input').addEventListener('input', renderQuickSearch);
+      document.getElementById('quick-scope').addEventListener('change', renderQuickSearch);
+      document.getElementById('quick-limit').addEventListener('change', renderQuickSearch);
+      document.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-copy]');
+        if (!button) return;
+        copyText(button.dataset.copy || '');
+      });
     }
 
     async function loadJson(url) {
@@ -1141,6 +1293,7 @@
         populateEditionFilter();
         updateHeroStats();
         renderShelf();
+        renderQuickSearch();
         status.textContent = `Loaded ${number(state.books.length)} books from docs/data/library.json`;
       } catch (error) {
         status.textContent = 'Book index unavailable';
@@ -1158,6 +1311,7 @@
         updateHeroStats();
         renderCoreFilters();
         renderCoreTable();
+        renderQuickSearch();
         const total = Object.values(state.core).reduce((sum, list) => sum + list.length, 0);
         status.textContent = `Loaded ${number(total)} core entries from docs/data/core-data.json`;
       } catch (error) {

@@ -11,6 +11,9 @@ This repository is a sparse checkout of the Ars Magica Open License Markdown cor
 | `arm5openlicenselogo.png` | Logo image | Useful for generated reports or local reading surfaces. |
 | `reviewed/` | Manually reviewed Markdown books | 25 books in this sparse checkout; use these as the trusted source. |
 | `ars-magica-inventory-report.html` | Human-readable inventory report | Generated exploratory report with tables, diagrams, and build ideas. |
+| `docs/` | GitHub Pages artifacts | Landing page, library browser, inventory report, first-session packet, and JSON data exports. |
+| `skills/` | Installable skills | Corpus navigator plus focused character, covenant, spell/lab, and storyguide prep skills. |
+| `mcp/ars_magica_server.py` | Local MCP server | FastMCP tools over the generated SQLite reference database. |
 
 The README mentions `raw-md/`, `wip/`, and `3rd-party/`, but those directories are not present in this sparse checkout.
 
@@ -149,6 +152,17 @@ The core rules file has these top-level chapter anchors:
 | `ars-magica-storyguide` | Saga location, faction, realm, desired tone | Session brief, NPCs, complications, hooks, lore citations. |
 | `ars-magica-tribunal-gazetteer` | Region or tribunal | Places, covenants, magi, conflicts, rumors, travel hooks. |
 | `ars-magica-conversion-auditor` | 3e/4e passage or book | Notes on lore salvage, likely mechanical conflicts, DE conversion warnings. |
+
+## Current Agent-Facing Artifacts
+
+| Artifact | Use |
+|---|---|
+| `docs/library.html` | Browser shelf with quick search and structured data tables. |
+| `docs/first-session.html` | Human handout for first-session prep. |
+| `docs/data/core-data.json` | Structured virtues, flaws, abilities, spells, spell guidelines, lab refs, combat tables, and covenant boons/hooks. |
+| `skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite` | SQLite FTS/vector-ready database. |
+| `mcp/ars_magica_server.py` | MCP tools for search, sections, TOCs, spells, virtues/flaws/abilities, and covenant options. |
+| `skills.sh.json` | skills.sh install manifest for all current skills. |
 
 ## Working Rules For Future Agents
 

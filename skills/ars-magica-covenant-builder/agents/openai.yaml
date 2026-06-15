@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Covenant Builder"
+  short_description: "Design cited covenants, Boons, Hooks, and resources"
+  default_prompt: "Use $ars-magica-covenant-builder to create a covenant dossier for a new Ars Magica saga."

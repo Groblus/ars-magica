@@ -6,7 +6,11 @@
       "title": "Ars Magica",
       "description": "Skills for navigating the Ars Magica Definitive Edition and 5e corpus.",
       "skills": [
-        "ars-magica-corpus-navigator"
+        "ars-magica-corpus-navigator",
+        "ars-magica-character-helper",
+        "ars-magica-covenant-builder",
+        "ars-magica-spell-lab-assistant",
+        "ars-magica-storyguide-prep"
       ]
     }
   ]

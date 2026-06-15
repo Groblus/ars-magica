@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Character Helper"
+  short_description: "Create cited first-time Ars Magica characters"
+  default_prompt: "Use $ars-magica-character-helper to guide an Ars Magica character concept into concrete creation choices."

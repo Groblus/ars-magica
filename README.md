@@ -9,9 +9,12 @@ Private exploratory fork of the Ars Magica Open License Markdown corpus, focused
 - Landing page: `docs/index.html`
 - Human inventory report: `docs/report.html`
 - Browser reference library: `docs/library.html`
+- First-session packet: `docs/first-session.html`
 - Agent guide: `AGENTS.md`
 - Claude redirect: `CLAUDE.md`
 - Corpus navigator skill: `skills/ars-magica-corpus-navigator/`
+- Focused play skills: `skills/ars-magica-character-helper/`, `skills/ars-magica-covenant-builder/`, `skills/ars-magica-spell-lab-assistant/`, `skills/ars-magica-storyguide-prep/`
+- Local MCP server: `mcp/ars_magica_server.py`
 - Generated book TOCs: `skills/ars-magica-corpus-navigator/references/toc.md`
 
 If GitHub Pages is enabled, the landing page should publish at:
@@ -30,13 +33,17 @@ Install with the Skills CLI:
 npx skills add Groblus/ars-magica
 ```
 
-The primary skill is:
+Available skills are:
 
 ```text
 ars-magica-corpus-navigator
+ars-magica-character-helper
+ars-magica-covenant-builder
+ars-magica-spell-lab-assistant
+ars-magica-storyguide-prep
 ```
 
-It navigates the local Ars Magica corpus as a reference shelf, using Definitive Edition as the rules authority and 5e books as compatible supplements. It explicitly excludes 3e/4e material for now.
+The navigator skill provides citation-first corpus lookup. The focused skills use it for character concepts, covenant design, spell/lab assistance, and storyguide prep. All use Definitive Edition as the rules authority and 5e books as compatible supplements. They explicitly exclude 3e/4e material for now.
 
 ## RAG Setup
 
@@ -50,6 +57,7 @@ It contains:
 
 - `20` allowed books: Definitive Edition core plus 19 5e books.
 - `9,967` heading-aware chunks.
+- `1,953` structured rules/play entries across virtues, flaws, abilities, spells, spell guidelines, lab references, combat tables, and covenant boons/hooks.
 - SQLite FTS5 search.
 - OpenAI `text-embedding-3-large` embeddings at `3072` dimensions.
 - sqlite-vector table for vector search.
@@ -61,6 +69,16 @@ python3 skills/ars-magica-corpus-navigator/scripts/search.py "penetration magic 
 .venv/bin/python skills/ars-magica-corpus-navigator/scripts/search.py "faerie aura" --vector --limit 5
 .venv/bin/python skills/ars-magica-corpus-navigator/scripts/search.py "Tremere politics" --hybrid --limit 5
 ```
+
+## MCP Server
+
+Run the local FastMCP server to expose the SQLite index as agent-callable tools:
+
+```bash
+python3 mcp/ars_magica_server.py
+```
+
+The server provides tools for FTS rule search, section retrieval, book TOCs, spells, virtues, flaws, abilities, and covenant options. It uses only the local SQLite database and makes no OpenAI calls.
 
 ## Rebuild
 

@@ -260,6 +260,7 @@
     .route:nth-child(2) .route-icon { background: var(--blue); }
     .route:nth-child(3) .route-icon { background: var(--gold); }
     .route:nth-child(4) .route-icon { background: var(--plum); }
+    .route:nth-child(5) .route-icon { background: var(--red); }
 
     .route h2 {
       font-size: 1.05rem;
@@ -370,7 +371,7 @@
           <div class="ledger" aria-label="Corpus metrics">
             <div class="metric"><strong>20</strong><span>DE/5e books indexed</span></div>
             <div class="metric"><strong>9,967</strong><span>retrieval chunks</span></div>
-            <div class="metric"><strong>1,082</strong><span>core data entries</span></div>
+            <div class="metric"><strong>1,953</strong><span>structured data entries</span></div>
             <div class="metric"><strong>3,072</strong><span>embedding dimensions</span></div>
           </div>
         </div>
@@ -386,9 +387,17 @@
                 <span class="route-icon"><i class="icon" data-lucide="library-big"></i></span>
                 <span>
                   <h2>Reference Library</h2>
-                  <p>Browse books, tables of contents, virtues, flaws, abilities, and spells.</p>
+                  <p>Browse books, tables of contents, quick search, virtues, flaws, abilities, spells, guidelines, labs, combat, and covenant options.</p>
                 </span>
                 <code>library.html</code>
+              </a>
+              <a class="route" href="./first-session.html">
+                <span class="route-icon"><i class="icon" data-lucide="scroll"></i></span>
+                <span>
+                  <h2>First-Session Packet</h2>
+                  <p>Table decisions, concept prompts, covenant pitches, hooks, agenda, and rules cheat sheet.</p>
+                </span>
+                <code>first-session.html</code>
               </a>
               <a class="route" href="./report.html">
                 <span class="route-icon"><i class="icon" data-lucide="clipboard-list"></i></span>
@@ -402,7 +411,7 @@
                 <span class="route-icon"><i class="icon" data-lucide="braces"></i></span>
                 <span>
                   <h2>Core Data Export</h2>
-                  <p>Structured Definitive Edition virtues, flaws, abilities, and spells.</p>
+                  <p>Structured Definitive Edition rules and 5e covenant extracts.</p>
                 </span>
                 <code>core-data.json</code>
               </a>
@@ -428,11 +437,11 @@
           </article>
           <article class="capability">
             <h3>For agents</h3>
-            <p>The repo includes an installable corpus navigator skill, generated Markdown references, a SQLite FTS database, OpenAI large embeddings, and sqlite-vector support.</p>
+            <p>The repo includes installable skills, generated Markdown references, a SQLite FTS database, OpenAI large embeddings, sqlite-vector support, and a local FastMCP server.</p>
           </article>
           <article class="capability">
             <h3>For play prep</h3>
-            <p>The current baseline prioritizes first-time play: core rules first, 5e support books second, and 3e/4e material kept out of active rules lookup.</p>
+            <p>The current baseline prioritizes first-time play: core rules first, 5e support books second, a ready first-session packet, and 3e/4e material kept out of active rules lookup.</p>
           </article>
         </div>
       </section>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Storyguide Prep"
+  short_description: "Prepare sessions, hooks, NPCs, and handouts"
+  default_prompt: "Use $ars-magica-storyguide-prep to prepare an Ars Magica session or first-saga packet."

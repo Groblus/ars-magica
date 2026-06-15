@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Spell Lab Assistant"
+  short_description: "Lookup spells and plan lab seasons"
+  default_prompt: "Use $ars-magica-spell-lab-assistant to answer a spell, lab, enchantment, or seasonal activity question."

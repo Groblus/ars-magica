@@ -61,6 +61,10 @@ class CoreExtraction:
     flaws: list[dict[str, Any]]
     abilities: list[dict[str, Any]]
     spells: list[dict[str, Any]]
+    spell_guidelines: list[dict[str, Any]]
+    lab_activities: list[dict[str, Any]]
+    combat_tables: list[dict[str, Any]]
+    covenant_boons_hooks: list[dict[str, Any]]
 
 
 def slugify(value: str) -> str:
@@ -204,6 +208,25 @@ def clean_htmlish(text: str) -> str:
 def join_body(lines: list[str]) -> str:
     text = clean_htmlish("\n".join(lines))
     return text.strip()
+
+
+def first_paragraph(text: str, max_chars: int = 520) -> str:
+    text = " ".join(text.strip().split())
+    if len(text) <= max_chars:
+        return text
+    return text[: max_chars - 1].rsplit(" ", 1)[0] + "..."
+
+
+def parse_markdown_table(lines: list[str]) -> list[list[str]]:
+    rows: list[list[str]] = []
+    for line in lines:
+        stripped = line.strip()
+        if not stripped.startswith("|") or "---" in stripped:
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if cells:
+            rows.append(cells)
+    return rows
 
 
 def parse_meta_line(line: str) -> tuple[str | None, list[str], str]:
@@ -387,6 +410,147 @@ def parse_spells(lines: list[str], headings: list[Heading]) -> list[dict[str, An
     return entries
 
 
+def parse_spell_guidelines(lines: list[str], headings: list[Heading]) -> list[dict[str, Any]]:
+    chapter = next(h for h in headings if h.title == "Chapter 9: Spells")
+    entries: list[dict[str, Any]] = []
+    for heading in descendants_of(headings, chapter):
+        if heading.level != 3 or not heading.title.endswith("Guidelines"):
+            continue
+        match = re.match(r"^(Creo|Intellego|Muto|Perdo|Rego)\s+([A-Za-z]+)\s+Guidelines$", heading.title)
+        if not match:
+            continue
+        technique, form = match.groups()
+        for row in parse_markdown_table(body_lines(lines, heading)):
+            if len(row) < 2 or row[0].lower() == "level":
+                continue
+            effects = [part.strip(" •") for part in clean_htmlish(row[1]).split("\n") if part.strip(" •")]
+            for effect_index, effect in enumerate(effects, 1):
+                entries.append(
+                    {
+                        "id": slugify(f"guideline-{technique}-{form}-{row[0]}-{effect_index}-{heading.line_start}"),
+                        "name": f"{technique} {form} {row[0]}",
+                        "technique": technique,
+                        "form": form,
+                        "level": row[0],
+                        "guideline": effect,
+                        "heading_path": " > ".join(heading.heading_path),
+                        "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                        "line_start": heading.line_start,
+                        "line_end": heading.line_end,
+                        "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                    }
+                )
+    return entries
+
+
+def parse_lab_activities(lines: list[str], headings: list[Heading]) -> list[dict[str, Any]]:
+    chapter = next(h for h in headings if h.title == "Chapter 8: Laboratory")
+    entries: list[dict[str, Any]] = []
+    for heading in descendants_of(headings, chapter):
+        if heading.level not in {3, 4}:
+            continue
+        if heading.title in {"Example: Inventing Spells", "Enchanted Item Example"}:
+            continue
+        text = join_body(body_lines(lines, heading))
+        formulae = re.findall(r"\*\*([^*\n]*(?:TOTAL|LIMIT|LEVELS|CHARGES|ROLL|FACTOR|VIS)[^*\n]*):?\s*([^*]+?)\*\*", text)
+        entries.append(
+            {
+                "id": slugify(f"lab-{heading.title}-{heading.line_start}"),
+                "name": heading.title,
+                "level": heading.level,
+                "summary": first_paragraph(text),
+                "formulae": [f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae],
+                "heading_path": " > ".join(heading.heading_path),
+                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "line_start": heading.line_start,
+                "line_end": heading.line_end,
+                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+            }
+        )
+    return entries
+
+
+def parse_combat_tables(lines: list[str], headings: list[Heading]) -> list[dict[str, Any]]:
+    chapter = next(h for h in headings if h.title == "Chapter 11: Obstacles")
+    entries: list[dict[str, Any]] = []
+    for heading in descendants_of(headings, chapter):
+        table_rows = parse_markdown_table(body_lines(lines, heading))
+        if not table_rows:
+            continue
+        if not any(term in heading.title.lower() for term in ["combat", "damage", "wound", "injur", "attack", "weapon"]):
+            continue
+        entries.append(
+            {
+                "id": slugify(f"combat-table-{heading.title}-{heading.line_start}"),
+                "name": heading.title,
+                "row_count": max(0, len(table_rows) - 1),
+                "columns": table_rows[0],
+                "rows": table_rows[1:],
+                "heading_path": " > ".join(heading.heading_path),
+                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "line_start": heading.line_start,
+                "line_end": heading.line_end,
+                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+            }
+        )
+    return entries
+
+
+def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    covenant_path = REPO_ROOT / "reviewed" / "Ars Magica 5e - Covenants.md"
+    if not covenant_path.exists():
+        return []
+    covenant_book = next((b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None)
+    if not covenant_book:
+        return []
+    lines = read_lines(covenant_path)
+    headings = [Heading(**heading) for heading in covenant_book["headings"]]
+    chapter = next((h for h in headings if h.title == "Chapter Two: Boons & Hooks"), None)
+    if not chapter:
+        return []
+
+    entries: list[dict[str, Any]] = []
+    current_category = ""
+    current_kind = ""
+    current_magnitude = ""
+    source_path = covenant_path.relative_to(REPO_ROOT).as_posix()
+    for idx in range(chapter.line_start, chapter.line_end):
+        line = lines[idx - 1]
+        hmatch = HEADING_RE.match(line)
+        if hmatch:
+            title = hmatch.group(2).strip()
+            current_category = title
+            current_kind = "boon" if "boon" in title.lower() else "hook" if "hook" in title.lower() else current_kind
+            current_magnitude = "Major" if "major" in title.lower() else "Minor" if "minor" in title.lower() else "Free" if "free" in title.lower() else current_magnitude
+            continue
+        if not current_kind:
+            continue
+        match = re.match(r"^\*{0,2}_?\*{0,2}\s*\*\*?([^:*_]+?)\*\*?:\s*(.+)", line.strip())
+        if not match:
+            match = re.match(r"^\*?([^:*_][^:]{2,80}):\s*(Site|Buildings|Resources|Residents|External|Surroundings|Minor|Major|Free).*$", line.strip())
+        if not match:
+            continue
+        name = re.sub(r"[*_]", "", match.group(1)).strip()
+        if len(name) < 2 or name.lower() in {"hooks", "boons"}:
+            continue
+        description = match.group(2).strip() if len(match.groups()) > 1 else ""
+        entries.append(
+            {
+                "id": slugify(f"covenant-{current_kind}-{name}-{idx}"),
+                "name": name,
+                "kind": current_kind,
+                "magnitude": current_magnitude or ("Major" if "major" in description.lower() else "Minor" if "minor" in description.lower() else ""),
+                "category": current_category,
+                "summary": first_paragraph(clean_htmlish(description)),
+                "source_path": source_path,
+                "line_start": idx,
+                "line_end": idx,
+                "citation": f"{source_path}:{idx}-{idx}",
+            }
+        )
+    return entries
+
+
 def extract_core_data(core_book: dict[str, Any]) -> CoreExtraction:
     lines = read_lines(REPO_ROOT / core_book["path"])
     headings = [Heading(**heading) for heading in core_book["headings"]]
@@ -395,6 +559,10 @@ def extract_core_data(core_book: dict[str, Any]) -> CoreExtraction:
         flaws=parse_virtue_or_flaw_entries("flaw", lines, headings, "Chapter 4: Virtues and Flaws", "Flaws"),
         abilities=parse_abilities(lines, headings),
         spells=parse_spells(lines, headings),
+        spell_guidelines=parse_spell_guidelines(lines, headings),
+        lab_activities=parse_lab_activities(lines, headings),
+        combat_tables=parse_combat_tables(lines, headings),
+        covenant_boons_hooks=[],
     )
 
 
@@ -439,7 +607,9 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
                     }
                 )
     core_book = next(b for b in books if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix())
-    return books, chunks, extract_core_data(core_book)
+    core_data = extract_core_data(core_book)
+    core_data.covenant_boons_hooks = parse_covenant_boons_hooks(books)
+    return books, chunks, core_data
 
 
 def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool) -> None:
@@ -499,11 +669,19 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
             "flaw_count": len(core_data.flaws),
             "ability_count": len(core_data.abilities),
             "spell_count": len(core_data.spells),
+            "spell_guideline_count": len(core_data.spell_guidelines),
+            "lab_activity_count": len(core_data.lab_activities),
+            "combat_table_count": len(core_data.combat_tables),
+            "covenant_boon_hook_count": len(core_data.covenant_boons_hooks),
         },
         "virtues": core_data.virtues,
         "flaws": core_data.flaws,
         "abilities": core_data.abilities,
         "spells": core_data.spells,
+        "spell_guidelines": core_data.spell_guidelines,
+        "lab_activities": core_data.lab_activities,
+        "combat_tables": core_data.combat_tables,
+        "covenant_boons_hooks": core_data.covenant_boons_hooks,
     }
     (DOCS_DATA / "library.json").write_text(json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n")
     (DOCS_DATA / "core-data.json").write_text(json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n")
@@ -705,6 +883,55 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
           line_end INTEGER NOT NULL,
           citation TEXT NOT NULL
         );
+        CREATE TABLE core_spell_guidelines (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          technique TEXT NOT NULL,
+          form TEXT NOT NULL,
+          level TEXT NOT NULL,
+          guideline TEXT NOT NULL,
+          heading_path TEXT NOT NULL,
+          source_path TEXT NOT NULL,
+          line_start INTEGER NOT NULL,
+          line_end INTEGER NOT NULL,
+          citation TEXT NOT NULL
+        );
+        CREATE TABLE core_lab_activities (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          heading_level INTEGER NOT NULL,
+          summary TEXT NOT NULL,
+          formulae_json TEXT NOT NULL,
+          heading_path TEXT NOT NULL,
+          source_path TEXT NOT NULL,
+          line_start INTEGER NOT NULL,
+          line_end INTEGER NOT NULL,
+          citation TEXT NOT NULL
+        );
+        CREATE TABLE core_combat_tables (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          row_count INTEGER NOT NULL,
+          columns_json TEXT NOT NULL,
+          rows_json TEXT NOT NULL,
+          heading_path TEXT NOT NULL,
+          source_path TEXT NOT NULL,
+          line_start INTEGER NOT NULL,
+          line_end INTEGER NOT NULL,
+          citation TEXT NOT NULL
+        );
+        CREATE TABLE covenant_boons_hooks (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          kind TEXT NOT NULL,
+          magnitude TEXT,
+          category TEXT NOT NULL,
+          summary TEXT NOT NULL,
+          source_path TEXT NOT NULL,
+          line_start INTEGER NOT NULL,
+          line_end INTEGER NOT NULL,
+          citation TEXT NOT NULL
+        );
         """
     )
     if vec_supported:
@@ -861,6 +1088,75 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
                 row["citation"],
             ),
         )
+    for row in core_data.spell_guidelines:
+        conn.execute(
+            """INSERT INTO core_spell_guidelines(id,name,technique,form,level,guideline,heading_path,source_path,line_start,line_end,citation)
+            VALUES(?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                row["id"],
+                row["name"],
+                row["technique"],
+                row["form"],
+                row["level"],
+                row["guideline"],
+                row["heading_path"],
+                row["source_path"],
+                row["line_start"],
+                row["line_end"],
+                row["citation"],
+            ),
+        )
+    for row in core_data.lab_activities:
+        conn.execute(
+            """INSERT INTO core_lab_activities(id,name,heading_level,summary,formulae_json,heading_path,source_path,line_start,line_end,citation)
+            VALUES(?,?,?,?,?,?,?,?,?,?)""",
+            (
+                row["id"],
+                row["name"],
+                row["level"],
+                row["summary"],
+                json.dumps(row["formulae"], ensure_ascii=False),
+                row["heading_path"],
+                row["source_path"],
+                row["line_start"],
+                row["line_end"],
+                row["citation"],
+            ),
+        )
+    for row in core_data.combat_tables:
+        conn.execute(
+            """INSERT INTO core_combat_tables(id,name,row_count,columns_json,rows_json,heading_path,source_path,line_start,line_end,citation)
+            VALUES(?,?,?,?,?,?,?,?,?,?)""",
+            (
+                row["id"],
+                row["name"],
+                row["row_count"],
+                json.dumps(row["columns"], ensure_ascii=False),
+                json.dumps(row["rows"], ensure_ascii=False),
+                row["heading_path"],
+                row["source_path"],
+                row["line_start"],
+                row["line_end"],
+                row["citation"],
+            ),
+        )
+    for row in core_data.covenant_boons_hooks:
+        conn.execute(
+            """INSERT INTO covenant_boons_hooks(id,name,kind,magnitude,category,summary,source_path,line_start,line_end,citation)
+            VALUES(?,?,?,?,?,?,?,?,?,?)""",
+            (
+                row["id"],
+                row["name"],
+                row["kind"],
+                row["magnitude"],
+                row["category"],
+                row["summary"],
+                row["source_path"],
+                row["line_start"],
+                row["line_end"],
+                row["citation"],
+            ),
+        )
     conn.commit()
     conn.close()
     return {
@@ -889,6 +1185,10 @@ def main() -> None:
                 f"flaws={len(core_data.flaws)}",
                 f"abilities={len(core_data.abilities)}",
                 f"spells={len(core_data.spells)}",
+                f"guidelines={len(core_data.spell_guidelines)}",
+                f"lab_activities={len(core_data.lab_activities)}",
+                f"combat_tables={len(core_data.combat_tables)}",
+                f"covenant_boons_hooks={len(core_data.covenant_boons_hooks)}",
                 f"preserved_embeddings={restore_stats['preserved_embeddings']}",
                 f"restored_embeddings={restore_stats['restored_embeddings']}",
                 f"restored_vec_rows={restore_stats['restored_vec_rows']}",

@@ -127,21 +127,43 @@ def main() -> None:
         fail("ability extraction too small")
     if core_data["summary"]["spell_count"] <= 200:
         fail("spell extraction too small")
+    if core_data["summary"].get("spell_guideline_count", 0) <= 200:
+        fail("spell guideline extraction too small")
+    if core_data["summary"].get("lab_activity_count", 0) <= 20:
+        fail("lab activity extraction too small")
+    if core_data["summary"].get("combat_table_count", 0) <= 3:
+        fail("combat table extraction too small")
+    if core_data["summary"].get("covenant_boon_hook_count", 0) <= 50:
+        fail("covenant boon/hook extraction too small")
     for key in ["virtues", "flaws", "abilities", "spells"]:
         if len(core_data[key]) != core_data["summary"][f"{key[:-1] if key != 'abilities' else 'ability'}_count"]:
+            fail(f"core-data count mismatch for {key}")
+    extra_counts = {
+        "spell_guidelines": "spell_guideline_count",
+        "lab_activities": "lab_activity_count",
+        "combat_tables": "combat_table_count",
+        "covenant_boons_hooks": "covenant_boon_hook_count",
+    }
+    for key, summary_key in extra_counts.items():
+        if len(core_data.get(key, [])) != core_data["summary"][summary_key]:
             fail(f"core-data count mismatch for {key}")
     core_contract = {
         "virtues": ["id", "name", "magnitude", "categories", "description", "source_path", "line_start", "line_end"],
         "flaws": ["id", "name", "magnitude", "categories", "description", "source_path", "line_start", "line_end"],
         "abilities": ["id", "name", "ability_type", "description", "source_path", "line_start", "line_end"],
         "spells": ["id", "name", "technique", "form", "range", "duration", "target", "description", "source_path", "line_start", "line_end"],
+        "spell_guidelines": ["id", "name", "technique", "form", "level", "guideline", "source_path", "line_start", "line_end"],
+        "lab_activities": ["id", "name", "summary", "formulae", "source_path", "line_start", "line_end"],
+        "combat_tables": ["id", "name", "row_count", "columns", "rows", "source_path", "line_start", "line_end"],
+        "covenant_boons_hooks": ["id", "name", "kind", "magnitude", "category", "summary", "source_path", "line_start", "line_end"],
     }
     for bucket, fields in core_contract.items():
         sample = core_data[bucket][0]
         require_fields(sample, fields, f"core-data {bucket}")
-        if not sample["description"]:
+        description = sample.get("description") or sample.get("summary") or sample.get("guideline") or sample.get("name")
+        if not description:
             fail(f"core-data {bucket} empty description")
-        if sample["source_path"] != CORE_PATH:
+        if bucket != "covenant_boons_hooks" and sample["source_path"] != CORE_PATH:
             fail(f"core-data {bucket} bad source_path")
         if not isinstance(sample["line_start"], int) or not isinstance(sample["line_end"], int):
             fail(f"core-data {bucket} invalid line span")
@@ -167,6 +189,10 @@ def main() -> None:
     flaw_count = conn.execute("SELECT count(*) FROM core_flaws").fetchone()[0]
     ability_count = conn.execute("SELECT count(*) FROM core_abilities").fetchone()[0]
     spell_count = conn.execute("SELECT count(*) FROM core_spells").fetchone()[0]
+    guideline_count = conn.execute("SELECT count(*) FROM core_spell_guidelines").fetchone()[0]
+    lab_activity_count = conn.execute("SELECT count(*) FROM core_lab_activities").fetchone()[0]
+    combat_table_count = conn.execute("SELECT count(*) FROM core_combat_tables").fetchone()[0]
+    covenant_boon_hook_count = conn.execute("SELECT count(*) FROM covenant_boons_hooks").fetchone()[0]
     if virtue_count != core_data["summary"]["virtue_count"]:
         fail(f"virtue count mismatch db={virtue_count} json={core_data['summary']['virtue_count']}")
     if flaw_count != core_data["summary"]["flaw_count"]:
@@ -175,6 +201,14 @@ def main() -> None:
         fail(f"ability count mismatch db={ability_count} json={core_data['summary']['ability_count']}")
     if spell_count != core_data["summary"]["spell_count"]:
         fail(f"spell count mismatch db={spell_count} json={core_data['summary']['spell_count']}")
+    if guideline_count != core_data["summary"]["spell_guideline_count"]:
+        fail(f"guideline count mismatch db={guideline_count} json={core_data['summary']['spell_guideline_count']}")
+    if lab_activity_count != core_data["summary"]["lab_activity_count"]:
+        fail(f"lab activity count mismatch db={lab_activity_count} json={core_data['summary']['lab_activity_count']}")
+    if combat_table_count != core_data["summary"]["combat_table_count"]:
+        fail(f"combat table count mismatch db={combat_table_count} json={core_data['summary']['combat_table_count']}")
+    if covenant_boon_hook_count != core_data["summary"]["covenant_boon_hook_count"]:
+        fail(f"covenant boon/hook count mismatch db={covenant_boon_hook_count} json={core_data['summary']['covenant_boon_hook_count']}")
     bad_core_sources = conn.execute(
         """
         SELECT count(*) FROM (
@@ -237,6 +271,10 @@ def main() -> None:
     sample_core += conn.execute("SELECT citation FROM core_flaws LIMIT 5").fetchall()
     sample_core += conn.execute("SELECT citation FROM core_abilities LIMIT 5").fetchall()
     sample_core += conn.execute("SELECT citation FROM core_spells LIMIT 5").fetchall()
+    sample_core += conn.execute("SELECT citation FROM core_spell_guidelines LIMIT 5").fetchall()
+    sample_core += conn.execute("SELECT citation FROM core_lab_activities LIMIT 5").fetchall()
+    sample_core += conn.execute("SELECT citation FROM core_combat_tables LIMIT 5").fetchall()
+    sample_core += conn.execute("SELECT citation FROM covenant_boons_hooks LIMIT 5").fetchall()
     for (citation,) in sample_core:
         path_part, span = citation.rsplit(":", 1)
         start_s, end_s = span.split("-", 1)
@@ -246,7 +284,9 @@ def main() -> None:
     conn.close()
     print(
         f"OK: books={book_count} chunks={chunk_count} virtues={virtue_count} flaws={flaw_count} "
-        f"abilities={ability_count} spells={spell_count} embeddings={embedding_count}"
+        f"abilities={ability_count} spells={spell_count} guidelines={guideline_count} "
+        f"lab_activities={lab_activity_count} combat_tables={combat_table_count} "
+        f"covenant_boons_hooks={covenant_boon_hook_count} embeddings={embedding_count}"
     )
 
 
