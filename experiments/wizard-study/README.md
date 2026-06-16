@@ -23,7 +23,7 @@ The painting remains the visual source of truth. Conventional 3D assets should b
 ## Safe local setup
 
 ```bash
-./scripts/bootstrap-wsl.sh
+npm --prefix web ci
 ./scripts/check.sh
 npm --prefix web run dev
 ```
@@ -51,21 +51,28 @@ GitHub Pages cannot directly call the local MCP server. The first character-buil
 Place the canonical painting at `generation/hero.jpg`, then run:
 
 ```bash
-source .venv/bin/activate
-cp .env.example .env
-python generation/generate_views.py --preset quick
-python generation/make_contact_sheet.py
+python generation/generate_views.py --dry-run --preset quick
 ```
 
-Do not add an API key unless a paid generation experiment is explicitly intended. The next engineering milestone is a no-network `--dry-run`, persistent manifest merging, and explicit candidate/approved/rejected directories.
+Dry-run requires no `.env`, no API key, and performs no network calls. It writes `generation/output/manifest.json` with planned views, prompts, stable filenames, and `candidate` review state.
+
+Paid generation is explicit-only. To actually generate candidate images, place `generation/hero.jpg`, provide `OPENAI_API_KEY`, and run without `--dry-run`:
+
+```bash
+python generation/generate_views.py --preset quick
+```
+
+Generated views go to `generation/output/candidates/`. Review them manually and set `review_state` to `approved` or `rejected` in the manifest. Only `source` and `approved` records are valid reconstruction inputs.
 
 ## Reconstruction
 
 ```bash
-./scripts/reconstruct.sh
+python generation/prepare_reconstruction_inputs.py --clean
 ```
 
-Copy the exported splat to `web/public/scene/room.ply`, then configure:
+This copies only approved/source images into `reconstruction/input/`. Future COLMAP/Nerfstudio or Gaussian splat jobs should read from that folder, not from candidates.
+
+When a splat exists, copy the exported file to `web/public/scene/room.ply`, then configure:
 
 ```dotenv
 VITE_SPLAT_URL=scene/room.ply

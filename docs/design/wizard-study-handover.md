@@ -50,11 +50,11 @@ Groblus/ars-magica/
 
 The experiment provides:
 
-- controlled multiview image-generation tooling;
-- a manifest recording planned camera views and reference lineage;
-- a contact-sheet utility;
-- reconstruction wrapper scripts;
-- a Three.js/Spark viewer with painting fallback, optional splat loading, constrained parallax, cinematic entry, and a placeholder interactive manuscript;
+- controlled multiview image-generation tooling with a no-network dry-run mode;
+- a resumable manifest recording planned camera views, prompts, filenames, references, status, and review state;
+- candidate, approved, and rejected image lanes;
+- an approval-only reconstruction input preparation script;
+- a Three.js painting-fallback viewer with constrained parallax, hotspot focus points, and a placeholder manuscript panel;
 - a GitHub Pages-aware Vite build targeting `/ars-magica/sanctum/`.
 
 The canonical painting itself is intentionally not committed in this draft. Place it at:
