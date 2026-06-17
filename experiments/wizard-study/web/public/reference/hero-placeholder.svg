@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#91bdd2"/>
+      <stop offset="0.45" stop-color="#f3dca2"/>
+      <stop offset="1" stop-color="#21140f"/>
+    </linearGradient>
+    <radialGradient id="light" cx="48%" cy="28%" r="55%">
+      <stop offset="0" stop-color="#fff4bf" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#d89a47" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#150e0b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#140f0d"/>
+  <path d="M130 1000V60h1340v940H130Z" fill="#2b211b"/>
+  <path d="M445 115h710v445H445Z" fill="url(#sky)"/>
+  <path d="M445 560c100-90 180-128 290-95 91 28 137 4 225-45 70-39 135-34 195 28v112H445Z" fill="#5c7d48"/>
+  <path d="M400 102c0-50 42-92 92-92h616c50 0 92 42 92 92v498H400V102Zm92 42v414h616V144c0-28-23-51-51-51H543c-28 0-51 23-51 51Z" fill="#806b50"/>
+  <path d="M210 760h1180v240H210Z" fill="#3b2012"/>
+  <path d="M420 635h760l115 155H315l105-155Z" fill="#5a321d"/>
+  <path d="M635 665h330l35 92H600l35-92Z" fill="#d8c693"/>
+  <path d="M790 665v92" stroke="#6d5738" stroke-width="8"/>
+  <path d="M1085 644l105-28 14 44-112 23Z" fill="#111"/>
+  <circle cx="1170" cy="632" r="24" fill="#0e0c0a"/>
+  <path d="M270 220h80v560h-80Z" fill="#151b27"/>
+  <path d="M1250 190h86v540h-86Z" fill="#151b27"/>
+  <circle cx="310" cy="450" r="70" fill="none" stroke="#b4863d" stroke-width="8"/>
+  <circle cx="1293" cy="355" r="52" fill="#b4863d"/>
+  <path d="M1293 275v160M1213 355h160M1238 300l110 110M1348 300l-110 110" stroke="#151b27" stroke-width="10"/>
+  <rect width="1600" height="1000" fill="url(#light)"/>
+  <text x="800" y="890" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#fff4d0">Place hero.jpg at web/public/reference/hero.jpg</text>
+</svg>
