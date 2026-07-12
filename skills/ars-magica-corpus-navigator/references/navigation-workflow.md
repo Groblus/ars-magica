@@ -10,7 +10,7 @@
 Good lookup pattern:
 
 ```bash
-python3 skills/ars-magica-corpus-navigator/scripts/search.py "penetration magic resistance" --hybrid --limit 8
+python3 scripts/search.py "penetration magic resistance" --limit 8
 ```
 
 Then read the cited source lines.
@@ -20,7 +20,7 @@ Then read the cited source lines.
 Use the system Python for non-embedding artifacts:
 
 ```bash
-python3 skills/ars-magica-corpus-navigator/scripts/build_index.py
+python3 scripts/build_index.py
 ```
 
 Use the local venv for vector artifacts:
@@ -28,7 +28,7 @@ Use the local venv for vector artifacts:
 ```bash
 UV_CACHE_DIR=/tmp/uv-cache uv venv .venv
 UV_CACHE_DIR=/tmp/uv-cache uv pip install --python .venv/bin/python openai sqlite-vec
-.venv/bin/python skills/ars-magica-corpus-navigator/scripts/build_embeddings.py
+.venv/bin/python scripts/build_embeddings.py
 ```
 
 `build_embeddings.py` reads `OPENAI_API_KEY` from `.env` or the environment.

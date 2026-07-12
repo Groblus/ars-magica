@@ -8,6 +8,8 @@
       "priority": 0,
       "line_count": 25723,
       "sha256": "9ffadb59f9735b18d0a9a306f3de8c07b9dfd23f3e02904fd7ec7b93b8d021a4",
+      "chapter_count": 18,
+      "heading_count": 2516,
       "headings": [
         {
           "id": "ars-magica-definitive-edition-core-rules:1",
@@ -12255,14 +12257,7 @@
         {
           "id": "ars-magica-definitive-edition-core-rules:6729",
           "slug": "short-lived-magic",
-          "title": "Short-Lived Magic",
-          "level": 4,
-          "line_start":l": 76,
-          "section_type": "section"
-        },
-        {
-          "id": "ars-magica-5e-the-mysteries-revised:1387",
-          "slug": "vulnerable-casting-common-minor-hermetic-flaw",
+          "title": "Short-Livg-common-minor-hermetic-flaw",
           "title": "Vulnerable Casting — Common Minor Hermetic Flaw",
           "level": 2,
           "line_start": 1387,
@@ -17149,6 +17144,8 @@
       "priority": 3,
       "line_count": 4883,
       "sha256": "529727c533d064d2856e6cc5c327253443e615c403037e05bf07f652469b0987",
+      "chapter_count": 4,
+      "heading_count": 371,
       "headings": [
         {
           "id": "ars-magica-5e-transforming-mythic-europe:7",
@@ -23374,5 +23371,11 @@
         }
       ]
     }
-  ]
+  ],
+  "summary": {
+    "book_count": 20,
+    "chunk_count": 9967,
+    "de_count": 1,
+    "five_e_count": 19
+  }
 }

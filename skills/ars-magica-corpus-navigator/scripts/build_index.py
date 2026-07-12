@@ -20,8 +20,8 @@ RESOURCES = SKILL_DIR / "resources"
 REFERENCES = SKILL_DIR / "references"
 TOC_DIR = REFERENCES / "toc"
 DB_PATH = RESOURCES / "ars_magica.sqlite"
-DOCS_DATA = REPO_ROOT / "docs" / "data"
-CORE_PATH = REPO_ROOT / "reviewed" / "Ars Magica - Definitive Edition (Core Rules).md"
+CORPUS_DIR = RESOURCES / "corpus"
+CORE_PATH = CORPUS_DIR / "Ars Magica - Definitive Edition (Core Rules).md"
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 CHAPTER_RE = re.compile(
@@ -73,9 +73,8 @@ def slugify(value: str) -> str:
 
 
 def allowed_paths() -> list[Path]:
-    reviewed = REPO_ROOT / "reviewed"
-    paths = [reviewed / "Ars Magica - Definitive Edition (Core Rules).md"]
-    paths.extend(sorted(reviewed.glob("Ars Magica 5e - *.md")))
+    paths = [CORPUS_DIR / "Ars Magica - Definitive Edition (Core Rules).md"]
+    paths.extend(sorted(CORPUS_DIR.glob("Ars Magica 5e - *.md")))
     return [p for p in paths if p.exists()]
 
 
@@ -265,10 +264,10 @@ def parse_virtue_or_flaw_entries(
                 "meta": meta,
                 "heading_path": " > ".join(heading.heading_path),
                 "description": description,
-                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                 "line_start": heading.line_start,
                 "line_end": heading.line_end,
-                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
             }
         )
     return entries
@@ -305,10 +304,10 @@ def parse_abilities(lines: list[str], headings: list[Heading]) -> list[dict[str,
                 "heading_path": " > ".join(heading.heading_path),
                 "description": description,
                 "body": raw,
-                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                 "line_start": heading.line_start,
                 "line_end": heading.line_end,
-                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
             }
         )
     return entries
@@ -401,10 +400,10 @@ def parse_spells(lines: list[str], headings: list[Heading]) -> list[dict[str, An
                     "design_notes": design_notes,
                     "heading_path": " > ".join(heading.heading_path),
                     "description": description,
-                    "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                    "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                     "line_start": heading.line_start,
                     "line_end": heading.line_end,
-                    "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                    "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
                 }
             )
     return entries
@@ -434,10 +433,10 @@ def parse_spell_guidelines(lines: list[str], headings: list[Heading]) -> list[di
                         "level": row[0],
                         "guideline": effect,
                         "heading_path": " > ".join(heading.heading_path),
-                        "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                        "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                         "line_start": heading.line_start,
                         "line_end": heading.line_end,
-                        "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                        "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
                     }
                 )
     return entries
@@ -461,10 +460,10 @@ def parse_lab_activities(lines: list[str], headings: list[Heading]) -> list[dict
                 "summary": first_paragraph(text),
                 "formulae": [f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae],
                 "heading_path": " > ".join(heading.heading_path),
-                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                 "line_start": heading.line_start,
                 "line_end": heading.line_end,
-                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
             }
         )
     return entries
@@ -487,20 +486,20 @@ def parse_combat_tables(lines: list[str], headings: list[Heading]) -> list[dict[
                 "columns": table_rows[0],
                 "rows": table_rows[1:],
                 "heading_path": " > ".join(heading.heading_path),
-                "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
+                "source_path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
                 "line_start": heading.line_start,
                 "line_end": heading.line_end,
-                "citation": f"{CORE_PATH.relative_to(REPO_ROOT).as_posix()}:{heading.line_start}-{heading.line_end}",
+                "citation": f"{CORE_PATH.relative_to(SKILL_DIR).as_posix()}:{heading.line_start}-{heading.line_end}",
             }
         )
     return entries
 
 
 def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    covenant_path = REPO_ROOT / "reviewed" / "Ars Magica 5e - Covenants.md"
+    covenant_path = CORPUS_DIR / "Ars Magica 5e - Covenants.md"
     if not covenant_path.exists():
         return []
-    covenant_book = next((b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None)
+    covenant_book = next((b for b in books if b["path"] == covenant_path.relative_to(SKILL_DIR).as_posix()), None)
     if not covenant_book:
         return []
     lines = read_lines(covenant_path)
@@ -513,7 +512,7 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
     current_category = ""
     current_kind = ""
     current_magnitude = ""
-    source_path = covenant_path.relative_to(REPO_ROOT).as_posix()
+    source_path = covenant_path.relative_to(SKILL_DIR).as_posix()
     for idx in range(chapter.line_start, chapter.line_end):
         line = lines[idx - 1]
         hmatch = HEADING_RE.match(line)
@@ -552,7 +551,7 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
 
 
 def extract_core_data(core_book: dict[str, Any]) -> CoreExtraction:
-    lines = read_lines(REPO_ROOT / core_book["path"])
+    lines = read_lines(SKILL_DIR / core_book["path"])
     headings = [Heading(**heading) for heading in core_book["headings"]]
     return CoreExtraction(
         virtues=parse_virtue_or_flaw_entries("virtue", lines, headings, "Chapter 4: Virtues and Flaws", "Virtues"),
@@ -570,7 +569,7 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
     books: list[dict] = []
     chunks: list[dict] = []
     for book_id, path in enumerate(allowed_paths(), 1):
-        rel = path.relative_to(REPO_ROOT).as_posix()
+        rel = path.relative_to(SKILL_DIR).as_posix()
         lines = read_lines(path)
         title, headings = parse_headings(path, lines)
         edition = "DE" if "Definitive Edition" in path.name else "5e"
@@ -606,7 +605,7 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
                         "content_hash": content_hash,
                     }
                 )
-    core_book = next(b for b in books if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix())
+    core_book = next(b for b in books if b["path"] == CORE_PATH.relative_to(SKILL_DIR).as_posix())
     core_data = extract_core_data(core_book)
     core_data.covenant_boons_hooks = parse_covenant_boons_hooks(books)
     return books, chunks, core_data
@@ -615,7 +614,6 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
 def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool) -> None:
     RESOURCES.mkdir(parents=True, exist_ok=True)
     TOC_DIR.mkdir(parents=True, exist_ok=True)
-    DOCS_DATA.mkdir(parents=True, exist_ok=True)
     allowed = [
         {
             "path": b["path"],
@@ -660,8 +658,8 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
     }
     core_payload = {
         "book": {
-            "path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
-            "title": next(b["title"] for b in books if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix()),
+            "path": CORE_PATH.relative_to(SKILL_DIR).as_posix(),
+            "title": next(b["title"] for b in books if b["path"] == CORE_PATH.relative_to(SKILL_DIR).as_posix()),
             "edition": "DE",
         },
         "summary": {
@@ -683,8 +681,21 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
         "combat_tables": core_data.combat_tables,
         "covenant_boons_hooks": core_data.covenant_boons_hooks,
     }
-    (DOCS_DATA / "library.json").write_text(json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n")
-    (DOCS_DATA / "core-data.json").write_text(json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n")
+    (RESOURCES / "library.json").write_text(json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n")
+    (RESOURCES / "core-data.json").write_text(json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n")
+
+    # Keep the repository's browser artifacts current when rebuilding in a full checkout.
+    docs_data = REPO_ROOT / "docs" / "data"
+    if docs_data.parent.exists():
+        docs_data.mkdir(parents=True, exist_ok=True)
+        repo_library_json = json.dumps(library_payload, indent=2, ensure_ascii=False).replace(
+            "resources/corpus/", "reviewed/"
+        )
+        repo_core_json = json.dumps(core_payload, indent=2, ensure_ascii=False).replace(
+            "resources/corpus/", "reviewed/"
+        )
+        (docs_data / "library.json").write_text(repo_library_json + "\n")
+        (docs_data / "core-data.json").write_text(repo_core_json + "\n")
 
 
 def write_tocs(books: list[dict]) -> None:
@@ -696,7 +707,7 @@ def write_tocs(books: list[dict]) -> None:
         for h in b["headings"]:
             indent = "  " * max(0, h["level"] - 1)
             label = " / ".join(h["heading_path"])
-            lines.append(f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../../{b['path']}#L{h['line_start']})")
+            lines.append(f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../{b['path']}#L{h['line_start']})")
             if h["level"] == 1 and label != h["title"]:
                 lines[-1] += f" _{label}_"
         (TOC_DIR / toc_name).write_text("\n".join(lines) + "\n")
@@ -761,8 +772,13 @@ def snapshot_embeddings() -> dict[str, dict[str, Any]]:
     return preserved
 
 
-def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtraction) -> dict[str, int]:
-    preserved_embeddings = snapshot_embeddings()
+def build_sqlite(
+    books: list[dict],
+    chunks: list[dict],
+    core_data: CoreExtraction,
+    preserve_embeddings: bool = False,
+) -> dict[str, int]:
+    preserved_embeddings = snapshot_embeddings() if preserve_embeddings else {}
     if DB_PATH.exists():
         DB_PATH.unlink()
     conn = sqlite3.connect(DB_PATH)
@@ -812,6 +828,7 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
           title,
           heading_path,
           citation UNINDEXED,
+          content='',
           tokenize='unicode61 remove_diacritics 2'
         );
         CREATE TABLE embeddings (
@@ -1171,11 +1188,16 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max-chars", type=int, default=18000)
     parser.add_argument("--export-chunks-json", action="store_true")
+    parser.add_argument(
+        "--preserve-embeddings",
+        action="store_true",
+        help="Restore matching embeddings from an existing database. Omit for a compact FTS-only build.",
+    )
     args = parser.parse_args()
     books, chunks, core_data = build_records(args.max_chars)
     write_json(books, chunks, core_data, args.export_chunks_json)
     write_tocs(books)
-    restore_stats = build_sqlite(books, chunks, core_data)
+    restore_stats = build_sqlite(books, chunks, core_data, preserve_embeddings=args.preserve_embeddings)
     print(
         " ".join(
             [

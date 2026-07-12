@@ -5,15 +5,16 @@ description: Navigate the local Ars Magica Open License corpus as a reference sh
 
 # Ars Magica Corpus Navigator
 
-Use this skill to find cited sections in the local Ars Magica corpus. It is a navigator, not a rules memory dump: select likely books, inspect generated TOCs/indexes, read source line spans, then answer with citations.
+Use this skill to find cited sections in its bundled Ars Magica corpus. It is a navigator, not a rules memory dump: select likely books, inspect generated TOCs/indexes, read source line spans, then answer with citations.
 
 ## Hard Policy
 
 - Use only Definitive Edition and 5th Edition books listed in `resources/allowed-books.json`.
-- Treat `reviewed/Ars Magica - Definitive Edition (Core Rules).md` as the rules authority.
+- Treat `resources/corpus/Ars Magica - Definitive Edition (Core Rules).md` as the rules authority.
 - Use 5e sourcebooks as compatible support.
 - Do not use 3e or 4e books for this skill. If a user asks for them, say they are outside this navigator and need a legacy/conversion pass.
 - Cite answers with `path:line_start-line_end` whenever source content is used.
+- Preserve the attribution and license notices in `references/attribution.md` and `references/LICENSE.md` when redistributing the corpus or generated resources.
 
 ## Navigation Workflow
 
@@ -26,18 +27,18 @@ Use this skill to find cited sections in the local Ars Magica corpus. It is a na
 
 ## Fast Commands
 
-From the repository root:
+From this skill directory:
 
 ```bash
-python3 skills/ars-magica-corpus-navigator/scripts/build_index.py
-python3 skills/ars-magica-corpus-navigator/scripts/validate.py
-python3 skills/ars-magica-corpus-navigator/scripts/search.py "laboratory total" --hybrid
+python3 scripts/build_index.py
+python3 scripts/validate.py
+python3 scripts/search.py "laboratory total"
 ```
 
-Embeddings use OpenAI `text-embedding-3-large` at 3072 dimensions:
+The compact FTS database is generated automatically from the bundled corpus on first search. Optionally add OpenAI `text-embedding-3-large` embeddings at 3072 dimensions:
 
 ```bash
-python3 skills/ars-magica-corpus-navigator/scripts/build_embeddings.py
+python3 scripts/build_embeddings.py
 ```
 
 `build_embeddings.py` reads `.env` manually. It requires `OPENAI_API_KEY`, the `openai` Python package, and `sqlite-vec`/`sqlite_vec` for vector indexing.
@@ -51,4 +52,8 @@ python3 skills/ars-magica-corpus-navigator/scripts/build_embeddings.py
 - `references/toc/`: generated per-book tables of contents.
 - `resources/allowed-books.json`: whitelist.
 - `resources/heading-index.json`: generated heading tree.
-- `resources/ars_magica.sqlite`: generated SQLite FTS/vector-ready database.
+- `resources/core-data.json`: structured rules and play data.
+- `resources/corpus/`: bundled Definitive Edition and 5e Markdown sources used for citations.
+- `resources/ars_magica.sqlite`: locally generated SQLite FTS database; intentionally excluded from distribution and created on first search.
+- `references/attribution.md`: source, modification, trademark, and CC BY-SA notices.
+- `references/LICENSE.md`: full CC BY-SA 4.0 license text.

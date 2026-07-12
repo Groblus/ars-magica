@@ -13,17 +13,17 @@ from pathlib import Path
 
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
-REPO_ROOT = SKILL_DIR.parents[1]
 DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
 MODEL = "text-embedding-3-large"
 DIMENSIONS = 3072
 
 
 def load_env() -> None:
-    env = REPO_ROOT / ".env"
-    if not env.exists():
+    env_paths = [Path.cwd() / ".env", SKILL_DIR / ".env"]
+    env = next((path for path in env_paths if path.exists()), None)
+    if env is None:
         return
-    for line in env.read_text().splitlines():
+    for line in env.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue

@@ -12,9 +12,9 @@ Use this skill for covenant creation and covenant-centered saga prep. It depends
 1. Establish saga tone, tribunal/region, covenant season, and group preferences.
 2. Use Definitive Edition core for baseline covenant rules.
 3. Use `Covenants` as the primary 5e support book.
-4. Search structured data first:
-   - `docs/data/core-data.json` bucket: `covenant_boons_hooks`.
-   - `python3 skills/ars-magica-corpus-navigator/scripts/search.py "boons hooks covenant"`.
+4. Resolve the installed `ars-magica-corpus-navigator` skill directory, then search structured data first:
+   - `<navigator>/resources/core-data.json` bucket: `covenant_boons_hooks`.
+   - `python3 <navigator>/scripts/search.py "boons hooks covenant"`.
 5. Build a covenant dossier:
    - premise, site, aura, mundane cover
    - Boons and Hooks
@@ -28,3 +28,4 @@ Use this skill for covenant creation and covenant-centered saga prep. It depends
 - Balance Boons with Hooks for player covenants unless the user asks for an NPC covenant.
 - Prefer evocative story pressure over optimization.
 - Do not use 3e/4e material except in a separate legacy conversion pass.
+- When redistributing quoted or adapted corpus material, include the navigator's CC BY-SA attribution and modification notice.
