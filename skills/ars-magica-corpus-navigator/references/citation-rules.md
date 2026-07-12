@@ -5,7 +5,7 @@ Use citations for all source-backed claims.
 Required citation format:
 
 ```text
-reviewed/<book>.md:line_start-line_end
+resources/corpus/<book>.md:line_start-line_end
 ```
 
 Rules:

@@ -8,6 +8,8 @@
       "priority": 0,
       "line_count": 25723,
       "sha256": "9ffadb59f9735b18d0a9a306f3de8c07b9dfd23f3e02904fd7ec7b93b8d021a4",
+      "chapter_count": 18,
+      "heading_count": 2516,
       "headings": [
         {
           "id": "ars-magica-definitive-edition-core-rules:1",
@@ -41689,6 +41691,8 @@
       "priority": 3,
       "line_count": 5265,
       "sha256": "672b723f8ed60d59abee08de67ce933cb31f3501c2df467849ca6f6bd59acacc",
+      "chapter_count": 11,
+      "heading_count": 265,
       "headings": [
         {
           "id": "ars-magica-5e-art-academe:1",
@@ -46083,6 +46087,8 @@
       "priority": 3,
       "line_count": 4004,
       "sha256": "1457b0b7265e132ed363092b24962d98d13796ea45eabbbe03c0ee4486e7123f",
+      "chapter_count": 10,
+      "heading_count": 281,
       "headings": [
         {
           "id": "ars-magica-5e-city-guild:2",
@@ -50727,6 +50733,8 @@
       "priority": 1,
       "line_count": 6613,
       "sha256": "2c002b1f20ca368b4e36de960d75a4549d2085085e1d5b0da105e57399f6d839",
+      "chapter_count": 9,
+      "heading_count": 394,
       "headings": [
         {
           "id": "ars-magica-5e-covenants:1",
@@ -57231,6 +57239,8 @@
       "priority": 3,
       "line_count": 4725,
       "sha256": "ace37ee2ea1dafd71a9e12ea2857710f5f08b02ebaa521d6281298ffff2a8766",
+      "chapter_count": 15,
+      "heading_count": 341,
       "headings": [
         {
           "id": "ars-magica-5e-guardians-of-the-forests-the-rhine-tribunal:1",
@@ -62866,6 +62876,8 @@
       "priority": 2,
       "line_count": 5105,
       "sha256": "f33f3060fbc928e1f884a1ca1aecf4a4f33ecfe84dcea096c57dc2bb6bbe98cd",
+      "chapter_count": 7,
+      "heading_count": 326,
       "headings": [
         {
           "id": "ars-magica-5e-houses-of-hermes-mystery-cults:1",
@@ -68292,6 +68304,8 @@
       "priority": 1,
       "line_count": 5825,
       "sha256": "412c5257e2377320b986357151ceb463b6f6940d1d5419d5c2a74b9e9589f882",
+      "chapter_count": 6,
+      "heading_count": 397,
       "headings": [
         {
           "id": "ars-magica-5e-houses-of-hermes-societates:1",
@@ -74861,6 +74875,8 @@
       "priority": 1,
       "line_count": 5011,
       "sha256": "a8db7ea27c5a0a9ceafa9fda2ecb82ef449d9b0b69850c0cd45236768477fb67",
+      "chapter_count": 5,
+      "heading_count": 398,
       "headings": [
         {
           "id": "ars-magica-5e-houses-of-hermes-true-lineages:1",
@@ -81490,6 +81506,8 @@
       "priority": 2,
       "line_count": 6225,
       "sha256": "5e3e1041c822609598f26b491a22c1f13aea9a3b18a198a3a4cf402540bf7055",
+      "chapter_count": 9,
+      "heading_count": 421,
       "headings": [
         {
           "id": "ars-magica-5e-lords-of-men:1",
@@ -88420,6 +88438,8 @@
       "priority": 3,
       "line_count": 1897,
       "sha256": "466235dfd9981e92ea1105d8b7f4a941d5ad7c387e38043b50e9639763f0d17f",
+      "chapter_count": 5,
+      "heading_count": 125,
       "headings": [
         {
           "id": "ars-magica-5e-magic-apprentices:7",
@@ -90562,6 +90582,8 @@
       "priority": 3,
       "line_count": 7512,
       "sha256": "982cfda76598c902f71d86fe42d5bb9ad729a885ed050e9d71c21bbd201dfa5d",
+      "chapter_count": 8,
+      "heading_count": 515,
       "headings": [
         {
           "id": "ars-magica-5e-magic-hedge-magic-revised:1",
@@ -99152,6 +99174,8 @@
       "priority": 3,
       "line_count": 6907,
       "sha256": "c4b893e5b48f84a68b487614183389131f3bbb7052253e1817cc5f0aa6e7d618",
+      "chapter_count": 11,
+      "heading_count": 422,
       "headings": [
         {
           "id": "ars-magica-5e-mythic-locations:1",
@@ -106187,6 +106211,8 @@
       "priority": 3,
       "line_count": 7960,
       "sha256": "beb977e76c9167a07767febcfb5086164d995897f5daee908e5bfd17987c8d11",
+      "chapter_count": 9,
+      "heading_count": 595,
       "headings": [
         {
           "id": "ars-magica-5e-realms-of-power-faerie:1",
@@ -116231,6 +116257,8 @@
       "priority": 2,
       "line_count": 8821,
       "sha256": "203bc44b435e339c0263bbf4c7aa275f6489e611287ab1565aa7ba7230f77cf2",
+      "chapter_count": 9,
+      "heading_count": 427,
       "headings": [
         {
           "id": "ars-magica-5e-realms-of-power-magic:1",
@@ -123394,6 +123422,8 @@
       "priority": 3,
       "line_count": 7697,
       "sha256": "9e9d180da5034bb8d4b9e69e0610f656d658a0c26c5f4dcf287766de64480385",
+      "chapter_count": 6,
+      "heading_count": 410,
       "headings": [
         {
           "id": "ars-magica-5e-realms-of-power-the-divine-revised:1",
@@ -130228,6 +130258,8 @@
       "priority": 3,
       "line_count": 6671,
       "sha256": "25e882c079feb439291f495442c59ecaaf02611f41d0b6543289984d5bd0f704",
+      "chapter_count": 28,
+      "heading_count": 292,
       "headings": [
         {
           "id": "ars-magica-5e-realms-of-power-the-infernal:1",
@@ -135297,6 +135329,8 @@
       "priority": 2,
       "line_count": 5370,
       "sha256": "f4fec0a2d8db3b3e731efc21d58327464aef8484a316d270080f98fcba080983",
+      "chapter_count": 10,
+      "heading_count": 405,
       "headings": [
         {
           "id": "ars-magica-5e-the-church:1",
@@ -142020,6 +142054,8 @@
       "priority": 3,
       "line_count": 5109,
       "sha256": "fa20e0add36032705b60037a520a1c74aa5a524727f2fafd6bed19480896290e",
+      "chapter_count": 14,
+      "heading_count": 406,
       "headings": [
         {
           "id": "ars-magica-5e-the-lion-and-the-lily-the-normandy-tribunal:1",
@@ -148724,6 +148760,8 @@
       "priority": 3,
       "line_count": 5702,
       "sha256": "73a1a404d551a359b9379ceac14ba5fc617fdd3a331714e00349b62f91320809",
+      "chapter_count": 18,
+      "heading_count": 365,
       "headings": [
         {
           "id": "ars-magica-5e-the-mysteries-revised:1",
@@ -154805,6 +154843,8 @@
       "priority": 3,
       "line_count": 4883,
       "sha256": "529727c533d064d2856e6cc5c327253443e615c403037e05bf07f652469b0987",
+      "chapter_count": 4,
+      "heading_count": 371,
       "headings": [
         {
           "id": "ars-magica-5e-transforming-mythic-europe:7",
@@ -161030,5 +161070,11 @@
         }
       ]
     }
-  ]
+  ],
+  "summary": {
+    "book_count": 20,
+    "chunk_count": 9967,
+    "de_count": 1,
+    "five_e_count": 19
+  }
 }

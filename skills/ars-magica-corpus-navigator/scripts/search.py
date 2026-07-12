@@ -12,17 +12,29 @@ from pathlib import Path
 
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
-REPO_ROOT = SKILL_DIR.parents[1]
 DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
 MODEL = "text-embedding-3-large"
 DIMENSIONS = 3072
 
 
-def load_env() -> None:
-    env = REPO_ROOT / ".env"
-    if not env.exists():
+def ensure_database() -> None:
+    if DB_PATH.exists():
         return
-    for line in env.read_text().splitlines():
+    print("building local Ars Magica FTS index (first use)...", file=sys.stderr)
+    from build_index import build_records, build_sqlite, write_json, write_tocs
+
+    books, chunks, core_data = build_records(max_chars=18000)
+    write_json(books, chunks, core_data, export_chunks=False)
+    write_tocs(books)
+    build_sqlite(books, chunks, core_data)
+
+
+def load_env() -> None:
+    env_paths = [Path.cwd() / ".env", SKILL_DIR / ".env"]
+    env = next((path for path in env_paths if path.exists()), None)
+    if env is None:
+        return
+    for line in env.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
@@ -38,7 +50,7 @@ def search_fts(conn: sqlite3.Connection, query: str, limit: int) -> list[sqlite3
     return conn.execute(
         """
         SELECT c.id, b.title, b.edition, b.priority, c.heading_path, c.citation,
-               snippet(chunks_fts, 0, '[', ']', ' ... ', 18) AS excerpt,
+               substr(replace(c.text, char(10), ' '), 1, 260) AS excerpt,
                bm25(chunks_fts) AS score
         FROM chunks_fts
         JOIN chunks c ON c.id = chunks_fts.rowid
@@ -148,6 +160,7 @@ def main() -> None:
     parser.add_argument("--vector", action="store_true")
     parser.add_argument("--hybrid", action="store_true")
     args = parser.parse_args()
+    ensure_database()
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     if args.vector:

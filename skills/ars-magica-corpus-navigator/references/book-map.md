@@ -4,13 +4,13 @@ Generated resources are authoritative for exact line spans. This file is a human
 
 ## P0 Core
 
-- `reviewed/Ars Magica - Definitive Edition (Core Rules).md`: rules authority for Definitive Edition.
+- `resources/corpus/Ars Magica - Definitive Edition (Core Rules).md`: rules authority for Definitive Edition.
 
 ## P1 Early Play
 
-- `reviewed/Ars Magica 5e - Covenants.md`: covenant toolkit.
-- `reviewed/Ars Magica 5e - Houses of Hermes - True Lineages.md`: Bonisagus, Guernicus, Mercere, Tremere.
-- `reviewed/Ars Magica 5e - Houses of Hermes - Societates.md`: Flambeau, Jerbiton, Tytalus, Ex Miscellanea.
+- `resources/corpus/Ars Magica 5e - Covenants.md`: covenant toolkit.
+- `resources/corpus/Ars Magica 5e - Houses of Hermes - True Lineages.md`: Bonisagus, Guernicus, Mercere, Tremere.
+- `resources/corpus/Ars Magica 5e - Houses of Hermes - Societates.md`: Flambeau, Jerbiton, Tytalus, Ex Miscellanea.
 
 ## Houses
 

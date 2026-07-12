@@ -5,3 +5,4 @@ node_modules/
 dist/
 experiments/wizard-study/web/node_modules/
 experiments/wizard-study/web/dist/
+skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite

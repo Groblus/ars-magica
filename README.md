@@ -43,11 +43,11 @@ ars-magica-spell-lab-assistant
 ars-magica-storyguide-prep
 ```
 
-The navigator skill provides citation-first corpus lookup. The focused skills use it for character concepts, covenant design, spell/lab assistance, and storyguide prep. All use Definitive Edition as the rules authority and 5e books as compatible supplements. They explicitly exclude 3e/4e material for now.
+The navigator skill provides self-contained, citation-first corpus lookup. It bundles the allowed Definitive Edition/5e Markdown sources and structured core data, then generates a compact local FTS database automatically on first search. Installation does not depend on the surrounding repository or Git LFS. The focused skills use it for character concepts, covenant design, spell/lab assistance, and storyguide prep. They explicitly exclude 3e/4e material.
 
 ## RAG Setup
 
-The navigator skill includes a generated retrieval database:
+The navigator skill generates its local retrieval database on first search:
 
 ```text
 skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite
@@ -58,9 +58,8 @@ It contains:
 - `20` allowed books: Definitive Edition core plus 19 5e books.
 - `9,967` heading-aware chunks.
 - `1,953` structured rules/play entries across virtues, flaws, abilities, spells, spell guidelines, lab references, combat tables, and covenant boons/hooks.
-- SQLite FTS5 search.
-- OpenAI `text-embedding-3-large` embeddings at `3072` dimensions.
-- sqlite-vector table for vector search.
+- SQLite FTS5 search, generated locally in a few seconds and excluded from the installed package.
+- Optional support for OpenAI `text-embedding-3-large` embeddings at `3072` dimensions.
 
 Examples:
 
@@ -107,6 +106,6 @@ python3 /home/olive/.codex/skills/.system/skill-creator/scripts/quick_validate.p
 
 ## Source Material
 
-This fork is based on the Ars Magica Open License Markdown corpus by OriginalMadman/YR7. The root license is preserved in `LICENSE.md`.
+This fork is based on the Ars Magica Open License Markdown corpus by OriginalMadman/YR7. The root license is preserved in `LICENSE.md`. The installable navigator also carries its own attribution, modification notice, license link, disclaimer, and full CC BY-SA 4.0 text in `references/` so those notices travel with redistributed skill content.
 
 The original upstream project describes the full 53-book conversion effort. This sparse checkout currently includes a reviewed subset and adds agent-facing navigation, indexes, and retrieval tooling.

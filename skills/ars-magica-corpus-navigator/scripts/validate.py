@@ -10,11 +10,9 @@ from pathlib import Path
 
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
-REPO_ROOT = SKILL_DIR.parents[1]
 RESOURCES = SKILL_DIR / "resources"
 DB_PATH = RESOURCES / "ars_magica.sqlite"
-DOCS_DATA = REPO_ROOT / "docs" / "data"
-CORE_PATH = "reviewed/Ars Magica - Definitive Edition (Core Rules).md"
+CORE_PATH = "resources/corpus/Ars Magica - Definitive Edition (Core Rules).md"
 
 
 def fail(msg: str) -> None:
@@ -49,8 +47,8 @@ def try_load_sqlite_vec(conn: sqlite3.Connection) -> bool:
 def main() -> None:
     allowed_path = RESOURCES / "allowed-books.json"
     heading_path = RESOURCES / "heading-index.json"
-    library_path = DOCS_DATA / "library.json"
-    core_data_path = DOCS_DATA / "core-data.json"
+    library_path = RESOURCES / "library.json"
+    core_data_path = RESOURCES / "core-data.json"
     if not allowed_path.exists():
         fail("missing allowed-books.json")
     if not heading_path.exists():
@@ -58,9 +56,9 @@ def main() -> None:
     if not DB_PATH.exists():
         fail("missing ars_magica.sqlite")
     if not library_path.exists():
-        fail("missing docs/data/library.json")
+        fail("missing resources/library.json")
     if not core_data_path.exists():
-        fail("missing docs/data/core-data.json")
+        fail("missing resources/core-data.json")
 
     allowed = json.loads(allowed_path.read_text())
     if len(allowed) != 20:
@@ -69,7 +67,7 @@ def main() -> None:
         p = item["path"]
         if " 3e " in p or " 4e " in p or "Ars Magica 3e" in p or "Ars Magica 4e" in p:
             fail(f"legacy path leaked: {p}")
-        if not (REPO_ROOT / p).exists():
+        if not (SKILL_DIR / p).exists():
             fail(f"source path missing: {p}")
 
     index = json.loads(heading_path.read_text())
@@ -263,7 +261,7 @@ def main() -> None:
     for citation, text in sample:
         path_part, span = citation.rsplit(":", 1)
         start_s, end_s = span.split("-", 1)
-        lines = (REPO_ROOT / path_part).read_text(encoding="utf-8", errors="replace").splitlines()
+        lines = (SKILL_DIR / path_part).read_text(encoding="utf-8", errors="replace").splitlines()
         source = "\n".join(lines[int(start_s) - 1 : int(end_s)]).strip()
         if source != text.strip():
             fail(f"citation mismatch: {citation}")
@@ -278,7 +276,7 @@ def main() -> None:
     for (citation,) in sample_core:
         path_part, span = citation.rsplit(":", 1)
         start_s, end_s = span.split("-", 1)
-        lines = (REPO_ROOT / path_part).read_text(encoding="utf-8", errors="replace").splitlines()
+        lines = (SKILL_DIR / path_part).read_text(encoding="utf-8", errors="replace").splitlines()
         if int(start_s) < 1 or int(end_s) > len(lines):
             fail(f"structured citation out of bounds: {citation}")
     conn.close()

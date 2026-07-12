@@ -14,7 +14,7 @@ Use this skill for session and saga preparation. It depends on `ars-magica-corpu
    - Definitive Edition core for rules, stories, sagas, realms, Mythic Europe.
    - `Covenants` for covenant pressure.
    - A House or Tribunal book only if the premise needs it.
-3. Use `python3 skills/ars-magica-corpus-navigator/scripts/search.py` for cited source lookup.
+3. Resolve the installed `ars-magica-corpus-navigator` skill directory and use `python3 <navigator>/scripts/search.py` for cited source lookup.
 4. Produce play-ready material:
    - session premise
    - scenes
@@ -29,3 +29,4 @@ Use this skill for session and saga preparation. It depends on `ars-magica-corpu
 - Prefer a few strong hooks over a broad lore dump.
 - Give first-time players only the rules they need for the next decision.
 - Do not use 3e/4e material for current canon or mechanics.
+- When redistributing quoted or adapted corpus material, include the navigator's CC BY-SA attribution and modification notice.
