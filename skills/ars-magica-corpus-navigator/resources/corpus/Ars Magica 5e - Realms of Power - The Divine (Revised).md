@@ -3774,7 +3774,77 @@ The coming years hold great promise for the followers of Christ, and promise gre
 >
 >The Church has two potent weapons it can bring to bear against those who defy it. Anathema, or **excommunication**, severs an individual from the Church, effectively removing him from society. No pious Christian may have anything further to do with an excommunicate. A burial service is read for him as though he is dead, his wife may leave him, his children and vassals may disobey him, and he is refused justice by the courts. These extraordinary measures are intended to convince the transgressors of their terrible wrongdoing and cause them to seek the Church's pardon, thereby being restored to grace. The consequences of not doing so are dire, for without absolution, the excommunicant will surely suffer eternal punishment for his mortal sins when he dies.
 >
->If this does not bring repentance, more-drastic measures are called for: the **interdict** excludes Christians from participation in the sacraments, as a community or even as an entire nation. Churches are closed, crosses reversed, marriages and burials refused, bells are silent, and one year on bread and water.
+>If this does not bring repentance, more-drastic measures are called for: the **interdict** excludes Christians from participation in the sacraments, as a community or even as an entire nation. Churches are closed, crosses reversed, marriages and burials refused, bells are silent, and Sunday sermons are conducted outside the doors of the church. Children are baptized in their homes. Interdiction punishes not only the excommunicate, but also his friends, followers, fellow men and women, and those who owe him fealty, in hopes that they will prevail upon him to make peace with God.
+>
+>#### STORY HOOK:
+>
+>A magus has greatly upset members of the Church by speaking out in public against the Crusades, and the local bishop excommunicates him. Because of this, other magi bring charges against him at Tribunal, alleging that his meddling in mundane affairs endangers the Order, and a Christian maga who opposes him suggests that since he has been excommunicated they are no longer bound by his oaths, and so registers her claim to his apprentice.
+
+>#### Interdiction
+>
+>Interdict is a kind of excommunication in which an entire area is punished for crimes against God, usually because a Christian ruler has refused to respect the dictates of the Church. This is a terrible curse, as England discovered in 1208 when Pope Innocent III placed an interdict on the country, forbidding them the sacraments until King John repented his crimes against the Church. John's rebellion lasted several years, during which time the Dominion waned and the people suffered under the weight of their sins, many of them denied proper marriages and burials as a result of the king's actions. Infernal activity also increased, and several diabolical plots developed unchecked and were hatched upon the populace while the arrogant monarch flouted the Church.
+>
+>An interdiction reduces the level of the Dominion throughout the realm by 1 each year until it is lifted. The aura surrounding cities and villages recedes as the bells go silent, and church auras may decrease to almost nothing for as long as they remain empty.
+
+
+## Beliefs
+
+>We believe in One God, the Father, Almighty, Maker of all things visible and invisible;
+>
+>And in one Lord Jesus Christ, the Son of God, begotten of the Father, Only-begotten, that is, from the substance of the Father; God from God, Light from Light, Very God from Very God, begotten not made, Consubstantial with the Father, by Whom all things were made, both things in heaven and things in earth; Who for us men and for our salvation came down and was incarnate, was made man, suffered, and rose again the third day, ascended into heaven, and is coming to judge living and dead.
+>
+>And in the Holy Spirit. And those who say "There was when he was not," and "Before his generation he was not," and "He came to be from nothing," or those who pretend that the Son of God is "Of other hypostasis or substance," or "created" or "alterable" or "mutable," the Catholic and Apostolic Church anathematizes.
+>
+> *— an early version of the Nicene Creed (325 A.D.)*
+
+Medieval Christianity embraces inhabitants in virtually every part of Mythic Europe; in fact, it could be said that for the most part, Mythic Europe *is* Christendom. The common people are generally defined by their faith, and as a result there is a clear and inseparable association of religious and everyday thought. The Christian Church is pervasive, and influences all aspects of medieval society.
+
+Its primary purpose is the solemn public worship of God, of giving due respect that people owe their Creator. This is seen as wise and appropriate to medieval folk; God is the ultimate authority and their true sovereign, and it is the humble duty of peasant and king alike to bend their knee to their highest Lord. This is why monks renounce the world for a life of prayer, and why the Church administers the ceremonial services of Christian worship. Simply put, God requires the people to worship Him.
+
+The Church's secondary objective is the sanctification of individual souls, the process whereby Christians can grow spiritually, developing their piety just as exercise develops their bodies. Medieval theologians who established the terminology of Christianity spoke of man's "supernatural life, the life of the soul above the life of the body." To that end, there are specific ceremonies called the **sacraments** that make this possible. By 1220, the accepted number was seven: baptism, the Eucharist, penance, confirmation, holy orders, marriage, and extreme unction.
+
+An important point of medieval doctrine is the fact that the sacraments do not require that the celebrant (the person performing the ceremony) be himself without sin. That is, a sacrament is still holy, even when performed by the most evil, vile, or sinful person alive. It is the act of a Christian accepting the sacrament that powers the blessing, though the priest facilitates this by helping him decide to seek it out. To tempt Christians to sin, one must encourage them to avoid the sacraments, or (worse) teach them that they do not have any effect. A Christian who receives the sacraments but does not accept them is doomed in the hereafter.
+
+Every Christian remains a sinner, even in a state of grace. In fact, they believe people are born sinful because of the Fall of Adam and Eve, which is called **original sin**. This is why infants should be baptized soon after birth, and stillborn babies are sometimes taken to sanctuaries where they miraculously return to life long enough for baptism. Most Christians commit **venial sin** daily: sins that are light in their matter, or which are done without full consent or full knowledge of their sinfulness. These essentially add to the time a soul must spend in Purgatory. Examples might include having a jealous thought, lying to a friend, or inadvertently taking God's name in vain. However, **mortal sin** removes a person from the state of grace. Mortal sins require penance and absolution to avoid damnation. Examples include murder, theft, adultery, and idolatry. The "seven deadly sins" are good examples of the kinds of behavior that lead to mortal sins.
+
+>#### Seven Deadly Sins
+>
+>These seven evil appetites or desires (Pride, Wrath, Envy, Sloth, Lust, Gluttony, and Avarice) are thought by medieval philosophers to lead to mortal sin, but are not mortal sins in and of themselves. Thus, the term "deadly sin" is perhaps a misnomer. Rather, they are thought to be immoral facets of one's personality. They certainly inspire venial sins, in that thinking too much about them is sinful, but they are only "deadly" in that if you encourage these thoughts or act upon them you will probably commit mortally sinful acts. St. Gregory referred to them as the "capital vices" (capital meaning important) and that perhaps describes them more accurately in that they are extremely serious examples of dubious behavior.
+>
+>There are also seven capital virtues, which offset the vices but do not really correspond to them directly. They consist of four "cardinal" virtues (Wisdom, Temperance, Courage, and Justice) and three "theological" virtues (Faith, Hope, and Charity). The theological virtues come from the Bible, where St. Paul uses them to describe how Christians should do God's work on earth, while the cardinal virtues come from the philosophy of the ancient world, where Plato uses them to describe how an ideal society lives a good life. Together, they form seven habits that broadly describe how to avoid or atone for sin. Just as the vices are not sins, they do not describe virtuous actions, so much as virtuous traits that when nurtured will lead to virtuous behavior.
+
+When a person confesses his sins, he is assigned penance by the priest. This is to help him atone for his evil impulses, and the punishment serves to remind him, should he be tempted again in the future. Acts of penance generally involve **fasting**, which usually means that the person eats only one meal a day and abstains from meat and wine. For most spiritual crimes, the punishment is forty days of fasting. Greater sins entail longer fasts, some on only bread and water, and prescriptions are generally more severe for churchmen. Repeated offenses also require harsher measures, and a confessor might need to get creative with the acts of penance he assigns, in order to make the sinner's punishment fit his crimes. Some appropriate acts might include a pilgrimage, wearing a hair-shirt (animal skins worn inside-out to make the sinner itchy and uncomfortable), or giving to charity. Making restitution to those the sinner has wronged is also an important part of penance.
+
+**Homicide:** Killing another human being, or attempting to kill another human being, is punished with seven to twelve years of fasting, three on bread and water.
+
+**Fornication and Adultery:** Sexual perversions and adulterous acts are punished seven to twelve years, up to five on bread and water. Sex with people of the Church is considered adultery.
+
+**Perjury:** Perjury, unknowingly or knowingly, is prescribed three to twelve years of fasting.
+
+**Theft:** Stealing is punished with as little as forty days if the sinner returns what he stole or makes restitution, or as much as twelve years if a bishop should break into a house or steal an animal.
+
+**Church Vows:** Clergy must not shed the blood of another (forty days to a year), hunt (one to three years), or neglect their duties to the Church (seven years, three on bread and water).
+
+**Other Sins:** Usury, abortion, slavery, and arson are typically punished for three years, one on bread and water. Those who eat certain animals such as dogs, foxes, or hawks, or meat from an animal that another animal has eaten, or food that has been polluted by death or sin, should fast from four days to six weeks.
+
+>#### Prescriptions Against Magic
+>
+>The Church has no unified opinion of the Order of Hermes or Hermetic magi; most churchmen are not aware of their existence, and those who do discover them disagree on how to deal with them. Some within the Church believe that magic is beneficial — a kind of natural philosophy that is only evil if used for evil purposes. Others consider magic diabolic or heretical — a form of idolatry or sacrilege.
+>
+>Whether or not practicing magic is a sin is also unclear. May of the sins described in the penitentials (reference books for confessors listing appropriate penances for sinful acts) concern magic and the supernatural; Hermetic magi and their servants must perform many of these acts daily.
+>
+>These prescriptions from Halitgar's *Roman Penitential* concern magic generally.
+>
+>31. If one by his magic causes the death of anyone, he shall do penance for seven years, three years on bread and water.
+>32. If anyone acts as a magician for the sake of love but does not cause anybody's death, if he is a layman he shall do penance for half a year; if a cleric, he shall do penance for a year on bread and water; if a deacon, for three years, one year on bread and water. But if by this means anyone deceives a woman with respect to the birth of a child, each one shall add to the above six forty-day periods, lest he be accused of homicide.
+>33. If anyone is a conjurer-up of storms he shall do penance for seven years, three years on bread and water.
+>
+>Magic used for sacrilege is more severely punished, and these acts are commonly practiced by magi. Amulets, for example, might refer to any sort of enchanted device, and there are prescriptions against eating and drinking in magic or faerie auras, or taking a vow anywhere except in a church.
+>
+>34. If anyone commits sacrilege (that is, those who are called augurs, who pay respect to omens), if he has taken auguries or [does it] by any evil device, he shall do penance for three years on bread and water.
+>35. If anyone is a soothsayer (those whom they call diviners) and makes divinations of any kind, since this is a demonic thing he shall do penance for five years, three years on bread and water.
+>36. If on the Kalends of January [the day of a pagan festival], anyone does as many do [dresses as a stag and dances], calling it "in a stag," or goes about in [the guise of] a calf, he shall do penance for three years.
+>37. If anyone has the oracles which against reason they call "Sortes Sanctorum," or any other "sortes," or with evil device draws lots from anything else, or practices divination he shall do penance for three years, one year on bread and water.
 >38. If anyone makes, or releases from, a vow beside trees or springs or by a lattice, or anywhere except in a church, he shall do penance for three years on bread and water, since this is sacrilege or a demonic thing. Whoever eats or drinks in such a place, shall do penance for one year on bread and water.
 >39. If anyone is a wizard, that is, if he takes away the mind of a man by the invocation of demons, he shall do penance for five years, one year on bread and water.
 >40. If anyone makes amulets, which is a detestable thing, he shall do penance for three years, one year on bread and water.

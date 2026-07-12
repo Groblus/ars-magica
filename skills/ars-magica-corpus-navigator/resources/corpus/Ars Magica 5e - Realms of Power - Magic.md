@@ -4121,7 +4121,428 @@ R: Sight, D: Conc, T: Group
 
 While the character sings this tune, the weather in the locale remains calm and temperate. This will also negate any magically created inclement weather where the magnitude of the effect that caused the inclement weather is less than the character's Might / 5 (round up). This power has a duration of concentration.
 
-ReAu 35 (Base 5, +3 Sight, +1 Concentration, +2 Group): Greater Power (35 levs ability is especially common among worms and large serpents. The following constriction rules are optional. If you prefer to keep combat uncomplicated, simply ignore the constriction attacks listed for dragons in this chapter.
+ReAu 35 (Base 5, +3 Sight, +1 Concentration, +2 Group): Greater Power (35 levels, –3 cost)
+
+##### Call the Flock
+1 Point, Init: Qik–4, Animal  
+R: Special, D: Diameter, T: Group
+
+If the character is in the open air, she may sing a song that summons a cloud of mundane birds about herself. From the next round, 10 birds arrive each round, every round over the next Diameter. The type of birds that arrive depends on the locale; at sea the birds will be mostly seagulls, shags, and shearwaters, for example. When they arrive, the birds attempt to gather about the character, attacking any other characters in the way. If they are not commanded to perform some task, the birds will slowly disperse over the next few hours. This power itself does not grant the character an intrinsic ability to command the flock.
+
+ReAn 35 (Base 2, +4 special range, +1 diameter, + 2 Group +2 Size of Group): Greater Power (35 levels, –3 cost)
+
+##### Flight
+
+Birds of Nephelococcygia can fly. This is neither a Supernatural Ability nor a Power: the character's bones are hollow and light, he has powerful feathered wings, and he has a tail. He's a bird. Maneuvering is represented as a specialty of the Athletics Ability (**ArM5**, page 64). The character can normally take to the air without requiring a roll, and he has an initiative of Qik + Athletics (flying) for this maneuver. In extreme circumstances (during a storm, for example) a roll (Dexterity + Athletics(flying) + stress die) may be required to take to the air.
+
+## The Magical Lineages of Cats
+
+Three families of cats can trace their ancestry — through generations of familiars and Warped, intelligent ancestors — to the familiars of the Founders or their earliest apprentices. Each of these families, called lineages, has an oral history and a unique culture. They have many magical features that breed almost true, a feature unusual in magical animals.
+
+>#### Cat Character Template
+>
+>The unadjusted stats for cats are given in the Book of Mundane Beasts appendix. All of the Virtues, Flaws, Abilities and Qualities noted there should, in most cases, be purchased before other items of the same type, when creating a character.
+>
+>To demonstrate the process of creation, the following template has additions due to the creature's magical nature marked in **bold**.
+>
+>**Magic Might: 13 (Animal)** (assuming a companion role in medium-power saga and adjusted by Size)
+>
+>**Characteristics: Int 0** (Intelligence is a free choice for magical animals)
+>
+>**Confidence Score: 1 (3)** (This is the default score for magical beings)
+>
+>**Virtues and Flaws: Magic Animal,** Perfect Balance, Puissant Awareness, Sharp Ears, **Unaffected by the Gift, Magical Friend,** Nocturnal **(requires 2 Flaws to balance Virtues).**
+>
+>**Qualities:** Ambush Predator, Crafty, Good Jumper, Skilled Climber, Thick Fur. (Cats may only have 10 points of Qualities; they get a +3 bonus to Might from small Size, but this does not increase the number of Qualities available. Qualities may include General or Supernatural Minor Virtues, so suggested Virtues provided in later lists are sometimes suited as Qualities instead. Similarly, the Flaw lists may give ideas for Inferiorities.) (The natural Qualities of magical animals are not usually recorded on their character sheets.)
+>
+>**Personality Traits:** Curious +4, **Cat +3\*,** Timid +2 (Most magical things have a Personality Trait of +3 representing their basic nature)
+>
+>(The basic cat has 195 experience. A creature of Summer season begins with 360 experience)
+>
+>**Vis:** 3 pawns, Animal, in eyes. (Might divided by 5, rounded up)
+
+>#### Cats as Example
+>
+>This section on cats demonstrates the method for constructing magical beasts. Storyguides designing parallel sets of powers for other species should borrow relevant powers from these lists, changing their names to suit the species they are creating. They should follow the same mechanical guidelines to create new powers. Ideas for powers can be found by researching the folklore of the species on the Internet — particularly on the sites of breeders — and by perusing medieval bestiaries. In the case of cats, this yields an enormous amount of material, much of which has been ignored because it is not known in 1220 Europe. For example, cat burning is a later practice.
+
+#### Black Lineage
+
+The Black Lineage of cats is descended from the Founder Jerbiton's familiar, a prince of the Egyptian cats, descended from the great queens of ancient Bubastis. The center of the Black Lineage is the domus magna of Jerbiton, Valnastium in the Tribunal of the Greater Alps, where their elected monarch reigns. But cats of this lineage have followed their magi to many covenants and cities across Europe. They are aristocratic, aloof cats. The members of the Black Lineage see their role as defenders of the home.
+
+**Common Virtues (or Qualities):** Entrancement, Gossip, Greater Magical Power, Intuition, Lesser Magical Power, Luck, Magic Sensitivity, Piercing Gaze, Protection, Second Sight, Self–Confident, Strong Willed, True Faith, Wealthy (has human servants, gets 3 seasons per year to study).
+
+**Common Flaws (or Inferiorities):** Busybody, Dependent (Place), Greedy, Meddler, Optimistic, Oversensitive, Proud, Temperate, Visions, Weakness.
+
+**Common Magical Powers:** Aura of Rightful Authority, Fear of the Mouse, Prison for Mice and Birds, Prying Eyes, Warder's Walk.
+
+#### White Lineage
+
+The White Lineage is descended from the familiar of the Founder Mercere, and its members are found in his House's covenants. They are indulgent, friendly cats. They see their role as protectors of people. Many adopt a particular human to travel with.
+
+**Common Virtues (or Qualities):** Common Sense, Ferocity, Greater Magical Power, Keen Vision, Lesser Magical Power, Lightning Reflexes, Premonitions, Rapid Convalescence, Second Sight, Shapeshifter (tool– using, bipedal form), Social Contacts, Tough, Warrior (adds to Brawl or conventional weapons in Shapeshifters), Well–traveled.
+
+**Common Flaws (or Inferiorities):** Busybody, Carefree, Compulsion (Territory), Dependent (Owner), Missing Ear, Missing Eye, Overconfident, Reckless.
+
+**Common Magical Powers:** Cat Like a Shadow, Humans are Easily Misplaced, Inconspicuousness, True Sight of the Air
+
+#### Tortoiseshell Lineage
+
+This lineage of cats has been associated with Celtic spellcasters since before the formation of the Order. This lineage split into two groups following the Schism War, with a king of cats in both Scotland and the Rhineland. It may have had links to House Diedne. This lineage is most known for its capacity to predict the future.
+
+Male tortoiseshells are very rare, and are more often magical than females. They tend to have mixed gender behaviors, which humans don't notice but are obvious and off-putting to other cats. If this plays a significant part in the campaign, then male tortoiseshells should take the Gender Nonconforming Flaw.
+
+**Common Virtues (or Qualities):** Common Sense, Dowsing (does not need stick), Entrancement, Greater Magical Power, Faerie Blood, Ferocity, Gigantic, Keen Vision, Large, Lesser Magical Power, Lesser Purifying Touch (warts), Long–Winded, Premonitions, Reserves of Strength, Rapid Convalescence, Second Sight, Shapeshifter (human), Shapeshifter (if cat also has Large or Gigantic, can shift between two shapes), Wilderness Sense
+
+**Common Flaws (or Inferiorities):** Magical Air, Feral Upbringing, Judged Unfairly, Reclusive, Gender Nonconforming (male cats of this color are extremely rare, and tend to have feminine behaviors).
+
+**Common Magical Powers:** Suckle Cows Dry, Lay to Rest the Haunting Spirit, Master of the Undergrowth, Unmarked Passage, Whispers Through the Black Gate.
+
+### Magical Powers
+
+Players designing cats select one magical power for each purchase of the Greater Magical Power or Lesser Magical Power Qualities. Each of these Qualities may be purchased multiple times. Any cat may purchase any power, but some are seen frequently in cats of a certain lineage. Powers frequently seen in a certain tribe of cats are listed in the lineage descriptions, above.
+
+### Cats' Greater or Lesser Magical Powers
+
+All Greater and Lesser Powers for the magical lineages of cats have:
+
+- A cost in spell levels for character creation, given just before the detail that explains the spell level.
+- A Penetration Score = Might of the cat (5 x the cost of the power) + the cat's Penetration Bonus. This bonus has not been calculated for the sample powers below.
+
+The Might point cost given is for a Lesser version of the power. For a Greater version, halve it, rounding up.
+
+The Initiative Bonus for a Lesser Power is equal to the cat's Quickness – (Magnitude x 2). For a Greater Power, the Initiative Bonus is equal to the cat's Quickness – (Magnitude/2).
+
+##### Aura of Rightful Authority
+4 points, Mentem  
+R: Eye, D: Sun, T: Ind
+
+This effect is used to overcome the shock caused by talking cats. It also inclines humans to obey orders. (**ArM5**, page 151)
+
+(20 spell levels: Base 5, +1 Eye, +2 Sun)
+
+##### Blackberry Cat
+or *Feigned Innocence*, 5 points, Mentem  
+R: Eye, D: Mom, T: Group
+
+This causes a Group of people to forget something the cat did, much as the spell *Loss of But A Moment's Memory* does (**ArM5**, page 151). The name comes from the belief that cats born in blackberry season have mischief in them.
+
+(25 spell levels: Base 10, +1 Eye, +2 Group)
+
+##### Curse of Rheumatism
+2 points, Corpus  
+R: Touch, D: Mom, T: Ind
+
+If a person touches the cat, he develops rheumatism in that limb. This power is traditionally used on those who kick cats.
+
+(10 spell levels: Base 5, as per laming in table on **ArM5**, page 133, + 1 Touch)
+
+##### Drain Energy  
+3 points, Corpus  
+R: Touch or Eye, D: Mom, T: Ind
+
+This power, similar to *Invocation of Weariness* (**ArM5**, page 133), has either a Touch or Eye Range; it varies by cat.
+
+(15 spell levels: Base 10, +1 Touch or Eye)
+
+##### Fear of the Mouse
+3 points, Mentem  
+R: Eye, D: Sun T: Ind
+
+This power, similar to *Panic of the Trembling Heart* (**ArM5**, page 148) is often used to make people afraid of the cat. Many cats have alternative emotional effects.
+
+(15 spell levels: Base 4, +1 Eye, +2 Sun)
+
+##### Feline Lullaby
+or *Keeping the Humans Safely Tucked Away*, 2 points, Mentem  
+R: Voice, D: Mom T: Ind
+
+This is a version of *The Call to Slumber* (**ArM5**, page 151).
+
+(10 spell levels: Base 4, +2 Voice)
+
+##### Humans are Easily Misplaced
+4 points, Corpus  
+R: Arc, D: Conc, T: Ind
+
+A version of *Inexorable Search* (**ArM5**, page 131). The maps cats use are a mixture of scents and textures, and make little sense to humans. This requires an Arcane Connection, so cats often scent–mark humans they wish to find again by rubbing on them.
+
+(20 spell levels: Base 3, +4 Arc, +1 Conc)
+
+##### Incredibly Cute  
+2 points, Mentem  
+R: Touch or Eye, D: Diam T: Ind
+
+This ability, similar to *Trust of Childlike Faith* (**ArM5**, page 150) allows the cat to become so endearing that it impairs the rationality of others. Some cats have an Eye contact version of this ability, while others have a Touch Ranged power, triggered by stroking the cat.
+
+(10 spell levels: Base 4, +1 Eye or Touch, +1 Diam)
+
+##### Mackerel Sky
+4 points, Auram  
+R: Touch, D: Mom, T: Group
+
+A version of *Sailor's Foretaste of the Morrow*  (**ArM5**, page 127).
+
+(20 spell levels: Base 4, + 1 Touch, +2 Group, +1 size)
+
+##### Master of the Undergrowth
+2 points, Herbam  
+R: Touch, D: Sun, T: Group
+
+A version *of Intuition of the Forest* (**ArM5**, page 136).
+
+(10 spell levels: Base 1, +1 Touch, +2 Sun, +2 Group)
+
+##### Minor Allergy
+2 points, Corpus  
+R: Sight, D: Mom T: Ind
+
+A Sight Ranged version of *Touch of the Goose Feather* (**ArM5**, page 132).
+
+(10 Spell levels: Base 3, +3 Sight)
+
+##### Moving Objects with the Mind
+6 points, Terram  
+R: Sight, D: Conc T: Ind
+
+A Sight Ranged version of *Unseen Arm* (**ArM5**, page 155), used by cats to manipulate objects — when humans are not available.
+
+(30 spell levels: Base 2, +3 Sight, +1 Conc)
+
+##### Pass the Unyielding Portal
+1 point; Herbam  
+R: Touch, D: Diam, T: Ind
+
+A version of the spell of the same name, used when no humans are available to open doors. (**ArM5**, page 137)
+
+(5 spell levels: Base 3, +1 Touch +1 Diam.)
+
+##### Prison for Mice and Birds
+1 point, Animal  
+R: Touch, D: Ring, T: Circle
+
+This is a version of *Circle of Beast Warding* (**ArM5**, page 120). It is sometimes used in conjunction with the Greater Magical Powers, described below.
+
+(5 spell levels: Base 2, +1 Touch, +2 Ring)
+
+##### Prying Eyes
+1 point, Imaginem  
+R: Touch, D: Conc, T: Room
+
+This effect is used to look inside buildings and rooms while patrolling a house or town. Note that a cat touching the roof of a room can see inside it. (**ArM5**, page 144).
+
+(5 spell levels: Base 1, +1 Touch, +1 Conc +2 Room)
+
+##### Suck the Breath
+3 points, Corpus  
+R: Eye or Touch, D: Mom, T: Ind
+
+The cat causes an asthma attack with the same effects as *Grip of the Choking Hand* (**ArM5**, page 133) but with either Eye or Touch range (choose when the cat is created.)
+
+(15 spell levels: Base 10, +1 Eye or Touch)
+
+##### Suckle Cows Dry
+3 points, Animal  
+R: Touch, D: Conc, T: Ind
+
+This power is used to make a cow lactate while a cat suckles from its udders. Cats filling themselves with milk often find it difficult to maintain concentration, so it is common to find cats working in groups, to restrain a cow in turns.
+
+(15 spell levels: Base 5, + 1 Touch, +1 Conc)
+
+##### Suffocate the Dead
+Cost equals (Magnitude / 5), Mentem  
+R: Voice, D: Mom, T: Ind
+
+Some cats can create an effect similar to *Lay to Rest the Haunting Spirit* (**ArM5**, page 150) by sitting or sleeping on the ghost's grave. If several cats sleep on the same grave their Penetration scores are added together, and the highest level effect applies, so even powerful ghosts can be destroyed this way, with sufficient co-operation and persistence. This does not require Warder's Walk, although no one is sure why.
+
+(Spell levels vary. Base Effect)
+
+##### Viper's Gaze
+3 points, Animal  
+R: Eye, D: Conc, T: Ind
+
+A variant of the spell of the same name (**ArM5**, page 120), used to immobilize prey.
+
+(15 spell levels: Base 5, +1 Eye, +1 Concentration)
+
+##### Wake the Dead
+4 points, Corpus  
+R: Touch, D: Conc, T: Ind
+
+Some cats are able to animate corpses by leaping over them, a power similar to a Touch Ranged version of *Awaken the Slumbering Corpse*  (**ArM5**, page 134)*.* Reports of this power are most common in Eastern Europe, and may refer to Infernally tainted cats. Some cats claim to be able to wake the dead with their nightly singing, but this may be a metaphor.
+
+##### Warder's Walk
+Magnitude points, Vim.  
+R: Voice, D: Mom, T: Group
+
+Cats in the Black Lineage use this power to combine their other powers. This allows their rituals to penetrate the Magic Resistance of creatures they wish to ward. It is a variant of *Wizard's Communion.* Use of the Warder's Walk is dangerous, as the addition of too many cats makes a fatal botch very likely, so the cats use this power sparingly.
+
+(Spell levels vary by base effect.)
+
+##### Whispers Through the Black Gate
+3 points, Corpus  
+R: Touch, D: Conc, T: Ind
+
+The ability to talk to corpses is found most often in tortoiseshells (**ArM5**, page 130).
+
+(15 spell levels: Base 5, +1 Touch, +1 Conc, no cost for requisite)
+
+#### Black Cat Wards
+
+The Black Cats that serve House Jerbiton have a group of powers that they use to defend a home, or even a small settlement, from minor faeries and demons. Each cat is likely to have only one of these abilities, so groups of cats, each with a separate ability, will often walk the bounds of their settlement to lay multiple protective barriers. Some of these powers are also found in the other lineages, but the Black habit of marching in procession around the border of a protected space is not found in the other lineages. The Black Lineage is also most likely to use Warder's Walk, a Power that allows for wards of greater Magnitude.
+
+The protective powers often available to cats of the Black Lineage include simulations of the following spells. Various cats have differing Magnitudes in these powers.
+
+##### Circular Ward Against Demons
+Magnitude points, Vim  
+R: Touch, T: Ring, D: Circle
+
+See **ArM5**, page 162 for a fuller description of this effect.
+
+(Spell levels vary by base spell)
+
+##### Ward Against Beasts of Legend
+Magnitude points, Animal  
+R: Touch, T: Ring, D: Circle
+
+See **ArM5**, page 120 for a fuller description of this effect.
+
+(Spell levels vary by base spell)
+
+##### Ward Against the Faeries of the Wood
+Magnitude points, Herbam  
+R: Touch, T: Ring, D: Circle
+
+See **ArM5**, page 138 for a fuller description of this effect.
+
+(Spell levels vary by base spell)
+
+##### Ring of Warding Against Spirits
+Magnitude points, Mentem  
+R: Touch, T: Ring, D: Circle 
+
+See **ArM5**, page 151 for a fuller description of this effect.
+
+(Spell levels vary by base spell)
+
+Cats with other wards that contain fire, protect from poor weather, and exclude crop rusts have also been frequently reported.
+
+### Personal Magical Powers for Cats
+
+All Personal Powers for the magical lineages of cats have:
+
+- An Initiative bonus equal to the cat's Quickness – (Magnitude /2).
+- A cost in spell levels for character creation, given just before the detail the explains the spell level.
+- A Penetration Score = Might of the cat – (5 x the cost of the power) + the cat's Penetration Bonus. This bonus has not been calculated for the sample powers below.
+
+##### Cat Like a Shadow
+2 points, Init: Qik –1, Imaginem  
+R: Per, D: Sun, T: Ind
+
+A personal version of *Veil of Invisibility*, as per **ArM5**, page 146.
+
+(15 spell levels: Base 4, +2 Sun, +1 changing image)
+
+##### Felianthrope
+2 points, Init: Qik–1, Animal  
+R: Per, D: Sun, T: Ind
+
+The cat takes human shape. This is a Personal version of *The Beast Remade* (**ArM5**, page 119).
+
+(20 spell levels: Base 10, +2 Sun, no addition for requisite)
+
+##### Inconspicuousness
+1 point, Init: Qik–1, Imaginem  
+R: Per, D: Sun, T: Ind
+
+A Personal version of *Invisibility of the Standing Wizard* (**ArM5**, page 146) (10 spell levels: Base 4, +2 Sun)
+
+##### Puffed Up and Hissing
+1 point, Init: Qik–1, Animal  
+R: Per, D: Sun, T: Ind
+
+The cat puffs itself up to fight, and magic grants it extra mass. A Personal version *of Beast of Outlandish Size* (**ArM5**, page 118).
+
+(10 spell levels: Base 4, +2 Sun)
+
+##### Resistance to Claws
+1 point, Init: Qik–1, Animal  
+R: Per, D: Sun, T: Ind
+
+The cat's coat becomes resistant to damage. A Personal version of *Doublet of Impenetrable Silk* (**ArM5**, page 118.)
+
+(10 spell levels: Base 4, +2 Sun)
+
+##### True Sight of the Air
+2 points, Init: Qik–1, Auram  
+R: Per, D: Sun, T: Vision
+
+A version of the spell of the same name (**ArM5**, page 127).
+
+(15 spell levels: Base 1, +2 Sun, +4 Vision)
+
+##### Unmarked Passage
+2 points, Init: Qik–1, Terram  
+R: Touch, D: Sun, T: Ind
+
+A version of the spell *Trackless Step* (**ArM5**, page 155).
+
+(20 spell levels: Base 4, +1 Touch, +2 Sun, +1 for constant effect)
+
+## Dragons and Dragon-kind
+
+Dragons are the largest and most fearsome of mortal creatures. They are renowned for their cunning, wickedness, and lust for treasure. Related to dragons, but less powerful, are a variety of reptilian creatures: the serpents, drakes, and worms.
+
+**Serpents** are the least of the dragons' kin, little more than glorified snakes. They almost always have a venomous bite or sting. In addition, many have the power to entrance their victims. Basilisks (see *Guardians of the Forest*, page 61) are the mightiest of serpents. Mundanes use the term "serpent" interchangeably to refer to both dragons and snakes; when magi use the term strictly, they are referring to a snake-like supernatural creature that has no exact mundane counterpart.
+
+**Drakes** are caricatures of dragons, usually misshapen in some way. They tend to be less intelligent than true dragons, but may possess a certain predatory cunning. All drakes have legs (either two or four) and many have wings, though frequently their wings are too stunted for actual flight. A few drakes have multiple heads. Drakes usually have dangerous breath, which may be fiery, poisonous, or cause disease. Magi in the far north of Mythic Europe have reported colddwelling drakes that breathe a deadly frost instead of fire. The smallest drakes are no bigger than a chicken, while the largest can outweigh an elephant.
+
+**Worms** are like huge serpents; indeed, some magi believe serpents and worms are two names for the same class of creatures. Worms sometimes have stunted legs or wings, but their primary means of locomotion is slithering like a snake. Worms are typically venomous and some can exhale a cloud of poisonous or pestilential fumes. Others breathe fire. In addition to biting, most of them are able to crush or suffocate victims in their deadly coils.
+
+True **dragons** are mighty and wily opponents. They are intelligent — sometimes more intelligent than magi — and this intelligence can be their greatest weapon against mortals foolhardy enough to challenge them. True dragons have four legs and a pair of bat-like wings (which may or may not be functional).
+
+Dragon's powers may include the deadly breath, entrancing gaze, or venom shared by their lesser kin. The more powerful dragons can also change shape, create illusions, or produce other magical effects. The smallest true dragons are somewhat smaller than an adult human, while the largest can be as big as a castle. Stellatus (on page 194 of **ArM5**) is on the small side for a dragon at Size +8.
+
+Slaying a major dragon is a feat worthy of legend, a suitable challenge for a whole covenant of senior wizards. The largest dragons are so physically powerful, they are beyond anything the rules of **Ars Magica** Fifth Edition can represent. Such creatures are too big and too well-armored in iron-hard scales to be harmed by mortal weapons. Characters should have to come up with an innovative plan to defeat such a mighty opponent: perhaps questing for a legendary weapon, or searching the Magic Realm for lore that reveals the dragon's hidden weakness.
+
+
+### Dragons as Characters
+
+While the classic dragon is much too powerful to use as a player character, one can create a fairly weak dragon using the rules in Chapter 4: Magic Characters, suitable for use as a grog, companion, or magus-equivalent character — or as a character's Magical (Being) Companion. For dragons meant as non-player characters, it's not necessary to strictly obey the **Ars Magica** Fifth Edition character-creation rules; for instance, there's no need to make sure a mighty dragon's Virtues are all properly balanced with Flaws. Dragons are supposed to be powerful.
+
+#### Concept
+
+Dragons and their kin have base Characteristics of 0, and 7 points to spend on improving Characteristics (like human characters).
+
+The base Size of all dragons and dragon-kind is at least 0. This can be adjusted by choosing appropriate Virtues or Flaws, or Inferiorities for small dragon-kind. In addition, the base Size can be any Size greater than 0. This adjusts Quickness and Strength as described under the Gigantic Quality, but the character does not need to buy that Quality.
+
+All dragons, and their lesser kin, should begin with the special Virtue, Magic Animal.
+
+Most dragon-kind have the Minor Magic Quality Gift of Speech.
+
+Suggested Virtues for dragons include: Entrancement, Greater Immunity (to fire or poison), Magic Sensitivity, Premonitions, Second Sight, Arcane Lore, Enduring Constitution, Great Characteristic, Improved Characteristics, Lightning Reflexes, Piercing Gaze, Puissant Ability, Self-Confident, Strong-Willed, Magical Champion, Magical Master, (Form) Resistance
+
+Suggested Flaws include Avaricious (major), Magical Monster, Magical Air, Baneful Circumstances, Oversensitive, Nocturnal, Offensive to Animals, Infamous, Essential Flaw.
+
+#### Season and Abilities
+
+Dragons and their kin may be of any Season. Serpents are more likely to be Spring characters than are other dragon-kind, and true dragons are more likely to be Winter than their lesser relatives.
+
+If the creature is intended as a combat opponent, it is important for it to have a good Brawl skill. Its combat statistics may be further improved through Qualities.
+
+>#### Claw and Fang
+>
+>The weapon statistics for a dragon's claws and teeth are as follows. Dragons larger than Size +2 usually have large claws and/or large teeth.
+>
+>| Init | Atk | Dfn | Dam |
+>|---|---|---|---|
+>| –1 | +2 | +3 | +2 |
+>| 0 | +5 | +3 | +4 |
+>| 0 | +3 | +1 | +1 |
+>| 0 | +4 | +1 | +3 |
+
+>#### Option: Constriction Attacks
+>
+>Medieval bestiaries speak of dragons strangling elephants with their tails or coils. Many dragons and their lesser kin can attack by constriction. This ability is especially common among worms and large serpents. The following constriction rules are optional. If you prefer to keep combat uncomplicated, simply ignore the constriction attacks listed for dragons in this chapter.
 >
 >A dragon can only constrict a victim whose Size is less than its own. Constriction is based on the grappling rules (see "Non-Lethal Combat" on page 174 of **ArM5**). The Attack Total is computed using the Brawl skill, and a constriction attack has the following weapon statistics: Init 0, Atk +3, Dfn 0, Dam n/a
 >
