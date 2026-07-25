@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ars-magica.local/schemas/artifact-1.0.0.json",
+  "title": "Ars Magica ArtifactSpec",
+  "type": "object",
+  "required": ["template", "theme", "preset", "content"],
+  "properties": {
+    "title": {"type": "string"},
+    "template": {"type": "string"},
+    "theme": {"type": "string"},
+    "preset": {"type": "string"},
+    "audience": {"enum": ["player", "storyguide", "public"]},
+    "content": {"type": "object"},
+    "assets": {"type": "array", "items": {"$ref": "asset-manifest.schema.json"}},
+    "source_references": {
+      "type": "array",
+      "description": "Precise citation strings or SourceReference-like mappings; renderers normalize these before templates receive them.",
+      "items": {
+        "oneOf": [
+          {"type": "string", "pattern": ".+:\\d+(?:-\\d+)?$"},
+          {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "book": {"type": "string"},
+              "locator": {"type": "string"},
+              "citation": {"type": "string", "pattern": ".+:\\d+(?:-\\d+)?$"},
+              "visibility": {"enum": ["public", "player", "storyguide"]}
+            },
+            "anyOf": [
+              {"required": ["title", "locator"]},
+              {"required": ["title", "citation"]},
+              {"required": ["book", "locator"]},
+              {"required": ["citation"]}
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

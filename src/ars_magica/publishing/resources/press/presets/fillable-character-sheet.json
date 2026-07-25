@@ -1,0 +1,1 @@
+{"id":"fillable-character-sheet","version":"1.0.0","title":"Fillable character sheet","page_size":"A4","pdf_standard":"PDF/UA-2","css":"@page { size: A4; margin: 12mm; } input { border: 0; border-bottom: 0.75pt solid currentColor; background: transparent; }"}

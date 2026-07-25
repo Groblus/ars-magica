@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Rules Assistant"
+  short_description: "Adjudicate cited rules and calculations"
+  default_prompt: "Use $ars-magica-rules-assistant to resolve this Ars Magica rule with a clear calculation and citations."

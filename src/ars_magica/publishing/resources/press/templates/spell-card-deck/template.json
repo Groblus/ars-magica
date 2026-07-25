@@ -1,0 +1,1 @@
+{"id":"spell-card-deck","version":"1.0.0","title":"Spell card deck","description":"Poker-card spell deck with text and art references kept distinct.","outputs":["html","pdf","card-deck"],"required_content":["cards"],"optional_content":["deck_title"],"asset_policy":"Each card may reference artwork by asset_id; rules text remains in card fields."}

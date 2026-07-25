@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 import sqlite3
 import sys
 from pathlib import Path
@@ -12,9 +13,24 @@ from pathlib import Path
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
 RESOURCES = SKILL_DIR / "resources"
-DB_PATH = RESOURCES / "ars_magica.sqlite"
+DEFAULT_DB_PATH = RESOURCES / "ars_magica.sqlite"
+ENV_DB_PATH = "ARS_MAGICA_DB_PATH"
+SCHEMA_VERSION = 1
+SQLITE_HEADER = b"SQLite format 3\x00"
 DOCS_DATA = REPO_ROOT / "docs" / "data"
 CORE_PATH = "reviewed/Ars Magica - Definitive Edition (Core Rules).md"
+
+
+def db_path() -> Path:
+    return Path(os.environ.get(ENV_DB_PATH, DEFAULT_DB_PATH)).expanduser()
+
+
+def is_sqlite_database(path: Path) -> bool:
+    try:
+        with path.open("rb") as handle:
+            return handle.read(len(SQLITE_HEADER)) == SQLITE_HEADER
+    except OSError:
+        return False
 
 
 def fail(msg: str) -> None:
@@ -51,12 +67,15 @@ def main() -> None:
     heading_path = RESOURCES / "heading-index.json"
     library_path = DOCS_DATA / "library.json"
     core_data_path = DOCS_DATA / "core-data.json"
+    active_db_path = db_path()
     if not allowed_path.exists():
         fail("missing allowed-books.json")
     if not heading_path.exists():
         fail("missing heading-index.json")
-    if not DB_PATH.exists():
+    if not active_db_path.exists():
         fail("missing ars_magica.sqlite")
+    if not is_sqlite_database(active_db_path):
+        fail("invalid ars_magica.sqlite")
     if not library_path.exists():
         fail("missing docs/data/library.json")
     if not core_data_path.exists():
@@ -174,7 +193,10 @@ def main() -> None:
     if not isinstance(core_data["spells"][0]["ritual"], bool):
         fail("core-data spells ritual not bool")
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(active_db_path)
+    schema_version = conn.execute("SELECT value FROM metadata WHERE key = 'schema_version'").fetchone()
+    if not schema_version or schema_version[0] != str(SCHEMA_VERSION):
+        fail(f"db schema_version mismatch: {schema_version[0] if schema_version else 'missing'}")
     book_count = conn.execute("SELECT count(*) FROM books").fetchone()[0]
     if book_count != 20:
         fail(f"db expected 20 books, got {book_count}")

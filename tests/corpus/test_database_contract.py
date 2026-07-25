@@ -33,8 +33,13 @@ class DatabaseContractTests(unittest.TestCase):
             for table in server.REQUIRED_CORPUS_TABLES:
                 conn.execute(f'CREATE TABLE "{table}" (id INTEGER)')
             if schema_version is not None:
-                conn.execute("CREATE TABLE metadata (schema_version INTEGER NOT NULL)")
-                conn.execute("INSERT INTO metadata (schema_version) VALUES (?)", (schema_version,))
+                conn.execute(
+                    "CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL)"
+                )
+                conn.execute(
+                    "INSERT INTO metadata (key, value) VALUES ('schema_version', ?)",
+                    (str(schema_version),),
+                )
 
     def test_lfs_pointer_is_localized(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -69,7 +74,12 @@ class DatabaseContractTests(unittest.TestCase):
             self.make_corpus_database(path, schema_version=1)
             with patch.dict(os.environ, {"ARS_MAGICA_DB_PATH": str(path)}):
                 with server.connect() as conn:
-                    self.assertEqual(conn.execute("SELECT schema_version FROM metadata").fetchone()[0], 1)
+                    self.assertEqual(
+                        conn.execute(
+                            "SELECT value FROM metadata WHERE key = 'schema_version'"
+                        ).fetchone()[0],
+                        "1",
+                    )
 
     def test_legacy_database_with_required_tables_connects(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

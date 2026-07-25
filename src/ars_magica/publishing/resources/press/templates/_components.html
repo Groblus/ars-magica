@@ -1,0 +1,9 @@
+{% macro header(title, subtitle) -%}
+<header class="document-header"><div><p class="rubric">Ars Magica</p><h1 class="document-title">{{ title }}</h1>{% if subtitle %}<p class="muted">{{ subtitle }}</p>{% endif %}</div><img class="ornament" src="../assets/ornaments/rule.svg" alt="" /></header>
+{%- endmacro %}
+{% macro stat_grid(values) -%}
+<div class="stat-grid">{% for name, value in values.items() %}<div class="stat"><span class="stat-label">{{ name }}</span><span class="stat-value">{{ value }}</span></div>{% endfor %}</div>
+{%- endmacro %}
+{% macro source_notes(references) -%}
+{% if references %}<section class="panel"><h3>Source notes</h3><ul>{% for ref in references %}<li>{{ ref.title }}{% if ref.locator %}, {{ ref.locator }}{% endif %}</li>{% endfor %}</ul></section>{% endif %}
+{%- endmacro %}

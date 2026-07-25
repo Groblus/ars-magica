@@ -1,0 +1,3 @@
+display_name: Ars Magica Publication Designer
+short_description: Designs printable Ars Magica sheets, cards, props, packets, and map/storyboard specs.
+default_prompt: Create a printable Ars Magica material spec, choose the best template/theme/preset, preserve citations, and route rendering through the publishing CLI or MCP tools.

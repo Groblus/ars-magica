@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ars-magica-reference-lab"
+version = "0.1.0"
+description = "Definitive/5th-edition Ars Magica agent tools, deterministic mechanics, and printable material pipeline."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Ars Magica Open License corpus terms preserved in LICENSE.md" }
+authors = [{ name = "Groblus/ars-magica contributors" }]
+dependencies = [
+  "pydantic>=2.8,<3",
+]
+
+[project.optional-dependencies]
+publishing = [
+  "Jinja2>=3.1,<4",
+  "WeasyPrint>=69,<70",
+]
+mcp = [
+  "fastmcp>=2,<3",
+]
+test = [
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+]
+dev = [
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+  "ruff>=0.5,<1",
+]
+all = [
+  "Jinja2>=3.1,<4",
+  "WeasyPrint>=69,<70",
+  "fastmcp>=2,<3",
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+  "ruff>=0.5,<1",
+]
+
+[project.scripts]
+ars-magica = "ars_magica.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"ars_magica.publishing.resources" = ["press/**/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groblus.github.io/ars-magica/schemas/v1/saga.schema.json",
+  "title": "Ars Magica saga contracts v1",
+  "$defs": {
+    "entity": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name", "kind"], "properties": {"name": {"type": "string"}, "kind": {"enum": ["person", "faction", "place", "object", "concept"]}, "authority": {"$ref": "common.schema.json#/$defs/authority"}, "description": {"type": ["string", "null"]}, "tags": {"type": "array", "items": {"type": "string"}}}}]},
+    "relationship": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["source_entity_id", "target_entity_id", "relationship_type"], "properties": {"source_entity_id": {"type": "string"}, "target_entity_id": {"type": "string"}, "relationship_type": {"type": "string"}, "strength": {"type": "integer", "minimum": -5, "maximum": 5}}}]},
+    "event": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "occurred_on": {"type": ["string", "null"], "format": "date"}, "participant_ids": {"type": "array", "items": {"type": "string"}}, "location_id": {"type": ["string", "null"]}}}]},
+    "scene": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}, "location_id": {"type": ["string", "null"]}, "participant_ids": {"type": "array", "items": {"type": "string"}}, "player_brief": {"type": ["string", "null"]}, "storyguide_notes": {"type": ["string", "null"]}}}]},
+    "rumor": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["text"], "properties": {"text": {"type": "string"}, "truth_status": {"type": "string"}, "reliability": {"type": ["integer", "null"], "minimum": 0, "maximum": 5}}}]},
+    "secret": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name", "details"], "properties": {"name": {"type": "string"}, "details": {"type": "string"}, "visibility": {"const": "storyguide"}}}]}
+  },
+  "oneOf": [{"$ref": "#/$defs/entity"}, {"$ref": "#/$defs/relationship"}, {"$ref": "#/$defs/event"}, {"$ref": "#/$defs/scene"}, {"$ref": "#/$defs/rumor"}, {"$ref": "#/$defs/secret"}]
+}

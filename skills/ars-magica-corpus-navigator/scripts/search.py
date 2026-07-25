@@ -13,9 +13,16 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
-DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
+DEFAULT_DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
+ENV_DB_PATH = "ARS_MAGICA_DB_PATH"
+SCHEMA_VERSION = 1
+SQLITE_HEADER = b"SQLite format 3\x00"
 MODEL = "text-embedding-3-large"
 DIMENSIONS = 3072
+
+
+def db_path() -> Path:
+    return Path(os.environ.get(ENV_DB_PATH, DEFAULT_DB_PATH)).expanduser()
 
 
 def load_env() -> None:
@@ -148,7 +155,8 @@ def main() -> None:
     parser.add_argument("--vector", action="store_true")
     parser.add_argument("--hybrid", action="store_true")
     args = parser.parse_args()
-    conn = sqlite3.connect(DB_PATH)
+    load_env()
+    conn = sqlite3.connect(db_path())
     conn.row_factory = sqlite3.Row
     if args.vector:
         rows = search_vector(conn, args.query, args.limit)

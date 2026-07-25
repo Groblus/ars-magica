@@ -1,0 +1,11 @@
+.panel { border: var(--am-stroke-thin) solid var(--am-theme-rule-divider); margin: 0 0 var(--am-space-3); padding: var(--am-component-panel-padding); }
+.stat-grid { display: grid; gap: var(--am-space-2); grid-template-columns: repeat(5, 1fr); }
+.stat { border: var(--am-stroke-thin) solid var(--am-theme-rule-divider); padding: var(--am-space-1); text-align: center; }
+.stat-label { display: block; font-size: var(--am-component-stat-label-size); text-transform: uppercase; }
+.stat-value { display: block; font-size: 1.2rem; font-weight: bold; }
+.card-grid { display: flex; flex-wrap: wrap; gap: var(--am-space-3); }
+.card { border: var(--am-stroke-heavy) solid var(--am-theme-rule-divider); border-radius: var(--am-component-card-radius); padding: var(--am-component-card-padding); }
+.card h2 { color: var(--am-status-magic); }
+.storyguide-only { border-left: 4pt solid var(--am-ink-rubric); padding-left: var(--am-space-2); }
+.artwork { max-height: 2.2rem; max-width: 3rem; object-fit: contain; }
+.checklist { list-style: square; margin: 0; padding-left: 1.2rem; }

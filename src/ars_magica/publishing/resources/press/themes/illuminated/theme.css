@@ -1,0 +1,3 @@
+body { background-image: linear-gradient(135deg, rgba(166, 93, 22, 0.05), transparent 35%); }
+.document-title, .rubric { color: var(--am-ink-rubric); }
+.panel { border-style: double; }

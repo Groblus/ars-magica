@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ars-magica.local/schemas/asset-manifest-1.0.0.json",
+  "title": "Ars Magica visual asset",
+  "type": "object",
+  "required": ["id", "kind"],
+  "properties": {
+    "id": {"type": "string"},
+    "kind": {"enum": ["artwork", "icon", "ornament", "map", "photograph"]},
+    "url": {"type": "string"},
+    "creator": {"type": "string"},
+    "license": {"type": "string"},
+    "source": {"type": "string"},
+    "modified": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

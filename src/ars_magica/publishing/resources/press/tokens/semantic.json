@@ -1,0 +1,8 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "$description": "Semantic design values. Version 1.0.0.",
+  "ink": {"primary": {"$type": "color", "$value": "{color.ink.950}"}, "muted": {"$type": "color", "$value": "{color.ink.700}"}, "rubric": {"$type": "color", "$value": "{color.vermilion.500}"}},
+  "paper": {"background": {"$type": "color", "$value": "{color.paper.100}"}, "panel": {"$type": "color", "$value": "{color.paper.200}"}},
+  "rule": {"divider": {"$type": "color", "$value": "{color.ochre.500}"}},
+  "status": {"magic": {"$type": "color", "$value": "{color.green.500}"}}
+}

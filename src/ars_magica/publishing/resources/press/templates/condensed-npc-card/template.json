@@ -1,0 +1,1 @@
+{"id":"condensed-npc-card","version":"1.0.0","title":"Condensed NPC card","description":"One-card NPC reference for Storyguide play.","outputs":["html","pdf","card"],"required_content":["npc"],"optional_content":["secret"],"asset_policy":"Portrait assets are referenced separately by portrait_asset_id."}

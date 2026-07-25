@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica"
+  short_description: "Route Ars Magica work to focused skills"
+  default_prompt: "Use $ars-magica to route my Ars Magica question and help me reach a cited, practical result."

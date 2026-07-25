@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Advancement Assistant"
+  short_description: "Plan cited seasons and character progress"
+  default_prompt: "Use $ars-magica-advancement-assistant to plan this Ars Magica character's seasons, advancement, and long-term consequences."

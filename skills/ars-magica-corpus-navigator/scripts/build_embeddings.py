@@ -14,9 +14,75 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
-DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
+DEFAULT_DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"
+ENV_DB_PATH = "ARS_MAGICA_DB_PATH"
+SCHEMA_VERSION = 1
+SQLITE_HEADER = b"SQLite format 3\x00"
+LFS_POINTER_HEADER = b"version https://git-lfs.github.com/spec/v1"
 MODEL = "text-embedding-3-large"
 DIMENSIONS = 3072
+REQUIRED_CORE_TABLES = frozenset(
+    {
+        "books",
+        "sections",
+        "chunks",
+        "core_spells",
+        "core_virtues",
+        "core_flaws",
+        "core_abilities",
+        "covenant_boons_hooks",
+    }
+)
+
+
+def db_path() -> Path:
+    return Path(os.environ.get(ENV_DB_PATH, DEFAULT_DB_PATH)).expanduser()
+
+
+def validate_database(path: Path) -> sqlite3.Connection:
+    if not path.exists():
+        raise RuntimeError(f"database file is missing: {path}")
+    try:
+        with path.open("rb") as database_file:
+            header = database_file.read(128)
+    except OSError as error:
+        raise RuntimeError(f"database file could not be read: {path}: {error}") from error
+    if header.startswith(LFS_POINTER_HEADER):
+        raise RuntimeError("database file is a Git LFS pointer; fetch LFS assets before building embeddings")
+    if not header.startswith(SQLITE_HEADER):
+        raise RuntimeError(f"database file is not a SQLite database: {path}")
+
+    try:
+        conn = sqlite3.connect(path)
+        table_names = {
+            str(row[0])
+            for row in conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'")
+        }
+        missing_tables = sorted(REQUIRED_CORE_TABLES - table_names)
+        if missing_tables:
+            raise RuntimeError(
+                "database is missing required corpus tables: " + ", ".join(missing_tables)
+            )
+        if "metadata" not in table_names:
+            return conn
+
+        metadata_columns = {
+            str(row[1]) for row in conn.execute("PRAGMA table_info(metadata)")
+        }
+        if not {"key", "value"}.issubset(metadata_columns):
+            raise RuntimeError("database metadata must contain key and value columns")
+        version_rows = conn.execute(
+            "SELECT value FROM metadata WHERE key = 'schema_version' LIMIT 2"
+        ).fetchall()
+        if len(version_rows) != 1 or version_rows[0][0] != str(SCHEMA_VERSION):
+            raise RuntimeError(
+                f"unsupported database schema version; expected {SCHEMA_VERSION}"
+            )
+        return conn
+    except Exception:
+        if "conn" in locals():
+            conn.close()
+        raise
 
 
 def load_env() -> None:
@@ -84,7 +150,7 @@ def main() -> None:
         raise SystemExit("OPENAI_API_KEY missing. Put it in .env or environment.")
     OpenAI, sqlite_vec = require_deps()
     client = OpenAI()
-    conn = sqlite3.connect(DB_PATH)
+    conn = validate_database(db_path())
     conn.enable_load_extension(True)
     sqlite_vec.load(conn)
     conn.enable_load_extension(False)

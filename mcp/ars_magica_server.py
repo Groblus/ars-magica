@@ -138,11 +138,11 @@ def _validate_corpus_database(conn: sqlite3.Connection) -> None:
     metadata_columns = {
         str(row[1]) for row in conn.execute("PRAGMA table_info(metadata)").fetchall()
     }
-    if "schema_version" not in metadata_columns:
-        raise DatabaseUnavailableError("database metadata is missing schema_version")
+    if not {"key", "value"}.issubset(metadata_columns):
+        raise DatabaseUnavailableError("database metadata must contain key and value columns")
 
     version_rows = conn.execute(
-        "SELECT schema_version FROM metadata LIMIT 2"
+        "SELECT value FROM metadata WHERE key = 'schema_version' LIMIT 2"
     ).fetchall()
     if len(version_rows) != 1 or version_rows[0][0] is None:
         raise DatabaseUnavailableError("database metadata schema_version is malformed")

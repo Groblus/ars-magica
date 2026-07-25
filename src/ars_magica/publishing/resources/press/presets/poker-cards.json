@@ -1,0 +1,1 @@
+{"id":"poker-cards","version":"1.0.0","title":"Poker cards","page_size":"Letter","trim":"2.5in 3.5in","bleed":"0.125in","pdf_standard":"PDF/X-4","css":"@page { size: Letter; margin: 0.25in; } .card { width: 2.5in; min-height: 3.5in; break-inside: avoid; }"}
