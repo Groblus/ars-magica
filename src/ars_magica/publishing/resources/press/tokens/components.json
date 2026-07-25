@@ -1,0 +1,9 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "$description": "Component design values. Version 1.0.0.",
+  "component": {
+    "panel": {"padding": {"$type": "dimension", "$value": "{space.3}"}, "border": {"$type": "color", "$value": "{rule.divider}"}},
+    "card": {"radius": {"$type": "dimension", "$value": "0"}, "padding": {"$type": "dimension", "$value": "{space.3}"}},
+    "stat": {"label-size": {"$type": "dimension", "$value": "0.65rem"}}
+  }
+}

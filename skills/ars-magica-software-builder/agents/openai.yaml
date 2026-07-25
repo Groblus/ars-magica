@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ars Magica Software Builder"
+  short_description: "Build sourced Ars Magica software contracts"
+  default_prompt: "Use $ars-magica-software-builder to design this Ars Magica feature with stable data, cited rules, and clean integrations."

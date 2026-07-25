@@ -1,0 +1,1 @@
+{"id":"storyguide-session-packet","version":"1.0.0","title":"Storyguide session packet","description":"Session-facing agenda, scenes, NPCs, and private revelations.","outputs":["html","pdf"],"required_content":["session"],"optional_content":["scenes","npcs","secrets"],"asset_policy":"Optional map and illustration assets remain separate from session text."}

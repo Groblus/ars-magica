@@ -37,6 +37,7 @@ class GenerateViewsTests(unittest.TestCase):
         view = View("target", 12, 0)
         nearest = nearest_generated(view, [View("far", -25, 0), View("near", 10, 0)])
         self.assertIsNotNone(nearest)
+        assert nearest is not None
         self.assertEqual(nearest.name, "near")
 
     def test_manifest_merge_preserves_review_state_and_existing_fields(self) -> None:
@@ -44,7 +45,12 @@ class GenerateViewsTests(unittest.TestCase):
             output = Path(tmp)
             existing = {
                 "views": [
-                    {"name": "left_10", "review_state": APPROVED, "status": "generated", "file": "approved/custom.png"}
+                    {
+                        "name": "left_10",
+                        "review_state": APPROVED,
+                        "status": "generated",
+                        "file": "approved/custom.png",
+                    }
                 ]
             }
             manifest = merge_manifest(
@@ -73,7 +79,11 @@ class GenerateViewsTests(unittest.TestCase):
                 "views": [
                     {"name": "hero", "review_state": "source", "file": "approved/000_hero.jpg"},
                     {"name": "left", "review_state": "approved", "file": "approved/001_left.png"},
-                    {"name": "right", "review_state": "candidate", "file": "candidates/002_right.png"},
+                    {
+                        "name": "right",
+                        "review_state": "candidate",
+                        "file": "candidates/002_right.png",
+                    },
                 ]
             }
             manifest_path = root / "manifest.json"

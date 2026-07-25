@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groblus.github.io/ars-magica/schemas/v1/common.schema.json",
+  "title": "Ars Magica common contracts v1",
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9._:-]*$"},
+    "visibility": {"type": "string", "enum": ["public", "player", "storyguide"]},
+    "authority": {"type": "string", "enum": ["definitive", "fifth_edition", "historical", "reconstruction", "saga"]},
+    "sourceReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title"],
+      "properties": {
+        "schema_version": {"const": "1.0"}, "id": {"$ref": "#/$defs/id"}, "title": {"type": "string"},
+        "locator": {"type": ["string", "null"]}, "citation": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"], "format": "uri"}, "authority": {"$ref": "#/$defs/authority"},
+        "notes": {"type": ["string", "null"]}, "extensions": {"type": "object"}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false, "required": ["id", "actor", "action"],
+      "properties": {
+        "schema_version": {"const": "1.0"}, "id": {"$ref": "#/$defs/id"}, "actor": {"type": "string"},
+        "action": {"type": "string"}, "occurred_at": {"type": ["string", "null"], "format": "date-time"},
+        "input_ids": {"type": "array", "items": {"$ref": "#/$defs/id"}}, "tool": {"type": ["string", "null"]},
+        "tool_version": {"type": ["string", "null"]}, "notes": {"type": ["string", "null"]}, "extensions": {"type": "object"}
+      }
+    },
+    "record": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "schema_version": {"const": "1.0"}, "id": {"$ref": "#/$defs/id"},
+        "source_refs": {"type": "array", "items": {"$ref": "#/$defs/sourceReference"}},
+        "visibility": {"$ref": "#/$defs/visibility"}, "valid_from": {"type": ["string", "null"], "format": "date"},
+        "valid_to": {"type": ["string", "null"], "format": "date"},
+        "provenance": {"type": "array", "items": {"$ref": "#/$defs/provenance"}}, "extensions": {"type": "object"}
+      }
+    }
+  }
+}

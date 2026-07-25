@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ars-magica-reference-lab"
+version = "0.1.0"
+description = "Definitive/5th-edition Ars Magica agent tools, deterministic mechanics, and printable material pipeline."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Ars Magica Open License corpus terms preserved in LICENSE.md" }
+authors = [{ name = "Groblus/ars-magica contributors" }]
+dependencies = [
+  "pydantic>=2.8,<3",
+]
+
+[project.optional-dependencies]
+publishing = [
+  "Jinja2>=3.1,<4",
+  "WeasyPrint>=69,<70",
+]
+mcp = [
+  "fastmcp>=2,<3",
+]
+test = [
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+]
+dev = [
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+  "ruff>=0.16,<1",
+  "ty>=0.0.63,<0.1",
+]
+all = [
+  "Jinja2>=3.1,<4",
+  "WeasyPrint>=69,<70",
+  "fastmcp>=2,<3",
+  "pytest>=8,<9",
+  "jsonschema>=4,<5",
+  "ruff>=0.16,<1",
+  "ty>=0.0.63,<0.1",
+]
+
+[project.scripts]
+ars-magica = "ars_magica.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"ars_magica.publishing.resources" = ["press/**/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = [
+  "pyproject.toml",
+  "src/ars_magica/**/*.py",
+  "mcp/**/*.py",
+  "tests/**/*.py",
+  "experiments/wizard-study/generation/**/*.py",
+  "experiments/wizard-study/tests/**/*.py",
+  "skills/ars-magica-corpus-navigator/scripts/**/*.py",
+]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "SIM"]
+
+[tool.ty.environment]
+python-version = "3.11"
+root = ["./src", ".", "./experiments/wizard-study"]
+
+[tool.ty.analysis]
+# Optional embedding backends are loaded lazily by CLI scripts; base dev installs should stay light.
+allowed-unresolved-imports = ["dotenv", "openai", "sqlite_vec"]
+
+[tool.ty.src]
+include = [
+  "src/ars_magica",
+  "mcp",
+  "tests",
+  "experiments/wizard-study/generation",
+  "experiments/wizard-study/tests",
+  "skills/ars-magica-corpus-navigator/scripts",
+]

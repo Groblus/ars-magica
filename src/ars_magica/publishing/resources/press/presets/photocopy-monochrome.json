@@ -1,0 +1,1 @@
+{"id":"photocopy-monochrome","version":"1.0.0","title":"Photocopy monochrome","page_size":"A4","pdf_standard":"screen","css":"@page { size: A4; margin: 14mm; } * { color: #000 !important; background: #fff !important; }"}

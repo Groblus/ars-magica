@@ -1,0 +1,18 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/schema.json",
+  "$description": "Primitive design values. Version 1.0.0.",
+  "color": {
+    "ink": {"950": {"$type": "color", "$value": "#1e211d"}, "700": {"$type": "color", "$value": "#4a5148"}},
+    "paper": {"100": {"$type": "color", "$value": "#fffdf4"}, "200": {"$type": "color", "$value": "#f4efd9"}},
+    "ochre": {"500": {"$type": "color", "$value": "#a65d16"}},
+    "vermilion": {"500": {"$type": "color", "$value": "#9e2f1e"}},
+    "green": {"500": {"$type": "color", "$value": "#315b42"}}
+  },
+  "font": {
+    "body": {"$type": "fontFamily", "$value": "Georgia, serif"},
+    "display": {"$type": "fontFamily", "$value": "Georgia, serif"},
+    "mono": {"$type": "fontFamily", "$value": "Courier New, monospace"}
+  },
+  "space": {"1": {"$type": "dimension", "$value": "0.25rem"}, "2": {"$type": "dimension", "$value": "0.5rem"}, "3": {"$type": "dimension", "$value": "0.75rem"}, "4": {"$type": "dimension", "$value": "1rem"}, "6": {"$type": "dimension", "$value": "1.5rem"}},
+  "stroke": {"thin": {"$type": "dimension", "$value": "0.75pt"}, "heavy": {"$type": "dimension", "$value": "1.5pt"}}
+}

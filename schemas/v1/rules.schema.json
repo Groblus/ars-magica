@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groblus.github.io/ars-magica/schemas/v1/rules.schema.json",
+  "title": "Ars Magica rules and character contracts v1",
+  "allOf": [{"$ref": "common.schema.json"}],
+  "$defs": {
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score"],
+      "properties": {
+        "score": {"type": "integer", "minimum": 0},
+        "experience": {"type": "integer", "minimum": 0},
+        "specialty": {"type": ["string", "null"]},
+        "extensions": {"type": "object"}
+      }
+    },
+    "characteristics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "intelligence": {"type": "integer", "minimum": -5, "maximum": 5},
+        "perception": {"type": "integer", "minimum": -5, "maximum": 5},
+        "presence": {"type": "integer", "minimum": -5, "maximum": 5},
+        "communication": {"type": "integer", "minimum": -5, "maximum": 5},
+        "strength": {"type": "integer", "minimum": -5, "maximum": 5},
+        "stamina": {"type": "integer", "minimum": -5, "maximum": 5},
+        "dexterity": {"type": "integer", "minimum": -5, "maximum": 5},
+        "quickness": {"type": "integer", "minimum": -5, "maximum": 5},
+        "extensions": {"type": "object"}
+      }
+    },
+    "spellDefinition": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/record"},
+        {
+          "type": "object",
+          "required": ["name", "technique_id", "form_id", "level"],
+          "properties": {
+            "name": {"type": "string"},
+            "technique_id": {"type": "string"},
+            "form_id": {"type": "string"},
+            "level": {"type": "integer", "minimum": 0},
+            "range": {"type": ["string", "null"]},
+            "duration": {"type": ["string", "null"]},
+            "target": {"type": ["string", "null"]},
+            "ritual": {"type": "boolean"}
+          }
+        }
+      ]
+    },
+    "baseCharacterState": {
+      "allOf": [
+        {"$ref": "common.schema.json#/$defs/record"},
+        {
+          "type": "object",
+          "required": ["name"],
+          "properties": {
+            "revision": {"type": "integer", "minimum": 1},
+            "name": {"type": "string"},
+            "character_type": {"type": "string"},
+            "characteristics": {"$ref": "#/$defs/characteristics"},
+            "abilities": {
+              "type": "array",
+              "items": {
+                "allOf": [
+                  {"$ref": "#/$defs/score"},
+                  {"type": "object", "required": ["ability_id"], "properties": {"ability_id": {"type": "string"}}}
+                ]
+              }
+            },
+            "virtue_ids": {"type": "array", "items": {"type": "string"}},
+            "flaw_ids": {"type": "array", "items": {"type": "string"}},
+            "known_spells": {"type": "array", "items": {"type": "object"}},
+            "wounds": {"type": "array", "items": {"type": "object"}},
+            "fatigue": {"type": "object"},
+            "aging": {"type": "object"},
+            "warping": {"type": "object"}
+          }
+        }
+      ]
+    },
+    "characterState": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCharacterState"},
+        {
+          "type": "object",
+          "properties": {
+            "character_type": {"type": "string", "not": {"const": "magus"}}
+          },
+          "not": {"required": ["arts"]}
+        }
+      ]
+    },
+    "magusState": {
+      "allOf": [
+        {"$ref": "#/$defs/baseCharacterState"},
+        {
+          "type": "object",
+          "required": ["character_type"],
+          "properties": {
+            "character_type": {"const": "magus"},
+            "arts": {"type": "array"},
+            "house": {"type": ["string", "null"]},
+            "parma_magica_score": {"type": "integer", "minimum": 0},
+            "covenant_id": {"type": ["string", "null"]}
+          }
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {"$ref": "#/$defs/spellDefinition"},
+    {"$ref": "#/$defs/characterState"},
+    {"$ref": "#/$defs/magusState"}
+  ]
+}

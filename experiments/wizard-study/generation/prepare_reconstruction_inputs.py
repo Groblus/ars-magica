@@ -38,9 +38,15 @@ def prepare_inputs(manifest_path: Path, output_dir: Path, *, clean: bool = False
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Copy only approved wizard-study views into reconstruction input.")
-    parser.add_argument("--manifest", type=Path, default=Path(__file__).with_name("output") / "manifest.json")
-    parser.add_argument("--output", type=Path, default=Path(__file__).parents[1] / "reconstruction" / "input")
+    parser = argparse.ArgumentParser(
+        description="Copy only approved wizard-study views into reconstruction input."
+    )
+    parser.add_argument(
+        "--manifest", type=Path, default=Path(__file__).with_name("output") / "manifest.json"
+    )
+    parser.add_argument(
+        "--output", type=Path, default=Path(__file__).parents[1] / "reconstruction" / "input"
+    )
     parser.add_argument("--clean", action="store_true")
     args = parser.parse_args()
     copied = prepare_inputs(args.manifest, args.output, clean=args.clean)

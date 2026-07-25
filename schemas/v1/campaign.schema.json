@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groblus.github.io/ars-magica/schemas/v1/campaign.schema.json",
+  "title": "Ars Magica covenant and season contracts v1",
+  "$defs": {
+    "laboratoryState": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name"], "properties": {"revision": {"type": "integer", "minimum": 1}, "name": {"type": "string"}, "owner_id": {"type": ["string", "null"]}, "covenant_id": {"type": ["string", "null"]}, "size": {"type": "integer"}, "refinement": {"type": "integer"}, "feature_ids": {"type": "array", "items": {"type": "string"}}}}]},
+    "covenantState": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name"], "properties": {"revision": {"type": "integer", "minimum": 1}, "name": {"type": "string"}, "tribunal": {"type": ["string", "null"]}, "location_id": {"type": ["string", "null"]}, "aura": {"type": ["integer", "null"]}, "members": {"type": "array", "items": {"type": "string"}}, "laboratories": {"type": "array", "items": {"$ref": "#/$defs/laboratoryState"}}, "resources": {"type": "array", "items": {"type": "object"}}}}]},
+    "season": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["name", "year"], "properties": {"name": {"enum": ["spring", "summer", "autumn", "winter"]}, "year": {"type": "integer"}, "starts_on": {"type": ["string", "null"], "format": "date"}}}]},
+    "advancementEvent": {"allOf": [{"$ref": "common.schema.json#/$defs/record"}, {"type": "object", "required": ["character_id", "season_id", "activity"], "properties": {"character_id": {"type": "string"}, "season_id": {"type": "string"}, "activity": {"type": "string"}, "ability_id": {"type": ["string", "null"]}, "art_id": {"type": ["string", "null"]}, "experience_awarded": {"type": "integer", "minimum": 0}}}]}
+  },
+  "oneOf": [{"$ref": "#/$defs/laboratoryState"}, {"$ref": "#/$defs/covenantState"}, {"$ref": "#/$defs/season"}, {"$ref": "#/$defs/advancementEvent"}]
+}

@@ -6,22 +6,32 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sqlite3
+import tempfile
+from contextlib import suppress
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
 RESOURCES = SKILL_DIR / "resources"
 REFERENCES = SKILL_DIR / "references"
 TOC_DIR = REFERENCES / "toc"
-DB_PATH = RESOURCES / "ars_magica.sqlite"
+DEFAULT_DB_PATH = RESOURCES / "ars_magica.sqlite"
+ENV_DB_PATH = "ARS_MAGICA_DB_PATH"
+DB_PATH = Path(os.environ.get(ENV_DB_PATH, DEFAULT_DB_PATH)).expanduser()
 DOCS_DATA = REPO_ROOT / "docs" / "data"
 CORE_PATH = REPO_ROOT / "reviewed" / "Ars Magica - Definitive Edition (Core Rules).md"
+SCHEMA_VERSION = 1
+SQLITE_HEADER = b"SQLite format 3\x00"
+BUILDER_NAME = "ars-magica-corpus-navigator"
+BUILDER_VERSION = "1"
+EMBEDDING_MODEL = "text-embedding-3-large"
+EMBEDDING_DIMENSIONS = 3072
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.+?)\s*$")
 CHAPTER_RE = re.compile(
@@ -246,7 +256,11 @@ def parse_virtue_or_flaw_entries(
     section_title: str,
 ) -> list[dict[str, Any]]:
     chapter = next(h for h in headings if h.title == chapter_title)
-    section = next(h for h in headings if h.title == section_title and chapter.line_start <= h.line_start <= chapter.line_end)
+    section = next(
+        h
+        for h in headings
+        if h.title == section_title and chapter.line_start <= h.line_start <= chapter.line_end
+    )
     entries: list[dict[str, Any]] = []
     for heading in descendants_of(headings, section):
         if heading.level != 4:
@@ -276,18 +290,28 @@ def parse_virtue_or_flaw_entries(
 
 def parse_abilities(lines: list[str], headings: list[Heading]) -> list[dict[str, Any]]:
     chapter = next(h for h in headings if h.title == "Chapter 5: Abilities")
-    section = next(h for h in headings if h.title == "Ability List" and chapter.line_start <= h.line_start <= chapter.line_end)
+    section = next(
+        h
+        for h in headings
+        if h.title == "Ability List" and chapter.line_start <= h.line_start <= chapter.line_end
+    )
     entries: list[dict[str, Any]] = []
     for heading in descendants_of(headings, section):
         if heading.level != 4:
             continue
         raw = join_body(body_lines(lines, heading))
         ability_type = None
-        type_match = re.search(r"\((General|Academic|Arcane|Martial|Supernatural)\)\s*$", raw, re.MULTILINE)
+        type_match = re.search(
+            r"\((General|Academic|Arcane|Martial|Supernatural)\)\s*$", raw, re.MULTILINE
+        )
         if type_match:
             ability_type = type_match.group(1)
         specialties = None
-        specialties_match = re.search(r"\*Specialt(?:ies|y)\*:? ?(.+?)(?:\((?:General|Academic|Arcane|Martial|Supernatural)\))?\s*$", raw, re.S | re.I)
+        specialties_match = re.search(
+            r"\*Specialt(?:ies|y)\*:? ?(.+?)(?:\((?:General|Academic|Arcane|Martial|Supernatural)\))?\s*$",
+            raw,
+            re.S | re.I,
+        )
         if specialties_match:
             specialties = " ".join(specialties_match.group(1).split())
         description = raw
@@ -325,7 +349,13 @@ def nearest_spell_group(heading: Heading) -> tuple[str | None, int | None]:
 
 def parse_spell_parameters(line: str) -> dict[str, Any]:
     cleaned = clean_htmlish(line).replace("\n", " ").strip()
-    result: dict[str, Any] = {"parameter_line": cleaned, "range": None, "duration": None, "target": None, "ritual": False}
+    result: dict[str, Any] = {
+        "parameter_line": cleaned,
+        "range": None,
+        "duration": None,
+        "target": None,
+        "ritual": False,
+    }
     if "R:" not in cleaned:
         return result
     for label, key in [("R:", "range"), ("D:", "duration"), ("T:", "target")]:
@@ -351,7 +381,8 @@ def parse_spells(lines: list[str], headings: list[Heading]) -> list[dict[str, An
     spell_sections = [
         h
         for h in descendants_of(headings, chapter)
-        if h.title.endswith(" Spells") and re.fullmatch(r"(Creo|Intellego|Muto|Perdo|Rego) [A-Za-z]+ Spells", h.title)
+        if h.title.endswith(" Spells")
+        and re.fullmatch(r"(Creo|Intellego|Muto|Perdo|Rego) [A-Za-z]+ Spells", h.title)
     ]
     entries: list[dict[str, Any]] = []
     for section in spell_sections:
@@ -416,18 +447,24 @@ def parse_spell_guidelines(lines: list[str], headings: list[Heading]) -> list[di
     for heading in descendants_of(headings, chapter):
         if heading.level != 3 or not heading.title.endswith("Guidelines"):
             continue
-        match = re.match(r"^(Creo|Intellego|Muto|Perdo|Rego)\s+([A-Za-z]+)\s+Guidelines$", heading.title)
+        match = re.match(
+            r"^(Creo|Intellego|Muto|Perdo|Rego)\s+([A-Za-z]+)\s+Guidelines$", heading.title
+        )
         if not match:
             continue
         technique, form = match.groups()
         for row in parse_markdown_table(body_lines(lines, heading)):
             if len(row) < 2 or row[0].lower() == "level":
                 continue
-            effects = [part.strip(" •") for part in clean_htmlish(row[1]).split("\n") if part.strip(" •")]
+            effects = [
+                part.strip(" •") for part in clean_htmlish(row[1]).split("\n") if part.strip(" •")
+            ]
             for effect_index, effect in enumerate(effects, 1):
                 entries.append(
                     {
-                        "id": slugify(f"guideline-{technique}-{form}-{row[0]}-{effect_index}-{heading.line_start}"),
+                        "id": slugify(
+                            f"guideline-{technique}-{form}-{row[0]}-{effect_index}-{heading.line_start}"
+                        ),
                         "name": f"{technique} {form} {row[0]}",
                         "technique": technique,
                         "form": form,
@@ -452,14 +489,19 @@ def parse_lab_activities(lines: list[str], headings: list[Heading]) -> list[dict
         if heading.title in {"Example: Inventing Spells", "Enchanted Item Example"}:
             continue
         text = join_body(body_lines(lines, heading))
-        formulae = re.findall(r"\*\*([^*\n]*(?:TOTAL|LIMIT|LEVELS|CHARGES|ROLL|FACTOR|VIS)[^*\n]*):?\s*([^*]+?)\*\*", text)
+        formulae = re.findall(
+            r"\*\*([^*\n]*(?:TOTAL|LIMIT|LEVELS|CHARGES|ROLL|FACTOR|VIS)[^*\n]*):?\s*([^*]+?)\*\*",
+            text,
+        )
         entries.append(
             {
                 "id": slugify(f"lab-{heading.title}-{heading.line_start}"),
                 "name": heading.title,
                 "level": heading.level,
                 "summary": first_paragraph(text),
-                "formulae": [f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae],
+                "formulae": [
+                    f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae
+                ],
                 "heading_path": " > ".join(heading.heading_path),
                 "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
                 "line_start": heading.line_start,
@@ -477,7 +519,10 @@ def parse_combat_tables(lines: list[str], headings: list[Heading]) -> list[dict[
         table_rows = parse_markdown_table(body_lines(lines, heading))
         if not table_rows:
             continue
-        if not any(term in heading.title.lower() for term in ["combat", "damage", "wound", "injur", "attack", "weapon"]):
+        if not any(
+            term in heading.title.lower()
+            for term in ["combat", "damage", "wound", "injur", "attack", "weapon"]
+        ):
             continue
         entries.append(
             {
@@ -500,7 +545,9 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
     covenant_path = REPO_ROOT / "reviewed" / "Ars Magica 5e - Covenants.md"
     if not covenant_path.exists():
         return []
-    covenant_book = next((b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None)
+    covenant_book = next(
+        (b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None
+    )
     if not covenant_book:
         return []
     lines = read_lines(covenant_path)
@@ -520,14 +567,31 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
         if hmatch:
             title = hmatch.group(2).strip()
             current_category = title
-            current_kind = "boon" if "boon" in title.lower() else "hook" if "hook" in title.lower() else current_kind
-            current_magnitude = "Major" if "major" in title.lower() else "Minor" if "minor" in title.lower() else "Free" if "free" in title.lower() else current_magnitude
+            current_kind = (
+                "boon"
+                if "boon" in title.lower()
+                else "hook"
+                if "hook" in title.lower()
+                else current_kind
+            )
+            current_magnitude = (
+                "Major"
+                if "major" in title.lower()
+                else "Minor"
+                if "minor" in title.lower()
+                else "Free"
+                if "free" in title.lower()
+                else current_magnitude
+            )
             continue
         if not current_kind:
             continue
         match = re.match(r"^\*{0,2}_?\*{0,2}\s*\*\*?([^:*_]+?)\*\*?:\s*(.+)", line.strip())
         if not match:
-            match = re.match(r"^\*?([^:*_][^:]{2,80}):\s*(Site|Buildings|Resources|Residents|External|Surroundings|Minor|Major|Free).*$", line.strip())
+            match = re.match(
+                r"^\*?([^:*_][^:]{2,80}):\s*(Site|Buildings|Resources|Residents|External|Surroundings|Minor|Major|Free).*$",
+                line.strip(),
+            )
         if not match:
             continue
         name = re.sub(r"[*_]", "", match.group(1)).strip()
@@ -539,7 +603,14 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
                 "id": slugify(f"covenant-{current_kind}-{name}-{idx}"),
                 "name": name,
                 "kind": current_kind,
-                "magnitude": current_magnitude or ("Major" if "major" in description.lower() else "Minor" if "minor" in description.lower() else ""),
+                "magnitude": current_magnitude
+                or (
+                    "Major"
+                    if "major" in description.lower()
+                    else "Minor"
+                    if "minor" in description.lower()
+                    else ""
+                ),
                 "category": current_category,
                 "summary": first_paragraph(clean_htmlish(description)),
                 "source_path": source_path,
@@ -555,8 +626,12 @@ def extract_core_data(core_book: dict[str, Any]) -> CoreExtraction:
     lines = read_lines(REPO_ROOT / core_book["path"])
     headings = [Heading(**heading) for heading in core_book["headings"]]
     return CoreExtraction(
-        virtues=parse_virtue_or_flaw_entries("virtue", lines, headings, "Chapter 4: Virtues and Flaws", "Virtues"),
-        flaws=parse_virtue_or_flaw_entries("flaw", lines, headings, "Chapter 4: Virtues and Flaws", "Flaws"),
+        virtues=parse_virtue_or_flaw_entries(
+            "virtue", lines, headings, "Chapter 4: Virtues and Flaws", "Virtues"
+        ),
+        flaws=parse_virtue_or_flaw_entries(
+            "flaw", lines, headings, "Chapter 4: Virtues and Flaws", "Flaws"
+        ),
         abilities=parse_abilities(lines, headings),
         spells=parse_spells(lines, headings),
         spell_guidelines=parse_spell_guidelines(lines, headings),
@@ -612,7 +687,9 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
     return books, chunks, core_data
 
 
-def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool) -> None:
+def write_json(
+    books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool
+) -> None:
     RESOURCES.mkdir(parents=True, exist_ok=True)
     TOC_DIR.mkdir(parents=True, exist_ok=True)
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
@@ -627,8 +704,12 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
         }
         for b in books
     ]
-    (RESOURCES / "allowed-books.json").write_text(json.dumps(allowed, indent=2, ensure_ascii=False) + "\n")
-    (RESOURCES / "heading-index.json").write_text(json.dumps({"books": books}, indent=2, ensure_ascii=False) + "\n")
+    (RESOURCES / "allowed-books.json").write_text(
+        json.dumps(allowed, indent=2, ensure_ascii=False) + "\n"
+    )
+    (RESOURCES / "heading-index.json").write_text(
+        json.dumps({"books": books}, indent=2, ensure_ascii=False) + "\n"
+    )
     chunks_path = RESOURCES / "chunks.json"
     if export_chunks:
         chunks_path.write_text(json.dumps({"chunks": chunks}, indent=2, ensure_ascii=False) + "\n")
@@ -661,7 +742,11 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
     core_payload = {
         "book": {
             "path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
-            "title": next(b["title"] for b in books if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix()),
+            "title": next(
+                b["title"]
+                for b in books
+                if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix()
+            ),
             "edition": "DE",
         },
         "summary": {
@@ -683,8 +768,12 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
         "combat_tables": core_data.combat_tables,
         "covenant_boons_hooks": core_data.covenant_boons_hooks,
     }
-    (DOCS_DATA / "library.json").write_text(json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n")
-    (DOCS_DATA / "core-data.json").write_text(json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n")
+    (DOCS_DATA / "library.json").write_text(
+        json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n"
+    )
+    (DOCS_DATA / "core-data.json").write_text(
+        json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n"
+    )
 
 
 def write_tocs(books: list[dict]) -> None:
@@ -692,11 +781,19 @@ def write_tocs(books: list[dict]) -> None:
     for b in books:
         toc_name = slugify(Path(b["path"]).stem) + ".md"
         index_lines.append(f"- [{b['title']}](toc/{toc_name})")
-        lines = [f"# {b['title']}", "", f"- Source: `{b['path']}`", f"- Edition: `{b['edition']}`", ""]
+        lines = [
+            f"# {b['title']}",
+            "",
+            f"- Source: `{b['path']}`",
+            f"- Edition: `{b['edition']}`",
+            "",
+        ]
         for h in b["headings"]:
             indent = "  " * max(0, h["level"] - 1)
             label = " / ".join(h["heading_path"])
-            lines.append(f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../../{b['path']}#L{h['line_start']})")
+            lines.append(
+                f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../../{b['path']}#L{h['line_start']})"
+            )
             if h["level"] == 1 and label != h["title"]:
                 lines[-1] += f" _{label}_"
         (TOC_DIR / toc_name).write_text("\n".join(lines) + "\n")
@@ -704,11 +801,59 @@ def write_tocs(books: list[dict]) -> None:
 
 
 def table_exists(conn: sqlite3.Connection, name: str) -> bool:
-    row = conn.execute(
-        "SELECT 1 FROM sqlite_master WHERE type IN ('table','virtual table') AND name = ? LIMIT 1",
-        (name,),
-    ).fetchone()
+    try:
+        row = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type IN ('table','virtual table') AND name = ? LIMIT 1",
+            (name,),
+        ).fetchone()
+    except sqlite3.Error:
+        return False
     return row is not None
+
+
+def is_sqlite_database(path: Path) -> bool:
+    if not path.exists() or not path.is_file():
+        return False
+    try:
+        with path.open("rb") as handle:
+            return handle.read(len(SQLITE_HEADER)) == SQLITE_HEADER
+    except OSError:
+        return False
+
+
+def metadata_rows(books: list[dict], chunks: list[dict], embedding_count: int) -> dict[str, str]:
+    digest = hashlib.sha256()
+    for book in sorted(books, key=lambda item: item["path"]):
+        digest.update(book["path"].encode("utf-8"))
+        digest.update(b"\x00")
+        digest.update(book["sha256"].encode("ascii"))
+        digest.update(b"\x00")
+    for chunk in sorted(chunks, key=lambda item: item["citation"]):
+        digest.update(chunk["citation"].encode("utf-8"))
+        digest.update(b"\x00")
+        digest.update(chunk["content_hash"].encode("ascii"))
+        digest.update(b"\x00")
+    return {
+        "schema_version": str(SCHEMA_VERSION),
+        "builder_name": BUILDER_NAME,
+        "builder_version": BUILDER_VERSION,
+        "corpus_digest": digest.hexdigest(),
+        "built_at": datetime.now(UTC).isoformat(),
+        "embedding_model": EMBEDDING_MODEL,
+        "embedding_dimensions": str(EMBEDDING_DIMENSIONS),
+        "embedding_count": str(embedding_count),
+    }
+
+
+def has_embedding_schema(conn: sqlite3.Connection) -> bool:
+    if not table_exists(conn, "embeddings"):
+        return False
+    try:
+        columns = {row[1] for row in conn.execute("PRAGMA table_info(embeddings)").fetchall()}
+    except sqlite3.Error:
+        return False
+    required = {"chunk_id", "model", "dimensions", "embedding", "content_hash", "created_at"}
+    return required.issubset(columns)
 
 
 def load_sqlite_vec(conn: sqlite3.Connection) -> bool:
@@ -722,19 +867,20 @@ def load_sqlite_vec(conn: sqlite3.Connection) -> bool:
         conn.enable_load_extension(False)
         return True
     except Exception:
-        try:
+        with suppress(Exception):
             conn.enable_load_extension(False)
-        except Exception:
-            pass
         return False
 
 
 def snapshot_embeddings() -> dict[str, dict[str, Any]]:
-    if not DB_PATH.exists():
+    if not is_sqlite_database(DB_PATH):
         return {}
-    conn = sqlite3.connect(DB_PATH)
     try:
-        if not table_exists(conn, "embeddings"):
+        conn = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True)
+    except sqlite3.Error:
+        return {}
+    try:
+        if not has_embedding_schema(conn):
             return {}
         rows = conn.execute(
             """
@@ -744,6 +890,8 @@ def snapshot_embeddings() -> dict[str, dict[str, Any]]:
             ORDER BY created_at DESC, chunk_id DESC
             """
         ).fetchall()
+    except sqlite3.Error:
+        return {}
     finally:
         conn.close()
 
@@ -761,252 +909,306 @@ def snapshot_embeddings() -> dict[str, dict[str, Any]]:
     return preserved
 
 
-def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtraction) -> dict[str, int]:
+def validate_sqlite_file(path: Path) -> None:
+    if not is_sqlite_database(path):
+        raise RuntimeError(f"not a SQLite database: {path}")
+    conn = sqlite3.connect(path)
+    try:
+        load_sqlite_vec(conn)
+        result = conn.execute("PRAGMA integrity_check").fetchone()
+        if not result or result[0] != "ok":
+            raise RuntimeError(
+                f"SQLite integrity_check failed: {result[0] if result else 'no result'}"
+            )
+        foreign_key_rows = conn.execute("PRAGMA foreign_key_check").fetchall()
+        if foreign_key_rows:
+            raise RuntimeError(f"SQLite foreign_key_check failed: {len(foreign_key_rows)} rows")
+        version = conn.execute("SELECT value FROM metadata WHERE key = 'schema_version'").fetchone()
+        if not version or version[0] != str(SCHEMA_VERSION):
+            raise RuntimeError(
+                f"SQLite schema_version mismatch: {version[0] if version else 'missing'}"
+            )
+    finally:
+        conn.close()
+
+
+def temp_db_path(target: Path) -> Path:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    handle, name = tempfile.mkstemp(prefix=f".{target.name}.", suffix=".tmp", dir=target.parent)
+    os.close(handle)
+    tmp_path = Path(name)
+    tmp_path.unlink()
+    return tmp_path
+
+
+def build_sqlite(
+    books: list[dict], chunks: list[dict], core_data: CoreExtraction
+) -> dict[str, int]:
     preserved_embeddings = snapshot_embeddings()
-    if DB_PATH.exists():
-        DB_PATH.unlink()
-    conn = sqlite3.connect(DB_PATH)
-    vec_supported = load_sqlite_vec(conn)
-    conn.executescript(
-        """
-        PRAGMA foreign_keys = ON;
-        CREATE TABLE books (
-          id INTEGER PRIMARY KEY,
-          path TEXT NOT NULL UNIQUE,
-          title TEXT NOT NULL,
-          edition TEXT NOT NULL CHECK (edition IN ('DE','5e')),
-          priority INTEGER NOT NULL,
-          line_count INTEGER NOT NULL,
-          sha256 TEXT NOT NULL
-        );
-        CREATE TABLE sections (
-          id TEXT PRIMARY KEY,
-          book_id INTEGER NOT NULL REFERENCES books(id),
-          parent_id TEXT REFERENCES sections(id),
-          heading TEXT NOT NULL,
-          heading_level INTEGER NOT NULL,
-          heading_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          ordinal INTEGER NOT NULL,
-          section_type TEXT NOT NULL,
-          UNIQUE(book_id, line_start)
-        );
-        CREATE TABLE chunks (
-          id INTEGER PRIMARY KEY,
-          book_id INTEGER NOT NULL REFERENCES books(id),
-          section_id TEXT NOT NULL REFERENCES sections(id),
-          chunk_index INTEGER NOT NULL,
-          text TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          heading_path TEXT NOT NULL,
-          citation TEXT NOT NULL,
-          content_hash TEXT NOT NULL,
-          embedding_model TEXT,
-          embedding_dimensions INTEGER,
-          UNIQUE(section_id, chunk_index)
-        );
-        CREATE VIRTUAL TABLE chunks_fts USING fts5(
-          text,
-          title,
-          heading_path,
-          citation UNINDEXED,
-          tokenize='unicode61 remove_diacritics 2'
-        );
-        CREATE TABLE embeddings (
-          chunk_id INTEGER PRIMARY KEY REFERENCES chunks(id),
-          model TEXT NOT NULL,
-          dimensions INTEGER NOT NULL,
-          embedding BLOB NOT NULL,
-          content_hash TEXT NOT NULL,
-          created_at TEXT NOT NULL
-        );
-        CREATE TABLE core_virtues (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          magnitude TEXT,
-          categories_json TEXT NOT NULL,
-          meta TEXT NOT NULL,
-          heading_path TEXT NOT NULL,
-          description TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_flaws (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          magnitude TEXT,
-          categories_json TEXT NOT NULL,
-          meta TEXT NOT NULL,
-          heading_path TEXT NOT NULL,
-          description TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_abilities (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          is_marked INTEGER NOT NULL,
-          ability_type TEXT,
-          specialties TEXT,
-          heading_path TEXT NOT NULL,
-          description TEXT NOT NULL,
-          body TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_spells (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          technique TEXT NOT NULL,
-          form TEXT NOT NULL,
-          spell_level INTEGER,
-          level_label TEXT,
-          spell_range TEXT,
-          duration TEXT,
-          target TEXT,
-          ritual INTEGER NOT NULL,
-          requisites TEXT,
-          parameter_line TEXT NOT NULL,
-          design_notes TEXT,
-          heading_path TEXT NOT NULL,
-          description TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_spell_guidelines (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          technique TEXT NOT NULL,
-          form TEXT NOT NULL,
-          level TEXT NOT NULL,
-          guideline TEXT NOT NULL,
-          heading_path TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_lab_activities (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          heading_level INTEGER NOT NULL,
-          summary TEXT NOT NULL,
-          formulae_json TEXT NOT NULL,
-          heading_path TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE core_combat_tables (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          row_count INTEGER NOT NULL,
-          columns_json TEXT NOT NULL,
-          rows_json TEXT NOT NULL,
-          heading_path TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        CREATE TABLE covenant_boons_hooks (
-          id TEXT PRIMARY KEY,
-          name TEXT NOT NULL,
-          kind TEXT NOT NULL,
-          magnitude TEXT,
-          category TEXT NOT NULL,
-          summary TEXT NOT NULL,
-          source_path TEXT NOT NULL,
-          line_start INTEGER NOT NULL,
-          line_end INTEGER NOT NULL,
-          citation TEXT NOT NULL
-        );
-        """
-    )
-    if vec_supported:
-        conn.execute("CREATE VIRTUAL TABLE vec_chunks USING vec0(embedding float[3072])")
-    for b in books:
-        conn.execute(
-            "INSERT INTO books(id,path,title,edition,priority,line_count,sha256) VALUES(?,?,?,?,?,?,?)",
-            (b["id"], b["path"], b["title"], b["edition"], b["priority"], b["line_count"], b["sha256"]),
+    tmp_path = temp_db_path(DB_PATH)
+    conn = sqlite3.connect(tmp_path)
+    try:
+        vec_supported = load_sqlite_vec(conn)
+        conn.executescript(
+            """
+            PRAGMA foreign_keys = ON;
+            CREATE TABLE metadata (
+              key TEXT PRIMARY KEY,
+              value TEXT NOT NULL
+            );
+            CREATE TABLE books (
+              id INTEGER PRIMARY KEY,
+              path TEXT NOT NULL UNIQUE,
+              title TEXT NOT NULL,
+              edition TEXT NOT NULL CHECK (edition IN ('DE','5e')),
+              priority INTEGER NOT NULL,
+              line_count INTEGER NOT NULL,
+              sha256 TEXT NOT NULL
+            );
+            CREATE TABLE sections (
+              id TEXT PRIMARY KEY,
+              book_id INTEGER NOT NULL REFERENCES books(id),
+              parent_id TEXT REFERENCES sections(id),
+              heading TEXT NOT NULL,
+              heading_level INTEGER NOT NULL,
+              heading_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              ordinal INTEGER NOT NULL,
+              section_type TEXT NOT NULL,
+              UNIQUE(book_id, line_start)
+            );
+            CREATE TABLE chunks (
+              id INTEGER PRIMARY KEY,
+              book_id INTEGER NOT NULL REFERENCES books(id),
+              section_id TEXT NOT NULL REFERENCES sections(id),
+              chunk_index INTEGER NOT NULL,
+              text TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              heading_path TEXT NOT NULL,
+              citation TEXT NOT NULL,
+              content_hash TEXT NOT NULL,
+              embedding_model TEXT,
+              embedding_dimensions INTEGER,
+              UNIQUE(section_id, chunk_index)
+            );
+            CREATE VIRTUAL TABLE chunks_fts USING fts5(
+              text,
+              title,
+              heading_path,
+              citation UNINDEXED,
+              tokenize='unicode61 remove_diacritics 2'
+            );
+            CREATE TABLE embeddings (
+              chunk_id INTEGER PRIMARY KEY REFERENCES chunks(id),
+              model TEXT NOT NULL,
+              dimensions INTEGER NOT NULL,
+              embedding BLOB NOT NULL,
+              content_hash TEXT NOT NULL,
+              created_at TEXT NOT NULL
+            );
+            CREATE TABLE core_virtues (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              magnitude TEXT,
+              categories_json TEXT NOT NULL,
+              meta TEXT NOT NULL,
+              heading_path TEXT NOT NULL,
+              description TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_flaws (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              magnitude TEXT,
+              categories_json TEXT NOT NULL,
+              meta TEXT NOT NULL,
+              heading_path TEXT NOT NULL,
+              description TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_abilities (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              is_marked INTEGER NOT NULL,
+              ability_type TEXT,
+              specialties TEXT,
+              heading_path TEXT NOT NULL,
+              description TEXT NOT NULL,
+              body TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_spells (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              technique TEXT NOT NULL,
+              form TEXT NOT NULL,
+              spell_level INTEGER,
+              level_label TEXT,
+              spell_range TEXT,
+              duration TEXT,
+              target TEXT,
+              ritual INTEGER NOT NULL,
+              requisites TEXT,
+              parameter_line TEXT NOT NULL,
+              design_notes TEXT,
+              heading_path TEXT NOT NULL,
+              description TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_spell_guidelines (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              technique TEXT NOT NULL,
+              form TEXT NOT NULL,
+              level TEXT NOT NULL,
+              guideline TEXT NOT NULL,
+              heading_path TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_lab_activities (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              heading_level INTEGER NOT NULL,
+              summary TEXT NOT NULL,
+              formulae_json TEXT NOT NULL,
+              heading_path TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE core_combat_tables (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              row_count INTEGER NOT NULL,
+              columns_json TEXT NOT NULL,
+              rows_json TEXT NOT NULL,
+              heading_path TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            CREATE TABLE covenant_boons_hooks (
+              id TEXT PRIMARY KEY,
+              name TEXT NOT NULL,
+              kind TEXT NOT NULL,
+              magnitude TEXT,
+              category TEXT NOT NULL,
+              summary TEXT NOT NULL,
+              source_path TEXT NOT NULL,
+              line_start INTEGER NOT NULL,
+              line_end INTEGER NOT NULL,
+              citation TEXT NOT NULL
+            );
+            """
         )
-        for h in b["headings"]:
+        if vec_supported:
             conn.execute(
-                """INSERT INTO sections(id,book_id,parent_id,heading,heading_level,heading_path,line_start,line_end,ordinal,section_type)
-                VALUES(?,?,?,?,?,?,?,?,?,?)""",
+                f"CREATE VIRTUAL TABLE vec_chunks USING vec0(embedding float[{EMBEDDING_DIMENSIONS}])"
+            )
+        for b in books:
+            conn.execute(
+                "INSERT INTO books(id,path,title,edition,priority,line_count,sha256) VALUES(?,?,?,?,?,?,?)",
                 (
-                    h["id"],
                     b["id"],
-                    h["parent_id"],
-                    h["title"],
-                    h["level"],
-                    " > ".join(h["heading_path"]),
-                    h["line_start"],
-                    h["line_end"],
-                    h["ordinal"],
-                    h["section_type"],
+                    b["path"],
+                    b["title"],
+                    b["edition"],
+                    b["priority"],
+                    b["line_count"],
+                    b["sha256"],
                 ),
             )
-    title_by_id = {b["id"]: b["title"] for b in books}
-    restored_embeddings = 0
-    restored_vec_rows = 0
-    for c in chunks:
-        cur = conn.execute(
-            """INSERT INTO chunks(book_id,section_id,chunk_index,text,line_start,line_end,heading_path,citation,content_hash)
-            VALUES(?,?,?,?,?,?,?,?,?)""",
-            (
-                c["book_id"],
-                c["section_id"],
-                c["chunk_index"],
-                c["text"],
-                c["line_start"],
-                c["line_end"],
-                c["heading_path"],
-                c["citation"],
-                c["content_hash"],
-            ),
-        )
-        rowid = cur.lastrowid
-        conn.execute(
-            "INSERT INTO chunks_fts(rowid,text,title,heading_path,citation) VALUES(?,?,?,?,?)",
-            (rowid, c["text"], title_by_id[c["book_id"]], c["heading_path"], c["citation"]),
-        )
-        preserved = preserved_embeddings.get(c["content_hash"])
-        if preserved:
-            conn.execute(
-                """INSERT INTO embeddings(chunk_id,model,dimensions,embedding,content_hash,created_at)
-                VALUES(?,?,?,?,?,?)""",
-                (
-                    rowid,
-                    preserved["model"],
-                    preserved["dimensions"],
-                    preserved["embedding"],
-                    c["content_hash"],
-                    preserved["created_at"] or datetime.now(timezone.utc).isoformat(),
-                ),
-            )
-            conn.execute(
-                "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
-                (preserved["model"], preserved["dimensions"], rowid),
-            )
-            restored_embeddings += 1
-            if vec_supported:
+            for h in b["headings"]:
                 conn.execute(
-                    "INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)",
-                    (rowid, preserved["embedding"]),
+                    """INSERT INTO sections(id,book_id,parent_id,heading,heading_level,heading_path,line_start,line_end,ordinal,section_type)
+                    VALUES(?,?,?,?,?,?,?,?,?,?)""",
+                    (
+                        h["id"],
+                        b["id"],
+                        h["parent_id"],
+                        h["title"],
+                        h["level"],
+                        " > ".join(h["heading_path"]),
+                        h["line_start"],
+                        h["line_end"],
+                        h["ordinal"],
+                        h["section_type"],
+                    ),
                 )
-                restored_vec_rows += 1
+        title_by_id = {b["id"]: b["title"] for b in books}
+        restored_embeddings = 0
+        restored_vec_rows = 0
+        for c in chunks:
+            cur = conn.execute(
+                """INSERT INTO chunks(book_id,section_id,chunk_index,text,line_start,line_end,heading_path,citation,content_hash)
+                VALUES(?,?,?,?,?,?,?,?,?)""",
+                (
+                    c["book_id"],
+                    c["section_id"],
+                    c["chunk_index"],
+                    c["text"],
+                    c["line_start"],
+                    c["line_end"],
+                    c["heading_path"],
+                    c["citation"],
+                    c["content_hash"],
+                ),
+            )
+            rowid = cur.lastrowid
+            conn.execute(
+                "INSERT INTO chunks_fts(rowid,text,title,heading_path,citation) VALUES(?,?,?,?,?)",
+                (rowid, c["text"], title_by_id[c["book_id"]], c["heading_path"], c["citation"]),
+            )
+            preserved = preserved_embeddings.get(c["content_hash"])
+            if preserved:
+                conn.execute(
+                    """INSERT INTO embeddings(chunk_id,model,dimensions,embedding,content_hash,created_at)
+                    VALUES(?,?,?,?,?,?)""",
+                    (
+                        rowid,
+                        preserved["model"],
+                        preserved["dimensions"],
+                        preserved["embedding"],
+                        c["content_hash"],
+                        preserved["created_at"] or datetime.now(UTC).isoformat(),
+                    ),
+                )
+                conn.execute(
+                    "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
+                    (preserved["model"], preserved["dimensions"], rowid),
+                )
+                restored_embeddings += 1
+                if vec_supported:
+                    conn.execute(
+                        "INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)",
+                        (rowid, preserved["embedding"]),
+                    )
+                    restored_vec_rows += 1
+        for key, value in metadata_rows(books, chunks, restored_embeddings).items():
+            conn.execute("INSERT INTO metadata(key, value) VALUES(?, ?)", (key, value))
+    except Exception:
+        conn.close()
+        tmp_path.unlink(missing_ok=True)
+        raise
     for row in core_data.virtues:
         conn.execute(
             """INSERT INTO core_virtues(id,name,magnitude,categories_json,meta,heading_path,description,source_path,line_start,line_end,citation)
@@ -1159,6 +1361,12 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
         )
     conn.commit()
     conn.close()
+    try:
+        validate_sqlite_file(tmp_path)
+        os.replace(tmp_path, DB_PATH)
+    except Exception:
+        tmp_path.unlink(missing_ok=True)
+        raise
     return {
         "preserved_embeddings": len(preserved_embeddings),
         "restored_embeddings": restored_embeddings,
