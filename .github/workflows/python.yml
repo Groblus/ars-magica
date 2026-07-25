@@ -33,7 +33,7 @@ jobs:
           set -euo pipefail
           build_root="${RUNNER_TEMP}/ars-magica-corpus-build"
           export ARS_MAGICA_DB_PATH="${build_root}/skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite"
-          git clone --no-local "${GITHUB_WORKSPACE}" "${build_root}"
+          GIT_LFS_SKIP_SMUDGE=1 git clone --no-local "${GITHUB_WORKSPACE}" "${build_root}"
           cd "${build_root}"
           rm -f skills/ars-magica-corpus-navigator/resources/ars_magica.sqlite
           python skills/ars-magica-corpus-navigator/scripts/build_index.py
