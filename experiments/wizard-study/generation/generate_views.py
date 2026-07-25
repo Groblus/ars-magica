@@ -5,10 +5,11 @@ import base64
 import json
 import os
 import time
+from collections.abc import Iterable
 from contextlib import ExitStack
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 
 @dataclass(frozen=True, slots=True)
@@ -159,7 +160,9 @@ def approved_records(manifest: dict[str, Any]) -> list[dict[str, Any]]:
 
 
 def approved_views(manifest: dict[str, Any]) -> list[View]:
-    return [view_from_record(record) for record in approved_records(manifest) if "yaw_deg" in record]
+    return [
+        view_from_record(record) for record in approved_records(manifest) if "yaw_deg" in record
+    ]
 
 
 def merge_manifest(
@@ -235,7 +238,7 @@ def decode_first_image(response: object) -> bytes:
 
 
 def generate_one(
-    client: object,
+    client: Any,
     *,
     model: str,
     hero_path: Path,
@@ -275,16 +278,26 @@ def resolve_existing_file(output: Path, record: dict[str, Any]) -> Path | None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate or plan consistent multiview images of one painted room.")
+    parser = argparse.ArgumentParser(
+        description="Generate or plan consistent multiview images of one painted room."
+    )
     parser.add_argument("--hero", type=Path, default=Path(__file__).with_name("hero.jpg"))
     parser.add_argument("--output", type=Path, default=Path(__file__).with_name("output"))
     parser.add_argument("--preset", choices=("quick", "full"), default="quick")
     parser.add_argument("--model", default=os.getenv("OPENAI_IMAGE_MODEL", "gpt-image-2"))
-    parser.add_argument("--size", default="1120x1408", help="For gpt-image-2, both dimensions must be divisible by 16.")
+    parser.add_argument(
+        "--size",
+        default="1120x1408",
+        help="For gpt-image-2, both dimensions must be divisible by 16.",
+    )
     parser.add_argument("--quality", choices=("low", "medium", "high", "auto"), default="high")
     parser.add_argument("--max-retries", type=int, default=3)
     parser.add_argument("--overwrite", action="store_true")
-    parser.add_argument("--dry-run", action="store_true", help="Plan manifest records without requiring API keys or making network calls.")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Plan manifest records without requiring API keys or making network calls.",
+    )
     args = parser.parse_args()
 
     if not args.dry_run:
@@ -293,7 +306,9 @@ def main() -> None:
 
         load_dotenv()
         if not os.getenv("OPENAI_API_KEY"):
-            raise SystemExit("OPENAI_API_KEY is missing. Use --dry-run for planning without paid image calls.")
+            raise SystemExit(
+                "OPENAI_API_KEY is missing. Use --dry-run for planning without paid image calls."
+            )
         if not args.hero.exists():
             raise SystemExit(f"Hero image not found: {args.hero}")
         client = OpenAI()
@@ -339,7 +354,9 @@ def main() -> None:
         output_path = args.output / record["file"]
         adjacent = nearest_generated(view, generated)
         adjacent_record = approved_by_name.get(adjacent.name) if adjacent else None
-        adjacent_path = resolve_existing_file(args.output, adjacent_record) if adjacent_record else None
+        adjacent_path = (
+            resolve_existing_file(args.output, adjacent_record) if adjacent_record else None
+        )
 
         if output_path.exists() and not args.overwrite:
             print(f"skip {view.name}: {output_path} exists")

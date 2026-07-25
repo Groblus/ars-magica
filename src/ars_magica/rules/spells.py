@@ -7,7 +7,6 @@ from typing import Literal
 
 from .audit import AuditResult, Component, ValidationResult, cite
 
-
 LEVELS_CITATION = cite(11963, 11973)
 RDT_CITATION = cite(11975, 12009)
 RITUAL_LIMITS_CITATION = cite(12279, 12295)
@@ -194,7 +193,9 @@ def construct_spell_level(
     if ritual is False and ritual_needed:
         warnings.append("Inputs describe a spell that Core Rules say must be Ritual.")
     if ritual and final_level < 20:
-        components.append(Component("Ritual Minimum Level", 20 - final_level, RITUAL_LIMITS_CITATION))
+        components.append(
+            Component("Ritual Minimum Level", 20 - final_level, RITUAL_LIMITS_CITATION)
+        )
         final_level = 20
 
     return AuditResult(

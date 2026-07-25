@@ -3,12 +3,12 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict, is_dataclass
-from fractions import Fraction
 import os
 import sqlite3
+from dataclasses import asdict, is_dataclass
+from fractions import Fraction
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from fastmcp import FastMCP
 
@@ -21,8 +21,8 @@ from ars_magica.publishing import (
     render_html,
 )
 from ars_magica.rules import (
-    adventure_source_quality,
     advancement_total,
+    adventure_source_quality,
     apply_experience,
     casting_score,
     construct_spell_level,
@@ -39,7 +39,8 @@ from ars_magica.rules import (
     training_source_quality,
     xp_to_buy_score,
 )
-
+from ars_magica.rules.advancement import ScoreKind
+from ars_magica.rules.spells import DurationName, RangeName, TargetName
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DB_PATH = (
@@ -108,7 +109,9 @@ def _database_unavailable(
             reason = f"database file could not be read: {read_error}"
         else:
             if header.startswith(LFS_POINTER_HEADER):
-                reason = "database file is a Git LFS pointer; fetch LFS assets before using corpus tools"
+                reason = (
+                    "database file is a Git LFS pointer; fetch LFS assets before using corpus tools"
+                )
             elif not header.startswith(SQLITE_HEADER):
                 reason = "database file is not a SQLite database"
             else:
@@ -122,9 +125,7 @@ def _database_unavailable(
 
 
 def _validate_corpus_database(conn: sqlite3.Connection) -> None:
-    table_rows = conn.execute(
-        "SELECT name FROM sqlite_master WHERE type = 'table'"
-    ).fetchall()
+    table_rows = conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'").fetchall()
     table_names = {str(row[0]) for row in table_rows}
     missing_tables = sorted(REQUIRED_CORPUS_TABLES - table_names)
     if missing_tables:
@@ -151,9 +152,7 @@ def _validate_corpus_database(conn: sqlite3.Connection) -> None:
     try:
         schema_version = int(raw_version)
     except (TypeError, ValueError) as error:
-        raise DatabaseUnavailableError(
-            "database metadata schema_version is malformed"
-        ) from error
+        raise DatabaseUnavailableError("database metadata schema_version is malformed") from error
     if str(raw_version).strip() != str(schema_version):
         raise DatabaseUnavailableError("database metadata schema_version is malformed")
     if schema_version != EXPECTED_SCHEMA_VERSION:
@@ -329,7 +328,7 @@ def find_spell(
                     SELECT name, technique, form, spell_level, level_label, spell_range, duration,
                            target, ritual, parameter_line, design_notes, description, citation
                     FROM core_spells
-                    WHERE {' AND '.join(clauses)}
+                    WHERE {" AND ".join(clauses)}
                     ORDER BY technique, form, spell_level, name
                     LIMIT ?
                     """,
@@ -395,7 +394,9 @@ def lookup_ability(name: str, limit: int = 20) -> list[dict[str, Any]] | dict[st
 
 
 @mcp.tool()
-def lookup_covenant_option(query: str, kind: str = "", limit: int = 20) -> list[dict[str, Any]] | dict[str, Any]:
+def lookup_covenant_option(
+    query: str, kind: str = "", limit: int = 20
+) -> list[dict[str, Any]] | dict[str, Any]:
     """Lookup covenant boons/hooks from the 5e Covenants extraction."""
     limit = safe_limit(limit, default=20)
     clauses = ["(name LIKE ? OR summary LIKE ? OR category LIKE ?)"]
@@ -411,7 +412,7 @@ def lookup_covenant_option(query: str, kind: str = "", limit: int = 20) -> list[
                     f"""
                     SELECT name, kind, magnitude, category, summary, citation
                     FROM covenant_boons_hooks
-                    WHERE {' AND '.join(clauses)}
+                    WHERE {" AND ".join(clauses)}
                     ORDER BY kind, category, name
                     LIMIT ?
                     """,
@@ -530,12 +531,13 @@ def design_spell_level(
 ) -> dict[str, Any]:
     """Construct a spell level from base guideline and R/D/T choices."""
     try:
+        # FastMCP receives JSON strings; construct_spell_level validates legal literal values.
         return _jsonable(
             construct_spell_level(
                 base_level=base_level,
-                range_name=range_name,
-                duration_name=duration_name,
-                target_name=target_name,
+                range_name=cast(RangeName, range_name),
+                duration_name=cast(DurationName, duration_name),
+                target_name=cast(TargetName, target_name),
                 size_magnitudes=size_magnitudes,
                 ritual=ritual,
             )
@@ -568,7 +570,8 @@ def calculate_lab_total(
 def calculate_xp_to_buy_score(kind: str, score: int) -> dict[str, Any]:
     """Calculate XP required to buy an Art or Ability score from zero."""
     try:
-        return _jsonable(xp_to_buy_score(kind, score))
+        # FastMCP receives JSON strings; xp_to_buy_score validates legal score kinds.
+        return _jsonable(xp_to_buy_score(cast(ScoreKind, kind), score))
     except ValueError as error:
         return {"error": str(error)}
 
@@ -577,7 +580,8 @@ def calculate_xp_to_buy_score(kind: str, score: int) -> dict[str, Any]:
 def calculate_score_progress(kind: str, total_xp: int) -> dict[str, Any]:
     """Derive an Art or Ability score and progress to its next score from total XP."""
     try:
-        return _jsonable(score_from_xp(kind, total_xp))
+        # FastMCP receives JSON strings; score_from_xp validates legal score kinds.
+        return _jsonable(score_from_xp(cast(ScoreKind, kind), total_xp))
     except ValueError as error:
         return {"error": str(error)}
 
@@ -593,7 +597,8 @@ def apply_advancement_experience(
     try:
         return _jsonable(
             apply_experience(
-                kind=kind,
+                # FastMCP receives JSON strings; apply_experience validates legal score kinds.
+                kind=cast(ScoreKind, kind),
                 current_xp=current_xp,
                 gained_xp=gained_xp,
                 gain_limit=gain_limit,

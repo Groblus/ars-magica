@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Mapping
+from collections.abc import Mapping
 
 from .audit import ValidationResult, cite
 from .spells import DurationName, TargetName, validate_spell_constraints
-
 
 NON_NEGATIVE_CITATION = cite(15948, 15955)
 

@@ -2,14 +2,12 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 import shutil
 import subprocess
 import sys
+import unittest
 import venv
-
-import pytest
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -17,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def test_wheel_contains_press_resources_in_an_isolated_environment(tmp_path):
     uv = shutil.which("uv")
     if uv is None:
-        pytest.skip("uv is required for the isolated wheel resource test")
+        raise unittest.SkipTest("uv is required for the isolated wheel resource test")
 
     wheelhouse = tmp_path / "wheelhouse"
     subprocess.run(

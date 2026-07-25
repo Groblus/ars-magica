@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from fractions import Fraction
-from typing import Mapping, Union
 
-
-Number = Union[int, Fraction]
+Number = int | Fraction
 CORE_RULES = "reviewed/Ars Magica - Definitive Edition (Core Rules).md"
 
 

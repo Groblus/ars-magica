@@ -2,15 +2,14 @@
 
 from __future__ import annotations
 
-from contextlib import redirect_stdout
 import importlib.util
 import io
 import json
-from pathlib import Path
 import unittest
+from contextlib import redirect_stdout
+from pathlib import Path
 
 from ars_magica.cli import main
-
 
 FAST_MCP_AVAILABLE = importlib.util.find_spec("fastmcp") is not None
 if FAST_MCP_AVAILABLE:
@@ -20,21 +19,13 @@ if FAST_MCP_AVAILABLE:
     server_module = importlib.util.module_from_spec(server_spec)
     server_spec.loader.exec_module(server_module)
     apply_advancement_experience = server_module.apply_advancement_experience.fn
-    calculate_adventure_source_quality = (
-        server_module.calculate_adventure_source_quality.fn
-    )
+    calculate_adventure_source_quality = server_module.calculate_adventure_source_quality.fn
     calculate_advancement_total = server_module.calculate_advancement_total.fn
-    calculate_exposure_source_quality = (
-        server_module.calculate_exposure_source_quality.fn
-    )
+    calculate_exposure_source_quality = server_module.calculate_exposure_source_quality.fn
     calculate_practice_source_quality = server_module.calculate_practice_source_quality.fn
     calculate_score_progress = server_module.calculate_score_progress.fn
-    calculate_teaching_source_quality = (
-        server_module.calculate_teaching_source_quality.fn
-    )
-    calculate_training_source_quality = (
-        server_module.calculate_training_source_quality.fn
-    )
+    calculate_teaching_source_quality = server_module.calculate_teaching_source_quality.fn
+    calculate_training_source_quality = server_module.calculate_training_source_quality.fn
     calculate_xp_to_buy_score = server_module.calculate_xp_to_buy_score.fn
 
 
@@ -75,7 +66,9 @@ class AdvancementCliIntegrationTests(unittest.TestCase):
             "1",
         )
         self.assertEqual(result["value"], 10)
-        self.assertEqual(len(result["components"]), 4)
+        components = result["components"]
+        assert isinstance(components, list)
+        self.assertEqual(len(components), 4)
         self.assertTrue(result["citations"])
 
 

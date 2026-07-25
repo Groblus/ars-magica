@@ -8,9 +8,8 @@ import os
 import sqlite3
 import struct
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
@@ -48,7 +47,9 @@ def validate_database(path: Path) -> sqlite3.Connection:
     except OSError as error:
         raise RuntimeError(f"database file could not be read: {path}: {error}") from error
     if header.startswith(LFS_POINTER_HEADER):
-        raise RuntimeError("database file is a Git LFS pointer; fetch LFS assets before building embeddings")
+        raise RuntimeError(
+            "database file is a Git LFS pointer; fetch LFS assets before building embeddings"
+        )
     if not header.startswith(SQLITE_HEADER):
         raise RuntimeError(f"database file is not a SQLite database: {path}")
 
@@ -66,18 +67,14 @@ def validate_database(path: Path) -> sqlite3.Connection:
         if "metadata" not in table_names:
             return conn
 
-        metadata_columns = {
-            str(row[1]) for row in conn.execute("PRAGMA table_info(metadata)")
-        }
+        metadata_columns = {str(row[1]) for row in conn.execute("PRAGMA table_info(metadata)")}
         if not {"key", "value"}.issubset(metadata_columns):
             raise RuntimeError("database metadata must contain key and value columns")
         version_rows = conn.execute(
             "SELECT value FROM metadata WHERE key = 'schema_version' LIMIT 2"
         ).fetchall()
         if len(version_rows) != 1 or version_rows[0][0] != str(SCHEMA_VERSION):
-            raise RuntimeError(
-                f"unsupported database schema version; expected {SCHEMA_VERSION}"
-            )
+            raise RuntimeError(f"unsupported database schema version; expected {SCHEMA_VERSION}")
         return conn
     except Exception:
         if "conn" in locals():
@@ -103,12 +100,18 @@ def require_deps():
     try:
         from openai import OpenAI
     except Exception as exc:
-        print("Missing dependency: openai. Install before embeddings: pip install openai", file=sys.stderr)
+        print(
+            "Missing dependency: openai. Install before embeddings: pip install openai",
+            file=sys.stderr,
+        )
         raise SystemExit(2) from exc
     try:
         import sqlite_vec
     except Exception as exc:
-        print("Missing dependency: sqlite_vec/sqlite-vec. Install sqlite-vector support before embeddings.", file=sys.stderr)
+        print(
+            "Missing dependency: sqlite_vec/sqlite-vec. Install sqlite-vector support before embeddings.",
+            file=sys.stderr,
+        )
         raise SystemExit(2) from exc
     return OpenAI, sqlite_vec
 
@@ -130,7 +133,9 @@ def restore_vec_from_embeddings(conn: sqlite3.Connection) -> int:
     ).fetchall()
     restored = 0
     for chunk_id, blob, model, dimensions in rows:
-        conn.execute("INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)", (chunk_id, blob))
+        conn.execute(
+            "INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)", (chunk_id, blob)
+        )
         conn.execute(
             "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
             (model, dimensions, chunk_id),
@@ -180,8 +185,8 @@ def main() -> None:
             input=[r[1] for r in batch],
             dimensions=DIMENSIONS,
         )
-        now = datetime.now(timezone.utc).isoformat()
-        for row, item in zip(batch, response.data):
+        now = datetime.now(UTC).isoformat()
+        for row, item in zip(batch, response.data, strict=True):
             chunk_id, _text, content_hash = row
             vec = item.embedding
             if len(vec) != DIMENSIONS:
@@ -192,7 +197,9 @@ def main() -> None:
                 VALUES(?,?,?,?,?,?)""",
                 (chunk_id, MODEL, DIMENSIONS, blob, content_hash, now),
             )
-            conn.execute("INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)", (chunk_id, blob))
+            conn.execute(
+                "INSERT OR REPLACE INTO vec_chunks(rowid, embedding) VALUES(?, ?)", (chunk_id, blob)
+            )
             conn.execute(
                 "UPDATE chunks SET embedding_model=?, embedding_dimensions=? WHERE id=?",
                 (MODEL, DIMENSIONS, chunk_id),

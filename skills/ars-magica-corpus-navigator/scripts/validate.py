@@ -7,8 +7,9 @@ import json
 import os
 import sqlite3
 import sys
+from contextlib import suppress
 from pathlib import Path
-
+from typing import Any, NoReturn, cast
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
@@ -33,12 +34,12 @@ def is_sqlite_database(path: Path) -> bool:
         return False
 
 
-def fail(msg: str) -> None:
+def fail(msg: str) -> NoReturn:
     print(f"FAIL: {msg}")
     sys.exit(1)
 
 
-def require_fields(obj: dict, fields: list[str], label: str) -> None:
+def require_fields(obj: dict[str, Any], fields: list[str], label: str) -> None:
     missing = [field for field in fields if field not in obj]
     if missing:
         fail(f"{label} missing fields: {', '.join(missing)}")
@@ -55,10 +56,8 @@ def try_load_sqlite_vec(conn: sqlite3.Connection) -> bool:
         conn.enable_load_extension(False)
         return True
     except Exception:
-        try:
+        with suppress(Exception):
             conn.enable_load_extension(False)
-        except Exception:
-            pass
         return False
 
 
@@ -95,10 +94,15 @@ def main() -> None:
     library = json.loads(library_path.read_text())
     core_data = json.loads(core_data_path.read_text())
     core = next((b for b in index["books"] if b["edition"] == "DE"), None)
-    if not core:
+    if core is None:
         fail("missing DE core")
     core_headings = {h["title"] for h in core["headings"]}
-    for required in ["Chapter 7: Hermetic Magic", "Chapter 8: Laboratory", "Chapter 9: Spells", "Reference Guide"]:
+    for required in [
+        "Chapter 7: Hermetic Magic",
+        "Chapter 8: Laboratory",
+        "Chapter 9: Spells",
+        "Reference Guide",
+    ]:
         if required not in core_headings:
             fail(f"missing core heading: {required}")
     if library["summary"]["book_count"] != len(allowed):
@@ -106,34 +110,74 @@ def main() -> None:
     library_books = library.get("books")
     if not isinstance(library_books, list) or not library_books:
         fail("library.json missing books")
-    for idx, book in enumerate(library_books):
+    for idx, book_value in enumerate(library_books):
+        if not isinstance(book_value, dict):
+            fail(f"library book {idx} must be an object")
+        book = cast(dict[str, Any], book_value)
         require_fields(
             book,
-            ["id", "path", "title", "edition", "priority", "line_count", "heading_count", "chapter_count", "headings", "chapters"],
+            [
+                "id",
+                "path",
+                "title",
+                "edition",
+                "priority",
+                "line_count",
+                "heading_count",
+                "chapter_count",
+                "headings",
+                "chapters",
+            ],
             f"library book {idx}",
         )
-        if not isinstance(book["headings"], list) or not book["headings"]:
+        headings = book["headings"]
+        chapters = book["chapters"]
+        if not isinstance(headings, list) or not headings:
             fail(f"library book {idx} missing heading array data")
-        if not isinstance(book["chapters"], list) or not book["chapters"]:
+        if not isinstance(chapters, list) or not chapters:
             fail(f"library book {idx} missing chapter array data")
-        if book["heading_count"] != len(book["headings"]):
+        if book["heading_count"] != len(headings):
             fail(f"library book {idx} heading_count mismatch")
-        if book["chapter_count"] != len(book["chapters"]):
+        if book["chapter_count"] != len(chapters):
             fail(f"library book {idx} chapter_count mismatch")
-        sample_heading = book["headings"][0]
+        sample_heading = headings[0]
+        if not isinstance(sample_heading, dict):
+            fail(f"library heading {idx} must be an object")
+        sample_heading = cast(dict[str, Any], sample_heading)
         require_fields(
             sample_heading,
-            ["id", "title", "slug", "level", "line_start", "line_end", "heading_path", "section_type"],
+            [
+                "id",
+                "title",
+                "slug",
+                "level",
+                "line_start",
+                "line_end",
+                "heading_path",
+                "section_type",
+            ],
             f"library heading {idx}",
         )
-        if not isinstance(sample_heading["heading_path"], list) or not sample_heading["heading_path"]:
+        if (
+            not isinstance(sample_heading["heading_path"], list)
+            or not sample_heading["heading_path"]
+        ):
             fail(f"library heading {idx} invalid heading_path")
         if not isinstance(sample_heading["level"], int) or sample_heading["level"] < 1:
             fail(f"library heading {idx} invalid level")
-        if not isinstance(sample_heading["line_start"], int) or not isinstance(sample_heading["line_end"], int):
+        if not isinstance(sample_heading["line_start"], int) or not isinstance(
+            sample_heading["line_end"], int
+        ):
             fail(f"library heading {idx} invalid line span")
-        sample_chapter = book["chapters"][0]
-        require_fields(sample_chapter, ["id", "title", "level", "line_start", "line_end", "heading_path", "section_type"], f"library chapter {idx}")
+        sample_chapter = chapters[0]
+        if not isinstance(sample_chapter, dict):
+            fail(f"library chapter {idx} must be an object")
+        sample_chapter = cast(dict[str, Any], sample_chapter)
+        require_fields(
+            sample_chapter,
+            ["id", "title", "level", "line_start", "line_end", "heading_path", "section_type"],
+            f"library chapter {idx}",
+        )
         if sample_chapter["section_type"] != "chapter":
             fail(f"library chapter {idx} missing chapter section_type")
     if core_data["book"]["path"] != CORE_PATH:
@@ -155,7 +199,10 @@ def main() -> None:
     if core_data["summary"].get("covenant_boon_hook_count", 0) <= 50:
         fail("covenant boon/hook extraction too small")
     for key in ["virtues", "flaws", "abilities", "spells"]:
-        if len(core_data[key]) != core_data["summary"][f"{key[:-1] if key != 'abilities' else 'ability'}_count"]:
+        if (
+            len(core_data[key])
+            != core_data["summary"][f"{key[:-1] if key != 'abilities' else 'ability'}_count"]
+        ):
             fail(f"core-data count mismatch for {key}")
     extra_counts = {
         "spell_guidelines": "spell_guideline_count",
@@ -167,19 +214,99 @@ def main() -> None:
         if len(core_data.get(key, [])) != core_data["summary"][summary_key]:
             fail(f"core-data count mismatch for {key}")
     core_contract = {
-        "virtues": ["id", "name", "magnitude", "categories", "description", "source_path", "line_start", "line_end"],
-        "flaws": ["id", "name", "magnitude", "categories", "description", "source_path", "line_start", "line_end"],
-        "abilities": ["id", "name", "ability_type", "description", "source_path", "line_start", "line_end"],
-        "spells": ["id", "name", "technique", "form", "range", "duration", "target", "description", "source_path", "line_start", "line_end"],
-        "spell_guidelines": ["id", "name", "technique", "form", "level", "guideline", "source_path", "line_start", "line_end"],
-        "lab_activities": ["id", "name", "summary", "formulae", "source_path", "line_start", "line_end"],
-        "combat_tables": ["id", "name", "row_count", "columns", "rows", "source_path", "line_start", "line_end"],
-        "covenant_boons_hooks": ["id", "name", "kind", "magnitude", "category", "summary", "source_path", "line_start", "line_end"],
+        "virtues": [
+            "id",
+            "name",
+            "magnitude",
+            "categories",
+            "description",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "flaws": [
+            "id",
+            "name",
+            "magnitude",
+            "categories",
+            "description",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "abilities": [
+            "id",
+            "name",
+            "ability_type",
+            "description",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "spells": [
+            "id",
+            "name",
+            "technique",
+            "form",
+            "range",
+            "duration",
+            "target",
+            "description",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "spell_guidelines": [
+            "id",
+            "name",
+            "technique",
+            "form",
+            "level",
+            "guideline",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "lab_activities": [
+            "id",
+            "name",
+            "summary",
+            "formulae",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "combat_tables": [
+            "id",
+            "name",
+            "row_count",
+            "columns",
+            "rows",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
+        "covenant_boons_hooks": [
+            "id",
+            "name",
+            "kind",
+            "magnitude",
+            "category",
+            "summary",
+            "source_path",
+            "line_start",
+            "line_end",
+        ],
     }
     for bucket, fields in core_contract.items():
         sample = core_data[bucket][0]
         require_fields(sample, fields, f"core-data {bucket}")
-        description = sample.get("description") or sample.get("summary") or sample.get("guideline") or sample.get("name")
+        description = (
+            sample.get("description")
+            or sample.get("summary")
+            or sample.get("guideline")
+            or sample.get("name")
+        )
         if not description:
             fail(f"core-data {bucket} empty description")
         if bucket != "covenant_boons_hooks" and sample["source_path"] != CORE_PATH:
@@ -194,13 +321,17 @@ def main() -> None:
         fail("core-data spells ritual not bool")
 
     conn = sqlite3.connect(active_db_path)
-    schema_version = conn.execute("SELECT value FROM metadata WHERE key = 'schema_version'").fetchone()
+    schema_version = conn.execute(
+        "SELECT value FROM metadata WHERE key = 'schema_version'"
+    ).fetchone()
     if not schema_version or schema_version[0] != str(SCHEMA_VERSION):
         fail(f"db schema_version mismatch: {schema_version[0] if schema_version else 'missing'}")
     book_count = conn.execute("SELECT count(*) FROM books").fetchone()[0]
     if book_count != 20:
         fail(f"db expected 20 books, got {book_count}")
-    legacy_count = conn.execute("SELECT count(*) FROM books WHERE path LIKE '% 3e %' OR path LIKE '% 4e %'").fetchone()[0]
+    legacy_count = conn.execute(
+        "SELECT count(*) FROM books WHERE path LIKE '% 3e %' OR path LIKE '% 4e %'"
+    ).fetchone()[0]
     if legacy_count:
         fail("legacy book in db")
     chunk_count = conn.execute("SELECT count(*) FROM chunks").fetchone()[0]
@@ -214,23 +345,35 @@ def main() -> None:
     guideline_count = conn.execute("SELECT count(*) FROM core_spell_guidelines").fetchone()[0]
     lab_activity_count = conn.execute("SELECT count(*) FROM core_lab_activities").fetchone()[0]
     combat_table_count = conn.execute("SELECT count(*) FROM core_combat_tables").fetchone()[0]
-    covenant_boon_hook_count = conn.execute("SELECT count(*) FROM covenant_boons_hooks").fetchone()[0]
+    covenant_boon_hook_count = conn.execute("SELECT count(*) FROM covenant_boons_hooks").fetchone()[
+        0
+    ]
     if virtue_count != core_data["summary"]["virtue_count"]:
         fail(f"virtue count mismatch db={virtue_count} json={core_data['summary']['virtue_count']}")
     if flaw_count != core_data["summary"]["flaw_count"]:
         fail(f"flaw count mismatch db={flaw_count} json={core_data['summary']['flaw_count']}")
     if ability_count != core_data["summary"]["ability_count"]:
-        fail(f"ability count mismatch db={ability_count} json={core_data['summary']['ability_count']}")
+        fail(
+            f"ability count mismatch db={ability_count} json={core_data['summary']['ability_count']}"
+        )
     if spell_count != core_data["summary"]["spell_count"]:
         fail(f"spell count mismatch db={spell_count} json={core_data['summary']['spell_count']}")
     if guideline_count != core_data["summary"]["spell_guideline_count"]:
-        fail(f"guideline count mismatch db={guideline_count} json={core_data['summary']['spell_guideline_count']}")
+        fail(
+            f"guideline count mismatch db={guideline_count} json={core_data['summary']['spell_guideline_count']}"
+        )
     if lab_activity_count != core_data["summary"]["lab_activity_count"]:
-        fail(f"lab activity count mismatch db={lab_activity_count} json={core_data['summary']['lab_activity_count']}")
+        fail(
+            f"lab activity count mismatch db={lab_activity_count} json={core_data['summary']['lab_activity_count']}"
+        )
     if combat_table_count != core_data["summary"]["combat_table_count"]:
-        fail(f"combat table count mismatch db={combat_table_count} json={core_data['summary']['combat_table_count']}")
+        fail(
+            f"combat table count mismatch db={combat_table_count} json={core_data['summary']['combat_table_count']}"
+        )
     if covenant_boon_hook_count != core_data["summary"]["covenant_boon_hook_count"]:
-        fail(f"covenant boon/hook count mismatch db={covenant_boon_hook_count} json={core_data['summary']['covenant_boon_hook_count']}")
+        fail(
+            f"covenant boon/hook count mismatch db={covenant_boon_hook_count} json={core_data['summary']['covenant_boon_hook_count']}"
+        )
     bad_core_sources = conn.execute(
         """
         SELECT count(*) FROM (
@@ -271,15 +414,16 @@ def main() -> None:
             """
         ).fetchone()[0]
         if chunk_metadata_count != embedding_count:
-            fail(f"embedding metadata mismatch chunks={chunk_metadata_count} embeddings={embedding_count}")
+            fail(
+                f"embedding metadata mismatch chunks={chunk_metadata_count} embeddings={embedding_count}"
+            )
         vec_exists = conn.execute(
             "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='vec_chunks'"
         ).fetchone()[0]
-        if vec_exists:
-            if try_load_sqlite_vec(conn):
-                vec_count = conn.execute("SELECT count(*) FROM vec_chunks").fetchone()[0]
-                if vec_count != embedding_count:
-                    fail(f"vec/embedding mismatch vec={vec_count} embeddings={embedding_count}")
+        if vec_exists and try_load_sqlite_vec(conn):
+            vec_count = conn.execute("SELECT count(*) FROM vec_chunks").fetchone()[0]
+            if vec_count != embedding_count:
+                fail(f"vec/embedding mismatch vec={vec_count} embeddings={embedding_count}")
 
     sample = conn.execute("SELECT citation,text FROM chunks ORDER BY id LIMIT 25").fetchall()
     for citation, text in sample:

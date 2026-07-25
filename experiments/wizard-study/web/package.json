@@ -7,15 +7,24 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "build:pages": "tsc && vite build --mode pages",
-    "preview": "vite preview"
+    "lint": "eslint src vite.config.ts",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@sparkjsdev/spark": "^0.1.10",
     "three": "^0.180.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/three": "^0.180.0",
+    "eslint": "^10.8.0",
+    "globals": "^17.7.0",
     "typescript": "^5.9.2",
+    "typescript-eslint": "^8.65.0",
     "vite": "^8.0.16"
+  },
+  "overrides": {
+    "postcss": "8.5.18"
   }
 }

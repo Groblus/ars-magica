@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 import zipfile
+from pathlib import Path
 from typing import Any
 
 from .errors import OptionalDependencyError
@@ -21,7 +21,13 @@ def _read_text(path: Any) -> str:
 def _preset(name: str) -> dict[str, Any]:
     path = PRESET_ROOT / f"{name}.json"
     if not path.is_file():
-        available = ", ".join(sorted(item.name.removesuffix(".json") for item in PRESET_ROOT.iterdir() if item.name.endswith(".json")))
+        available = ", ".join(
+            sorted(
+                item.name.removesuffix(".json")
+                for item in PRESET_ROOT.iterdir()
+                if item.name.endswith(".json")
+            )
+        )
         raise ValueError(f"unknown print preset '{name}'; available presets: {available}")
     return json.loads(_read_text(path))
 
@@ -34,6 +40,7 @@ def _jinja_environment():
             "render_html requires the optional dependency 'jinja2'. "
             "Install Jinja2 in the consuming environment."
         ) from error
+
     def load_template(name: str) -> str | None:
         resource = TEMPLATE_ROOT.joinpath(name)
         return _read_text(resource) if resource.is_file() else None

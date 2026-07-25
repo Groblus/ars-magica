@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
 from fractions import Fraction
-from typing import Literal, Sequence
+from typing import Literal
 
 from .audit import AuditResult, Component, audit_sum, cite
 from .dice import DieRollResult, apply_die_to_modifier
-
 
 CASTING_SCORE_CITATION = cite(9089, 9089)
 FORMULAIC_CITATION = cite(9099, 9115)
@@ -62,9 +62,7 @@ def effective_art_score(
     effective = min((primary_score,) + tuple(requisite_scores))
     warnings = ()
     if requisite_scores and effective < primary_score:
-        warnings = (
-            f"{art_kind} score limited by the lowest applicable requisite.",
-        )
+        warnings = (f"{art_kind} score limited by the lowest applicable requisite.",)
     return AuditResult(
         value=effective,
         components=tuple(components),
@@ -246,15 +244,21 @@ def spontaneous_casting_total(
         warnings = ()
     elif rounding == "floor":
         value = exact.numerator // exact.denominator
-        warnings = () if exact.denominator == 1 else ("Rounded spontaneous total down by caller policy.",)
+        warnings = (
+            () if exact.denominator == 1 else ("Rounded spontaneous total down by caller policy.",)
+        )
     else:
         value = -(-exact.numerator // exact.denominator)
-        warnings = () if exact.denominator == 1 else ("Rounded spontaneous total up by caller policy.",)
+        warnings = (
+            () if exact.denominator == 1 else ("Rounded spontaneous total up by caller policy.",)
+        )
 
     components = [Component("Casting Score", casting_score_total, SPONTANEOUS_CITATION)]
     if die is not None:
         components.append(Component("Stress Die", die.value, SPONTANEOUS_CITATION))
-    components.append(Component(f"Divide by {denominator}", value - numerator, SPONTANEOUS_CITATION))
+    components.append(
+        Component(f"Divide by {denominator}", value - numerator, SPONTANEOUS_CITATION)
+    )
     return AuditResult(
         value=value,
         components=tuple(components),

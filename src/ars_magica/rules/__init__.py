@@ -2,8 +2,8 @@
 
 from .advancement import (
     XpState,
-    adventure_source_quality,
     advancement_total,
+    adventure_source_quality,
     apply_experience,
     exposure_source_quality,
     practice_source_quality,

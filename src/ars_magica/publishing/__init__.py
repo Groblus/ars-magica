@@ -4,7 +4,12 @@ The public API deliberately accepts plain mappings as well as Pydantic-like
 objects exposing ``model_dump``. Optional renderers are imported lazily.
 """
 
-from .errors import OptionalDependencyError, PublishingError, SourceReferenceError, TemplateNotFoundError
+from .errors import (
+    OptionalDependencyError,
+    PublishingError,
+    SourceReferenceError,
+    TemplateNotFoundError,
+)
 from .render import (
     build_attribution,
     build_manifest,

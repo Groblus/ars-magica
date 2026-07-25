@@ -2,19 +2,21 @@
 
 from __future__ import annotations
 
+import json
+import re
+from collections.abc import Mapping
 from dataclasses import asdict, is_dataclass
 from hashlib import sha256
-import json
 from pathlib import Path
-import re
-from typing import Any, Mapping
+from typing import Any
 
 from .errors import SourceReferenceError
 
-
 _AUDIENCE_ORDER = {"public": 0, "player": 1, "storyguide": 2}
 _PRECISE_CITATION = re.compile(r"^.+:\d+(?:-\d+)?$")
-_SENSITIVE_KEY = re.compile(r"(?:^|[_\- .])(secret|secrets|storyguide|gm|gamemaster|private)(?:$|[_\- .])")
+_SENSITIVE_KEY = re.compile(
+    r"(?:^|[_\- .])(secret|secrets|storyguide|gm|gamemaster|private)(?:$|[_\- .])"
+)
 
 
 def as_mapping(value: Any, name: str = "value") -> dict[str, Any]:
@@ -81,7 +83,10 @@ def _filter_for_audience(value: Any, audience: str) -> Any:
     """Recursively omit values not safe for the requested material audience."""
     if isinstance(value, Mapping):
         visibility = value.get("visibility")
-        if visibility is not None and _AUDIENCE_ORDER[_audience_name(visibility)] > _AUDIENCE_ORDER[audience]:
+        if (
+            visibility is not None
+            and _AUDIENCE_ORDER[_audience_name(visibility)] > _AUDIENCE_ORDER[audience]
+        ):
             return _OMIT
         result: dict[str, Any] = {}
         for raw_key, raw_value in value.items():
@@ -93,7 +98,11 @@ def _filter_for_audience(value: Any, audience: str) -> Any:
                 result[key] = filtered
         return result
     if isinstance(value, (list, tuple)):
-        return [item for item in (_filter_for_audience(item, audience) for item in value) if item is not _OMIT]
+        return [
+            item
+            for item in (_filter_for_audience(item, audience) for item in value)
+            if item is not _OMIT
+        ]
     return value
 
 
@@ -121,7 +130,9 @@ def _source_reference(value: Any, index: int) -> dict[str, Any]:
             "notes": None,
         }
     if not isinstance(value, Mapping):
-        raise SourceReferenceError(f"{label} must be a citation string or SourceReference-like mapping")
+        raise SourceReferenceError(
+            f"{label} must be a citation string or SourceReference-like mapping"
+        )
     item = normalize(value)
     title = item.get("title") or item.get("book")
     citation = item.get("citation")
@@ -135,7 +146,9 @@ def _source_reference(value: Any, index: int) -> dict[str, Any]:
         locator = locator or citation.rsplit(":", 1)[1]
         title = title or Path(citation.rsplit(":", 1)[0]).stem
     if not isinstance(title, str) or not title.strip():
-        raise SourceReferenceError(f"{label} needs title/book, or a precise citation from which to derive one")
+        raise SourceReferenceError(
+            f"{label} needs title/book, or a precise citation from which to derive one"
+        )
     if locator is not None and not isinstance(locator, str):
         raise SourceReferenceError(f"{label}.locator must be a string")
     if not citation and not locator:
@@ -188,7 +201,10 @@ def material_data(spec: Any) -> dict[str, Any]:
     safe_assets = _filter_for_audience(assets, audience)
     source_values = raw.get("source_references", raw.get("source_refs", []))
     safe_sources = _filter_for_audience(source_values, audience)
-    data["title"] = raw.get("title") or data["template"].replace("-", " ").title()
+    template = data["template"]
+    if not isinstance(template, str):
+        raise TypeError("material spec template must be a string")
+    data["title"] = raw.get("title") or template.replace("-", " ").title()
     data["audience"] = audience
     data["content"] = content if content is not _OMIT else {}
     data["assets"] = safe_assets if safe_assets is not _OMIT else []

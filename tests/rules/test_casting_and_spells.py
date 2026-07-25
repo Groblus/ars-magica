@@ -1,10 +1,8 @@
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
-from ars_magica.rules.audit import Component
 from ars_magica.rules.casting import (
     casting_score,
     formulaic_casting_total,

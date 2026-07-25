@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from math import ceil
-from typing import Sequence
 
 from .audit import AuditResult, Component, audit_sum, cite
 from .casting import effective_art_score
-
 
 LAB_TOTAL_CITATION = cite(10272, 10278)
 LAB_SETUP_CITATION = cite(10280, 10284)
@@ -197,7 +196,9 @@ def longevity_ritual(
     vis_cost = ceil(subject_age / 5)
     return AuditResult(
         value=bonus,
-        components=(Component("Creo Corpus Lab Total / 5 rounded up", bonus, LAB_SUMMARY_CITATION),),
+        components=(
+            Component("Creo Corpus Lab Total / 5 rounded up", bonus, LAB_SUMMARY_CITATION),
+        ),
         warnings=(),
         citations=(LAB_SUMMARY_CITATION,),
         metadata={"vis_cost": vis_cost, "subject_age": subject_age},

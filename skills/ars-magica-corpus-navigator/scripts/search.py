@@ -10,7 +10,6 @@ import struct
 import sys
 from pathlib import Path
 
-
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
 DEFAULT_DB_PATH = SKILL_DIR / "resources" / "ars_magica.sqlite"

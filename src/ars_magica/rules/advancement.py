@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Literal, Mapping
+from typing import Literal
 
 from .audit import AuditResult, Component, ValidationResult, cite
-
 
 XP_TABLE_CITATION = cite(15944, 15983)
 ADVANCEMENT_CITATION = cite(15985, 16004)
@@ -160,7 +160,9 @@ def adventure_source_quality(*, quality: int) -> AuditResult:
 
     warnings = ()
     if quality < 5 or quality > 10:
-        warnings = ("Adventure Source Quality is normally 5-10; this is a troupe/storyguide input.",)
+        warnings = (
+            "Adventure Source Quality is normally 5-10; this is a troupe/storyguide input.",
+        )
     return AuditResult(
         value=quality,
         components=(Component("Adventure Source Quality", quality, ADVENTURE_CITATION),),

@@ -12,7 +12,6 @@ from ars_magica.models import (
     AdvancementEvent,
     ArtifactSpec,
     AudioAsset,
-    CharacterState,
     CovenantState,
     MagusState,
     MapLayer,
@@ -23,8 +22,8 @@ from ars_magica.models import (
     Secret,
     SourceReference,
     SpellKnowledge,
-    VisualAsset,
     Visibility,
+    VisualAsset,
 )
 
 
@@ -37,7 +36,11 @@ class ModelRoundTripTests(unittest.TestCase):
             arts=[{"art_id": "art.creo", "score": 8, "experience": 52}],
             abilities=[{"ability_id": "ability.magic_theory", "score": 5, "experience": 75}],
             known_spells=[SpellKnowledge(spell_id="spell.pilum_of_fire", mastery_score=1)],
-            source_refs=[SourceReference(id="source.core.magic", title="Definitive Edition", locator="Hermetic Magic")],
+            source_refs=[
+                SourceReference(
+                    id="source.core.magic", title="Definitive Edition", locator="Hermetic Magic"
+                )
+            ],
             visibility=Visibility.PLAYER,
         )
 
@@ -51,7 +54,9 @@ class ModelRoundTripTests(unittest.TestCase):
             id="covenant.durenmar",
             name="Durenmar",
             members=["character.ada"],
-            laboratories=[{"id": "laboratory.ada", "name": "Ada's laboratory", "owner_id": "character.ada"}],
+            laboratories=[
+                {"id": "laboratory.ada", "name": "Ada's laboratory", "owner_id": "character.ada"}
+            ],
         )
         advancement = AdvancementEvent(
             id="advancement.ada.1220.spring",
@@ -63,7 +68,9 @@ class ModelRoundTripTests(unittest.TestCase):
         )
 
         self.assertEqual(CovenantState.model_validate(covenant.model_dump()), covenant)
-        self.assertEqual(AdvancementEvent.model_validate_json(advancement.model_dump_json()), advancement)
+        self.assertEqual(
+            AdvancementEvent.model_validate_json(advancement.model_dump_json()), advancement
+        )
 
     def test_saga_records_round_trip_with_storyguide_secrets(self) -> None:
         person = Person(id="person.ada", name="Ada", roles=["maga"])
@@ -74,10 +81,14 @@ class ModelRoundTripTests(unittest.TestCase):
             relationship_type="member_of",
             strength=4,
         )
-        secret = Secret(id="secret.ada", name="Hidden debt", details="Ada owes a favor to a faerie.")
+        secret = Secret(
+            id="secret.ada", name="Hidden debt", details="Ada owes a favor to a faerie."
+        )
 
         self.assertEqual(Person.model_validate_json(person.model_dump_json()), person)
-        self.assertEqual(Relationship.model_validate_json(relationship.model_dump_json()), relationship)
+        self.assertEqual(
+            Relationship.model_validate_json(relationship.model_dump_json()), relationship
+        )
         self.assertEqual(secret.visibility, Visibility.STORYGUIDE)
         self.assertEqual(Secret.model_validate(secret.model_dump()), secret)
 
@@ -96,8 +107,15 @@ class ModelRoundTripTests(unittest.TestCase):
             map_kind="regional",
             layers=[MapLayer(id="layer.covenants", name="Covenants")],
         )
-        portrait = VisualAsset(id="asset.ada.portrait", title="Ada portrait", uri="assets/ada.png", entity_id="person.ada")
-        ambience = AudioAsset(id="asset.durenmar.ambience", title="Durenmar dawn", uri="assets/dawn.ogg")
+        portrait = VisualAsset(
+            id="asset.ada.portrait",
+            title="Ada portrait",
+            uri="assets/ada.png",
+            entity_id="person.ada",
+        )
+        ambience = AudioAsset(
+            id="asset.durenmar.ambience", title="Durenmar dawn", uri="assets/dawn.ogg"
+        )
 
         self.assertEqual(ArtifactSpec.model_validate_json(artifact.model_dump_json()), artifact)
         self.assertEqual(MapSpec.model_validate_json(map_spec.model_dump_json()), map_spec)

@@ -1,3 +1,6 @@
+import zipfile
+from typing import Any
+
 from ars_magica.models import ArtifactSpec, SourceReference
 from ars_magica.publishing import (
     SourceReferenceError,
@@ -6,10 +9,8 @@ from ars_magica.publishing import (
     package_material,
     render_html,
 )
-import zipfile
 
-
-SPEC = {
+SPEC: dict[str, Any] = {
     "title": "A Test Magus",
     "template": "magus-character-sheet",
     "theme": "clear-ledger",
@@ -86,7 +87,12 @@ def test_audience_filtering_removes_secret_content_assets_and_sources(tmp_path):
         ],
         "source_references": [
             "reviewed/Core.md:500-510",
-            {"title": "Secret dossier", "locator": "1", "visibility": "storyguide", "notes": "SECRET-SOURCE"},
+            {
+                "title": "Secret dossier",
+                "locator": "1",
+                "visibility": "storyguide",
+                "notes": "SECRET-SOURCE",
+            },
         ],
     }
 

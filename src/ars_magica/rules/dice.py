@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
 from random import Random
-from typing import Literal, Sequence
+from typing import Literal
 
 from .audit import AuditResult, Component, cite
-
 
 DICE_CITATION = cite(468, 520)
 

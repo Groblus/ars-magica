@@ -31,6 +31,26 @@ python3 -m pip install -e '.[publishing,mcp,test]'
 
 No lockfile is currently maintained in this repo.
 
+## Local quality checks
+
+Install the development tools and all CI extras:
+
+```bash
+python3 -m pip install -e '.[dev,test,mcp,publishing]'
+```
+
+Run the same checks as CI:
+
+```bash
+ruff check .
+ruff format --check .
+ty check
+python -m pytest -q
+```
+
+CI keeps `GIT_LFS_SKIP_SMUDGE=1` and uses synthetic SQLite fixtures. It does
+not download or rebuild the corpus database.
+
 ## CLI examples
 
 ```bash
@@ -178,8 +198,9 @@ UV_CACHE_DIR=/tmp/uv-cache uv pip install --python .venv/bin/python openai sqlit
 `build_embeddings.py` reads `OPENAI_API_KEY` from `.env` or the environment.
 
 Do not rebuild over the checked-in LFS pointer. Use the isolated embedding-free
-rebuild above for CI and local validation, then add embeddings only when vector
-search is required.
+rebuild above for large local validation, then add embeddings only when vector
+search is required. PR CI uses tiny synthetic SQLite fixtures instead of
+rebuilding the corpus.
 
 ## Source material
 

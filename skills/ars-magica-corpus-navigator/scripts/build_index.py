@@ -10,11 +10,11 @@ import os
 import re
 import sqlite3
 import tempfile
+from contextlib import suppress
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = SKILL_DIR.parents[1]
@@ -256,7 +256,11 @@ def parse_virtue_or_flaw_entries(
     section_title: str,
 ) -> list[dict[str, Any]]:
     chapter = next(h for h in headings if h.title == chapter_title)
-    section = next(h for h in headings if h.title == section_title and chapter.line_start <= h.line_start <= chapter.line_end)
+    section = next(
+        h
+        for h in headings
+        if h.title == section_title and chapter.line_start <= h.line_start <= chapter.line_end
+    )
     entries: list[dict[str, Any]] = []
     for heading in descendants_of(headings, section):
         if heading.level != 4:
@@ -286,18 +290,28 @@ def parse_virtue_or_flaw_entries(
 
 def parse_abilities(lines: list[str], headings: list[Heading]) -> list[dict[str, Any]]:
     chapter = next(h for h in headings if h.title == "Chapter 5: Abilities")
-    section = next(h for h in headings if h.title == "Ability List" and chapter.line_start <= h.line_start <= chapter.line_end)
+    section = next(
+        h
+        for h in headings
+        if h.title == "Ability List" and chapter.line_start <= h.line_start <= chapter.line_end
+    )
     entries: list[dict[str, Any]] = []
     for heading in descendants_of(headings, section):
         if heading.level != 4:
             continue
         raw = join_body(body_lines(lines, heading))
         ability_type = None
-        type_match = re.search(r"\((General|Academic|Arcane|Martial|Supernatural)\)\s*$", raw, re.MULTILINE)
+        type_match = re.search(
+            r"\((General|Academic|Arcane|Martial|Supernatural)\)\s*$", raw, re.MULTILINE
+        )
         if type_match:
             ability_type = type_match.group(1)
         specialties = None
-        specialties_match = re.search(r"\*Specialt(?:ies|y)\*:? ?(.+?)(?:\((?:General|Academic|Arcane|Martial|Supernatural)\))?\s*$", raw, re.S | re.I)
+        specialties_match = re.search(
+            r"\*Specialt(?:ies|y)\*:? ?(.+?)(?:\((?:General|Academic|Arcane|Martial|Supernatural)\))?\s*$",
+            raw,
+            re.S | re.I,
+        )
         if specialties_match:
             specialties = " ".join(specialties_match.group(1).split())
         description = raw
@@ -335,7 +349,13 @@ def nearest_spell_group(heading: Heading) -> tuple[str | None, int | None]:
 
 def parse_spell_parameters(line: str) -> dict[str, Any]:
     cleaned = clean_htmlish(line).replace("\n", " ").strip()
-    result: dict[str, Any] = {"parameter_line": cleaned, "range": None, "duration": None, "target": None, "ritual": False}
+    result: dict[str, Any] = {
+        "parameter_line": cleaned,
+        "range": None,
+        "duration": None,
+        "target": None,
+        "ritual": False,
+    }
     if "R:" not in cleaned:
         return result
     for label, key in [("R:", "range"), ("D:", "duration"), ("T:", "target")]:
@@ -361,7 +381,8 @@ def parse_spells(lines: list[str], headings: list[Heading]) -> list[dict[str, An
     spell_sections = [
         h
         for h in descendants_of(headings, chapter)
-        if h.title.endswith(" Spells") and re.fullmatch(r"(Creo|Intellego|Muto|Perdo|Rego) [A-Za-z]+ Spells", h.title)
+        if h.title.endswith(" Spells")
+        and re.fullmatch(r"(Creo|Intellego|Muto|Perdo|Rego) [A-Za-z]+ Spells", h.title)
     ]
     entries: list[dict[str, Any]] = []
     for section in spell_sections:
@@ -426,18 +447,24 @@ def parse_spell_guidelines(lines: list[str], headings: list[Heading]) -> list[di
     for heading in descendants_of(headings, chapter):
         if heading.level != 3 or not heading.title.endswith("Guidelines"):
             continue
-        match = re.match(r"^(Creo|Intellego|Muto|Perdo|Rego)\s+([A-Za-z]+)\s+Guidelines$", heading.title)
+        match = re.match(
+            r"^(Creo|Intellego|Muto|Perdo|Rego)\s+([A-Za-z]+)\s+Guidelines$", heading.title
+        )
         if not match:
             continue
         technique, form = match.groups()
         for row in parse_markdown_table(body_lines(lines, heading)):
             if len(row) < 2 or row[0].lower() == "level":
                 continue
-            effects = [part.strip(" •") for part in clean_htmlish(row[1]).split("\n") if part.strip(" •")]
+            effects = [
+                part.strip(" •") for part in clean_htmlish(row[1]).split("\n") if part.strip(" •")
+            ]
             for effect_index, effect in enumerate(effects, 1):
                 entries.append(
                     {
-                        "id": slugify(f"guideline-{technique}-{form}-{row[0]}-{effect_index}-{heading.line_start}"),
+                        "id": slugify(
+                            f"guideline-{technique}-{form}-{row[0]}-{effect_index}-{heading.line_start}"
+                        ),
                         "name": f"{technique} {form} {row[0]}",
                         "technique": technique,
                         "form": form,
@@ -462,14 +489,19 @@ def parse_lab_activities(lines: list[str], headings: list[Heading]) -> list[dict
         if heading.title in {"Example: Inventing Spells", "Enchanted Item Example"}:
             continue
         text = join_body(body_lines(lines, heading))
-        formulae = re.findall(r"\*\*([^*\n]*(?:TOTAL|LIMIT|LEVELS|CHARGES|ROLL|FACTOR|VIS)[^*\n]*):?\s*([^*]+?)\*\*", text)
+        formulae = re.findall(
+            r"\*\*([^*\n]*(?:TOTAL|LIMIT|LEVELS|CHARGES|ROLL|FACTOR|VIS)[^*\n]*):?\s*([^*]+?)\*\*",
+            text,
+        )
         entries.append(
             {
                 "id": slugify(f"lab-{heading.title}-{heading.line_start}"),
                 "name": heading.title,
                 "level": heading.level,
                 "summary": first_paragraph(text),
-                "formulae": [f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae],
+                "formulae": [
+                    f"{label.strip()}: {' '.join(value.split())}" for label, value in formulae
+                ],
                 "heading_path": " > ".join(heading.heading_path),
                 "source_path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
                 "line_start": heading.line_start,
@@ -487,7 +519,10 @@ def parse_combat_tables(lines: list[str], headings: list[Heading]) -> list[dict[
         table_rows = parse_markdown_table(body_lines(lines, heading))
         if not table_rows:
             continue
-        if not any(term in heading.title.lower() for term in ["combat", "damage", "wound", "injur", "attack", "weapon"]):
+        if not any(
+            term in heading.title.lower()
+            for term in ["combat", "damage", "wound", "injur", "attack", "weapon"]
+        ):
             continue
         entries.append(
             {
@@ -510,7 +545,9 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
     covenant_path = REPO_ROOT / "reviewed" / "Ars Magica 5e - Covenants.md"
     if not covenant_path.exists():
         return []
-    covenant_book = next((b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None)
+    covenant_book = next(
+        (b for b in books if b["path"] == covenant_path.relative_to(REPO_ROOT).as_posix()), None
+    )
     if not covenant_book:
         return []
     lines = read_lines(covenant_path)
@@ -530,14 +567,31 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
         if hmatch:
             title = hmatch.group(2).strip()
             current_category = title
-            current_kind = "boon" if "boon" in title.lower() else "hook" if "hook" in title.lower() else current_kind
-            current_magnitude = "Major" if "major" in title.lower() else "Minor" if "minor" in title.lower() else "Free" if "free" in title.lower() else current_magnitude
+            current_kind = (
+                "boon"
+                if "boon" in title.lower()
+                else "hook"
+                if "hook" in title.lower()
+                else current_kind
+            )
+            current_magnitude = (
+                "Major"
+                if "major" in title.lower()
+                else "Minor"
+                if "minor" in title.lower()
+                else "Free"
+                if "free" in title.lower()
+                else current_magnitude
+            )
             continue
         if not current_kind:
             continue
         match = re.match(r"^\*{0,2}_?\*{0,2}\s*\*\*?([^:*_]+?)\*\*?:\s*(.+)", line.strip())
         if not match:
-            match = re.match(r"^\*?([^:*_][^:]{2,80}):\s*(Site|Buildings|Resources|Residents|External|Surroundings|Minor|Major|Free).*$", line.strip())
+            match = re.match(
+                r"^\*?([^:*_][^:]{2,80}):\s*(Site|Buildings|Resources|Residents|External|Surroundings|Minor|Major|Free).*$",
+                line.strip(),
+            )
         if not match:
             continue
         name = re.sub(r"[*_]", "", match.group(1)).strip()
@@ -549,7 +603,14 @@ def parse_covenant_boons_hooks(books: list[dict[str, Any]]) -> list[dict[str, An
                 "id": slugify(f"covenant-{current_kind}-{name}-{idx}"),
                 "name": name,
                 "kind": current_kind,
-                "magnitude": current_magnitude or ("Major" if "major" in description.lower() else "Minor" if "minor" in description.lower() else ""),
+                "magnitude": current_magnitude
+                or (
+                    "Major"
+                    if "major" in description.lower()
+                    else "Minor"
+                    if "minor" in description.lower()
+                    else ""
+                ),
                 "category": current_category,
                 "summary": first_paragraph(clean_htmlish(description)),
                 "source_path": source_path,
@@ -565,8 +626,12 @@ def extract_core_data(core_book: dict[str, Any]) -> CoreExtraction:
     lines = read_lines(REPO_ROOT / core_book["path"])
     headings = [Heading(**heading) for heading in core_book["headings"]]
     return CoreExtraction(
-        virtues=parse_virtue_or_flaw_entries("virtue", lines, headings, "Chapter 4: Virtues and Flaws", "Virtues"),
-        flaws=parse_virtue_or_flaw_entries("flaw", lines, headings, "Chapter 4: Virtues and Flaws", "Flaws"),
+        virtues=parse_virtue_or_flaw_entries(
+            "virtue", lines, headings, "Chapter 4: Virtues and Flaws", "Virtues"
+        ),
+        flaws=parse_virtue_or_flaw_entries(
+            "flaw", lines, headings, "Chapter 4: Virtues and Flaws", "Flaws"
+        ),
         abilities=parse_abilities(lines, headings),
         spells=parse_spells(lines, headings),
         spell_guidelines=parse_spell_guidelines(lines, headings),
@@ -622,7 +687,9 @@ def build_records(max_chars: int) -> tuple[list[dict], list[dict], CoreExtractio
     return books, chunks, core_data
 
 
-def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool) -> None:
+def write_json(
+    books: list[dict], chunks: list[dict], core_data: CoreExtraction, export_chunks: bool
+) -> None:
     RESOURCES.mkdir(parents=True, exist_ok=True)
     TOC_DIR.mkdir(parents=True, exist_ok=True)
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
@@ -637,8 +704,12 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
         }
         for b in books
     ]
-    (RESOURCES / "allowed-books.json").write_text(json.dumps(allowed, indent=2, ensure_ascii=False) + "\n")
-    (RESOURCES / "heading-index.json").write_text(json.dumps({"books": books}, indent=2, ensure_ascii=False) + "\n")
+    (RESOURCES / "allowed-books.json").write_text(
+        json.dumps(allowed, indent=2, ensure_ascii=False) + "\n"
+    )
+    (RESOURCES / "heading-index.json").write_text(
+        json.dumps({"books": books}, indent=2, ensure_ascii=False) + "\n"
+    )
     chunks_path = RESOURCES / "chunks.json"
     if export_chunks:
         chunks_path.write_text(json.dumps({"chunks": chunks}, indent=2, ensure_ascii=False) + "\n")
@@ -671,7 +742,11 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
     core_payload = {
         "book": {
             "path": CORE_PATH.relative_to(REPO_ROOT).as_posix(),
-            "title": next(b["title"] for b in books if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix()),
+            "title": next(
+                b["title"]
+                for b in books
+                if b["path"] == CORE_PATH.relative_to(REPO_ROOT).as_posix()
+            ),
             "edition": "DE",
         },
         "summary": {
@@ -693,8 +768,12 @@ def write_json(books: list[dict], chunks: list[dict], core_data: CoreExtraction,
         "combat_tables": core_data.combat_tables,
         "covenant_boons_hooks": core_data.covenant_boons_hooks,
     }
-    (DOCS_DATA / "library.json").write_text(json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n")
-    (DOCS_DATA / "core-data.json").write_text(json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n")
+    (DOCS_DATA / "library.json").write_text(
+        json.dumps(library_payload, indent=2, ensure_ascii=False) + "\n"
+    )
+    (DOCS_DATA / "core-data.json").write_text(
+        json.dumps(core_payload, indent=2, ensure_ascii=False) + "\n"
+    )
 
 
 def write_tocs(books: list[dict]) -> None:
@@ -702,11 +781,19 @@ def write_tocs(books: list[dict]) -> None:
     for b in books:
         toc_name = slugify(Path(b["path"]).stem) + ".md"
         index_lines.append(f"- [{b['title']}](toc/{toc_name})")
-        lines = [f"# {b['title']}", "", f"- Source: `{b['path']}`", f"- Edition: `{b['edition']}`", ""]
+        lines = [
+            f"# {b['title']}",
+            "",
+            f"- Source: `{b['path']}`",
+            f"- Edition: `{b['edition']}`",
+            "",
+        ]
         for h in b["headings"]:
             indent = "  " * max(0, h["level"] - 1)
             label = " / ".join(h["heading_path"])
-            lines.append(f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../../{b['path']}#L{h['line_start']})")
+            lines.append(
+                f"{indent}- `{h['line_start']}-{h['line_end']}` [{h['title']}](../../../{b['path']}#L{h['line_start']})"
+            )
             if h["level"] == 1 and label != h["title"]:
                 lines[-1] += f" _{label}_"
         (TOC_DIR / toc_name).write_text("\n".join(lines) + "\n")
@@ -751,7 +838,7 @@ def metadata_rows(books: list[dict], chunks: list[dict], embedding_count: int) -
         "builder_name": BUILDER_NAME,
         "builder_version": BUILDER_VERSION,
         "corpus_digest": digest.hexdigest(),
-        "built_at": datetime.now(timezone.utc).isoformat(),
+        "built_at": datetime.now(UTC).isoformat(),
         "embedding_model": EMBEDDING_MODEL,
         "embedding_dimensions": str(EMBEDDING_DIMENSIONS),
         "embedding_count": str(embedding_count),
@@ -780,10 +867,8 @@ def load_sqlite_vec(conn: sqlite3.Connection) -> bool:
         conn.enable_load_extension(False)
         return True
     except Exception:
-        try:
+        with suppress(Exception):
             conn.enable_load_extension(False)
-        except Exception:
-            pass
         return False
 
 
@@ -832,13 +917,17 @@ def validate_sqlite_file(path: Path) -> None:
         load_sqlite_vec(conn)
         result = conn.execute("PRAGMA integrity_check").fetchone()
         if not result or result[0] != "ok":
-            raise RuntimeError(f"SQLite integrity_check failed: {result[0] if result else 'no result'}")
+            raise RuntimeError(
+                f"SQLite integrity_check failed: {result[0] if result else 'no result'}"
+            )
         foreign_key_rows = conn.execute("PRAGMA foreign_key_check").fetchall()
         if foreign_key_rows:
             raise RuntimeError(f"SQLite foreign_key_check failed: {len(foreign_key_rows)} rows")
         version = conn.execute("SELECT value FROM metadata WHERE key = 'schema_version'").fetchone()
         if not version or version[0] != str(SCHEMA_VERSION):
-            raise RuntimeError(f"SQLite schema_version mismatch: {version[0] if version else 'missing'}")
+            raise RuntimeError(
+                f"SQLite schema_version mismatch: {version[0] if version else 'missing'}"
+            )
     finally:
         conn.close()
 
@@ -852,7 +941,9 @@ def temp_db_path(target: Path) -> Path:
     return tmp_path
 
 
-def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtraction) -> dict[str, int]:
+def build_sqlite(
+    books: list[dict], chunks: list[dict], core_data: CoreExtraction
+) -> dict[str, int]:
     preserved_embeddings = snapshot_embeddings()
     tmp_path = temp_db_path(DB_PATH)
     conn = sqlite3.connect(tmp_path)
@@ -1030,11 +1121,21 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
             """
         )
         if vec_supported:
-            conn.execute(f"CREATE VIRTUAL TABLE vec_chunks USING vec0(embedding float[{EMBEDDING_DIMENSIONS}])")
+            conn.execute(
+                f"CREATE VIRTUAL TABLE vec_chunks USING vec0(embedding float[{EMBEDDING_DIMENSIONS}])"
+            )
         for b in books:
             conn.execute(
                 "INSERT INTO books(id,path,title,edition,priority,line_count,sha256) VALUES(?,?,?,?,?,?,?)",
-                (b["id"], b["path"], b["title"], b["edition"], b["priority"], b["line_count"], b["sha256"]),
+                (
+                    b["id"],
+                    b["path"],
+                    b["title"],
+                    b["edition"],
+                    b["priority"],
+                    b["line_count"],
+                    b["sha256"],
+                ),
             )
             for h in b["headings"]:
                 conn.execute(
@@ -1088,7 +1189,7 @@ def build_sqlite(books: list[dict], chunks: list[dict], core_data: CoreExtractio
                         preserved["dimensions"],
                         preserved["embedding"],
                         c["content_hash"],
-                        preserved["created_at"] or datetime.now(timezone.utc).isoformat(),
+                        preserved["created_at"] or datetime.now(UTC).isoformat(),
                     ),
                 )
                 conn.execute(

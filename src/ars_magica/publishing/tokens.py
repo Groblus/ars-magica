@@ -8,7 +8,6 @@ from typing import Any
 
 from .paths import THEME_ROOT, TOKEN_ROOT
 
-
 REFERENCE = re.compile(r"^\{([^}]+)\}$")
 
 

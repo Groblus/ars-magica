@@ -4,12 +4,11 @@ from __future__ import annotations
 
 from datetime import date, datetime
 from enum import StrEnum
-from typing import Any, Literal
+from typing import Any, Final, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, model_validator
 
-
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION: Final = "1.0"
 RecordId = str
 
 
@@ -36,7 +35,7 @@ class SourceReference(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    schema_version: Literal[SCHEMA_VERSION] = SCHEMA_VERSION
+    schema_version: Literal["1.0"] = SCHEMA_VERSION
     id: RecordId = Field(pattern=r"^[a-z][a-z0-9._:-]*$")
     title: str
     locator: str | None = None
@@ -52,7 +51,7 @@ class ProvenanceRecord(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    schema_version: Literal[SCHEMA_VERSION] = SCHEMA_VERSION
+    schema_version: Literal["1.0"] = SCHEMA_VERSION
     id: RecordId = Field(pattern=r"^[a-z][a-z0-9._:-]*$")
     actor: str
     action: str
@@ -69,7 +68,7 @@ class Record(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    schema_version: Literal[SCHEMA_VERSION] = SCHEMA_VERSION
+    schema_version: Literal["1.0"] = SCHEMA_VERSION
     id: RecordId = Field(pattern=r"^[a-z][a-z0-9._:-]*$")
     source_refs: list[SourceReference] = Field(default_factory=list)
     visibility: Visibility = Visibility.STORYGUIDE
@@ -79,7 +78,7 @@ class Record(BaseModel):
     extensions: dict[str, Any] = Field(default_factory=dict)
 
     @model_validator(mode="after")
-    def validate_date_range(self) -> "Record":
+    def validate_date_range(self) -> Record:
         if self.valid_from and self.valid_to and self.valid_to < self.valid_from:
             raise ValueError("valid_to must not be earlier than valid_from")
         return self

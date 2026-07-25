@@ -3,15 +3,22 @@
 from __future__ import annotations
 
 import argparse
+import json
+from collections.abc import Sequence
 from dataclasses import asdict, is_dataclass
 from fractions import Fraction
-import json
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any
 
+from .publishing import (
+    inspect_template_requirements,
+    list_templates,
+    package_material,
+    render_html,
+)
 from .rules import (
-    adventure_source_quality,
     advancement_total,
+    adventure_source_quality,
     apply_experience,
     exposure_source_quality,
     practice_source_quality,
@@ -21,12 +28,6 @@ from .rules import (
     teaching_source_quality,
     training_source_quality,
     xp_to_buy_score,
-)
-from .publishing import (
-    inspect_template_requirements,
-    list_templates,
-    package_material,
-    render_html,
 )
 
 
@@ -192,9 +193,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     stress = dice_commands.add_parser("stress", help="Roll a stress die with optional botch dice.")
     stress.add_argument("--rolls", help="Comma-separated stress rolls, e.g. 1,1,5.")
-    stress.add_argument("--botch-rolls", help="Comma-separated botch rolls used after an initial 0.")
+    stress.add_argument(
+        "--botch-rolls", help="Comma-separated botch rolls used after an initial 0."
+    )
     stress.add_argument("--botch-dice", type=int, default=1)
-    stress.add_argument("--no-botch", action="store_true", help="Treat the stress roll as unable to botch.")
+    stress.add_argument(
+        "--no-botch", action="store_true", help="Treat the stress roll as unable to botch."
+    )
     stress.add_argument("--seed", type=int)
     stress.set_defaults(func=dice_stress)
 
@@ -204,31 +209,41 @@ def build_parser() -> argparse.ArgumentParser:
     )
     advancement_commands = advancement.add_subparsers(dest="advancement_command", required=True)
 
-    xp_to_score = advancement_commands.add_parser("xp-to-score", help="Calculate XP needed to buy a score from zero.")
+    xp_to_score = advancement_commands.add_parser(
+        "xp-to-score", help="Calculate XP needed to buy a score from zero."
+    )
     xp_to_score.add_argument("kind", choices=("art", "ability"))
     xp_to_score.add_argument("score", type=int)
     xp_to_score.set_defaults(func=advancement_xp_to_score)
 
-    score_progress = advancement_commands.add_parser("score-progress", help="Derive score and next-score progress from total XP.")
+    score_progress = advancement_commands.add_parser(
+        "score-progress", help="Derive score and next-score progress from total XP."
+    )
     score_progress.add_argument("kind", choices=("art", "ability"))
     score_progress.add_argument("total_xp", type=int)
     score_progress.set_defaults(func=advancement_score_progress)
 
-    apply_xp = advancement_commands.add_parser("apply-xp", help="Apply XP to a score, optionally capped by source level.")
+    apply_xp = advancement_commands.add_parser(
+        "apply-xp", help="Apply XP to a score, optionally capped by source level."
+    )
     apply_xp.add_argument("kind", choices=("art", "ability"))
     apply_xp.add_argument("current_xp", type=int)
     apply_xp.add_argument("gained_xp", type=int)
     apply_xp.add_argument("--gain-limit", type=int)
     apply_xp.set_defaults(func=advancement_apply_experience)
 
-    total = advancement_commands.add_parser("total", help="Calculate an advancement total from source quality and modifiers.")
+    total = advancement_commands.add_parser(
+        "total", help="Calculate an advancement total from source quality and modifiers."
+    )
     total.add_argument("source_quality", type=int)
     total.add_argument("--virtue-bonus", type=int, default=0)
     total.add_argument("--flaw-penalty", type=int, default=0)
     total.add_argument("--other-modifier", type=int, default=0)
     total.set_defaults(func=advancement_total_command)
 
-    exposure = advancement_commands.add_parser("exposure", help="Calculate Exposure Source Quality per subject.")
+    exposure = advancement_commands.add_parser(
+        "exposure", help="Calculate Exposure Source Quality per subject."
+    )
     exposure.add_argument("--split-between-subjects", type=int, choices=(1, 2), default=1)
     exposure.set_defaults(func=advancement_exposure)
 
@@ -236,17 +251,23 @@ def build_parser() -> argparse.ArgumentParser:
     practice.add_argument("--quality", type=int, default=4)
     practice.set_defaults(func=advancement_practice)
 
-    training = advancement_commands.add_parser("training", help="Calculate Training Source Quality and gain limit.")
+    training = advancement_commands.add_parser(
+        "training", help="Calculate Training Source Quality and gain limit."
+    )
     training.add_argument("master_score", type=int)
     training.set_defaults(func=advancement_training)
 
-    teaching = advancement_commands.add_parser("teaching", help="Calculate Teaching Source Quality.")
+    teaching = advancement_commands.add_parser(
+        "teaching", help="Calculate Teaching Source Quality."
+    )
     teaching.add_argument("communication", type=int)
     teaching.add_argument("teaching", type=int)
     teaching.add_argument("--single-student-bonus", type=int, choices=(0, 3, 6), default=0)
     teaching.set_defaults(func=advancement_teaching)
 
-    adventure = advancement_commands.add_parser("adventure", help="Return Adventure Source Quality with range warnings.")
+    adventure = advancement_commands.add_parser(
+        "adventure", help="Return Adventure Source Quality with range warnings."
+    )
     adventure.add_argument("quality", type=int)
     adventure.set_defaults(func=advancement_adventure)
 
@@ -254,7 +275,9 @@ def build_parser() -> argparse.ArgumentParser:
     template_commands = templates.add_subparsers(dest="template_command", required=True)
     template_list = template_commands.add_parser("list", help="List available templates.")
     template_list.set_defaults(func=templates_list)
-    template_inspect = template_commands.add_parser("inspect", help="Inspect one template contract.")
+    template_inspect = template_commands.add_parser(
+        "inspect", help="Inspect one template contract."
+    )
     template_inspect.add_argument("template")
     template_inspect.set_defaults(func=templates_inspect)
 
@@ -263,10 +286,14 @@ def build_parser() -> argparse.ArgumentParser:
     render.add_argument("-o", "--output")
     render.set_defaults(func=render_html_command)
 
-    package = subcommands.add_parser("package", help="Package a material spec as a deterministic ZIP.")
+    package = subcommands.add_parser(
+        "package", help="Package a material spec as a deterministic ZIP."
+    )
     package.add_argument("spec")
     package.add_argument("destination")
-    package.add_argument("--include-pdf", action="store_true", help="Include PDF output; requires WeasyPrint.")
+    package.add_argument(
+        "--include-pdf", action="store_true", help="Include PDF output; requires WeasyPrint."
+    )
     package.set_defaults(func=package_command)
 
     return parser

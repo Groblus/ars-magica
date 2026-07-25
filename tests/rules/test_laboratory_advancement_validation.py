@@ -1,12 +1,11 @@
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "src"))
 
 from ars_magica.rules.advancement import (
-    adventure_source_quality,
     advancement_total,
+    adventure_source_quality,
     apply_experience,
     exposure_source_quality,
     score_from_xp,
