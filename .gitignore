@@ -1,7 +1,13 @@
 .env
 .venv/
 __pycache__/
+*.egg-info/
 node_modules/
 dist/
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal
+*.sqlite-mj*
+*.sqlite.tmp
 experiments/wizard-study/web/node_modules/
 experiments/wizard-study/web/dist/
