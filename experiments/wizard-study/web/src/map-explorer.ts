@@ -450,12 +450,27 @@ export function mountMapExplorer(root: HTMLElement): () => void {
   let bordersVisible = false;
   const allFeatures = [...atlas.regions, ...atlas.places];
 
-  type FocusRestore = {
-    featureId: string;
-    control: string;
-  };
+  type FocusRestore =
+    | {
+        kind: "feature";
+        featureId: string;
+        control: string;
+      }
+    | {
+        kind: "search";
+        selectionStart: number | null;
+        selectionEnd: number | null;
+      };
 
   const restoreFocus = (target: FocusRestore): void => {
+    if (target.kind === "search") {
+      const search = root.querySelector<HTMLInputElement>("#atlas-search");
+      search?.focus({ preventScroll: true });
+      if (search && target.selectionStart !== null && target.selectionEnd !== null) {
+        search.setSelectionRange(target.selectionStart, target.selectionEnd);
+      }
+      return;
+    }
     const control = Array.from(
       root.querySelectorAll<HTMLElement>("[data-atlas-select][data-atlas-control]"),
     ).find(
@@ -548,7 +563,11 @@ export function mountMapExplorer(root: HTMLElement): () => void {
     const borders = root.querySelector<HTMLInputElement>("#atlas-borders");
     search?.addEventListener("input", () => {
       query = search.value;
-      render();
+      render({
+        kind: "search",
+        selectionStart: search.selectionStart,
+        selectionEnd: search.selectionEnd,
+      });
     });
     filter?.addEventListener("change", () => {
       activeFilter = filter.value;
@@ -569,7 +588,7 @@ export function mountMapExplorer(root: HTMLElement): () => void {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
           const control = element.dataset.atlasControl;
-          if (control) selectFeature(id, { featureId: id, control });
+          if (control) selectFeature(id, { kind: "feature", featureId: id, control });
         }
       });
     });

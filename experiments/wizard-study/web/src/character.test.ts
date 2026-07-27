@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  CHARACTER_ARTIFACT_SCHEMA_ID,
   CHARACTER_SCHEMA_ID,
   createDefaultDraft,
   exportCharacterArtifactSpec,
@@ -61,7 +60,7 @@ describe("character draft model", () => {
     expect(codes).toContain("grog.storyFlaw.forbidden");
   });
 
-  it("exports schema-shaped JSON and printable artifact data", () => {
+  it("exports definitive citations and renderable publishing artifact data", () => {
     const draft = createDefaultDraft("companion", {
       name: "Aelia",
       concept: "Covenant envoy",
@@ -77,15 +76,36 @@ describe("character draft model", () => {
       exportedAt: "1220-01-01T00:00:00.000Z",
       data: draft,
     });
+    expect(json.sourceRefs).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          title: "Ars Magica - Definitive Edition (Core Rules)",
+          citation: expect.stringMatching(
+            /^reviewed\/Ars Magica - Definitive Edition \(Core Rules\)\.md:\d+(?:-\d+)?$/,
+          ),
+        }),
+      ]),
+    );
     expect(artifact).toMatchObject({
-      schema: CHARACTER_ARTIFACT_SCHEMA_ID,
-      version: 1,
-      kind: "character-sheet",
+      template: "companion-grog-sheet",
+      theme: "clear-ledger",
+      preset: "home-a4",
       audience: "player",
-      format: { paper: "a4", orientation: "portrait" },
-      data: draft,
+      content: {
+        identity: { name: "Aelia", role: "Companion" },
+        characteristics: draft.characteristics,
+        abilities: [expect.objectContaining({ name: "Charm", notes: "10 XP allocated in this draft" })],
+      },
     });
-    expect(artifact.blocks.length).toBeGreaterThan(0);
-    expect(artifact.sourceRefs.length).toBeGreaterThan(0);
+    expect(artifact.source_references.length).toBeGreaterThan(0);
+    expect(artifact.source_references).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          citation: expect.stringMatching(
+            /^reviewed\/Ars Magica - Definitive Edition \(Core Rules\)\.md:\d+(?:-\d+)?$/,
+          ),
+        }),
+      ]),
+    );
   });
 });

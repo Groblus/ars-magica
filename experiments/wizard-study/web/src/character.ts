@@ -2,7 +2,7 @@ export const CHARACTER_SCHEMA_ID = "ars-magica.character-draft.v1" as const;
 export const CHARACTER_ARTIFACT_SCHEMA_ID = "ars-magica.artifact-spec.v1" as const;
 
 export const RULES_AUTHORITY_NOTE =
-  "This module enforces MVP draft constraints only. Python rules remain authority for full Ars Magica Fifth Edition legality.";
+  "This module enforces MVP draft constraints only. Definitive Edition core rules and Python rules remain authority for full character legality.";
 
 export type CharacterRole = "magus" | "companion" | "grog";
 export type CharacteristicScore = -3 | -2 | -1 | 0 | 1 | 2 | 3;
@@ -112,7 +112,7 @@ export type StarterSpellId =
 
 export type SourceRef = {
   readonly id: string;
-  readonly work: "Ars Magica Fifth Edition Core Rulebook";
+  readonly work: "Ars Magica - Definitive Edition (Core Rules)";
   readonly locator: string;
   readonly note: string;
 };
@@ -120,61 +120,61 @@ export type SourceRef = {
 export const SOURCE_REFS = {
   sharedCreation: {
     id: "core-2205-2222",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2205-2222",
     note: "Shared character creation path.",
   },
   templateFirst: {
     id: "core-2224",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2224",
     note: "Template-first starter advice.",
   },
   magusPath: {
     id: "core-2208-2216-2433-2465",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2208-2216, 2433-2465",
     note: "Magus creation path and Hermetic apprenticeship scope.",
   },
   magusArchetypes: {
     id: "core-2262-2284",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2262-2284",
     note: "Public magus archetypes.",
   },
   companionPath: {
     id: "core-985-992-2221-2297-2300",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 985-992, 2221, 2297-2300",
     note: "Companion role and creation notes.",
   },
   grogPath: {
     id: "core-1001-1009-2210-2295",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 1001-1009, 2210, 2295",
     note: "Grog role and simpler creation scope.",
   },
   houses: {
     id: "core-635-641",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 635-641",
     note: "Hermetic Houses overview.",
   },
   characteristics: {
     id: "core-2340-2355",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2340-2355",
     note: "Eight characteristics and point-budget premise.",
   },
   abilities: {
     id: "core-2362-2394",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 2362-2394",
     note: "Age and Ability XP creation guidance.",
   },
   casting: {
     id: "core-9085-9115-9153-9165",
-    work: "Ars Magica Fifth Edition Core Rulebook",
+    work: "Ars Magica - Definitive Edition (Core Rules)",
     locator: "loc. 9085-9115, 9153-9165",
     note: "Casting totals and starter spell handling.",
   },
@@ -1069,34 +1069,38 @@ export type CharacterJsonExport = {
   readonly data: CharacterDraft;
   readonly validation: CharacterValidation;
   readonly completion: CharacterCompletionSummary;
-  readonly sourceRefs: readonly SourceRef[];
+  readonly sourceRefs: readonly PortableSourceReference[];
 };
 
-export type ArtifactAudience = "player" | "storyguide" | "table";
-export type ArtifactBlockKind = "title" | "identity" | "ledger" | "checklist" | "source-note" | "rules-note";
+export type ArtifactAudience = "player" | "storyguide" | "public";
 
-export type ArtifactBlock = {
-  readonly kind: ArtifactBlockKind;
-  readonly title: string;
-  readonly items: readonly string[];
-  readonly sourceRefs: readonly SourceRef[];
+export type PortableSourceReference = {
+  readonly id: string;
+  readonly title: SourceRef["work"];
+  readonly locator: string;
+  readonly citation: string;
+  readonly authority: "definitive";
+  readonly notes: string;
 };
 
 export type ArtifactSpec = {
-  readonly schema: typeof CHARACTER_ARTIFACT_SCHEMA_ID;
-  readonly version: 1;
-  readonly kind: "character-sheet";
+  readonly template: "magus-character-sheet" | "companion-grog-sheet";
+  readonly theme: "clear-ledger";
+  readonly preset: "home-letter" | "home-a4";
   readonly title: string;
-  readonly subtitle: string;
   readonly audience: ArtifactAudience;
-  readonly format: {
-    readonly paper: "letter" | "a4";
-    readonly orientation: "portrait";
-    readonly printProfile: "ink-light";
+  readonly content: {
+    readonly identity: Record<string, string | number>;
+    readonly characteristics: CharacteristicBlock;
+    readonly arts: readonly { readonly name: string; readonly score: string; readonly notes: string }[];
+    readonly abilities: readonly { readonly name: string; readonly score: string; readonly notes: string }[];
+    readonly virtues: readonly string[];
+    readonly flaws: readonly string[];
+    readonly spells: readonly { readonly name: string; readonly level: number; readonly notes: string }[];
+    readonly notes: string;
   };
-  readonly data: CharacterDraft;
-  readonly blocks: readonly ArtifactBlock[];
-  readonly sourceRefs: readonly SourceRef[];
+  readonly assets: readonly [];
+  readonly source_references: readonly PortableSourceReference[];
   readonly rulesAuthority: typeof RULES_AUTHORITY_NOTE;
 };
 
@@ -1941,6 +1945,29 @@ export function summarizeCharacterCompletion(draft: CharacterDraft): CharacterCo
   };
 }
 
+function exportSourceReferences(refs: readonly SourceRef[]): PortableSourceReference[] {
+  const seen = new Set<string>();
+  return refs.flatMap((ref) => {
+    const locators = ref.locator.replace(/^loc\.\s*/, "").split(",");
+    return locators.flatMap((locator, index) => {
+      const normalizedLocator = locator.trim();
+      const id = `${ref.id}-${index + 1}`;
+      if (!normalizedLocator || seen.has(id)) {
+        return [];
+      }
+      seen.add(id);
+      return [{
+        id,
+        title: ref.work,
+        locator: normalizedLocator,
+        citation: `reviewed/Ars Magica - Definitive Edition (Core Rules).md:${normalizedLocator}`,
+        authority: "definitive" as const,
+        notes: ref.note,
+      }];
+    });
+  });
+}
+
 export function exportCharacterJson(
   draft: CharacterDraft,
   options: { readonly exportedAt?: string } = {},
@@ -1955,7 +1982,7 @@ export function exportCharacterJson(
     data: draft,
     validation,
     completion: summarizeCharacterCompletion(draft),
-    sourceRefs: validation.sourceRefs,
+    sourceRefs: exportSourceReferences(validation.sourceRefs),
   };
 }
 
@@ -1971,84 +1998,50 @@ export function exportCharacterArtifactSpec(
   const houseLabel = draft.house ? HOUSE_BY_ID.get(draft.house)?.label : undefined;
   const virtueLabels = selectedVirtues(draft).map((virtue) => virtue.label);
   const flawLabels = selectedFlaws(draft).map((flaw) => flaw.label);
-  const abilityLines = Object.entries(draft.abilityXp).map(([id, xp]) => {
-    return `${ABILITY_BY_ID.get(id as AbilityId)?.label ?? id}: ${xp} XP`;
+  const abilities = Object.entries(draft.abilityXp).map(([id, xp]) => {
+    return {
+      name: ABILITY_BY_ID.get(id as AbilityId)?.label ?? id,
+      score: "",
+      notes: `${xp} XP allocated in this draft`,
+    };
   });
-  const artLines = Object.entries(draft.artXp).map(([id, xp]) => `${id}: ${xp} XP`);
-  const spellLines = draft.starterSpellIds.map((id) => {
+  const arts = Object.entries(draft.artXp).map(([id, xp]) => ({
+    name: ART_BY_ID.get(id as ArtId)?.label ?? id,
+    score: "",
+    notes: `${xp} XP allocated in this draft`,
+  }));
+  const spells = draft.starterSpellIds.flatMap((id) => {
     const spell = STARTER_SPELL_BY_ID.get(id);
-    return spell ? `${spell.label}: ${spell.technique} ${spell.form} ${spell.level}` : id;
+    return spell
+      ? [{ name: spell.label, level: spell.level, notes: `${spell.technique} ${spell.form}` }]
+      : [];
   });
 
   return {
-    schema: CHARACTER_ARTIFACT_SCHEMA_ID,
-    version: 1,
-    kind: "character-sheet",
+    template: draft.role === "magus" ? "magus-character-sheet" : "companion-grog-sheet",
+    theme: "clear-ledger",
+    preset: options.paper === "a4" ? "home-a4" : "home-letter",
     title: draft.name.trim() || "Unnamed Ars Magica Character",
-    subtitle: [roleLabel, houseLabel, draft.concept].filter(Boolean).join(" / "),
     audience: options.audience ?? "player",
-    format: {
-      paper: options.paper ?? "letter",
-      orientation: "portrait",
-      printProfile: "ink-light",
+    content: {
+      identity: {
+        name: draft.name.trim() || "Unnamed",
+        player: draft.playerName,
+        role: roleLabel,
+        house: houseLabel ?? "",
+        concept: draft.concept,
+        age: draft.age,
+      },
+      characteristics: draft.characteristics,
+      arts,
+      abilities,
+      virtues: virtueLabels,
+      flaws: flawLabels,
+      spells,
+      notes: `${RULES_AUTHORITY_NOTE} Validation: ${validation.errors.length} error(s), ${validation.advisories.length} advisory note(s).`,
     },
-    data: draft,
-    blocks: [
-      {
-        kind: "title",
-        title: "Identity",
-        items: [
-          `Name: ${draft.name || "Unnamed"}`,
-          `Role: ${roleLabel}`,
-          `Concept: ${draft.concept || "Missing"}`,
-          `Age: ${draft.age}`,
-          `Native language: ${draft.nativeLanguage || "Missing"}`,
-        ],
-        sourceRefs: [SOURCE_REFS.sharedCreation, SOURCE_REFS.templateFirst, SOURCE_REFS.abilities],
-      },
-      {
-        kind: "ledger",
-        title: "Characteristics",
-        items: CHARACTERISTIC_NAMES.map((name) => `${name}: ${draft.characteristics[name]}`),
-        sourceRefs: [SOURCE_REFS.characteristics],
-      },
-      {
-        kind: "ledger",
-        title: "Virtues and Flaws",
-        items: [
-          `Virtues (${validation.totals.virtuePoints}): ${virtueLabels.join(", ") || "None"}`,
-          `Flaws (${validation.totals.flawPoints}): ${flawLabels.join(", ") || "None"}`,
-        ],
-        sourceRefs: [SOURCE_REFS.sharedCreation],
-      },
-      {
-        kind: "ledger",
-        title: "Abilities, Arts, Starter Spells",
-        items: [
-          ...(abilityLines.length ? abilityLines : ["No Ability XP entered"]),
-          ...(artLines.length ? artLines : ["No Art XP entered"]),
-          ...(spellLines.length ? spellLines : ["No starter spells selected"]),
-        ],
-        sourceRefs: [SOURCE_REFS.abilities, SOURCE_REFS.casting],
-      },
-      {
-        kind: "checklist",
-        title: "Validation",
-        items: [
-          `${validation.errors.length} error(s)`,
-          `${validation.advisories.length} advisory note(s)`,
-          `${validation.incompleteRules.length} incomplete rule notice(s)`,
-        ],
-        sourceRefs: validation.sourceRefs,
-      },
-      {
-        kind: "rules-note",
-        title: "Rules Authority",
-        items: [RULES_AUTHORITY_NOTE],
-        sourceRefs: validation.sourceRefs,
-      },
-    ],
-    sourceRefs: validation.sourceRefs,
+    assets: [],
+    source_references: exportSourceReferences(validation.sourceRefs),
     rulesAuthority: RULES_AUTHORITY_NOTE,
   };
 }

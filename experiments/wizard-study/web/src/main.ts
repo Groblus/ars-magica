@@ -436,12 +436,28 @@ function render(): void {
     ${renderMobileDock()}
   </div>`;
 
+  installStartHeroFallback();
+
   if (route === 'atlas') {
     const root = document.querySelector<HTMLElement>('#atlas-root');
     if (root) {
       atlasCleanup = mountMapExplorer(root);
     }
   }
+}
+
+function installStartHeroFallback(): void {
+  const heroImage = appRoot.querySelector<HTMLImageElement>('#start-hero-image');
+  if (!heroImage) {
+    return;
+  }
+  heroImage.addEventListener('error', () => {
+    if (heroImage.dataset.fallbackApplied === 'true') {
+      return;
+    }
+    heroImage.dataset.fallbackApplied = 'true';
+    heroImage.src = `${import.meta.env.BASE_URL}reference/hero-placeholder.svg`;
+  });
 }
 
 function saveForgeFocus(): SavedFocus | null {
@@ -473,6 +489,23 @@ function saveForgeFocus(): SavedFocus | null {
   };
 }
 
+function saveAcademyFocus(): SavedFocus | null {
+  const active = document.activeElement;
+  if (!(active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement || active instanceof HTMLSelectElement)) {
+    return null;
+  }
+  const scope = active.dataset.academyScope;
+  const field = active.dataset.academyField;
+  if (!scope || !field) {
+    return null;
+  }
+  return {
+    selector: `[data-academy-scope="${CSS.escape(scope)}"][data-academy-field="${CSS.escape(field)}"]`,
+    selectionStart: active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement ? active.selectionStart : null,
+    selectionEnd: active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement ? active.selectionEnd : null,
+  };
+}
+
 function restoreForgeFocus(savedFocus: SavedFocus | null): void {
   if (!savedFocus) {
     return;
@@ -495,7 +528,7 @@ function scheduleRender(): void {
   if (renderScheduled) {
     return;
   }
-  const savedFocus = route === 'forge' ? saveForgeFocus() : null;
+  const savedFocus = route === 'forge' ? saveForgeFocus() : route === 'academy' ? saveAcademyFocus() : null;
   renderScheduled = true;
   queueMicrotask(() => {
     renderScheduled = false;
@@ -555,6 +588,9 @@ function renderStart(): string {
 
   return `<section class="route start-route" aria-labelledby="start-title">
     <div class="route-hero manuscript-hero">
+      <figure class="start-hero-art">
+        <img id="start-hero-image" src="${import.meta.env.BASE_URL}reference/hero.jpg" alt="Painterly wizard study with open manuscript">
+      </figure>
       <p class="kicker">Definitive Edition study table</p>
       <h1 id="start-title">Enter Mythic Europe through play.</h1>
       <p>${escapeHtml(newPlayerPrimer.audience)}. Learn role, covenant, season, and rules at table speed.</p>
@@ -1092,7 +1128,7 @@ function renderCastingTool(): string {
         : die;
   const formulaicResult = 'value' in formulaic ? formulaic.value : null;
   const penetration =
-    formulaicResult && isFormulaicCastingResult(formulaicResult)
+    formulaicResult && isFormulaicCastingResult(formulaicResult) && formulaicResult.spellCast
       ? safeTool(() =>
           penetrationTotal(
             formulaicResult.total,
@@ -1102,7 +1138,13 @@ function renderCastingTool(): string {
             academyState.casting.forceless,
           ),
         )
-      : formulaic;
+      : null;
+  const penetrationOutput =
+    formulaicResult && isFormulaicCastingResult(formulaicResult) && !formulaicResult.spellCast
+      ? '<div class="tool-result"><h4>Penetration total</h4><p>No Penetration Total: spell was not cast.</p></div>'
+      : penetration
+        ? renderToolResult('Penetration total', penetration)
+        : renderToolResult('Penetration total', formulaic);
 
   return `<section class="tool-panel" aria-labelledby="casting-tool-title">
     <h3 id="casting-tool-title">Casting and penetration workbench</h3>
@@ -1171,7 +1213,7 @@ function renderCastingTool(): string {
     ${renderToolResult('Casting score', score)}
     ${renderToolResult(academyState.casting.dieMode === 'calm' ? 'Simple die' : 'Stress die', die)}
     ${renderToolResult('Formulaic casting', formulaic)}
-    ${renderToolResult('Penetration total', penetration)}
+    ${penetrationOutput}
   </section>`;
 }
 
@@ -1508,7 +1550,7 @@ function handleFormEvent(event: Event): void {
   }
   if (target.dataset.academyScope && target.dataset.academyField) {
     updateAcademyValue(target.dataset.academyScope, target.dataset.academyField, target.value, isChecked);
-    render();
+    scheduleRender();
   }
 }
 
