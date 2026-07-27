@@ -11,6 +11,7 @@ from .audit import AuditResult, Component, audit_sum, cite
 from .dice import DieRollResult, apply_die_to_modifier
 
 CASTING_SCORE_CITATION = cite(9089, 9089)
+CASTING_BOTCH_CITATION = cite(9093, 9093)
 FORMULAIC_CITATION = cite(9099, 9115)
 RITUAL_CITATION = cite(9117, 9137)
 SPONTANEOUS_CITATION = cite(9139, 9151)
@@ -121,13 +122,19 @@ def formulaic_casting_total(
 ) -> CastingOutcome:
     """Resolve Formulaic casting success and fatigue from a casting score and die."""
 
-    total_result = apply_die_to_modifier(modifier=casting_score_total, die=die)
-    total = int(total_result.value)
+    if die.botched:
+        total = 0
+        total_warnings = die.warnings
+    else:
+        total_result = apply_die_to_modifier(modifier=casting_score_total, die=die)
+        total = int(total_result.value)
+        total_warnings = total_result.warnings
     margin = total - spell_level
     if die.botched:
         spell_cast = False
         fatigue = 0
-        warnings = total_result.warnings + (
+        warnings = total_warnings + (
+            "Formulaic casting botch sets the Casting Total to zero before other effects.",
             "Formulaic botch consequences are not deterministic in this helper.",
         )
     elif margin >= 0:
@@ -153,7 +160,9 @@ def formulaic_casting_total(
             Component("Spell Level", -spell_level, FORMULAIC_CITATION),
         ),
         warnings=warnings,
-        citations=(FORMULAIC_CITATION,) + die.citations,
+        citations=((CASTING_BOTCH_CITATION,) if die.botched else ())
+        + (FORMULAIC_CITATION,)
+        + die.citations,
         botched=die.botched,
         botch_count=die.botch_count,
     )

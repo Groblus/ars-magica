@@ -59,6 +59,31 @@ def test_formulaic_casting_success_fatigue_and_failure_thresholds():
     assert failure.fatigue_levels_lost == 1
 
 
+def test_formulaic_casting_botch_sets_casting_total_to_zero():
+    botch = stress_die(rolls=[0], botch_rolls=[0], botch_dice=1)
+    positive_score = formulaic_casting_total(
+        casting_score_total=20,
+        die=botch,
+        spell_level=5,
+    )
+    negative_score = formulaic_casting_total(
+        casting_score_total=-5,
+        die=botch,
+        spell_level=5,
+    )
+
+    for result in (positive_score, negative_score):
+        assert result.total == 0
+        assert result.margin == -5
+        assert result.spell_cast is False
+        assert result.fatigue_levels_lost == 0
+        assert result.botched is True
+        assert result.botch_count == 1
+        assert "reviewed/Ars Magica - Definitive Edition (Core Rules).md:9093-9093" in (
+            result.citations
+        )
+
+
 def test_ritual_casting_uses_artes_liberales_and_philosophiae():
     result = ritual_casting_total(
         casting_score_total=20,
